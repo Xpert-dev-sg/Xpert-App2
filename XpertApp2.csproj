@@ -1,0 +1,49 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\Img\1.jpg" />
+    <None Remove="Resources\Img\2.jpg" />
+    <None Remove="Resources\Img\3.jpg" />
+    <None Remove="Resources\Img\4.jpg" />
+    <None Remove="Resources\Img\5.jpg" />
+    <None Remove="Resources\Img\about.jpg" />
+    <None Remove="Resources\Img\access.png" />
+    <None Remove="Resources\Img\access_jpg.jpg" />
+    <None Remove="Resources\Img\admin.jpg" />
+    <None Remove="Resources\Img\Content.jpg" />
+    <None Remove="Resources\Img\login.jpg" />
+    <None Remove="Resources\Img\logo.png" />
+    <None Remove="Resources\Img\no_wifi.jpg" />
+    <None Remove="Resources\Img\wifi.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="HandyControl" Version="3.5.1" />
+    <PackageReference Include="System.Data.SQLite" Version="1.0.118" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Img\about.jpg" />
+    <Resource Include="Resources\Img\access_jpg.jpg" />
+    <Resource Include="Resources\Img\admin.jpg" />
+    <Resource Include="Resources\Img\Content.jpg" />
+    <Resource Include="Resources\Img\login.jpg" />
+    <Resource Include="Resources\Img\logo.png" />
+    <Resource Include="Resources\Img\no_wifi.jpg" />
+    <Resource Include="Resources\Img\wifi.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Models\" />
+    <Folder Include="Utility\" />
+  </ItemGroup>
+
+</Project>
