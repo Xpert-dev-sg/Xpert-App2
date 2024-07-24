@@ -21,5 +21,6 @@ namespace XpertApp2.DB
 
         public static string SystemMail { get; set; }//="wangyiwater77@163.com";
         public static int SystemMenuInterval { get; set; }// = 15;
+        public static int SystemMenuInterval_admin { get; set; }// = 60;
     }
 }
