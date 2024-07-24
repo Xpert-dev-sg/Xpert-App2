@@ -20,4 +20,4 @@
 >每个item有return时间的限制，超时会email负责人和当事人<br/>
 
 **脑图**
-![mindmap]()
+![mindmap](https://github.com/Xpert-dev-sg/Xpert-App2/blob/main/RFID%2Bsystem.png)
