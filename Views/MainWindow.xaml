@@ -1,0 +1,34 @@
+﻿<Window
+        x:Class="XpertApp2.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        WindowStyle="None" 
+        WindowState="Maximized"
+
+        xmlns:hc="https://handyorg.github.io/handycontrol" 
+        mc:Ignorable="d"
+        Title="MainWindow"  ResizeMode="NoResize" >
+
+  
+        <DockPanel>
+            <!-- 头部 -->
+            <hc:SimplePanel DockPanel.Dock="Top" Height="100">
+                <Image Width="197" Height="79" Source="pack://application:,,,/XpertApp2;component/Resources/Img/logo.png" HorizontalAlignment="Left" VerticalAlignment="Top"  />
+            <Image x:Name="wifi_img" HorizontalAlignment="Right" VerticalAlignment="Top" Width="20" Height="20" Margin="10,5,120,10"/>
+            <TextBlock Margin="10,10,10,10" x:Name="DateTimeTextBlock" HorizontalAlignment="Right" VerticalAlignment="Top" FontSize="10"/>
+            </hc:SimplePanel>
+            <!-- 底部 -->
+            <hc:SimplePanel DockPanel.Dock="Bottom" Height="50">
+                <TextBlock Text="© 2024 Xpert" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            </hc:SimplePanel>
+            
+            <!-- 内容区域 -->
+            <Frame x:Name="MainFrame"   NavigationUIVisibility="Hidden"  />
+            
+        </DockPanel>
+
+
+   
+</Window>

@@ -1,0 +1,41 @@
+﻿<Page x:Class="XpertApp2.Views.MenuPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:XpertApp2.Views"
+      xmlns:hc="https://handyorg.github.io/handycontrol" 
+      mc:Ignorable="d" 
+      d:DesignHeight="1920" d:DesignWidth="1080"
+      Title="MenuPage">
+
+    <Grid>
+        <hc:Carousel  IsCenter="True" AutoRun="True" VerticalAlignment="Top" Width="1080" Height="1920">
+            <hc:CarouselItem>
+                <hc:SimplePanel>
+                    <Image  Stretch="UniformToFill" Source="pack://application:,,,/XpertApp2;component/Resources/Img/Content.jpg" MouseDown="Click_ContentList" Opacity="0.3" />
+                    <TextBlock Text="Items List" FontSize="150" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
+
+                </hc:SimplePanel>
+            </hc:CarouselItem>
+            <hc:CarouselItem>
+                <hc:SimplePanel>
+                    <Image  Stretch="UniformToFill" Source="pack://application:,,,/XpertApp2;component/Resources/Img/access_jpg.jpg" MouseDown="Click_Access" Opacity="0.3" />
+                    <TextBlock Text="Open" FontSize="150" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
+                </hc:SimplePanel>
+            </hc:CarouselItem>
+            <hc:CarouselItem>
+                <hc:SimplePanel>
+                    <Image  Stretch="UniformToFill" Source="pack://application:,,,/XpertApp2;component/Resources/Img/admin.jpg" MouseDown="Click_Admin"  Opacity="0.3"/>
+                    <TextBlock Text="Admin Control" FontSize="150" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
+                </hc:SimplePanel>
+            </hc:CarouselItem>
+            <hc:CarouselItem>
+                <hc:SimplePanel>
+                    <Image  Stretch="UniformToFill" Source="pack://application:,,,/XpertApp2;component/Resources/Img/about.jpg"  Opacity="0.3" />
+                    <TextBlock Text="About me" FontSize="150" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
+                </hc:SimplePanel>
+            </hc:CarouselItem>
+        </hc:Carousel>
+    </Grid>
+</Page>
