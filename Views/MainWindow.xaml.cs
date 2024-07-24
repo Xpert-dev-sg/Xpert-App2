@@ -34,6 +34,7 @@ namespace XpertApp2.Views
             DB_Base.DBConnectionString = ConfigurationManager.AppSettings["DBConnectionString"];
             DB_Base.SystemMail = ConfigurationManager.AppSettings["SystemMail"];
             DB_Base.SystemMenuInterval = Convert.ToInt32( ConfigurationManager.AppSettings["SystemMenuInterval"]);
+            DB_Base.SystemMenuInterval_admin = Convert.ToInt32(ConfigurationManager.AppSettings["SystemMenuInterval_admin"]);
         }
         private void InitializeTimer()
         {
