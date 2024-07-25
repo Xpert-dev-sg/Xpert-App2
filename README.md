@@ -8,8 +8,8 @@
 >在用户login后静止60秒（可设置）会自动退出，并回到主菜单(done)<br/>
 
 **Content list 页面**<br/>
-呈现content list<br/>
-查询content list<br/>
+>呈现content list<br/>
+>查询content list<br/>
 
 **Access 页面**<br/>
 >开门前:负责普通用户的开门，并呈现该用户状态 和 该用户未还的item <br/>
