@@ -5,7 +5,11 @@
 >轮巡展示(done)<br/>
 >content list 没有权限限制，15秒（可设置）会自动回到主菜单(done)<br/>
 >access 和admin 页面要输入密码方可进入(done)<br/>
->在用户login后静止60秒（可设置）会自动退出，并回到主菜单<br/>
+>在用户login后静止60秒（可设置）会自动退出，并回到主菜单(done)<br/>
+
+**Content list 页面**<br/>
+呈现content list<br/>
+查询content list<br/>
 
 **Access 页面**<br/>
 >开门前:负责普通用户的开门，并呈现该用户状态 和 该用户未还的item <br/>
