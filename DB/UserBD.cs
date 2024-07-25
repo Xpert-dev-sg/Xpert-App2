@@ -183,6 +183,24 @@ namespace XpertApp2.DB
             }
             return result;
         }
+
+        public void LogoutUser()
+        {
+            DB_Base.CurrentUser = new UserModel();
+            DB_Base.Islogined = false;
+
+            //add log
+            EventDB eventDB = new EventDB();
+            eventDB.InsertEvent(new EventModel
+            {
+                Event_datetime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
+                Event_Type = "Logout",
+                Event_Description = "User Logout",
+                User_Id = DB_Base.CurrentUser.UserId.ToString(),
+                CreateBy = "SYSTEM",
+                CreateOn = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")
+            });
+        }
     }
 
     public class UserModel

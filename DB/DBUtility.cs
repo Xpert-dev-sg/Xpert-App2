@@ -18,6 +18,9 @@ namespace XpertApp2.DB
         public static UserModel CurrentUser { get; set; }
 
         public static bool Islogined{ get; set; }
+        
+
+        public static string currentpage { get; set; }
 
         public static string SystemMail { get; set; }//="wangyiwater77@163.com";
         public static int SystemMenuInterval { get; set; }// = 15;
