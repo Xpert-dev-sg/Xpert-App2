@@ -9,7 +9,7 @@ namespace XpertApp2.DB
 {
     public class UserBD
     {
-        public void CreateUser(UserModel user)
+        public void CreateUser()
         {
             using (var connection = new SQLiteConnection(DB_Base.DBConnectionString))
             {
@@ -22,6 +22,7 @@ namespace XpertApp2.DB
 										Finger_Id TEXT NULL,
 										Row_Id TEXT NOT NULL,
 										Department_Id TEXT NOT NULL,
+                                        Email TEXT NOT NULL,
 										Create_By TEXT NOT NULL,
 										Create_On TEXT NOT NULL,
 										Update_By TEXT NOT NULL,
@@ -52,7 +53,8 @@ namespace XpertApp2.DB
             using (var connection = new SQLiteConnection(DB_Base.DBConnectionString))
             {
                 connection.Open();
-                string sql = "INSERT INTO User_TB (User_Name, Card_Id, Finger_Id, Row_Id, Department_Id, Create_By, Create_On, Update_By, Update_On) VALUES (@UserName, @CardId, @FingerId, @RowId, @DepartmentId, @CreateBy, @CreateOn, @UpdateBy, @UpdateOn)";
+                string sql = "INSERT INTO User_TB (User_Name, Card_Id, Finger_Id, Row_Id, Department_Id,Email, Create_By, Create_On, Update_By, Update_On) " +
+                    "VALUES (@UserName, @CardId, @FingerId, @RowId, @DepartmentId,@Email, @CreateBy, @CreateOn, @UpdateBy, @UpdateOn)";
                 using (var command = new SQLiteCommand(sql, connection))
                 {
                     command.Parameters.AddWithValue("@UserName", user.UserName);
@@ -60,6 +62,7 @@ namespace XpertApp2.DB
                     command.Parameters.AddWithValue("@FingerId", (object)user.FingerId ?? DBNull.Value);
                     command.Parameters.AddWithValue("@RowId", user.RowId);
                     command.Parameters.AddWithValue("@DepartmentId", user.DepartmentId);
+                    command.Parameters.AddWithValue("@Email", user.Email);
                     command.Parameters.AddWithValue("@CreateBy", user.CreateBy);
                     command.Parameters.AddWithValue("@CreateOn", user.CreateOn);
                     command.Parameters.AddWithValue("@UpdateBy", user.UpdateBy);
@@ -91,6 +94,7 @@ namespace XpertApp2.DB
                             FingerId = reader["Finger_Id"].ToString(),
                             RowId = reader["Row_Id"].ToString(),
                             DepartmentId = reader["Department_Id"].ToString(),
+                            Email = reader["email"].ToString(),
                             CreateBy = reader["Create_By"].ToString(),
                             CreateOn = reader["Create_On"].ToString(),
                             UpdateBy = reader["Update_By"].ToString(),
@@ -109,7 +113,7 @@ namespace XpertApp2.DB
             using (var connection = new SQLiteConnection(DB_Base.DBConnectionString))
             {
                 connection.Open();
-                string sql = "UPDATE User_TB SET User_Name = @UserName, Card_Id = @CardId, Finger_Id = @FingerId, Row_Id = @RowId, Department_Id = @DepartmentId, Update_By = @UpdateBy, Update_On = @UpdateOn WHERE User_Id = @UserId";
+                string sql = "UPDATE User_TB SET User_Name = @UserName, Card_Id = @CardId, Finger_Id = @FingerId, Row_Id = @RowId, Department_Id = @DepartmentId, Email=@Email,Update_By = @UpdateBy, Update_On = @UpdateOn WHERE User_Id = @UserId";
                 using (var command = new SQLiteCommand(sql, connection))
                 {
                     command.Parameters.AddWithValue("@UserId", user.UserId);
@@ -118,6 +122,7 @@ namespace XpertApp2.DB
                     command.Parameters.AddWithValue("@FingerId", (object)user.FingerId ?? DBNull.Value);
                     command.Parameters.AddWithValue("@RowId", user.RowId);
                     command.Parameters.AddWithValue("@DepartmentId", user.DepartmentId);
+                    command.Parameters.AddWithValue("@Email", user.Email);
                     command.Parameters.AddWithValue("@UpdateBy", user.UpdateBy);
                     command.Parameters.AddWithValue("@UpdateOn", user.UpdateOn);
 
@@ -161,6 +166,7 @@ namespace XpertApp2.DB
                             DB_Base.CurrentUser.FingerId = reader["Finger_Id"].ToString();
                             DB_Base.CurrentUser.RowId = reader["Row_Id"].ToString();
                             DB_Base.CurrentUser.DepartmentId = reader["Department_Id"].ToString();
+                            DB_Base.CurrentUser.Email = reader["email"].ToString();
 
                             //add log
                             EventDB eventDB = new EventDB();    
@@ -211,6 +217,7 @@ namespace XpertApp2.DB
         public string FingerId { get; set; }
         public string RowId { get; set; }
         public string DepartmentId { get; set; }
+        public string Email { get; set; }
         public string CreateBy { get; set; }
         public string CreateOn { get; set; }
         public string UpdateBy { get; set; }

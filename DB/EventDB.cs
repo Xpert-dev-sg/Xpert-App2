@@ -11,7 +11,7 @@ namespace XpertApp2.DB
     {
 
         #region event
-        public void CreateEvent(EventModel Event)
+        public void CreateEvent()
         {
             using (var connection = new SQLiteConnection(DB_Base.DBConnectionString))
             {
@@ -105,7 +105,7 @@ namespace XpertApp2.DB
         #endregion
 
         #region BorrowRecords
-        public void CreateBorrowRecords(EventModel Event)
+        public void CreateBorrowRecords()
         {
             using (var connection = new SQLiteConnection(DB_Base.DBConnectionString))
             {
@@ -145,7 +145,7 @@ namespace XpertApp2.DB
             using (var connection = new SQLiteConnection(DB_Base.DBConnectionString))
             {
                 connection.Open();
-                string sql = "INSERT INTO Event_Log_TB (Id,Borrow_datetime, Return_datetime,item_id,User_Id,Create_By,Create_On) " +
+                string sql = "INSERT INTO BorrowRecords_TB (Id,Borrow_datetime, Return_datetime,item_id,User_Id,Create_By,Create_On) " +
                     "VALUES (@Id,@Borrow_datetime, @Return_datetime,@item_id,@User_Id,@Create_By, @Create_On)";
                 using (var command = new SQLiteCommand(sql, connection))
                 {
@@ -169,10 +169,12 @@ namespace XpertApp2.DB
             using (var connection = new SQLiteConnection(DB_Base.DBConnectionString))
             {
                 connection.Open();
-                string sql = "UPDATE Event_Log_TB SET  Return_datetime=@Return_datetime WHERE item_id=@item_id AND User_Id=@User_Id AND  Return_datetime = NULL";
+                string sql = "UPDATE BorrowRecords_TB SET  Return_datetime=@Return_datetime WHERE item_id=@item_id AND User_Id=@User_Id AND  Return_datetime = NULL";
                 using (var command = new SQLiteCommand(sql, connection))
                 {
-                    string id = Guid.NewGuid().ToString();
+                    
+                    command.Parameters.AddWithValue("@item_id", item_id);
+                    command.Parameters.AddWithValue("@User_Id", user_id);
                     command.Parameters.AddWithValue("@Return_datetime", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
                     command.ExecuteNonQuery();
                 }

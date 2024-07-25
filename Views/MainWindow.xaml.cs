@@ -28,7 +28,7 @@ namespace XpertApp2.Views
             InitializeTimer();
             MainFrame.Navigate(new MenuPage());
             TimeUtility.Initialize(MainFrame);
-  //MonitorKeyMouseUntility.Initialize(MainFrame);
+ 
 
             
             InitializeSystem();
@@ -40,6 +40,16 @@ namespace XpertApp2.Views
             DB_Base.SystemMail = ConfigurationManager.AppSettings["SystemMail"];
             DB_Base.SystemMenuInterval = Convert.ToInt32( ConfigurationManager.AppSettings["SystemMenuInterval"]);
             DB_Base.SystemMenuInterval_admin = Convert.ToInt32(ConfigurationManager.AppSettings["SystemMenuInterval_admin"]);
+
+            ContentDB contentDB = new ContentDB();
+            contentDB.CreateContent();
+
+            UserBD userBD = new UserBD();
+            userBD.CreateUser();
+            EventDB eventDB = new EventDB();
+            eventDB.CreateEvent();
+           
+            eventDB.CreateBorrowRecords();
         }
         private void InitializeTimer()
         {
