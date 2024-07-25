@@ -1,0 +1,17 @@
+﻿<Window x:Class="XpertApp2.Views.loginPopup"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:XpertApp2.Views"
+        mc:Ignorable="d"
+        WindowStyle="None" 
+        Title="loginPopup" Height="943" Width="580">
+    <Window.Background>
+        <ImageBrush ImageSource="pack://application:,,,/XpertApp2;component/Resources/Img/login.jpg"/>
+    </Window.Background>
+    <Grid>
+        <PasswordBox x:Name="loginbox" HorizontalAlignment="Left" Margin="53,664,0,0" VerticalAlignment="Top" Width="451" Height="18" KeyDown="PasswordBox_KeyDown"/>
+
+    </Grid>
+</Window>

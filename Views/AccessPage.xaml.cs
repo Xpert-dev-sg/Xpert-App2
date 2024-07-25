@@ -14,6 +14,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using XpertApp2.DB;
+using XpertApp2.Utility;
 
 namespace XpertApp2.Views
 {
@@ -26,27 +28,12 @@ namespace XpertApp2.Views
         {
             InitializeComponent();
 
-            #region  创建计时器
-            DispatcherTimer timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromSeconds(15);
-            timer.Tick += Timer_Tick;
-            timer.Start();
-            #endregion
+            MonitorKeyMouseUntility.MonitorKeyMouseMain();
+            TimeUtility.UserLiveTimer();
+            
         }
 
-        private void Timer_Tick(object sender, EventArgs e)
-        {
-            // 回到主线程
-            this.NavigationService.Navigate(new MenuPage());
-
-            // 停止计时器
-            DispatcherTimer timer = sender as DispatcherTimer;
-            if (timer != null)
-            {
-                timer.Stop();
-                timer.Tick -= Timer_Tick;
-            }
-        }
+        
 
         
     }

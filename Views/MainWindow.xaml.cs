@@ -12,6 +12,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 using XpertApp2.DB;
+using XpertApp2.Utility;
 
 namespace XpertApp2.Views
 {
@@ -26,8 +27,12 @@ namespace XpertApp2.Views
             InitializeComponent();
             InitializeTimer();
             MainFrame.Navigate(new MenuPage());
-            InitializeSystem();
+            TimeUtility.Initialize(MainFrame);
+  //MonitorKeyMouseUntility.Initialize(MainFrame);
 
+            
+            InitializeSystem();
+            
         }
         private void InitializeSystem()
         {

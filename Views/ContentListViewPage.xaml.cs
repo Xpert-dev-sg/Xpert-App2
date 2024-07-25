@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 using XpertApp2.DB;
+using XpertApp2.Utility;
 using static System.Data.Entity.Infrastructure.Design.Executor;
 
 namespace XpertApp2.Views
@@ -27,12 +28,9 @@ namespace XpertApp2.Views
         {
             InitializeComponent();
 
-            #region  创建计时器
-            DispatcherTimer timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromSeconds(DB_Base.SystemMenuInterval);
-            timer.Tick += Timer_Tick;
-            timer.Start();
-            #endregion
+            
+            TimeUtility.CarouselMenuTimer();
+            
 
             LoadData();
 
@@ -102,18 +100,6 @@ namespace XpertApp2.Views
             dataGrid.ItemsSource = data;//contentDB.GetContents();
         }
 
-        private void Timer_Tick(object sender, EventArgs e)
-        {
-            // 回到主线程
-            this.NavigationService.Navigate(new MenuPage());
-
-            // 停止计时器
-            DispatcherTimer timer = sender as DispatcherTimer;
-            if (timer != null)
-            {
-                timer.Stop();
-                timer.Tick -= Timer_Tick;
-            }
-        }
+        
     }
 }

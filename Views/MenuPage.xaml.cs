@@ -34,22 +34,24 @@ namespace XpertApp2.Views
 
         private void Click_Access(object sender, MouseButtonEventArgs e)
         {
-            LoginPage loginPage = new LoginPage();
-            loginPage.Show();
-            if(DB_Base.Islogined)
-            {
-                this.NavigationService.Navigate(new AccessPage());
-            }
+            DB_Base.currentpage= "Access";
+            loginPopup loginPage = new loginPopup();
+            loginPage.ShowDialog();
+            //if(DB_Base.Islogined)
+            //{
+            //    this.NavigationService.Navigate(new AccessPage());
+            //}
         }
 
         private void Click_Admin(object sender, MouseButtonEventArgs e)
         {
-            LoginPage loginPage = new LoginPage();
-            loginPage.Show();
-            if (DB_Base.Islogined)
-            {
-                this.NavigationService.Navigate(new AdminPage());
-            }
+            DB_Base.currentpage = "Admin";
+            loginPopup loginPage = new loginPopup();
+            loginPage.ShowDialog();
+            //if (DB_Base.Islogined)
+            //{
+            //    this.NavigationService.Navigate(new AdminPage());
+            //}
         }
     }
 }

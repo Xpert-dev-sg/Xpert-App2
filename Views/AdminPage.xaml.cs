@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using XpertApp2.Utility;
 
 namespace XpertApp2.Views
 {
@@ -23,6 +24,8 @@ namespace XpertApp2.Views
         public AdminPage()
         {
             InitializeComponent();
+            MonitorKeyMouseUntility.MonitorKeyMouseMain();
+            TimeUtility.UserLiveTimer();
         }
     }
 }
