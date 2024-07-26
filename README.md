@@ -1,6 +1,16 @@
-**开发环境**：VS2022 net6.0 wpf<br/>
-**DB**：sqlite
-
+**开发环境**<br/>
+VS2022<br/> Net6.0<br/> WPF<br/><br/>
+**DB**<br/>
+SQLite<br/>
+<br/>
+**Dependencies**:<br/>
+HandyControl<br/>
+System.Data.SQLite<br/>
+log4net<br/>
+<br/>
+**硬件接口**<br/>
+<br/>
+<br/>
 **主菜单页面**<br/>
 >轮巡展示(done)<br/>
 >content list 没有权限限制，15秒（可设置）会自动回到主菜单(done)<br/>
