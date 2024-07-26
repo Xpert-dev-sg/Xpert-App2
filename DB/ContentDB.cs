@@ -9,6 +9,7 @@ namespace XpertApp2.DB
 {
     public class ContentDB
     {
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         public void CreateContent()
         {
             using (var connection = new SQLiteConnection(DB_Base.DBConnectionString))

@@ -6,34 +6,61 @@
       xmlns:local="clr-namespace:XpertApp2.Views"
       xmlns:hc="https://handyorg.github.io/handycontrol" 
       mc:Ignorable="d" 
-      d:DesignHeight="1920" d:DesignWidth="1080"
+      d:DesignHeight="1280" d:DesignWidth="800"
       Title="MenuPage">
 
     <Grid>
-        <hc:Carousel  IsCenter="True" AutoRun="True" VerticalAlignment="Top" Width="1080" Height="1920">
+        <hc:Carousel  IsCenter="True" AutoRun="True" VerticalAlignment="Top" Width="800" Height="1280">
             <hc:CarouselItem>
                 <hc:SimplePanel>
                     <Image  Stretch="UniformToFill" Source="pack://application:,,,/XpertApp2;component/Resources/Img/Content.jpg" MouseDown="Click_ContentList" Opacity="0.3" />
-                    <TextBlock Text="Items List" FontSize="150" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
-
+                    <!--<TextBlock Text="Items List" FontSize="150" Foreground="DarkGray" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>-->
+                    <TextBlock Text="Items List" FontSize="150"  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" Foreground="#FFFFFFFF" FontWeight="Bold" 
+                            TextOptions.TextFormattingMode="Display"   TextWrapping="Wrap" >
+                        <TextBlock.Effect>
+                            <DropShadowEffect Color="Black" Opacity="50" Direction="-90" RenderingBias="Quality" ShadowDepth="2" >
+                            </DropShadowEffect>
+                        </TextBlock.Effect>
+                    </TextBlock>
                 </hc:SimplePanel>
             </hc:CarouselItem>
             <hc:CarouselItem>
                 <hc:SimplePanel>
                     <Image  Stretch="UniformToFill" Source="pack://application:,,,/XpertApp2;component/Resources/Img/access_jpg.jpg" MouseDown="Click_Access" Opacity="0.3" />
-                    <TextBlock Text="Open" FontSize="150" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
+                    <!--<TextBlock Text="Open" FontSize="150" Foreground="DarkGray" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>-->
+                    <TextBlock Text="Open" FontSize="150"  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" Foreground="#FFFFFFFF" FontWeight="Bold" 
+        TextOptions.TextFormattingMode="Display"   TextWrapping="Wrap" >
+                        <TextBlock.Effect>
+                            <DropShadowEffect Color="Black" Opacity="50" Direction="-90" RenderingBias="Quality" ShadowDepth="2" >
+                            </DropShadowEffect>
+                        </TextBlock.Effect>
+                    </TextBlock>
                 </hc:SimplePanel>
             </hc:CarouselItem>
             <hc:CarouselItem>
                 <hc:SimplePanel>
                     <Image  Stretch="UniformToFill" Source="pack://application:,,,/XpertApp2;component/Resources/Img/admin.jpg" MouseDown="Click_Admin"  Opacity="0.3"/>
-                    <TextBlock Text="Admin Control" FontSize="150" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
+                    <!--<TextBlock Text="Admin" FontSize="150" Foreground="DarkGray" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>-->
+                    <TextBlock Text="Admin" FontSize="150"  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" Foreground="#FFFFFFFF" FontWeight="Bold" 
+        TextOptions.TextFormattingMode="Display"   TextWrapping="Wrap" >
+                        <TextBlock.Effect>
+                            <DropShadowEffect Color="Black" Opacity="50" Direction="-90" RenderingBias="Quality" ShadowDepth="2" >
+                            </DropShadowEffect>
+                        </TextBlock.Effect>
+                    </TextBlock>
                 </hc:SimplePanel>
             </hc:CarouselItem>
             <hc:CarouselItem>
                 <hc:SimplePanel>
                     <Image  Stretch="UniformToFill" Source="pack://application:,,,/XpertApp2;component/Resources/Img/about.jpg"  Opacity="0.3" />
-                    <TextBlock Text="About me" FontSize="150" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
+                    <!--<TextBlock Text="About me" FontSize="150" Foreground="DarkGray" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>-->
+                    <TextBlock Text="About me" FontSize="150"  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" Foreground="#FFFFFFFF" FontWeight="Bold" 
+        TextOptions.TextFormattingMode="Display"   TextWrapping="Wrap" >
+                        <TextBlock.Effect>
+                            <DropShadowEffect Color="Black" Opacity="50" Direction="-90" RenderingBias="Quality" ShadowDepth="2" >
+                            </DropShadowEffect>
+                        </TextBlock.Effect>
+                    </TextBlock>
                 </hc:SimplePanel>
             </hc:CarouselItem>
         </hc:Carousel>

@@ -16,7 +16,7 @@
     <Compile Update="Views\AdminPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\LoginPage.xaml.cs">
+    <Compile Update="Views\loginPopup.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\MenuPage.xaml.cs">
@@ -24,7 +24,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="Views\LoginPage.xaml">
+    <Page Update="Views\loginPopup.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\MainWindow.xaml">

@@ -6,30 +6,111 @@
       xmlns:local="clr-namespace:XpertApp2"
       xmlns:hc="https://handyorg.github.io/handycontrol" 
       mc:Ignorable="d" Background="White"
-      d:DesignHeight="1920" d:DesignWidth="1080"
+      d:DesignHeight="1280" d:DesignWidth="800"
       Title="Page1" >
 
 
     <Grid Opacity="1">
         <Grid.Background>
-            <ImageBrush ImageSource="/Resources/Img/Content.jpg"/>
+            <ImageBrush ImageSource="/Resources/Img/Content.jpg" Opacity="0.5"/>
         </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="200"/>
             <RowDefinition Height="*"/>
             
         </Grid.RowDefinitions>
-        
-        <DataGrid x:Name="dataGrid" Grid.Row="1" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False" CanUserSortColumns="False" IsReadOnly="True" >
+
+        <StackPanel Grid.Row="0">
+            <StackPanel.Background>
+                <SolidColorBrush Color="White" Opacity="0.6"/>
+            </StackPanel.Background>
+            <Grid Margin="10,80,10,80" HorizontalAlignment="Center">
+                <Grid.RowDefinitions>
+                   
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="Item Type" Margin="10,5,10,5" FontWeight="Bold"> </TextBlock>
+                <ComboBox Grid.Row="0" Grid.Column="1" Width="120"/>
+                <TextBlock Grid.Row="0" Grid.Column="2"  Text="Demparment" Margin="10,5,10,5" FontWeight="Bold"></TextBlock>
+                <ComboBox Grid.Row="0" Grid.Column="3" Width="120"/>
+            </Grid>
+            
+        </StackPanel>
+
+        <DataGrid x:Name="dataGrid" Margin="5" Grid.Row="1" BorderBrush="White" BorderThickness="1" HorizontalGridLinesBrush="White" VerticalGridLinesBrush="White" AlternationCount="2" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False" CanUserSortColumns="False" IsReadOnly="True" >
+            <DataGrid.Background>
+                <!--<ImageBrush ImageSource="/Resources/Img/Content.jpg" Opacity="0.2"/>-->
+                <SolidColorBrush Color="White" Opacity="0.6"/>
+            </DataGrid.Background>
+            
+            <DataGrid.ColumnHeaderStyle>
+                <Style TargetType="DataGridColumnHeader">
+                    <Setter Property="BorderThickness" Value="0"/>
+                    <!--<Setter Property="VerticalAlignment" Value="Center"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                    
+                    -->
+                    <Setter Property="FontWeight" Value="Bold"/>
+                    <Setter Property="Background" Value="#80FFFFFF"/>
+                    <!--<Setter Property="Margin" Value="5"/>-->
+                    <!-- 半透明背景 -->
+                    <Setter Property="Foreground" Value="Black"/>
+                </Style>
+            </DataGrid.ColumnHeaderStyle>
+
+            <DataGrid.RowStyle>
+                <Style TargetType="DataGridRow">
+                    
+                    <!--
+                    <Setter Property="HorizontalAlignment" Value="Center"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>-->
+                    <Style.Triggers>
+                        <Trigger Property="ItemsControl.AlternationIndex" Value="0">
+                            <Setter Property="Background" Value="#80FFFFFF"/>
+                            <!-- 半透明背景 -->
+                        </Trigger>
+                        <Trigger Property="ItemsControl.AlternationIndex" Value="1">
+                            <Setter Property="Background" Value="#80e8e8f2"/>
+                            <!-- 半透明灰色背景 -->
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.RowStyle>
+            <DataGrid.CellStyle>
+                <Style TargetType="DataGridCell">
+                   <Setter Property="Foreground" Value="Black"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="DataGridCell"><!--TextAlignment="Center"-->
+                                <TextBlock  VerticalAlignment="Center" Margin="5"  >
+                           <ContentPresenter />
+                                </TextBlock>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+
+
+                </Style>
+
+            </DataGrid.CellStyle>
+            
+
             <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" Binding="{Binding Item_Id}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Name" Binding="{Binding Item_Name}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Description" Binding="{Binding Item_Description}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Charge" Binding="{Binding Charge1}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Row" Binding="{Binding Row_Id}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Department" Binding="{Binding Department_Id}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Interval" Binding="{Binding Interval}"></DataGridTextColumn>
+                <DataGridTextColumn Header="ID" Width="50" Binding="{Binding Item_Id}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Name" Width="150" Binding="{Binding Item_Name}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Description" Width="250" Binding="{Binding Item_Description}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Charge" Width="150" Binding="{Binding Charge1}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Row" Width="50" Binding="{Binding Row_Id}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Department" Width="50"  Binding="{Binding Department_Id}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Interval" Width="50" Binding="{Binding Interval}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
+       
     </Grid>
 </Page>

@@ -9,6 +9,7 @@ namespace XpertApp2.DB
 {
     public class UserBD
     {
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         public void CreateUser()
         {
             using (var connection = new SQLiteConnection(DB_Base.DBConnectionString))
@@ -29,7 +30,8 @@ namespace XpertApp2.DB
 										Update_On TEXT NOT NULL)";
                 using (var command = new SQLiteCommand(createTableQuery, connection))
                 {
-                    command.ExecuteNonQuery();
+                    var obj=command.ExecuteScalar();
+                    log.Debug($"{createTableQuery}-[{obj}]");
                 }
             }
         }
@@ -43,7 +45,8 @@ namespace XpertApp2.DB
                 string createTableQuery = @"DROP TABLE IF EXISTS User_TB";
                 using (var command = new SQLiteCommand(createTableQuery, connection))
                 {
-                    command.ExecuteNonQuery();
+                    var obj = command.ExecuteScalar();
+                    log.Debug($"{createTableQuery}-[{obj}]");
                 }
             }
         }
@@ -67,8 +70,8 @@ namespace XpertApp2.DB
                     command.Parameters.AddWithValue("@CreateOn", user.CreateOn);
                     command.Parameters.AddWithValue("@UpdateBy", user.UpdateBy);
                     command.Parameters.AddWithValue("@UpdateOn", user.UpdateOn);
-
-                    command.ExecuteNonQuery();
+                    var obj = command.ExecuteScalar();
+                    log.Debug($"{sql}-[{obj}]");
                 }
             }
         }
@@ -84,6 +87,8 @@ namespace XpertApp2.DB
                 using (var command = new SQLiteCommand(sql, connection))
                 using (var reader = command.ExecuteReader())
                 {
+                    
+                    if(reader.HasRows)
                     while (reader.Read())
                     {
                         var user = new UserModel

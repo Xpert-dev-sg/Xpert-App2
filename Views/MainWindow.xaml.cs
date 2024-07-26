@@ -22,6 +22,7 @@ namespace XpertApp2.Views
     public partial class MainWindow : Window
     {
         private DispatcherTimer timer;
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         public MainWindow()
         {
             InitializeComponent();
@@ -29,7 +30,7 @@ namespace XpertApp2.Views
             MainFrame.Navigate(new MenuPage());
             TimeUtility.Initialize(MainFrame);
  
-
+            log.Info("System is initialized.");
             
             InitializeSystem();
             
@@ -41,15 +42,16 @@ namespace XpertApp2.Views
             DB_Base.SystemMenuInterval = Convert.ToInt32( ConfigurationManager.AppSettings["SystemMenuInterval"]);
             DB_Base.SystemMenuInterval_admin = Convert.ToInt32(ConfigurationManager.AppSettings["SystemMenuInterval_admin"]);
 
-            ContentDB contentDB = new ContentDB();
-            contentDB.CreateContent();
+            #region 初始化数据库
+            //ContentDB contentDB = new ContentDB();
+            //contentDB.CreateContent();
 
-            UserBD userBD = new UserBD();
-            userBD.CreateUser();
-            EventDB eventDB = new EventDB();
-            eventDB.CreateEvent();
-           
-            eventDB.CreateBorrowRecords();
+            //UserBD userBD = new UserBD();
+            //userBD.CreateUser();
+            //EventDB eventDB = new EventDB();
+            //eventDB.CreateEvent();
+            //eventDB.CreateBorrowRecords();
+            #endregion
         }
         private void InitializeTimer()
         {

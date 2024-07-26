@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:XpertApp2"
       mc:Ignorable="d" 
-      d:DesignHeight="250" d:DesignWidth="200"
+      d:DesignHeight="1280" d:DesignWidth="800"
       Title="Page3" Background="#FF2CA338">
 
     <Grid>

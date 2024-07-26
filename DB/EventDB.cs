@@ -9,7 +9,7 @@ namespace XpertApp2.DB
 {
     public class EventDB
     {
-
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         #region event
         public void CreateEvent()
         {

@@ -9,6 +9,7 @@ namespace XpertApp2.Service
 {
     public  class dbcreate
     {
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         public static void CreateDatabase()
         {
             // 数据库文件路径

@@ -16,8 +16,8 @@ namespace XpertApp2.Utility
 {
     public static  class MonitorKeyMouseUntility
     {
+        private  static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
-        
         // 钩子句柄
         private static IntPtr _mouseHookID = IntPtr.Zero;
         private static IntPtr _keyboardHookID = IntPtr.Zero;
