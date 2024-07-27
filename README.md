@@ -18,16 +18,17 @@ log4net<br/>
 >在用户login后静止60秒（可设置）会自动退出，并回到主菜单(done)<br/>
 
 **Content list 页面**<br/>
->呈现content list<br/>
->查询content list<br/>
+>呈现content list(done)<br/>
+>查询content list(done)<br/>
 
 **Access 页面**<br/>
->开门前:负责普通用户的开门，并呈现该用户状态 和 该用户未还的item <br/>
+>开门前:负责普通用户的开门，并呈现该用户状态 和 该用户未还的item (done)<br/>
 >关门后:会呈现本次开关门的借还item的状态，并发email<br/>
 
 **Admin页面**<br/>
->管理用户和item页面 增删改查 四大功能<br/>
->log 的查询<br/>
+>管理用户页面 (done)增删改查 四大功能<br/>
+>管理用户页面 (done)增删改查 四大功能<br/>
+>log 展示页面(done)和查询<br/>
 
 **系统服务**<br/>
 >每个item有权限和部门管控，不同部门或不够权限的用户拿了会被记录然后email通知部门负责人<br/>
