@@ -10,7 +10,7 @@
       Title="Page1" >
 
 
-    <Grid Opacity="1">
+    <Grid >
         <Grid.Background>
             <ImageBrush ImageSource="/Resources/Img/Content.jpg" Opacity="0.5"/>
         </Grid.Background>
@@ -35,10 +35,10 @@
                     <ColumnDefinition></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <TextBlock Grid.Row="0" Grid.Column="0" Text="Item Type" Margin="10,5,10,5" FontWeight="Bold"> </TextBlock>
-                <ComboBox Grid.Row="0" Grid.Column="1" Width="120"/>
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="Item Type" Margin="10,5,10,5" FontWeight="Bold" FontSize="16"> </TextBlock>
+                <ComboBox x:Name="cmbType" Grid.Row="0" Grid.Column="1" Width="200"  DisplayMemberPath="Value" SelectionChanged="cmbType_SelectionChanged"/>
                 <TextBlock Grid.Row="0" Grid.Column="2"  Text="Demparment" Margin="10,5,10,5" FontWeight="Bold"></TextBlock>
-                <ComboBox Grid.Row="0" Grid.Column="3" Width="120"/>
+                <ComboBox x:Name="cmbDepartment" Grid.Row="0" Grid.Column="3" Width="200"  DisplayMemberPath="Value" SelectionChanged="cmbDepartment_SelectionChanged"/>
             </Grid>
             
         </StackPanel>

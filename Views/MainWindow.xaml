@@ -16,6 +16,11 @@
             <!-- 头部 -->
             <hc:SimplePanel DockPanel.Dock="Top" Height="100">
                 <Image Width="197" Height="79" Source="pack://application:,,,/XpertApp2;component/Resources/Img/logo.png" HorizontalAlignment="Left" VerticalAlignment="Top"  />
+            <Button x:Name="btnLogout"  HorizontalAlignment="Right" VerticalAlignment="Bottom"  Click="btnLogout_Click" Width="19" Height="22">
+                <Button.Background>
+                    <ImageBrush ImageSource="pack://application:,,,/XpertApp2;component/Resources/Img/home-icon.jpg"/>
+                </Button.Background>
+            </Button>
             <Image x:Name="wifi_img" HorizontalAlignment="Right" VerticalAlignment="Top" Width="20" Height="20" Margin="10,5,120,10"/>
             <TextBlock Margin="10,10,10,10" x:Name="DateTimeTextBlock" HorizontalAlignment="Right" VerticalAlignment="Top" FontSize="10"/>
             </hc:SimplePanel>

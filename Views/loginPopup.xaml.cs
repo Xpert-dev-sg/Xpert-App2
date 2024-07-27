@@ -46,7 +46,7 @@ namespace XpertApp2.Views
         {
             string password = loginbox.Password;
 
-            UserBD udb = new UserBD();
+            UserDB udb = new UserDB();
             var isPass = udb.IsLogined(password);
             if (isPass)
             {

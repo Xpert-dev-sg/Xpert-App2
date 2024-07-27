@@ -6,9 +6,152 @@
       xmlns:local="clr-namespace:XpertApp2"
       mc:Ignorable="d" 
       d:DesignHeight="1280" d:DesignWidth="800"
-      Title="Page2" Background="#FFD14141">
+      Title="Page2" >
 
-    <Grid>
+    <Grid >
+        <Grid.Background>
+            <ImageBrush ImageSource="/Resources/Img/Content.jpg" Opacity="0.5"/>
+        </Grid.Background>
+      
+        <Grid.RowDefinitions>
+            <RowDefinition Height="200"/>
+            <RowDefinition Height="300"/>
+            <RowDefinition Height="300"/>
+            <RowDefinition Height="*"/>
+
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0">
+            <StackPanel.Background>
+                <SolidColorBrush Color="White" Opacity="0.6"/>
+            </StackPanel.Background>
+            <Grid >
+                <Grid.RowDefinitions>
+
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="220"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                   
+                </Grid.ColumnDefinitions>
+                <Image Grid.Row="0" Grid.Column="0" Source="/Resources/Img/user-icon.png" Width="180" Height="180" >
+                    
+                </Image>
+                <StackPanel Grid.Row="0" Grid.Column="1"  VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition ></ColumnDefinition>
+                            <ColumnDefinition ></ColumnDefinition>
+
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Row="0" Grid.Column="0" Text="User Name:" FontSize="20" FontWeight="Bold" HorizontalAlignment="right"></TextBlock>
+                        <TextBlock Grid.Row="0" Grid.Column="1" x:Name="txtusername" Text="User Name" FontSize="20" FontWeight="Bold" Margin="10,0,0,0"></TextBlock>
+                        <TextBlock Grid.Row="1" Grid.Column="0" Text="User Department:" FontSize="20" FontWeight="Bold"  HorizontalAlignment="right"></TextBlock>
+                        <TextBlock Grid.Row="1" Grid.Column="1" x:Name="txtDepartment" Text="User Name" FontSize="20" FontWeight="Bold"  Margin="10,0,0,0"></TextBlock>
+                        <TextBlock Grid.Row="2" Grid.Column="0" Text="User Email:" FontSize="20" FontWeight="Bold"  HorizontalAlignment="right"></TextBlock>
+                        <TextBlock Grid.Row="2" Grid.Column="1" x:Name="txtEmail" Text="User Name" FontSize="20" FontWeight="Bold"  Margin="10,0,0,0"></TextBlock>
+                    </Grid>
+                </StackPanel>
+            </Grid>
+
+        </StackPanel>
+
+        <StackPanel Grid.Row="1"  Margin="2">
+            <StackPanel.Background>
+                <SolidColorBrush Color="White" Opacity="0.6"/>
+            </StackPanel.Background>
+            <TextBlock Text="Put In" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="Bold" Margin="10,5,10,5"></TextBlock>
+
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Margin="2" >
+            <StackPanel.Background>
+                <SolidColorBrush Color="White" Opacity="0.6"/>
+            </StackPanel.Background>
+            <TextBlock Text="Take Out" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="Bold" Margin="10,5,10,5"></TextBlock>
+        </StackPanel>
+        
+        <StackPanel Grid.Row="3" Margin="2" >
+            <StackPanel.Background>
+                <SolidColorBrush Color="White" Opacity="0.6"/>
+            </StackPanel.Background>
+            <TextBlock Text="On Hand" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="Bold" Margin="10,5,10,5"></TextBlock>
+            <DataGrid x:Name="borrowdataGrid" Margin="5" Grid.Row="3" BorderBrush="White" BorderThickness="1" HorizontalGridLinesBrush="White" VerticalGridLinesBrush="White" AlternationCount="2" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False" CanUserSortColumns="False" IsReadOnly="True" >
+                <DataGrid.Background>
+                    <!--<ImageBrush ImageSource="/Resources/Img/Content.jpg" Opacity="0.2"/>-->
+                    <SolidColorBrush Color="White" Opacity="0.6"/>
+                </DataGrid.Background>
+
+                <DataGrid.ColumnHeaderStyle>
+                    <Style TargetType="DataGridColumnHeader">
+                        <Setter Property="BorderThickness" Value="0"/>
+                        <!--<Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        
+        -->
+                        <Setter Property="FontWeight" Value="Bold"/>
+                        <Setter Property="Background" Value="#80FFFFFF"/>
+                        <!--<Setter Property="Margin" Value="5"/>-->
+                        <!-- 半透明背景 -->
+                        <Setter Property="Foreground" Value="Black"/>
+                    </Style>
+                </DataGrid.ColumnHeaderStyle>
+
+                <DataGrid.RowStyle>
+                    <Style TargetType="DataGridRow">
+
+                        <!--
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>-->
+                        <Style.Triggers>
+                            <Trigger Property="ItemsControl.AlternationIndex" Value="0">
+                                <Setter Property="Background" Value="#80FFFFFF"/>
+                                <!-- 半透明背景 -->
+                            </Trigger>
+                            <Trigger Property="ItemsControl.AlternationIndex" Value="1">
+                                <Setter Property="Background" Value="#80e8e8f2"/>
+                                <!-- 半透明灰色背景 -->
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </DataGrid.RowStyle>
+                <DataGrid.CellStyle>
+                    <Style TargetType="DataGridCell">
+                        <Setter Property="Foreground" Value="Black"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="DataGridCell">
+                                    <!--TextAlignment="Center"-->
+                                    <TextBlock  VerticalAlignment="Center" Margin="5"  >
+               <ContentPresenter />
+                                    </TextBlock>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+
+
+                    </Style>
+
+                </DataGrid.CellStyle>
+
+
+                <DataGrid.Columns>
+                   
+                    <DataGridTextColumn Header="Name" Width="150" Binding="{Binding Item_Name}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Take" Width="250" Binding="{Binding take_Datetime}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Return" Width="250" Binding="{Binding Return_datetime}"></DataGridTextColumn>
+              
+                </DataGrid.Columns>
+            </DataGrid>
+
+        </StackPanel>
         
     </Grid>
 </Page>

@@ -30,12 +30,19 @@ namespace XpertApp2.Views
             InitializeComponent();
 
             MonitorKeyMouseUntility.MonitorKeyMouseMain();
-            TimeUtility.UserLiveTimer();
-            
+            TimeUtility.CarouselMenuTimer();
+            Load();
         }
 
-        
+        public void Load()
+        {
+            txtDepartment.Text = DB_Base.CurrentUser.DepartmentId;
+            txtEmail.Text = DB_Base.CurrentUser.Email;
+            txtusername.Text = DB_Base.CurrentUser.UserName;
 
+            EventDB eventDB = new EventDB();
+            borrowdataGrid.ItemsSource = eventDB.GetBorrowRecords(DB_Base.CurrentUser.UserId);
+        }
         
     }
 }

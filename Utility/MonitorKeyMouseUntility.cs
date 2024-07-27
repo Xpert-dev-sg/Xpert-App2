@@ -53,7 +53,7 @@ namespace XpertApp2.Utility
         {
             if ((DateTime.Now - _lastEventTime).TotalMinutes >= 1)
             {
-                UserBD udb= new UserBD();
+                UserDB udb= new UserDB();
                 udb.LogoutUser();
                 
                 //MoveMouse();

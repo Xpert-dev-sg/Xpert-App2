@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 using XpertApp2.DB;
+using XpertApp2.Models;
 using XpertApp2.Utility;
 using static System.Data.Entity.Infrastructure.Design.Executor;
 
@@ -25,6 +26,7 @@ namespace XpertApp2.Views
     public partial class ContentListViewPage : Page
     {
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private ContentDB contentDB = new ContentDB();
         public ContentListViewPage()
         {
             InitializeComponent();
@@ -39,68 +41,26 @@ namespace XpertApp2.Views
 
         public void LoadData()
         {
-            var data = new List<ContentModel>
-            {
-                new ContentModel { Item_Name = "张三", Item_Description = "", Charge1 = "北京", Charge2 = "北京", Row_Id="1",Department_Id="1",Is_alert=1,On_hand="",CreateBy="",CreateOn="",UpdateBy="",UpdateOn=""},
-                new ContentModel { Item_Name = "张三", Item_Description = "", Charge1 = "北京", Charge2 = "北京", Row_Id="1",Department_Id="1",Is_alert=1,On_hand="",CreateBy="",CreateOn="",UpdateBy="",UpdateOn=""},
-                new ContentModel { Item_Name = "张三", Item_Description = "", Charge1 = "北京", Charge2 = "北京", Row_Id="1",Department_Id="1",Is_alert=1,On_hand="",CreateBy="",CreateOn="",UpdateBy="",UpdateOn=""},
-                 new ContentModel { Item_Name = "张三", Item_Description = "", Charge1 = "北京", Charge2 = "北京", Row_Id="1",Department_Id="1",Is_alert=1,On_hand="",CreateBy="",CreateOn="",UpdateBy="",UpdateOn=""},
-                new ContentModel { Item_Name = "张三", Item_Description = "", Charge1 = "北京", Charge2 = "北京", Row_Id="1",Department_Id="1",Is_alert=1,On_hand="",CreateBy="",CreateOn="",UpdateBy="",UpdateOn=""},
-                new ContentModel { Item_Name = "张三", Item_Description = "", Charge1 = "北京", Charge2 = "北京", Row_Id="1",Department_Id="1",Is_alert=1,On_hand="",CreateBy="",CreateOn="",UpdateBy="",UpdateOn=""},
-                 new ContentModel { Item_Name = "张三", Item_Description = "", Charge1 = "北京", Charge2 = "北京", Row_Id="1",Department_Id="1",Is_alert=1,On_hand="",CreateBy="",CreateOn="",UpdateBy="",UpdateOn=""},
-                new ContentModel { Item_Name = "张三", Item_Description = "", Charge1 = "北京", Charge2 = "北京", Row_Id="1",Department_Id="1",Is_alert=1,On_hand="",CreateBy="",CreateOn="",UpdateBy="",UpdateOn=""},
-                new ContentModel { Item_Name = "张三", Item_Description = "", Charge1 = "北京", Charge2 = "北京", Row_Id="1",Department_Id="1",Is_alert=1,On_hand="",CreateBy="",CreateOn="",UpdateBy="",UpdateOn=""},
-                 new ContentModel { Item_Name = "张三", Item_Description = "", Charge1 = "北京", Charge2 = "北京", Row_Id="1",Department_Id="1",Is_alert=1,On_hand="",CreateBy="",CreateOn="",UpdateBy="",UpdateOn=""},
-                new ContentModel { Item_Name = "张三", Item_Description = "", Charge1 = "北京", Charge2 = "北京", Row_Id="1",Department_Id="1",Is_alert=1,On_hand="",CreateBy="",CreateOn="",UpdateBy="",UpdateOn=""},
-                new ContentModel { Item_Name = "张三", Item_Description = "", Charge1 = "北京", Charge2 = "北京", Row_Id="1",Department_Id="1",Is_alert=1,On_hand="",CreateBy="",CreateOn="",UpdateBy="",UpdateOn=""},
-                 new ContentModel { Item_Name = "张三", Item_Description = "", Charge1 = "北京", Charge2 = "北京", Row_Id="1",Department_Id="1",Is_alert=1,On_hand="",CreateBy="",CreateOn="",UpdateBy="",UpdateOn=""},
-                new ContentModel { Item_Name = "张三", Item_Description = "", Charge1 = "北京", Charge2 = "北京", Row_Id="1",Department_Id="1",Is_alert=1,On_hand="",CreateBy="",CreateOn="",UpdateBy="",UpdateOn=""},
-                new ContentModel { Item_Name = "张三", Item_Description = "", Charge1 = "北京", Charge2 = "北京", Row_Id="1",Department_Id="1",Is_alert=1,On_hand="",CreateBy="",CreateOn="",UpdateBy="",UpdateOn=""},
-                 new ContentModel { Item_Name = "张三", Item_Description = "", Charge1 = "北京", Charge2 = "北京", Row_Id="1",Department_Id="1",Is_alert=1,On_hand="",CreateBy="",CreateOn="",UpdateBy="",UpdateOn=""},
-                new ContentModel { Item_Name = "张三", Item_Description = "", Charge1 = "北京", Charge2 = "北京", Row_Id="1",Department_Id="1",Is_alert=1,On_hand="",CreateBy="",CreateOn="",UpdateBy="",UpdateOn=""},
-                new ContentModel { Item_Name = "张三", Item_Description = "", Charge1 = "北京", Charge2 = "北京", Row_Id="1",Department_Id="1",Is_alert=1,On_hand="",CreateBy="",CreateOn="",UpdateBy="",UpdateOn=""},
-                 new ContentModel { Item_Name = "张三", Item_Description = "", Charge1 = "北京", Charge2 = "北京", Row_Id="1",Department_Id="1",Is_alert=1,On_hand="",CreateBy="",CreateOn="",UpdateBy="",UpdateOn=""},
-                new ContentModel { Item_Name = "张三", Item_Description = "", Charge1 = "北京", Charge2 = "北京", Row_Id="1",Department_Id="1",Is_alert=1,On_hand="",CreateBy="",CreateOn="",UpdateBy="",UpdateOn=""},
-                new ContentModel { Item_Name = "张三", Item_Description = "", Charge1 = "北京", Charge2 = "北京", Row_Id="1",Department_Id="1",Is_alert=1,On_hand="",CreateBy="",CreateOn="",UpdateBy="",UpdateOn=""},
-                 new ContentModel { Item_Name = "张三", Item_Description = "", Charge1 = "北京", Charge2 = "北京", Row_Id="1",Department_Id="1",Is_alert=1,On_hand="",CreateBy="",CreateOn="",UpdateBy="",UpdateOn=""},
-                new ContentModel { Item_Name = "张三", Item_Description = "", Charge1 = "北京", Charge2 = "北京", Row_Id="1",Department_Id="1",Is_alert=1,On_hand="",CreateBy="",CreateOn="",UpdateBy="",UpdateOn=""},
-                new ContentModel { Item_Name = "张三", Item_Description = "", Charge1 = "北京", Charge2 = "北京", Row_Id="1",Department_Id="1",Is_alert=1,On_hand="",CreateBy="",CreateOn="",UpdateBy="",UpdateOn=""},
-                 new ContentModel { Item_Name = "张三", Item_Description = "", Charge1 = "北京", Charge2 = "北京", Row_Id="1",Department_Id="1",Is_alert=1,On_hand="",CreateBy="",CreateOn="",UpdateBy="",UpdateOn=""},
-                new ContentModel { Item_Name = "张三", Item_Description = "", Charge1 = "北京", Charge2 = "北京", Row_Id="1",Department_Id="1",Is_alert=1,On_hand="",CreateBy="",CreateOn="",UpdateBy="",UpdateOn=""},
-                new ContentModel { Item_Name = "张三", Item_Description = "", Charge1 = "北京", Charge2 = "北京", Row_Id="1",Department_Id="1",Is_alert=1,On_hand="",CreateBy="",CreateOn="",UpdateBy="",UpdateOn=""},
-                 new ContentModel { Item_Name = "张三", Item_Description = "", Charge1 = "北京", Charge2 = "北京", Row_Id="1",Department_Id="1",Is_alert=1,On_hand="",CreateBy="",CreateOn="",UpdateBy="",UpdateOn=""},
-                new ContentModel { Item_Name = "张三", Item_Description = "", Charge1 = "北京", Charge2 = "北京", Row_Id="1",Department_Id="1",Is_alert=1,On_hand="",CreateBy="",CreateOn="",UpdateBy="",UpdateOn=""},
-                new ContentModel { Item_Name = "张三", Item_Description = "", Charge1 = "北京", Charge2 = "北京", Row_Id="1",Department_Id="1",Is_alert=1,On_hand="",CreateBy="",CreateOn="",UpdateBy="",UpdateOn=""},
-                 new ContentModel { Item_Name = "张三", Item_Description = "", Charge1 = "北京", Charge2 = "北京", Row_Id="1",Department_Id="1",Is_alert=1,On_hand="",CreateBy="",CreateOn="",UpdateBy="",UpdateOn=""},
-                new ContentModel { Item_Name = "张三", Item_Description = "", Charge1 = "北京", Charge2 = "北京", Row_Id="1",Department_Id="1",Is_alert=1,On_hand="",CreateBy="",CreateOn="",UpdateBy="",UpdateOn=""},
-                 new ContentModel { Item_Name = "张三", Item_Description = "", Charge1 = "北京", Charge2 = "北京", Row_Id="1",Department_Id="1",Is_alert=1,On_hand="",CreateBy="",CreateOn="",UpdateBy="",UpdateOn=""},
-                new ContentModel { Item_Name = "张三", Item_Description = "", Charge1 = "北京", Charge2 = "北京", Row_Id="1",Department_Id="1",Is_alert=1,On_hand="",CreateBy="",CreateOn="",UpdateBy="",UpdateOn=""},
-                new ContentModel { Item_Name = "张三", Item_Description = "", Charge1 = "北京", Charge2 = "北京", Row_Id="1",Department_Id="1",Is_alert=1,On_hand="",CreateBy="",CreateOn="",UpdateBy="",UpdateOn=""},
-                 new ContentModel { Item_Name = "张三", Item_Description = "", Charge1 = "北京", Charge2 = "北京", Row_Id="1",Department_Id="1",Is_alert=1,On_hand="",CreateBy="",CreateOn="",UpdateBy="",UpdateOn=""},
-                new ContentModel { Item_Name = "张三", Item_Description = "", Charge1 = "北京", Charge2 = "北京", Row_Id="1",Department_Id="1",Is_alert=1,On_hand="",CreateBy="",CreateOn="",UpdateBy="",UpdateOn=""},
-                new ContentModel { Item_Name = "张三", Item_Description = "", Charge1 = "北京", Charge2 = "北京", Row_Id="1",Department_Id="1",Is_alert=1,On_hand="",CreateBy="",CreateOn="",UpdateBy="",UpdateOn=""},
-                 new ContentModel { Item_Name = "张三", Item_Description = "", Charge1 = "北京", Charge2 = "北京", Row_Id="1",Department_Id="1",Is_alert=1,On_hand="",CreateBy="",CreateOn="",UpdateBy="",UpdateOn=""},
-                new ContentModel { Item_Name = "张三", Item_Description = "", Charge1 = "北京", Charge2 = "北京", Row_Id="1",Department_Id="1",Is_alert=1,On_hand="",CreateBy="",CreateOn="",UpdateBy="",UpdateOn=""},
-                 new ContentModel { Item_Name = "张三", Item_Description = "", Charge1 = "北京", Charge2 = "北京", Row_Id="1",Department_Id="1",Is_alert=1,On_hand="",CreateBy="",CreateOn="",UpdateBy="",UpdateOn=""},
-                new ContentModel { Item_Name = "张三", Item_Description = "", Charge1 = "北京", Charge2 = "北京", Row_Id="1",Department_Id="1",Is_alert=1,On_hand="",CreateBy="",CreateOn="",UpdateBy="",UpdateOn=""},
-                 new ContentModel { Item_Name = "张三", Item_Description = "", Charge1 = "北京", Charge2 = "北京", Row_Id="1",Department_Id="1",Is_alert=1,On_hand="",CreateBy="",CreateOn="",UpdateBy="",UpdateOn=""},
-                new ContentModel { Item_Name = "张三", Item_Description = "", Charge1 = "北京", Charge2 = "北京", Row_Id="1",Department_Id="1",Is_alert=1,On_hand="",CreateBy="",CreateOn="",UpdateBy="",UpdateOn=""},
-                new ContentModel { Item_Name = "张三", Item_Description = "", Charge1 = "北京", Charge2 = "北京", Row_Id="1",Department_Id="1",Is_alert=1,On_hand="",CreateBy="",CreateOn="",UpdateBy="",UpdateOn=""},
-                 new ContentModel { Item_Name = "张三", Item_Description = "", Charge1 = "北京", Charge2 = "北京", Row_Id="1",Department_Id="1",Is_alert=1,On_hand="",CreateBy="",CreateOn="",UpdateBy="",UpdateOn=""},
-                new ContentModel { Item_Name = "张三", Item_Description = "", Charge1 = "北京", Charge2 = "北京", Row_Id="1",Department_Id="1",Is_alert=1,On_hand="",CreateBy="",CreateOn="",UpdateBy="",UpdateOn=""},
-                new ContentModel { Item_Name = "张三", Item_Description = "", Charge1 = "北京", Charge2 = "北京", Row_Id="1",Department_Id="1",Is_alert=1,On_hand="",CreateBy="",CreateOn="",UpdateBy="",UpdateOn=""},
+            
+            
+            dataGrid.ItemsSource=contentDB.GetContents();
 
-                new ContentModel { Item_Name = "张三", Item_Description = "", Charge1 = "北京", Charge2 = "北京", Row_Id="1",Department_Id="1",Is_alert=1,On_hand="",CreateBy="",CreateOn="",UpdateBy="",UpdateOn=""},
-                new ContentModel { Item_Name = "张三", Item_Description = "", Charge1 = "北京", Charge2 = "北京", Row_Id="1",Department_Id="1",Is_alert=1,On_hand="",CreateBy="",CreateOn="",UpdateBy="",UpdateOn=""},
-                new ContentModel { Item_Name = "张三", Item_Description = "", Charge1 = "北京", Charge2 = "北京", Row_Id="1",Department_Id="1",Is_alert=1,On_hand="",CreateBy="",CreateOn="",UpdateBy="",UpdateOn=""},
-                new ContentModel { Item_Name = "张三", Item_Description = "", Charge1 = "北京", Charge2 = "北京", Row_Id = "1", Department_Id = "1", Is_alert = 1, On_hand = "", CreateBy = "", CreateOn = "", UpdateBy = "", UpdateOn = "" }
-            };
-
-            ContentDB contentDB = new ContentDB();
-
-            dataGrid.ItemsSource = data;//contentDB.GetContents();
+            cmbDepartment.ItemsSource = contentDB.GetDepartments();
+            cmbType.ItemsSource = contentDB.GetItemType();
         }
 
-        
+        private void cmbType_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var cmd=(ComboBox)sender;
+            var item = (keyValueModel)cmd.SelectedItem;
+            dataGrid.ItemsSource= contentDB.GetContents_itemType(item.Value);
+        }
+
+        private void cmbDepartment_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var cmd = (ComboBox)sender;
+            var item = (keyValueModel)cmd.SelectedItem;
+            dataGrid.ItemsSource = contentDB.GetContents_department(item.Value);
+        }
     }
 }

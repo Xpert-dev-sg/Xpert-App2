@@ -43,14 +43,16 @@ namespace XpertApp2.Views
             DB_Base.SystemMenuInterval_admin = Convert.ToInt32(ConfigurationManager.AppSettings["SystemMenuInterval_admin"]);
 
             #region 初始化数据库
-            //ContentDB contentDB = new ContentDB();
+            ContentDB contentDB = new ContentDB();
             //contentDB.CreateContent();
-
-            //UserBD userBD = new UserBD();
+            UserDB userBD = new UserDB();
             //userBD.CreateUser();
             //EventDB eventDB = new EventDB();
             //eventDB.CreateEvent();
             //eventDB.CreateBorrowRecords();
+
+            //contentDB.insertTamedata();
+            //userBD.insertTamedata();
             #endregion
         }
         private void InitializeTimer()
@@ -78,6 +80,17 @@ namespace XpertApp2.Views
             {
                 wifi_img.Source = new BitmapImage(new Uri("pack://application:,,,/XpertApp2;component/Resources/Img/no_wifi.jpg"));
             }
+        }
+
+        private void btnLogout_Click(object sender, RoutedEventArgs e)
+        {
+            var islogined = !(DB_Base.CurrentUser == null);
+            if (islogined)
+            {
+                UserDB udb = new UserDB();
+                udb.LogoutUser();
+            }
+            MainFrame.NavigationService.Navigate(new MenuPage());
         }
     }
 }

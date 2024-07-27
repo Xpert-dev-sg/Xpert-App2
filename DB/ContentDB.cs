@@ -1,22 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Data.SQLite;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Transactions;
+using XpertApp2.Models;
 
 namespace XpertApp2.DB
 {
     public class ContentDB
     {
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
+        #region create, drop,insert, get, update, delete
         public void CreateContent()
         {
-            using (var connection = new SQLiteConnection(DB_Base.DBConnectionString))
+            try
             {
-                connection.Open();
-                // 创建表
-                string createTableQuery = @"CREATE TABLE IF NOT EXISTS Item_TB (
+                using (var connection = new SQLiteConnection(DB_Base.DBConnectionString))
+                {
+                    connection.Open();
+                    // 创建表
+                    string createTableQuery = @"CREATE TABLE IF NOT EXISTS Item_TB (
                                         Item_Id INTEGER PRIMARY KEY AUTOINCREMENT,
                                         Item_Name TEXT NOT NULL,
 										Item_Description TEXT NULL,
@@ -32,142 +39,560 @@ namespace XpertApp2.DB
 										Create_On TEXT NOT NULL,
 										Update_By TEXT NOT NULL,
 										Update_On TEXT NOT NULL)";
-                using (var command = new SQLiteCommand(createTableQuery, connection))
-                {
-                    command.ExecuteNonQuery();
+                    using (SQLiteTransaction transaction = connection.BeginTransaction())
+                    {
+                        try
+                        {
+                            using (var command = new SQLiteCommand(createTableQuery, connection))
+                            {
+                                var obj = command.ExecuteScalar();
+                                log.Debug($"{createTableQuery}-[{obj}]");
+                            }
+                            transaction.Commit();
+                        }
+                        catch (Exception ex)
+                        {
+                            transaction.Rollback();
+                            log.Error($"CreateContent Error: {ex.Message}");
+                        }
+                    }
                 }
             }
+            catch (Exception exx)
+            {
+
+                log.Error($"CreateContent Error: {exx.Message}");
+            }
+
+
+
         }
 
         public void DropContent(ContentModel Content)
         {
-            using (var connection = new SQLiteConnection(DB_Base.DBConnectionString))
+            try
             {
-                connection.Open();
-                // 创建表
-                string createTableQuery = @"DROP TABLE IF EXISTS Item_TB";
-                using (var command = new SQLiteCommand(createTableQuery, connection))
+                using (var connection = new SQLiteConnection(DB_Base.DBConnectionString))
                 {
-                    command.ExecuteNonQuery();
+                    connection.Open();
+                    // 创建表
+                    string createTableQuery = @"DROP TABLE IF EXISTS Item_TB";
+                    using (SQLiteTransaction transaction = connection.BeginTransaction())
+                    {
+                        try
+                        {
+                            using (var command = new SQLiteCommand(createTableQuery, connection))
+                            {
+                                var obj = command.ExecuteScalar();
+                                log.Debug($"{createTableQuery}-[{obj}]");
+                            }
+                            transaction.Commit();
+                        }
+                        catch (Exception ex)
+                        {
+                            transaction.Rollback();
+                            log.Error($"CreateContent Error: {ex.Message}");
+                        }
+                    }
                 }
             }
+            catch (Exception ex)
+            {
+                log.Error($"CreateContent Error: {ex.Message}");
+            }
+
         }
 
         public void InsertContent(ContentModel Content)
         {
-            using (var connection = new SQLiteConnection(DB_Base.DBConnectionString))
+            try
             {
-                connection.Open();
-                string sql = "INSERT INTO Item_TB (Item_Name, Item_Description,Item_type,Charge1,Charge2,  Row_Id, Department_Id,Is_alert,On_hand,Interval, Create_By, Create_On, Update_By, Update_On) " +
-                    "VALUES (@Item_Name, @Item_Description,@Item_type,@Charge1,@Charge2,  @Row_Id, @Department_Id,@Is_alert,@On_hand,@Interval, @CreateBy, @CreateOn, @UpdateBy, @UpdateOn)";
-                using (var command = new SQLiteCommand(sql, connection))
+                using (var connection = new SQLiteConnection(DB_Base.DBConnectionString))
                 {
-                    command.Parameters.AddWithValue("@Item_Name", Content.Item_Name);
-                    command.Parameters.AddWithValue("@Item_Description", Content.Item_Description);
-                    command.Parameters.AddWithValue("@Item_type", Content.Item_type);
-                    command.Parameters.AddWithValue("@Charge1", Content.Charge1);
-                    command.Parameters.AddWithValue("@Charge2", Content.Charge2);
-                    command.Parameters.AddWithValue("@Row_Id", Content.Row_Id);
-                    command.Parameters.AddWithValue("@Department_Id", Content.Department_Id);
-                    command.Parameters.AddWithValue("@Is_alert", Content.Is_alert);
-                    command.Parameters.AddWithValue("@On_hand", Content.On_hand);
-                    command.Parameters.AddWithValue("@Interval", Content.Interval);
-                    command.Parameters.AddWithValue("@CreateBy", Content.CreateBy);
-                    command.Parameters.AddWithValue("@CreateOn", Content.CreateOn);
-                    command.Parameters.AddWithValue("@UpdateBy", Content.UpdateBy);
-                    command.Parameters.AddWithValue("@UpdateOn", Content.UpdateOn);
+                    connection.Open();
+                    string sql = "INSERT INTO Item_TB (Item_Name, Item_Description,Item_type,Charge1,Charge2,  Row_Id, Department_Id,Is_alert,Interval, Create_By, Create_On, Update_By, Update_On) " +
+                        "VALUES (@Item_Name, @Item_Description,@Item_type,@Charge1,@Charge2,  @Row_Id, @Department_Id,@Is_alert,@Interval, @CreateBy, @CreateOn, @UpdateBy, @UpdateOn)";
+                    using (SQLiteTransaction transaction = connection.BeginTransaction())
+                    {
+                        try
+                        {
+                            using (var command = new SQLiteCommand(sql, connection))
+                            {
+                                command.Parameters.AddWithValue("@Item_Name", Content.Item_Name);
+                                command.Parameters.AddWithValue("@Item_Description", Content.Item_Description);
+                                command.Parameters.AddWithValue("@Item_type", Content.Item_type);
+                                command.Parameters.AddWithValue("@Charge1", Content.Charge1);
+                                command.Parameters.AddWithValue("@Charge2", Content.Charge2);
+                                command.Parameters.AddWithValue("@Row_Id", Content.Row_Id);
+                                command.Parameters.AddWithValue("@Department_Id", Content.Department_Id);
+                                command.Parameters.AddWithValue("@Is_alert", Content.Is_alert);
+                                //command.Parameters.AddWithValue("@On_hand", Content.On_hand);
+                                command.Parameters.AddWithValue("@Interval", Content.Interval);
+                                command.Parameters.AddWithValue("@CreateBy", Content.CreateBy);
+                                command.Parameters.AddWithValue("@CreateOn", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+                                command.Parameters.AddWithValue("@UpdateBy", Content.UpdateBy);
+                                command.Parameters.AddWithValue("@UpdateOn", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
 
-                    command.ExecuteNonQuery();
+                                var obj = command.ExecuteScalar();
+                                log.Debug($"{sql}-[{obj}]");
+                            }
+                            transaction.Commit();
+                        }
+                        catch (Exception ex)
+                        {
+                            transaction.Rollback();
+                            log.Error($"CreateContent Error: {ex.Message}");
+                        }
+                    }
                 }
             }
+            catch (Exception ex)
+            {
+                log.Error($"CreateContent Error: {ex.Message}");
+            }
+
         }
 
         public List<ContentModel> GetContents()
         {
             var Contents = new List<ContentModel>();
-
-            using (var connection = new SQLiteConnection(DB_Base.DBConnectionString))
+            try
             {
-                connection.Open();
-                string sql = "SELECT * FROM Item_TB";
-                using (var command = new SQLiteCommand(sql, connection))
-                using (var reader = command.ExecuteReader())
+                using (var connection = new SQLiteConnection(DB_Base.DBConnectionString))
                 {
-                    while (reader.Read())
+                    connection.Open();
+                    string sql = "SELECT * FROM Item_TB order by Item_Name";
+
+                    using (SQLiteTransaction transaction = connection.BeginTransaction())
                     {
-                        var Content = new ContentModel
+                        try
                         {
-                            Item_Id = Convert.ToInt32(reader["Item_Id"]),
-                            Item_Name = reader["Item_Name"].ToString(),
-                            Item_Description = reader["Item_Description"].ToString(),
-                            Item_type = reader["Item_type"].ToString(),
-                            Charge1 = reader["Charge1"].ToString(),
-                            Charge2 = reader["Charge2"].ToString(),
-                            Row_Id = reader["Row_Id"].ToString(),
-                            Department_Id = reader["Department_Id"].ToString(),
-                            Is_alert = Convert.ToInt32(reader["Is_alert"]),
-                            On_hand = reader["On_hand"].ToString(),
-                            Interval = reader["Interval"].ToString(),
-                            CreateBy = reader["Create_By"].ToString(),
-                            CreateOn = reader["Create_On"].ToString(),
-                            UpdateBy = reader["Update_By"].ToString(),
-                            UpdateOn = reader["Update_On"].ToString()
-                        };
-                        Contents.Add(Content);
+                            using (var command = new SQLiteCommand(sql, connection))
+                            using (var reader = command.ExecuteReader())
+                            {
+                                int i = 0;
+                                if (reader.HasRows)
+                                    while (reader.Read())
+                                    {
+                                        i++;
+                                        var Content = new ContentModel
+                                        {
+                                            Item_Id = Convert.ToInt32(reader["Item_Id"]),
+                                            Item_Name = reader["Item_Name"].ToString(),
+                                            Item_Description = reader["Item_Description"].ToString(),
+                                            Item_type = reader["Item_type"].ToString(),
+                                            Charge1 = reader["Charge1"].ToString(),
+                                            Charge2 = reader["Charge2"].ToString(),
+                                            Row_Id = reader["Row_Id"].ToString(),
+                                            Department_Id = reader["Department_Id"].ToString(),
+                                            Is_alert = Convert.ToInt32(reader["Is_alert"]),
+                                            On_hand = reader["On_hand"].ToString(),
+                                            Interval = reader["Interval"].ToString(),
+                                            CreateBy = reader["Create_By"].ToString(),
+                                            CreateOn = reader["Create_On"].ToString(),
+                                            UpdateBy = reader["Update_By"].ToString(),
+                                            UpdateOn = reader["Update_On"].ToString()
+                                        };
+                                        Contents.Add(Content);
+                                    }
+                                log.Debug($"{sql}-[{i}]");
+                            }
+                            transaction.Commit();
+                        }
+                        catch (Exception ex)
+                        {
+                            transaction.Rollback();
+                            log.Error($"CreateContent Error: {ex.Message}");
+                        }
                     }
                 }
             }
+            catch (Exception ex)
+            {
+                log.Error($"CreateContent Error: {ex.Message}");
+            }
+
 
             return Contents;
         }
 
         public void UpdateContent(ContentModel Content)
         {
-            using (var connection = new SQLiteConnection(DB_Base.DBConnectionString))
+            try
             {
-                connection.Open();
-                string sql = "UPDATE Item_TB " +
-                    "SET Item_Name = @Item_Name, Item_Description = @Item_Description," +
-                    "Charge1 = @Charge1, Charge2 = @Charge2, Item_type=@Item_type," +
-                    "Row_Id = @Row_Id, Department_Id = @Department_Id, " +
-                     "Is_alert = @Is_alert, On_hand = @On_hand, Interval=@Interval," +
-                    "Update_By = @UpdateBy, Update_On = @UpdateOn WHERE Item_Id = @Item_Id";
-                using (var command = new SQLiteCommand(sql, connection))
+                using (var connection = new SQLiteConnection(DB_Base.DBConnectionString))
                 {
-                    command.Parameters.AddWithValue("@Item_Name", Content.Item_Name);
-                    command.Parameters.AddWithValue("@Item_Description", Content.Item_Description);
-                    command.Parameters.AddWithValue("@Item_type", Content.Item_type);
-                    command.Parameters.AddWithValue("@Charge1", Content.Charge1);
-                    command.Parameters.AddWithValue("@Charge2", Content.Charge2);
-                    command.Parameters.AddWithValue("@Row_Id", Content.Row_Id);
-                    command.Parameters.AddWithValue("@Department_Id", Content.Department_Id);
-                    command.Parameters.AddWithValue("@Is_alert", Content.Is_alert);
-                    command.Parameters.AddWithValue("@On_hand", Content.On_hand);
-                    command.Parameters.AddWithValue("@Interval", Content.Interval);
-                    command.Parameters.AddWithValue("@CreateBy", Content.CreateBy);
-                    command.Parameters.AddWithValue("@CreateOn", Content.CreateOn);
-                    command.Parameters.AddWithValue("@UpdateBy", Content.UpdateBy);
-                    command.Parameters.AddWithValue("@UpdateOn", Content.UpdateOn);
+                    connection.Open();
+                    string sql = "UPDATE Item_TB " +
+                        "SET Item_Name = @Item_Name, Item_Description = @Item_Description," +
+                        "Charge1 = @Charge1, Charge2 = @Charge2, Item_type=@Item_type," +
+                        "Row_Id = @Row_Id, Department_Id = @Department_Id, " +
+                         "Is_alert = @Is_alert,  Interval=@Interval," +//On_hand = @On_hand,
+                        "Update_By = @UpdateBy, Update_On = @UpdateOn WHERE Item_Id = @Item_Id";
 
-                    command.ExecuteNonQuery();
+                    using (SQLiteTransaction transaction = connection.BeginTransaction())
+                    {
+                        try
+                        {
+                            using (var command = new SQLiteCommand(sql, connection))
+                            {
+                                command.Parameters.AddWithValue("@Item_Name", Content.Item_Name);
+                                command.Parameters.AddWithValue("@Item_Description", Content.Item_Description);
+                                command.Parameters.AddWithValue("@Item_type", Content.Item_type);
+                                command.Parameters.AddWithValue("@Charge1", Content.Charge1);
+                                command.Parameters.AddWithValue("@Charge2", Content.Charge2);
+                                command.Parameters.AddWithValue("@Row_Id", Content.Row_Id);
+                                command.Parameters.AddWithValue("@Department_Id", Content.Department_Id);
+                                command.Parameters.AddWithValue("@Is_alert", Content.Is_alert);
+                                //command.Parameters.AddWithValue("@On_hand", Content.On_hand);
+                                command.Parameters.AddWithValue("@Interval", Content.Interval);
+                                command.Parameters.AddWithValue("@UpdateBy", Content.UpdateBy);
+                                command.Parameters.AddWithValue("@UpdateOn", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+
+                                var obj = command.ExecuteScalar();
+                                log.Debug($"{sql}-[{obj}]");
+                            }
+                            transaction.Commit();
+                        }
+                        catch (Exception ex)
+                        {
+                            transaction.Rollback();
+                            log.Error($"CreateContent Error: {ex.Message}");
+                        }
+                    }
                 }
             }
+            catch (Exception ex)
+            {
+                log.Error($"CreateContent Error: {ex.Message}");
+            }
+
         }
 
         public void DeleteContent(int Item_Id)
         {
-            using (var connection = new SQLiteConnection(DB_Base.DBConnectionString))
+            try
             {
-                connection.Open();
-                string sql = "DELETE FROM Item_TB WHERE Item_Id = @Item_Id";
-                using (var command = new SQLiteCommand(sql, connection))
+                using (var connection = new SQLiteConnection(DB_Base.DBConnectionString))
                 {
-                    command.Parameters.AddWithValue("@Item_Id", Item_Id);
-                    command.ExecuteNonQuery();
+                    connection.Open();
+                    string sql = "DELETE FROM Item_TB WHERE Item_Id = @Item_Id";
+                    using (SQLiteTransaction transaction = connection.BeginTransaction())
+                    {
+                        try
+                        {
+                            using (var command = new SQLiteCommand(sql, connection))
+                            {
+                                command.Parameters.AddWithValue("@Item_Id", Item_Id);
+                                var obj = command.ExecuteScalar();
+                                log.Debug($"{sql}-[{obj}]");
+                            }
+                            transaction.Commit();
+                        }
+                        catch (Exception ex)
+                        {
+                            transaction.Rollback();
+                            log.Error($"CreateContent Error: {ex.Message}");
+                        }
+                    }
                 }
             }
+            catch (Exception ex)
+            {
+                log.Error($"CreateContent Error: {ex.Message}");
+            }
+
+        }
+        #endregion
+
+        public List<keyValueModel> GetDepartments()
+        {
+            var Departments = new List<keyValueModel>();
+            try
+            {
+                using (var connection = new SQLiteConnection(DB_Base.DBConnectionString))
+                {
+                    connection.Open();
+                    string sql = "SELECT  Department_Id  FROM Item_TB group by Department_Id order by Department_Id";
+                    using (SQLiteTransaction transaction = connection.BeginTransaction())
+                    {
+                        try
+                        {
+
+                            using (var command = new SQLiteCommand(sql, connection))
+                            using (var reader = command.ExecuteReader())
+                            {
+                                int i = 0;
+                                while (reader.Read())
+                                {
+                                    i++;
+                                    var Department = new keyValueModel
+                                    {
+                                        Key = reader["Department_Id"].ToString(),
+                                        Value = reader["Department_Id"].ToString()
+                                    };
+                                    Departments.Add(Department);
+                                }
+                                log.Debug($"{sql}-[{i}]");
+                            }
+
+                            transaction.Commit();
+                        }
+                        catch (Exception ex)
+                        {
+                            transaction.Rollback();
+                            log.Error($"CreateContent Error: {ex.Message}");
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                log.Error($"CreateContent Error: {ex.Message}");
+            }
+
+
+            return Departments;
+        }
+
+        public List<keyValueModel> GetItemType()
+        {
+            var Departments = new List<keyValueModel>();
+            try
+            {
+                using (var connection = new SQLiteConnection(DB_Base.DBConnectionString))
+                {
+                    connection.Open();
+                    string sql = "SELECT  Item_type  FROM Item_TB group by Item_type order by Item_type";
+                    using (SQLiteTransaction transaction = connection.BeginTransaction())
+                    {
+                        try
+                        {
+
+                            using (var command = new SQLiteCommand(sql, connection))
+                            using (var reader = command.ExecuteReader())
+                            {
+                                int i = 0;
+                                while (reader.Read())
+                                {
+                                    i++;
+                                    var Department = new keyValueModel
+                                    {
+                                        Key = reader["Item_type"].ToString(),
+                                        Value = reader["Item_type"].ToString()
+                                    };
+                                    Departments.Add(Department);
+                                }
+                                log.Debug($"{sql}-[{i}]");
+                            }
+                            transaction.Commit();
+                        }
+                        catch (Exception ex)
+                        {
+                            transaction.Rollback();
+                            log.Error($"CreateContent Error: {ex.Message}");
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                log.Error($"CreateContent Error: {ex.Message}");
+            }
+
+
+            return Departments;
+        }
+
+        public List<ContentModel> GetContents_itemType(string itemType)
+        {
+            var Contents = new List<ContentModel>();
+            try
+            {
+                using (var connection = new SQLiteConnection(DB_Base.DBConnectionString))
+                {
+                    connection.Open();
+                    string sql = $"SELECT * FROM Item_TB where Item_type='{itemType}' order by Item_Name";
+                    using (SQLiteTransaction transaction = connection.BeginTransaction())
+                    {
+                        try
+                        {
+                            using (var command = new SQLiteCommand(sql, connection))
+                            using (var reader = command.ExecuteReader())
+                            {
+                                int i = 0;
+                                while (reader.Read())
+                                {
+                                    i++;
+                                    var Content = new ContentModel
+                                    {
+                                        Item_Id = Convert.ToInt32(reader["Item_Id"]),
+                                        Item_Name = reader["Item_Name"].ToString(),
+                                        Item_Description = reader["Item_Description"].ToString(),
+                                        Item_type = reader["Item_type"].ToString(),
+                                        Charge1 = reader["Charge1"].ToString(),
+                                        Charge2 = reader["Charge2"].ToString(),
+                                        Row_Id = reader["Row_Id"].ToString(),
+                                        Department_Id = reader["Department_Id"].ToString(),
+                                        Is_alert = Convert.ToInt32(reader["Is_alert"]),
+                                        On_hand = reader["On_hand"].ToString(),
+                                        Interval = reader["Interval"].ToString(),
+                                        CreateBy = reader["Create_By"].ToString(),
+                                        CreateOn = reader["Create_On"].ToString(),
+                                        UpdateBy = reader["Update_By"].ToString(),
+                                        UpdateOn = reader["Update_On"].ToString()
+                                    };
+                                    Contents.Add(Content);
+                                }
+                                log.Debug($"{sql}-[{i}]");
+                            }
+                            transaction.Commit();
+                        }
+                        catch (Exception ex)
+                        {
+                            transaction.Rollback();
+                            log.Error($"CreateContent Error: {ex.Message}");
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                log.Error($"CreateContent Error: {ex.Message}");
+            }
+
+            return Contents;
+        }
+        public List<ContentModel> GetContents_department(string department)
+        {
+            var Contents = new List<ContentModel>();
+            try
+            {
+                using (var connection = new SQLiteConnection(DB_Base.DBConnectionString))
+                {
+                    connection.Open();
+                    string sql = $"SELECT * FROM Item_TB where Department_Id='{department}' order by Item_Name";
+                    using (SQLiteTransaction transaction = connection.BeginTransaction())
+                    {
+                        try
+                        {
+                            using (var command = new SQLiteCommand(sql, connection))
+                            using (var reader = command.ExecuteReader())
+                            {
+                                int i = 0;
+                                while (reader.Read())
+                                {
+                                    i++;
+                                    var Content = new ContentModel
+                                    {
+                                        Item_Id = Convert.ToInt32(reader["Item_Id"]),
+                                        Item_Name = reader["Item_Name"].ToString(),
+                                        Item_Description = reader["Item_Description"].ToString(),
+                                        Item_type = reader["Item_type"].ToString(),
+                                        Charge1 = reader["Charge1"].ToString(),
+                                        Charge2 = reader["Charge2"].ToString(),
+                                        Row_Id = reader["Row_Id"].ToString(),
+                                        Department_Id = reader["Department_Id"].ToString(),
+                                        Is_alert = Convert.ToInt32(reader["Is_alert"]),
+                                        On_hand = reader["On_hand"].ToString(),
+                                        Interval = reader["Interval"].ToString(),
+                                        CreateBy = reader["Create_By"].ToString(),
+                                        CreateOn = reader["Create_On"].ToString(),
+                                        UpdateBy = reader["Update_By"].ToString(),
+                                        UpdateOn = reader["Update_On"].ToString()
+                                    };
+                                    Contents.Add(Content);
+                                }
+                                log.Debug($"{sql}-[{i}]");
+                            }
+                            transaction.Commit();
+                        }
+                        catch (Exception ex)
+                        {
+                            transaction.Rollback();
+                            log.Error($"CreateContent Error: {ex.Message}");
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                log.Error($"CreateContent Error: {ex.Message}");
+            }
+
+            return Contents;
+        }
+
+        public void insertTamedata()
+        {
+            var t = "";
+            var d = "";
+            for (int i = 0; i < 100; i++)
+            {
+
+                switch (i)
+                {
+                    case 0:
+                        t = "A";
+                        d = "operation";
+                        break;
+                    case 10:
+                        t = "B";
+                        d = "account";
+                        break;
+                    case 20:
+                        t = "C";
+                        d = "management";
+                        break;
+                    case 30:
+                        t = "D";
+                        d = "factory";
+                        break;
+                    case 40:
+                        t = "E";
+                        d = "driver";
+                        break;
+                    case 50:
+                        t = "F";
+                        d = "Food";
+                        break;
+                    case 60:
+                        t = "G";
+                        d = "EE";
+                        break;
+                    case 70:
+                        t = "H";
+                        d = "doctor";
+                        break;
+                    case 80:
+                        t = "I";
+                        d = "trainee";
+                        break;
+
+
+                }
+                ContentModel Content = new ContentModel
+                {
+                    Item_Name = $"item{i} name",
+                    Item_Description = $"item{i} Description",
+                    Item_type = $"{t}",
+                    Charge1 = DB_Base.SystemMail,
+                    Charge2 = DB_Base.SystemMail,
+                    Row_Id = "1",
+                    Department_Id = $"{d}",
+                    Interval = "1",
+                    Is_alert = 1,
+                    CreateBy = "System",
+                    UpdateBy = "System",
+                };
+                InsertContent(Content);
+
+            }
+
         }
     }
+
+
 
     public class ContentModel
     {

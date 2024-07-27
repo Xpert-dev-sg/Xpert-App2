@@ -50,7 +50,7 @@ namespace XpertApp2.Utility
         {
 
             DispatcherTimer timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromSeconds(30);
+            timer.Interval = TimeSpan.FromSeconds(DB_Base.SystemMenuInterval_admin);
             timer.Tick += UserLive_Tick;
             timer.Start();
         }

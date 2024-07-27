@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using XpertApp2.DB;
 using XpertApp2.Utility;
 
 namespace XpertApp2.Views
@@ -26,7 +27,24 @@ namespace XpertApp2.Views
         {
             InitializeComponent();
             MonitorKeyMouseUntility.MonitorKeyMouseMain();
-            TimeUtility.UserLiveTimer();
+            TimeUtility.CarouselMenuTimer();
+            Load();
+        }
+
+        private void Load()
+        {
+            //item
+            ContentDB contentDB = new ContentDB();
+            itemdataGrid.ItemsSource= contentDB.GetContents();
+
+            //user
+            UserDB userDB = new UserDB();
+            userdataGrid.ItemsSource = userDB.GetUsers();
+
+            //log
+            EventDB logDB = new EventDB();
+            eventdataGrid.ItemsSource = logDB.GetEvents();
+             
         }
     }
 }
