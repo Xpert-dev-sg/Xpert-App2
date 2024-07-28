@@ -93,8 +93,84 @@ namespace XpertApp2.DB
 
         }
 
-        public void InsertUser(UserModel user)
+        public void insertTamedata()
         {
+
+            UserModel user;
+
+
+            user = new UserModel
+            {
+                UserName = $"admin user1",
+                CardId = $"999",
+                FingerId = $"2222",
+                RowId = "999",
+                DepartmentId = "admin",
+                Email = "wangyiwater77@163.com",
+                CreateBy = "SYSTEM",
+                UpdateBy = "SYSTEM"
+            };
+            InsertUser(user);
+
+            user = new UserModel
+            {
+                UserName = $"com user1",
+                CardId = $"0",
+                FingerId = $"2222",
+                RowId = "1",
+                DepartmentId = "operation",
+                Email = "wangyiwater77@163.com",
+                CreateBy = "SYSTEM",
+                UpdateBy = "SYSTEM"
+            };
+            InsertUser(user);
+
+
+            user = new UserModel
+            {
+                UserName = $"department user1",
+                CardId = $"1",
+                FingerId = $"2222",
+                RowId = "10",
+                DepartmentId = "operation",
+                Email = "wangyiwater77@163.com",
+                CreateBy = "SYSTEM",
+                UpdateBy = "SYSTEM"
+            };
+            InsertUser(user);
+
+            user = new UserModel
+            {
+                UserName = $"com user2",
+                CardId = $"0",
+                FingerId = $"2222",
+                RowId = "1",
+                DepartmentId = "account",
+                Email = "wangyiwater77@163.com",
+                CreateBy = "SYSTEM",
+                UpdateBy = "SYSTEM"
+            };
+            InsertUser(user);
+
+
+            user = new UserModel
+            {
+                UserName = $"department user2",
+                CardId = $"1",
+                FingerId = $"2222",
+                RowId = "10",
+                DepartmentId = "account",
+                Email = "wangyiwater77@163.com",
+                CreateBy = "SYSTEM",
+                UpdateBy = "SYSTEM"
+            };
+            InsertUser(user);
+
+        }
+
+        public bool InsertUser(UserModel user)
+        {
+            bool result = false;
             try
             {
                 using (var connection = new SQLiteConnection(DB_Base.DBConnectionString))
@@ -122,6 +198,7 @@ namespace XpertApp2.DB
                                 log.Debug($"{sql}-[{obj}]");
                             }
                             transaction.Commit();
+                            result = true;
                         }
                         catch (Exception ex)
                         {
@@ -135,7 +212,7 @@ namespace XpertApp2.DB
             {
                 log.Error($"CreateContent Error: {ex.Message}");
             }
-
+            return result;
         }
 
         public List<UserModel> GetUsers()
@@ -196,8 +273,9 @@ namespace XpertApp2.DB
             return users;
         }
 
-        public void UpdateUser(UserModel user)
+        public bool UpdateUser(UserModel user)
         {
+            bool result = false;
             try
             {
                 using (var connection = new SQLiteConnection(DB_Base.DBConnectionString))
@@ -224,6 +302,7 @@ namespace XpertApp2.DB
                                 log.Debug($"{sql}-[{obj}]");
                             }
                             transaction.Commit();
+                            result = true;
                         }
                         catch (Exception ex)
                         {
@@ -237,11 +316,12 @@ namespace XpertApp2.DB
             {
                 log.Error($"CreateContent Error: {ex.Message}");
             }
-
+            return result;
         }
 
-        public void DeleteUser(int userId)
+        public bool DeleteUser(int userId)
         {
+            bool result = false;
             try
             {
                 using (var connection = new SQLiteConnection(DB_Base.DBConnectionString))
@@ -255,9 +335,11 @@ namespace XpertApp2.DB
                             using (var command = new SQLiteCommand(sql, connection))
                             {
                                 command.Parameters.AddWithValue("@UserId", userId);
-                                command.ExecuteNonQuery();
+                                var obj = command.ExecuteScalar();
+                                log.Debug($"{sql}-[{obj}]");
                             }
                             transaction.Commit();
+                            result = true;
                         }
                         catch (Exception ex)
                         {
@@ -271,7 +353,7 @@ namespace XpertApp2.DB
             {
                 log.Error($"CreateContent Error: {ex.Message}");
             }
-
+            return result;
         }
 
         public bool IsLogined(string ps)
@@ -361,79 +443,273 @@ namespace XpertApp2.DB
 
         }
 
-        public void insertTamedata()
+        public List<UserModel> GetUsers_row(string row)
         {
-
-            UserModel user;
-
-
-            user = new UserModel
+            var users = new List<UserModel>();
+            try
             {
-                UserName = $"admin user1",
-                CardId = $"999",
-                FingerId = $"2222",
-                RowId = "999",
-                DepartmentId = "admin",
-                Email = "wangyiwater77@163.com",
-                CreateBy = "SYSTEM",
-                UpdateBy = "SYSTEM"
-            };
-            InsertUser(user);
-
-            user = new UserModel
+                using (var connection = new SQLiteConnection(DB_Base.DBConnectionString))
+                {
+                    connection.Open();
+                    string sql = $"SELECT * FROM User_TB where Row_Id='{row}'  order by User_Name";
+                    using (SQLiteTransaction transaction = connection.BeginTransaction())
+                    {
+                        try
+                        {
+                            using (var command = new SQLiteCommand(sql, connection))
+                            using (var reader = command.ExecuteReader())
+                            {
+                                int i = 0;
+                                if (reader.HasRows)
+                                    while (reader.Read())
+                                    {
+                                        i++;
+                                        var user = new UserModel
+                                        {
+                                            UserId = Convert.ToInt32(reader["User_Id"]),
+                                            UserName = reader["User_Name"].ToString(),
+                                            CardId = reader["Card_Id"].ToString(),
+                                            FingerId = reader["Finger_Id"].ToString(),
+                                            RowId = reader["Row_Id"].ToString(),
+                                            DepartmentId = reader["Department_Id"].ToString(),
+                                            Email = reader["email"].ToString(),
+                                            CreateBy = reader["Create_By"].ToString(),
+                                            CreateOn = reader["Create_On"].ToString(),
+                                            UpdateBy = reader["Update_By"].ToString(),
+                                            UpdateOn = reader["Update_On"].ToString()
+                                        };
+                                        users.Add(user);
+                                    }
+                                log.Debug($"{sql}-[{i}]");
+                            }
+                            transaction.Commit();
+                        }
+                        catch (Exception ex)
+                        {
+                            transaction.Rollback();
+                            log.Error($"CreateContent Error: {ex.Message}");
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
             {
-                UserName = $"com user1",
-                CardId = $"0",
-                FingerId = $"2222",
-                RowId = "1",
-                DepartmentId = "operation",
-                Email = "wangyiwater77@163.com",
-                CreateBy = "SYSTEM",
-                UpdateBy = "SYSTEM"
-            };
-            InsertUser(user);
+                log.Error($"CreateContent Error: {ex.Message}");
+            }
 
 
-            user = new UserModel
+            return users;
+        }
+
+        public List<UserModel> GetUsers_department(string department)
+        {
+            var users = new List<UserModel>();
+            try
             {
-                UserName = $"department user1",
-                CardId = $"1",
-                FingerId = $"2222",
-                RowId = "10",
-                DepartmentId = "operation",
-                Email = "wangyiwater77@163.com",
-                CreateBy = "SYSTEM",
-                UpdateBy = "SYSTEM"
-            };
-            InsertUser(user);
-
-            user = new UserModel
+                using (var connection = new SQLiteConnection(DB_Base.DBConnectionString))
+                {
+                    connection.Open();
+                    string sql = $"SELECT * FROM User_TB where Department_Id='{department}'  order by User_Name";
+                    using (SQLiteTransaction transaction = connection.BeginTransaction())
+                    {
+                        try
+                        {
+                            using (var command = new SQLiteCommand(sql, connection))
+                            using (var reader = command.ExecuteReader())
+                            {
+                                int i = 0;
+                                if (reader.HasRows)
+                                    while (reader.Read())
+                                    {
+                                        i++;
+                                        var user = new UserModel
+                                        {
+                                            UserId = Convert.ToInt32(reader["User_Id"]),
+                                            UserName = reader["User_Name"].ToString(),
+                                            CardId = reader["Card_Id"].ToString(),
+                                            FingerId = reader["Finger_Id"].ToString(),
+                                            RowId = reader["Row_Id"].ToString(),
+                                            DepartmentId = reader["Department_Id"].ToString(),
+                                            Email = reader["email"].ToString(),
+                                            CreateBy = reader["Create_By"].ToString(),
+                                            CreateOn = reader["Create_On"].ToString(),
+                                            UpdateBy = reader["Update_By"].ToString(),
+                                            UpdateOn = reader["Update_On"].ToString()
+                                        };
+                                        users.Add(user);
+                                    }
+                                log.Debug($"{sql}-[{i}]");
+                            }
+                            transaction.Commit();
+                        }
+                        catch (Exception ex)
+                        {
+                            transaction.Rollback();
+                            log.Error($"CreateContent Error: {ex.Message}");
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
             {
-                UserName = $"com user2",
-                CardId = $"0",
-                FingerId = $"2222",
-                RowId = "1",
-                DepartmentId = "account",
-                Email = "wangyiwater77@163.com",
-                CreateBy = "SYSTEM",
-                UpdateBy = "SYSTEM"
-            };
-            InsertUser(user);
+                log.Error($"CreateContent Error: {ex.Message}");
+            }
 
 
-            user = new UserModel
+            return users;
+        }
+
+        public List<UserModel> GetUsers_name(string name)
+        {
+            var users = new List<UserModel>();
+            try
             {
-                UserName = $"department user2",
-                CardId = $"1",
-                FingerId = $"2222",
-                RowId = "10",
-                DepartmentId = "account",
-                Email = "wangyiwater77@163.com",
-                CreateBy = "SYSTEM",
-                UpdateBy = "SYSTEM"
-            };
-            InsertUser(user);
+                using (var connection = new SQLiteConnection(DB_Base.DBConnectionString))
+                {
+                    connection.Open();
+                    string sql = $"SELECT * FROM User_TB where User_Name like '%{name}%'  order by User_Name";
+                    using (SQLiteTransaction transaction = connection.BeginTransaction())
+                    {
+                        try
+                        {
+                            using (var command = new SQLiteCommand(sql, connection))
+                            using (var reader = command.ExecuteReader())
+                            {
+                                int i = 0;
+                                if (reader.HasRows)
+                                    while (reader.Read())
+                                    {
+                                        i++;
+                                        var user = new UserModel
+                                        {
+                                            UserId = Convert.ToInt32(reader["User_Id"]),
+                                            UserName = reader["User_Name"].ToString(),
+                                            CardId = reader["Card_Id"].ToString(),
+                                            FingerId = reader["Finger_Id"].ToString(),
+                                            RowId = reader["Row_Id"].ToString(),
+                                            DepartmentId = reader["Department_Id"].ToString(),
+                                            Email = reader["email"].ToString(),
+                                            CreateBy = reader["Create_By"].ToString(),
+                                            CreateOn = reader["Create_On"].ToString(),
+                                            UpdateBy = reader["Update_By"].ToString(),
+                                            UpdateOn = reader["Update_On"].ToString()
+                                        };
+                                        users.Add(user);
+                                    }
+                                log.Debug($"{sql}-[{i}]");
+                            }
+                            transaction.Commit();
+                        }
+                        catch (Exception ex)
+                        {
+                            transaction.Rollback();
+                            log.Error($"CreateContent Error: {ex.Message}");
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                log.Error($"CreateContent Error: {ex.Message}");
+            }
 
+
+            return users;
+        }
+
+        public UserModel GetUsers_id(int id)
+        {
+            var user = new UserModel();
+            try
+            {
+                using (var connection = new SQLiteConnection(DB_Base.DBConnectionString))
+                {
+                    connection.Open();
+                    string sql = $"SELECT * FROM User_TB where User_Name = '{id}' ";
+                    using (SQLiteTransaction transaction = connection.BeginTransaction())
+                    {
+                        try
+                        {
+                            using (var command = new SQLiteCommand(sql, connection))
+                            using (var reader = command.ExecuteReader())
+                            {
+                                int i = 0;
+                                if (reader.HasRows)
+                                    while (reader.Read())
+                                    {
+                                        i++;
+                                        user = new UserModel
+                                        {
+                                            UserId = Convert.ToInt32(reader["User_Id"]),
+                                            UserName = reader["User_Name"].ToString(),
+                                            CardId = reader["Card_Id"].ToString(),
+                                            FingerId = reader["Finger_Id"].ToString(),
+                                            RowId = reader["Row_Id"].ToString(),
+                                            DepartmentId = reader["Department_Id"].ToString(),
+                                            Email = reader["email"].ToString(),
+                                            CreateBy = reader["Create_By"].ToString(),
+                                            CreateOn = reader["Create_On"].ToString(),
+                                            UpdateBy = reader["Update_By"].ToString(),
+                                            UpdateOn = reader["Update_On"].ToString()
+                                        };
+                                        
+                                    }
+                                log.Debug($"{sql}-[{i}]");
+                            }
+                            transaction.Commit();
+                        }
+                        catch (Exception ex)
+                        {
+                            transaction.Rollback();
+                            log.Error($"CreateContent Error: {ex.Message}");
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                log.Error($"CreateContent Error: {ex.Message}");
+            }
+
+
+            return user;
+        }
+
+        public bool CheckUserName(string name)
+        {
+            bool result = false;
+            try
+            {
+                using (var connection = new SQLiteConnection(DB_Base.DBConnectionString))
+                {
+                    connection.Open();
+                    string sql = $"SELECT count(*) FROM User_TB where User_Name='{name}'";
+                    using (SQLiteTransaction transaction = connection.BeginTransaction())
+                    {
+                        try
+                        {
+                            using (var command = new SQLiteCommand(sql, connection))
+                            {
+                                var obj = command.ExecuteScalar();
+                                log.Debug($"{sql}-[{obj}]");
+                                result = Convert.ToInt32(obj) == 0;
+                            }
+                            transaction.Commit();
+                        }
+                        catch (Exception ex)
+                        {
+                            transaction.Rollback();
+                            log.Error($"CreateContent Error: {ex.Message}");
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                log.Error($"CreateContent Error: {ex.Message}");
+            }
+
+            return result;
         }
     }
 

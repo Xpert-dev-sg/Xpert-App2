@@ -1,1 +1,2 @@
-2024-07-27 10:03:24,729 [9] DEBUG XpertApp2.DB.EventDB property:[(null)] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2024-07-28 13:15:37,084 [9] DEBUG XpertApp2.DB.EventDB property:[(null)] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2024-07-28 13:18:16,853 [1] INFO  XpertApp2.Views.MainWindow property:[(null)] - ：System is initialized.

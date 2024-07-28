@@ -31,6 +31,7 @@ namespace XpertApp2.Views
             timer.Interval = TimeSpan.FromSeconds(DB_Base.SystemMenuInterval);
             timer.Tick += CarouselTimer_Tick;
             timer.Start();
+            loginbox.Focus();
         }
 
         private void PasswordBox_KeyDown(object sender, KeyEventArgs e)

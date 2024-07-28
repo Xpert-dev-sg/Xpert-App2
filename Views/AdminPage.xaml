@@ -12,7 +12,7 @@
     <Grid>
 
         <hc:TabControl IsAnimationEnabled="True" ShowCloseButton="True" IsDraggable="True" IsTabFillEnabled="True" >
-            
+
             <!--item-->
             <hc:TabItem Header="Items">
                 <hc:SimplePanel >
@@ -28,7 +28,27 @@
                             <hc:SimplePanel.Background>
                                 <SolidColorBrush Color="White" Opacity="0.6"/>
                             </hc:SimplePanel.Background>
-                            <Grid ></Grid>
+                            <Grid  HorizontalAlignment="Center" VerticalAlignment="Center" >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="30" ></RowDefinition>
+                                    <RowDefinition Height="30"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Row="0" Grid.Column="0" Text="Item Type" Margin="10,5,10,5" FontWeight="Bold" FontSize="16"></TextBlock>
+                                <ComboBox x:Name="cmbType" Grid.Row="0" Grid.Column="1" Width="200"  DisplayMemberPath="Value" SelectionChanged="cmbType_SelectionChanged"/>
+                                <TextBlock Grid.Row="0" Grid.Column="2"  Text="Demparment" Margin="10,5,10,5" FontWeight="Bold"></TextBlock>
+                                <ComboBox x:Name="cmbDepartment" Grid.Row="0" Grid.Column="3" Width="200"  DisplayMemberPath="Value" SelectionChanged="cmbDepartment_SelectionChanged"/>
+                                <TextBlock Grid.Row="1" Grid.Column="0" Text="Item Name" Margin="10,5,10,5" FontWeight="Bold" FontSize="16"></TextBlock>
+
+                                <hc:SearchBar Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" x:Name="txtItemName" HorizontalAlignment="Center"  TextWrapping="Wrap"  VerticalAlignment="Center" Width="798" SearchStarted="txtItemName_SearchStarted"/>
+                                
+                            </Grid>
+                            <Button x:Name="btnnew_item" HorizontalAlignment="Right" VerticalAlignment="Bottom"  Click="btnnew_item_Click" Width="100" Height="30" Content="New Item" Margin="0,0,10,10"/>
                         </hc:SimplePanel>
                         <DataGrid x:Name="itemdataGrid" Margin="5" Grid.Row="1" BorderBrush="White" BorderThickness="1" HorizontalGridLinesBrush="White" VerticalGridLinesBrush="White" AlternationCount="2" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False" CanUserSortColumns="False" IsReadOnly="True" >
                             <DataGrid.Background>
@@ -79,7 +99,7 @@
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="ID" Width="100" Binding="{Binding Item_Id}"></DataGridTextColumn>
                                 <DataGridTextColumn Header="Name" Width="250" Binding="{Binding Item_Name}"></DataGridTextColumn>
-                                <DataGridTextColumn Header="Department" Width="250" Binding="{Binding Department_Id}"></DataGridTextColumn>
+                                <DataGridTextColumn Header="Department" Width="150" Binding="{Binding Department_Id}"></DataGridTextColumn>
                                 <DataGridTextColumn Header="row" Width="150" Binding="{Binding Row_Id}"></DataGridTextColumn>
 
                                 <DataGridTemplateColumn Header="Action">
@@ -87,8 +107,8 @@
                                         <DataTemplate>
                                             <Grid>
                                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                                    <Button  Content="Update" Tag="{Binding Item_Id}"  ></Button>
-                                                    <Button  Name="DeleteDetail"  Tag="{Binding Item_Id}" Margin="10,0,0,0" Content="Delete"  ></Button>
+                                                    <Button  Content="Update" Tag="{Binding Item_Id}" Click="UpdateItem_Click"  ></Button>
+                                                    <Button  Name="DeleteDetail"  Tag="{Binding Item_Id}" Margin="10,0,0,0" Content="Delete" Click="DeleteItem_Click"  ></Button>
                                                 </StackPanel>
                                             </Grid>
                                         </DataTemplate>
@@ -108,17 +128,41 @@
                         <ImageBrush ImageSource="/Resources/Img/admin.jpg" Opacity="0.5"/>
                     </hc:SimplePanel.Background>
                     <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            
+                        </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="100"/>
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
-                        <hc:SimplePanel Grid.Row="0">
+                        <hc:SimplePanel Grid.Row="0" >
                             <hc:SimplePanel.Background>
                                 <SolidColorBrush Color="White" Opacity="0.6"/>
                             </hc:SimplePanel.Background>
-                            <Grid ></Grid>
+                            <Grid  HorizontalAlignment="Center" VerticalAlignment="Center" >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="30" ></RowDefinition>
+                                    <RowDefinition Height="30"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Row="0" Grid.Column="0" Text="Permission level" Margin="10,5,10,5" FontWeight="Bold" FontSize="16"></TextBlock>
+                                <ComboBox x:Name="cmbrow" Grid.Row="0" Grid.Column="1" Width="200"  DisplayMemberPath="Value" SelectionChanged="cmbType_user_SelectionChanged"/>
+                                <TextBlock Grid.Row="0" Grid.Column="2"  Text="Demparment" Margin="10,5,10,5" FontWeight="Bold"></TextBlock>
+                                <ComboBox x:Name="cmbDepartment_user" Grid.Row="0" Grid.Column="3" Width="200"  DisplayMemberPath="Value" SelectionChanged="cmbDepartment_user_SelectionChanged"/>
+                                <TextBlock Grid.Row="1" Grid.Column="0" Text="Item Name" Margin="10,5,10,5" FontWeight="Bold" FontSize="16"></TextBlock>
+
+                                <hc:SearchBar Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" x:Name="txtuserName" HorizontalAlignment="Center"  TextWrapping="Wrap"  VerticalAlignment="Center" Width="798" SearchStarted="txtItemName_user_SearchStarted"/>
+
+                            </Grid>
+                            <Button x:Name="btnnew_user" HorizontalAlignment="Right" VerticalAlignment="Bottom"  Click="btnnew_user_Click" Width="100" Height="30" Content="New user" Margin="0,0,10,10"/>
                         </hc:SimplePanel>
-                        <DataGrid x:Name="userdataGrid" Margin="5" Grid.Row="1" BorderBrush="White" BorderThickness="1" HorizontalGridLinesBrush="White" VerticalGridLinesBrush="White" AlternationCount="2" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False" CanUserSortColumns="False" IsReadOnly="True" >
+                        <DataGrid x:Name="userdataGrid" Margin="5,5,5,5" Grid.Row="1" BorderBrush="White" BorderThickness="1" HorizontalGridLinesBrush="White" VerticalGridLinesBrush="White" AlternationCount="2" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False" CanUserSortColumns="False" IsReadOnly="True" Grid.ColumnSpan="3" >
                             <DataGrid.Background>
                                 <!--<ImageBrush ImageSource="/Resources/Img/Content.jpg" Opacity="0.2"/>-->
                                 <SolidColorBrush Color="White" Opacity="0.6"/>
@@ -168,21 +212,21 @@
                                 <DataGridTextColumn Header="ID" Width="50" Binding="{Binding UserId}"></DataGridTextColumn>
                                 <DataGridTextColumn Header="Name" Width="150" Binding="{Binding UserName}"></DataGridTextColumn>
                                 <DataGridTextColumn Header="Department" Width="250" Binding="{Binding DepartmentId}"></DataGridTextColumn>
-                                <DataGridTextColumn Header="row" Width="150" Binding="{Binding RowId}"></DataGridTextColumn>
-                                
+                                <DataGridTextColumn Header="Permission" Width="150" Binding="{Binding RowId}"></DataGridTextColumn>
+
                                 <DataGridTemplateColumn Header="Action">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <Grid>
                                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                                    <Button  Content="Update" Tag="{Binding UserId}" FontSize="10" ></Button>
-                                                    <Button  Name="DeleteDetail"  Tag="{Binding UserId}" Margin="10,0,0,0" Content="Delete" FontSize="10" ></Button>
+                                                    <Button  Content="Update" Tag="{Binding UserId}" FontSize="10" Click="updateUser_Click" ></Button>
+                                                    <Button  Name="DeleteDetail"  Tag="{Binding UserId}" Margin="10,0,0,0" Content="Delete" FontSize="10" Click="DeleteUser_Click" ></Button>
                                                 </StackPanel>
                                             </Grid>
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
-                                
+
                             </DataGrid.Columns>
                         </DataGrid>
 
@@ -204,7 +248,26 @@
                             <hc:SimplePanel.Background>
                                 <SolidColorBrush Color="White" Opacity="0.6"/>
                             </hc:SimplePanel.Background>
-                            <Grid ></Grid>
+                            <Grid  HorizontalAlignment="Center" VerticalAlignment="Center" >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="30" ></RowDefinition>
+                                    <RowDefinition Height="30"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <!--<ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>-->
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Row="0" Grid.Column="0" Text="Event Type" Margin="10,5,10,5" FontWeight="Bold" FontSize="16" ></TextBlock>
+                                <ComboBox x:Name="cmbType_log" Grid.Row="0" Grid.Column="1" Width="200"  DisplayMemberPath="Value" SelectionChanged="cmbType_log_SelectionChanged" HorizontalAlignment="Left" />
+                                <!--<TextBlock Grid.Row="0" Grid.Column="2"  Text="Demparment" Margin="10,5,10,5" FontWeight="Bold"></TextBlock>
+                                <ComboBox x:Name="cmbDepartment" Grid.Row="0" Grid.Column="3" Width="200"  DisplayMemberPath="Value" SelectionChanged="cmbDepartment_SelectionChanged"/>-->
+                                <TextBlock Grid.Row="1" Grid.Column="0" Text="Event Description" Margin="10,5,10,5" FontWeight="Bold" FontSize="16"></TextBlock>
+
+                                <hc:SearchBar Grid.Row="1" Grid.Column="1"  x:Name="txtlogName" HorizontalAlignment="Center"  TextWrapping="Wrap"  VerticalAlignment="Center" Width="798" SearchStarted="txtName_log_SearchStarted"/>
+
+                            </Grid>
                         </hc:SimplePanel>
                         <DataGrid x:Name="eventdataGrid" Margin="5" Grid.Row="1" BorderBrush="White" BorderThickness="1" HorizontalGridLinesBrush="White" VerticalGridLinesBrush="White" AlternationCount="2" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False" CanUserSortColumns="False" IsReadOnly="True" >
                             <DataGrid.Background>
@@ -253,24 +316,24 @@
 
 
                             <DataGrid.Columns>
-                                <DataGridTextColumn Header="Dateime" Width="50" Binding="{Binding Event_datetime}"></DataGridTextColumn>
-                                <DataGridTextColumn Header="Eventtype" Width="150" Binding="{Binding Event_Type}"></DataGridTextColumn>
-                                <DataGridTextColumn Header="Department" Width="250" Binding="{Binding Event_Description}"></DataGridTextColumn>
-                                <DataGridTextColumn Header="user" Width="150" Binding="{Binding User_Id}"></DataGridTextColumn>
+                                <DataGridTextColumn Header="Dateime" Width="150" Binding="{Binding Event_datetime}"></DataGridTextColumn>
+                                <DataGridTextColumn Header="Eventtype" Width="100" Binding="{Binding Event_Type}"></DataGridTextColumn>
+                                <DataGridTextColumn Header="Description" Width="250" Binding="{Binding Event_Description}"></DataGridTextColumn>
+                                <DataGridTextColumn Header="user" Width="50" Binding="{Binding User_Id}"></DataGridTextColumn>
                             </DataGrid.Columns>
                         </DataGrid>
 
                     </Grid>
                 </hc:SimplePanel>
             </hc:TabItem>
-            
-            
-            
+
+
+
             <!--<hc:TabItem Header="TabItem4">
                 <hc:SimplePanel Background="#FFE83F6D"/>
             </hc:TabItem>-->
-           
-           
+
+
 
         </hc:TabControl>
 

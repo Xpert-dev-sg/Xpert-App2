@@ -35,6 +35,7 @@ namespace XpertApp2.DB
 										Is_alert INTEGER NOT NULL,
 										On_hand TEXT  NULL,
                                         Interval TEXT  NULL,
+                                        RFID TEXT  NULL,
 										Create_By TEXT NOT NULL,
 										Create_On TEXT NOT NULL,
 										Update_By TEXT NOT NULL,
@@ -103,15 +104,84 @@ namespace XpertApp2.DB
 
         }
 
-        public void InsertContent(ContentModel Content)
+        public void insertTamedata()
         {
+            var t = "";
+            var d = "";
+            for (int i = 0; i < 100; i++)
+            {
+
+                switch (i)
+                {
+                    case 0:
+                        t = "A";
+                        d = "operation";
+                        break;
+                    case 10:
+                        t = "B";
+                        d = "account";
+                        break;
+                    case 20:
+                        t = "C";
+                        d = "management";
+                        break;
+                    case 30:
+                        t = "D";
+                        d = "factory";
+                        break;
+                    case 40:
+                        t = "E";
+                        d = "driver";
+                        break;
+                    case 50:
+                        t = "F";
+                        d = "Food";
+                        break;
+                    case 60:
+                        t = "G";
+                        d = "EE";
+                        break;
+                    case 70:
+                        t = "H";
+                        d = "doctor";
+                        break;
+                    case 80:
+                        t = "I";
+                        d = "trainee";
+                        break;
+
+
+                }
+                ContentModel Content = new ContentModel
+                {
+                    Item_Name = $"item{i} name",
+                    Item_Description = $"item{i} Description",
+                    Item_type = $"{t}",
+                    Charge1 = DB_Base.SystemMail,
+                    Charge2 = DB_Base.SystemMail,
+                    Row_Id = "1",
+                    Department_Id = $"{d}",
+                    Interval = "1",
+                    Is_alert = 1,
+                    CreateBy = "System",
+                    UpdateBy = "System",
+                };
+                InsertContent(Content);
+
+            }
+
+        }
+
+        public bool InsertContent(ContentModel Content)
+        {
+            bool result = false;
             try
             {
                 using (var connection = new SQLiteConnection(DB_Base.DBConnectionString))
                 {
                     connection.Open();
-                    string sql = "INSERT INTO Item_TB (Item_Name, Item_Description,Item_type,Charge1,Charge2,  Row_Id, Department_Id,Is_alert,Interval, Create_By, Create_On, Update_By, Update_On) " +
-                        "VALUES (@Item_Name, @Item_Description,@Item_type,@Charge1,@Charge2,  @Row_Id, @Department_Id,@Is_alert,@Interval, @CreateBy, @CreateOn, @UpdateBy, @UpdateOn)";
+                    string sql = "INSERT INTO Item_TB (Item_Name, Item_Description,Item_type,Charge1,Charge2,RFID,  Row_Id, Department_Id,Is_alert,Interval, Create_By, Create_On, Update_By, Update_On) " +
+                        "VALUES (@Item_Name, @Item_Description,@Item_type,@Charge1,@Charge2,@RFID,  @Row_Id, @Department_Id,@Is_alert,@Interval, @CreateBy, @CreateOn, @UpdateBy, @UpdateOn)";
                     using (SQLiteTransaction transaction = connection.BeginTransaction())
                     {
                         try
@@ -127,6 +197,7 @@ namespace XpertApp2.DB
                                 command.Parameters.AddWithValue("@Department_Id", Content.Department_Id);
                                 command.Parameters.AddWithValue("@Is_alert", Content.Is_alert);
                                 //command.Parameters.AddWithValue("@On_hand", Content.On_hand);
+                                command.Parameters.AddWithValue("@RFID", Content.RFID);
                                 command.Parameters.AddWithValue("@Interval", Content.Interval);
                                 command.Parameters.AddWithValue("@CreateBy", Content.CreateBy);
                                 command.Parameters.AddWithValue("@CreateOn", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
@@ -137,6 +208,7 @@ namespace XpertApp2.DB
                                 log.Debug($"{sql}-[{obj}]");
                             }
                             transaction.Commit();
+                            result = true;
                         }
                         catch (Exception ex)
                         {
@@ -150,7 +222,7 @@ namespace XpertApp2.DB
             {
                 log.Error($"CreateContent Error: {ex.Message}");
             }
-
+            return result;
         }
 
         public List<ContentModel> GetContents()
@@ -216,8 +288,9 @@ namespace XpertApp2.DB
             return Contents;
         }
 
-        public void UpdateContent(ContentModel Content)
+        public bool UpdateContent(ContentModel Content)
         {
+            bool result = false;
             try
             {
                 using (var connection = new SQLiteConnection(DB_Base.DBConnectionString))
@@ -227,7 +300,7 @@ namespace XpertApp2.DB
                         "SET Item_Name = @Item_Name, Item_Description = @Item_Description," +
                         "Charge1 = @Charge1, Charge2 = @Charge2, Item_type=@Item_type," +
                         "Row_Id = @Row_Id, Department_Id = @Department_Id, " +
-                         "Is_alert = @Is_alert,  Interval=@Interval," +//On_hand = @On_hand,
+                         "Is_alert = @Is_alert,  Interval=@Interval,RFID=@RFID," +//On_hand = @On_hand,
                         "Update_By = @UpdateBy, Update_On = @UpdateOn WHERE Item_Id = @Item_Id";
 
                     using (SQLiteTransaction transaction = connection.BeginTransaction())
@@ -245,12 +318,14 @@ namespace XpertApp2.DB
                                 command.Parameters.AddWithValue("@Department_Id", Content.Department_Id);
                                 command.Parameters.AddWithValue("@Is_alert", Content.Is_alert);
                                 //command.Parameters.AddWithValue("@On_hand", Content.On_hand);
+                                command.Parameters.AddWithValue("@RFID", Content.RFID);
                                 command.Parameters.AddWithValue("@Interval", Content.Interval);
                                 command.Parameters.AddWithValue("@UpdateBy", Content.UpdateBy);
                                 command.Parameters.AddWithValue("@UpdateOn", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
 
                                 var obj = command.ExecuteScalar();
                                 log.Debug($"{sql}-[{obj}]");
+                                result = true;
                             }
                             transaction.Commit();
                         }
@@ -266,11 +341,12 @@ namespace XpertApp2.DB
             {
                 log.Error($"CreateContent Error: {ex.Message}");
             }
-
+            return result;
         }
 
-        public void DeleteContent(int Item_Id)
+        public bool DeleteContent(int Item_Id)
         {
+            bool result = false;
             try
             {
                 using (var connection = new SQLiteConnection(DB_Base.DBConnectionString))
@@ -288,6 +364,7 @@ namespace XpertApp2.DB
                                 log.Debug($"{sql}-[{obj}]");
                             }
                             transaction.Commit();
+                            result = true;
                         }
                         catch (Exception ex)
                         {
@@ -301,7 +378,7 @@ namespace XpertApp2.DB
             {
                 log.Error($"CreateContent Error: {ex.Message}");
             }
-
+            return result;
         }
         #endregion
 
@@ -463,6 +540,7 @@ namespace XpertApp2.DB
 
             return Contents;
         }
+
         public List<ContentModel> GetContents_department(string department)
         {
             var Contents = new List<ContentModel>();
@@ -523,73 +601,164 @@ namespace XpertApp2.DB
             return Contents;
         }
 
-        public void insertTamedata()
+        public List<ContentModel> GetContents_name(string name)
         {
-            var t = "";
-            var d = "";
-            for (int i = 0; i < 100; i++)
+            var Contents = new List<ContentModel>();
+            try
             {
-
-                switch (i)
+                using (var connection = new SQLiteConnection(DB_Base.DBConnectionString))
                 {
-                    case 0:
-                        t = "A";
-                        d = "operation";
-                        break;
-                    case 10:
-                        t = "B";
-                        d = "account";
-                        break;
-                    case 20:
-                        t = "C";
-                        d = "management";
-                        break;
-                    case 30:
-                        t = "D";
-                        d = "factory";
-                        break;
-                    case 40:
-                        t = "E";
-                        d = "driver";
-                        break;
-                    case 50:
-                        t = "F";
-                        d = "Food";
-                        break;
-                    case 60:
-                        t = "G";
-                        d = "EE";
-                        break;
-                    case 70:
-                        t = "H";
-                        d = "doctor";
-                        break;
-                    case 80:
-                        t = "I";
-                        d = "trainee";
-                        break;
-
-
+                    connection.Open();
+                    string sql = $"SELECT * FROM Item_TB where Item_Name like '%{name}%' order by Item_Id";
+                    using (SQLiteTransaction transaction = connection.BeginTransaction())
+                    {
+                        try
+                        {
+                            using (var command = new SQLiteCommand(sql, connection))
+                            using (var reader = command.ExecuteReader())
+                            {
+                                int i = 0;
+                                while (reader.Read())
+                                {
+                                    i++;
+                                    var Content = new ContentModel
+                                    {
+                                        Item_Id = Convert.ToInt32(reader["Item_Id"]),
+                                        Item_Name = reader["Item_Name"].ToString(),
+                                        Item_Description = reader["Item_Description"].ToString(),
+                                        Item_type = reader["Item_type"].ToString(),
+                                        Charge1 = reader["Charge1"].ToString(),
+                                        Charge2 = reader["Charge2"].ToString(),
+                                        Row_Id = reader["Row_Id"].ToString(),
+                                        Department_Id = reader["Department_Id"].ToString(),
+                                        Is_alert = Convert.ToInt32(reader["Is_alert"]),
+                                        On_hand = reader["On_hand"].ToString(),
+                                        Interval = reader["Interval"].ToString(),
+                                        CreateBy = reader["Create_By"].ToString(),
+                                        CreateOn = reader["Create_On"].ToString(),
+                                        UpdateBy = reader["Update_By"].ToString(),
+                                        UpdateOn = reader["Update_On"].ToString()
+                                    };
+                                    Contents.Add(Content);
+                                }
+                                log.Debug($"{sql}-[{i}]");
+                            }
+                            transaction.Commit();
+                        }
+                        catch (Exception ex)
+                        {
+                            transaction.Rollback();
+                            log.Error($"CreateContent Error: {ex.Message}");
+                        }
+                    }
                 }
-                ContentModel Content = new ContentModel
-                {
-                    Item_Name = $"item{i} name",
-                    Item_Description = $"item{i} Description",
-                    Item_type = $"{t}",
-                    Charge1 = DB_Base.SystemMail,
-                    Charge2 = DB_Base.SystemMail,
-                    Row_Id = "1",
-                    Department_Id = $"{d}",
-                    Interval = "1",
-                    Is_alert = 1,
-                    CreateBy = "System",
-                    UpdateBy = "System",
-                };
-                InsertContent(Content);
-
+            }
+            catch (Exception ex)
+            {
+                log.Error($"CreateContent Error: {ex.Message}");
             }
 
+            return Contents;
         }
+
+        public ContentModel GetContent_id(int id)
+        {
+            var Content = new ContentModel();
+            try
+            {
+                using (var connection = new SQLiteConnection(DB_Base.DBConnectionString))
+                {
+                    connection.Open();
+                    string sql = $"SELECT * FROM Item_TB where Item_Id = '{id}' ";
+                    using (SQLiteTransaction transaction = connection.BeginTransaction())
+                    {
+                        try
+                        {
+                            using (var command = new SQLiteCommand(sql, connection))
+                            using (var reader = command.ExecuteReader())
+                            {
+                                int i = 0;
+                                while (reader.Read())
+                                {
+                                    i++;
+                                    Content = new ContentModel
+                                    {
+                                        Item_Id = Convert.ToInt32(reader["Item_Id"]),
+                                        Item_Name = reader["Item_Name"].ToString(),
+                                        Item_Description = reader["Item_Description"].ToString(),
+                                        Item_type = reader["Item_type"].ToString(),
+                                        Charge1 = reader["Charge1"].ToString(),
+                                        Charge2 = reader["Charge2"].ToString(),
+                                        Row_Id = reader["Row_Id"].ToString(),
+                                        Department_Id = reader["Department_Id"].ToString(),
+                                        Is_alert = Convert.ToInt32(reader["Is_alert"]),
+                                        On_hand = reader["On_hand"].ToString(),
+                                        Interval = reader["Interval"].ToString(),
+                                        RFID = reader["RFID"].ToString(),
+                                        CreateBy = reader["Create_By"].ToString(),
+                                        CreateOn = reader["Create_On"].ToString(),
+                                        UpdateBy = reader["Update_By"].ToString(),
+                                        UpdateOn = reader["Update_On"].ToString()
+                                    };
+                                    
+                                }
+                                log.Debug($"{sql}-[{i}]");
+                            }
+                            transaction.Commit();
+                        }
+                        catch (Exception ex)
+                        {
+                            transaction.Rollback();
+                            log.Error($"CreateContent Error: {ex.Message}");
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                log.Error($"CreateContent Error: {ex.Message}");
+            }
+
+            return Content;
+        }
+        public bool CheckItemName(string name)
+        {
+            var result = false;
+            try
+            {
+                using (var connection = new SQLiteConnection(DB_Base.DBConnectionString))
+                {
+                    connection.Open();
+                    string sql = $"SELECT count(*) FROM Item_TB where Item_Name ='{name}'";
+                    using (SQLiteTransaction transaction = connection.BeginTransaction())
+                    {
+                        try
+                        {
+                            using (var command = new SQLiteCommand(sql, connection))
+                            {
+                                var obj = command.ExecuteScalar();
+                                log.Debug($"{sql}-[{obj}]");
+                                result = Convert.ToInt32(obj) == 0;
+                            }
+                            transaction.Commit();
+                        }
+                        catch (Exception ex)
+                        {
+                            transaction.Rollback();
+                            log.Error($"CreateContent Error: {ex.Message}");
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                log.Error($"CreateContent Error: {ex.Message}");
+            }
+
+            return result;
+        }
+
+
     }
 
 
@@ -607,6 +776,7 @@ namespace XpertApp2.DB
         public string Interval { get; set; }
         public int Is_alert { get; set; }
         public string On_hand { get; set; }
+        public string RFID { get; set; }
         public string CreateBy { get; set; }
         public string CreateOn { get; set; }
         public string UpdateBy { get; set; }

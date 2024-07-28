@@ -12,6 +12,7 @@ namespace XpertApp2.DB
     public class EventDB
     {
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         #region event
         public void CreateEvent()
         {
@@ -90,7 +91,6 @@ namespace XpertApp2.DB
             }
 
         }
-
 
 
         public void InsertEvent(EventModel Event)
@@ -173,7 +173,7 @@ namespace XpertApp2.DB
                 using (var connection = new SQLiteConnection(DB_Base.DBConnectionString))
                 {
                     connection.Open();
-                    string sql = "SELECT * FROM Event_Log_TB";
+                    string sql = "SELECT * FROM Event_Log_TB order by Event_datetime desc";
                     using (SQLiteTransaction transaction = connection.BeginTransaction())
                     {
                         try
@@ -219,6 +219,119 @@ namespace XpertApp2.DB
             }
             return Events;
         }
+
+        public List<EventModel> GetEvents_type(string type)
+        {
+            var Events = new List<EventModel>();
+
+            try
+            {
+                using (var connection = new SQLiteConnection(DB_Base.DBConnectionString))
+                {
+                    connection.Open();
+                    string sql = $"SELECT * FROM Event_Log_TB where Event_Type='{type}' order by Event_datetime desc";
+                    using (SQLiteTransaction transaction = connection.BeginTransaction())
+                    {
+                        try
+                        {
+                            using (var command = new SQLiteCommand(sql, connection))
+                            using (var reader = command.ExecuteReader())
+                            {
+                                int i = 0;
+                                while (reader.Read())
+                                {
+                                    i++;
+                                    var Event = new EventModel
+                                    {
+                                        Id = reader["Id"].ToString(),
+                                        Event_datetime = reader["Event_datetime"].ToString(),
+                                        Event_Type = reader["Event_Type"].ToString(),
+                                        Event_Description = reader["Event_Description"].ToString(),
+                                        User_Id = reader["User_Id"].ToString(),
+                                        CreateBy = reader["Create_By"].ToString(),
+                                        CreateOn = reader["Create_On"].ToString()
+
+                                    };
+                                    Events.Add(Event);
+                                }
+                                log.Debug($"{sql}-[{i}]");
+                            }
+                            transaction.Commit();
+                        }
+                        catch (Exception ex)
+                        {
+                            transaction.Rollback();
+                            log.Error($"Event_Log Error: {ex.Message}");
+                        }
+                    }
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+
+                log.Error($"Event_Log Error: {ex.Message}");
+            }
+            return Events;
+        }
+
+        public List<EventModel> GetEvents_description(string name)
+        {
+            var Events = new List<EventModel>();
+
+            try
+            {
+                using (var connection = new SQLiteConnection(DB_Base.DBConnectionString))
+                {
+                    connection.Open();
+                    string sql = $"SELECT * FROM Event_Log_TB where Event_Description like '%{name}%' order by Event_datetime desc";
+                    using (SQLiteTransaction transaction = connection.BeginTransaction())
+                    {
+                        try
+                        {
+                            using (var command = new SQLiteCommand(sql, connection))
+                            using (var reader = command.ExecuteReader())
+                            {
+                                int i = 0;
+                                while (reader.Read())
+                                {
+                                    i++;
+                                    var Event = new EventModel
+                                    {
+                                        Id = reader["Id"].ToString(),
+                                        Event_datetime = reader["Event_datetime"].ToString(),
+                                        Event_Type = reader["Event_Type"].ToString(),
+                                        Event_Description = reader["Event_Description"].ToString(),
+                                        User_Id = reader["User_Id"].ToString(),
+                                        CreateBy = reader["Create_By"].ToString(),
+                                        CreateOn = reader["Create_On"].ToString()
+
+                                    };
+                                    Events.Add(Event);
+                                }
+                                log.Debug($"{sql}-[{i}]");
+                            }
+                            transaction.Commit();
+                        }
+                        catch (Exception ex)
+                        {
+                            transaction.Rollback();
+                            log.Error($"Event_Log Error: {ex.Message}");
+                        }
+                    }
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+
+                log.Error($"Event_Log Error: {ex.Message}");
+            }
+            return Events;
+        }
+
         #endregion
 
         #region BorrowRecords
