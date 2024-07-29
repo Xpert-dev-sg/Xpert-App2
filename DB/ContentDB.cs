@@ -13,7 +13,8 @@ namespace XpertApp2.DB
     public class ContentDB
     {
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-
+        
+        private EventDB eventDB = new EventDB();
         #region create, drop,insert, get, update, delete
         public void CreateContent()
         {
@@ -205,7 +206,9 @@ namespace XpertApp2.DB
                                 command.Parameters.AddWithValue("@UpdateOn", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
 
                                 var obj = command.ExecuteScalar();
-                                log.Debug($"{sql}-[{obj}]");
+                                var msg = $"{sql}-[{obj}]";
+                                eventDB.InsertEvent_system("", msg, DB_Base.CurrentUser.UserName, connection);
+                                log.Debug(msg);
                             }
                             transaction.Commit();
                             result = true;
@@ -267,7 +270,9 @@ namespace XpertApp2.DB
                                         };
                                         Contents.Add(Content);
                                     }
-                                log.Debug($"{sql}-[{i}]");
+                                var msg = $"{sql}-[{i}]";
+                                eventDB.InsertEvent_system("", msg, DB_Base.CurrentUser.UserName, connection);
+                                log.Debug(msg);
                             }
                             transaction.Commit();
                         }
@@ -322,9 +327,12 @@ namespace XpertApp2.DB
                                 command.Parameters.AddWithValue("@Interval", Content.Interval);
                                 command.Parameters.AddWithValue("@UpdateBy", Content.UpdateBy);
                                 command.Parameters.AddWithValue("@UpdateOn", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+                                command.Parameters.AddWithValue("@Item_Id", Content.Item_Id);
 
                                 var obj = command.ExecuteScalar();
-                                log.Debug($"{sql}-[{obj}]");
+                                var msg = $"{sql}-[{obj}]";
+                                eventDB.InsertEvent_system("", msg, DB_Base.CurrentUser.UserName, connection);
+                                log.Debug(msg);
                                 result = true;
                             }
                             transaction.Commit();
@@ -361,7 +369,9 @@ namespace XpertApp2.DB
                             {
                                 command.Parameters.AddWithValue("@Item_Id", Item_Id);
                                 var obj = command.ExecuteScalar();
-                                log.Debug($"{sql}-[{obj}]");
+                                var msg = $"{sql}-[{obj}]";
+                                eventDB.InsertEvent_system("", msg, DB_Base.CurrentUser.UserName, connection);
+                                log.Debug(msg);
                             }
                             transaction.Commit();
                             result = true;
@@ -410,7 +420,9 @@ namespace XpertApp2.DB
                                     };
                                     Departments.Add(Department);
                                 }
-                                log.Debug($"{sql}-[{i}]");
+                                var msg = $"{sql}-[{i}]";
+                                eventDB.InsertEvent_system("", msg, DB_Base.CurrentUser.UserName, connection);
+                                log.Debug(msg);
                             }
 
                             transaction.Commit();
@@ -460,7 +472,9 @@ namespace XpertApp2.DB
                                     };
                                     Departments.Add(Department);
                                 }
-                                log.Debug($"{sql}-[{i}]");
+                                var msg = $"{sql}-[{i}]";
+                                eventDB.InsertEvent_system("", msg, DB_Base.CurrentUser.UserName, connection);
+                                log.Debug(msg);
                             }
                             transaction.Commit();
                         }
@@ -521,7 +535,9 @@ namespace XpertApp2.DB
                                     };
                                     Contents.Add(Content);
                                 }
-                                log.Debug($"{sql}-[{i}]");
+                                var msg = $"{sql}-[{i}]";
+                                eventDB.InsertEvent_system("", msg, DB_Base.CurrentUser.UserName, connection);
+                                log.Debug(msg);
                             }
                             transaction.Commit();
                         }
@@ -581,7 +597,9 @@ namespace XpertApp2.DB
                                     };
                                     Contents.Add(Content);
                                 }
-                                log.Debug($"{sql}-[{i}]");
+                                var msg = $"{sql}-[{i}]";
+                                eventDB.InsertEvent_system("", msg, DB_Base.CurrentUser.UserName, connection);
+                                log.Debug(msg);
                             }
                             transaction.Commit();
                         }
@@ -641,7 +659,9 @@ namespace XpertApp2.DB
                                     };
                                     Contents.Add(Content);
                                 }
-                                log.Debug($"{sql}-[{i}]");
+                                var msg = $"{sql}-[{i}]";
+                                eventDB.InsertEvent_system("", msg, DB_Base.CurrentUser.UserName, connection);
+                                log.Debug(msg);
                             }
                             transaction.Commit();
                         }
@@ -702,7 +722,9 @@ namespace XpertApp2.DB
                                     };
                                     
                                 }
-                                log.Debug($"{sql}-[{i}]");
+                                var msg = $"{sql}-[{i}]";
+                                eventDB.InsertEvent_system("", msg, DB_Base.CurrentUser.UserName, connection);
+                                log.Debug(msg);
                             }
                             transaction.Commit();
                         }
@@ -737,7 +759,9 @@ namespace XpertApp2.DB
                             using (var command = new SQLiteCommand(sql, connection))
                             {
                                 var obj = command.ExecuteScalar();
-                                log.Debug($"{sql}-[{obj}]");
+                                var msg = $"{sql}-[{obj}]";
+                                eventDB.InsertEvent_system("", msg, DB_Base.CurrentUser.UserName, connection);
+                                log.Debug(msg);
                                 result = Convert.ToInt32(obj) == 0;
                             }
                             transaction.Commit();

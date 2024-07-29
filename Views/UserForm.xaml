@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:XpertApp2.Views"
         xmlns:hc="https://handyorg.github.io/handycontrol" x:Class="XpertApp2.Views.UserForm"
         mc:Ignorable="d" WindowStyle="None" 
-        Title="UserForm" Height="300" Width="400">
+        Title="UserForm" Height="300" Width="500">
     <Grid>
 
         <hc:SimplePanel>

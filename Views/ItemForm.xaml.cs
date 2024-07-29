@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 using XpertApp2.DB;
 using XpertApp2.Utility;
 
@@ -24,13 +25,18 @@ namespace XpertApp2.Views
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private ContentDB contentDB = new ContentDB();
         public static bool Is_Update = false;
+        private int _item_id;
         public ItemForm()
         {
 
             WindowStartupLocation = WindowStartupLocation.CenterScreen;
             InitializeComponent();
             MonitorKeyMouseUntility.MonitorKeyMouseMain();
-            TimeUtility.CarouselMenuTimer();
+
+            DispatcherTimer timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(10);
+            timer.Tick += AfterLoginFormTimer_Tick;
+            timer.Start();
             initialize();
         }
         #region initialize
@@ -48,6 +54,7 @@ namespace XpertApp2.Views
 
         public void Update_state_Load(ContentModel item)
         {
+            _item_id= item.Item_Id;
             txtDeadline.Text = item.Interval;
             txtDepartment.Text = item.Department_Id;
             txtItemDescription.Text = item.Department_Id;
@@ -63,6 +70,10 @@ namespace XpertApp2.Views
         private ContentModel GetItem_form()
         {
             var item = new ContentModel();
+            if (Is_Update)
+            {
+                item.Item_Id = _item_id;
+            }
             item.Item_Name = txtItemName.Text;
             item.Department_Id = txtItemDescription.Text;
             item.Item_type = txtItemType.Text;
@@ -88,7 +99,7 @@ namespace XpertApp2.Views
             }
             else
             {
-                if (!contentDB.CheckItemName(txtItemName.Text))
+                if  (!Is_Update &&!contentDB.CheckItemName(txtItemName.Text))
                 {
                     MessageBox.Show("Item Name already in DB");
                     return false;
@@ -167,6 +178,14 @@ namespace XpertApp2.Views
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+        private void AfterLoginFormTimer_Tick(object sender, EventArgs e)
+        {
+            if (!DB_Base.Islogined)
+            {
+                this.Close();
+            }
+
         }
     }
 }

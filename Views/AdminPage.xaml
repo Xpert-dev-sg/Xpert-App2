@@ -36,16 +36,16 @@
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition></ColumnDefinition>
                                     <ColumnDefinition></ColumnDefinition>
-                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition Width="100"></ColumnDefinition>
                                     <ColumnDefinition></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
                                 <TextBlock Grid.Row="0" Grid.Column="0" Text="Item Type" Margin="10,5,10,5" FontWeight="Bold" FontSize="16"></TextBlock>
-                                <ComboBox x:Name="cmbType" Grid.Row="0" Grid.Column="1" Width="200"  DisplayMemberPath="Value" SelectionChanged="cmbType_SelectionChanged"/>
+                                <ComboBox x:Name="cmbType" Grid.Row="0" Grid.Column="1" Width="150"  DisplayMemberPath="Value" SelectionChanged="cmbType_SelectionChanged"/>
                                 <TextBlock Grid.Row="0" Grid.Column="2"  Text="Demparment" Margin="10,5,10,5" FontWeight="Bold"></TextBlock>
-                                <ComboBox x:Name="cmbDepartment" Grid.Row="0" Grid.Column="3" Width="200"  DisplayMemberPath="Value" SelectionChanged="cmbDepartment_SelectionChanged"/>
+                                <ComboBox x:Name="cmbDepartment" Grid.Row="0" Grid.Column="3" Width="150"  DisplayMemberPath="Value" SelectionChanged="cmbDepartment_SelectionChanged"/>
                                 <TextBlock Grid.Row="1" Grid.Column="0" Text="Item Name" Margin="10,5,10,5" FontWeight="Bold" FontSize="16"></TextBlock>
 
-                                <hc:SearchBar Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" x:Name="txtItemName" HorizontalAlignment="Center"  TextWrapping="Wrap"  VerticalAlignment="Center" Width="798" SearchStarted="txtItemName_SearchStarted"/>
+                                <hc:SearchBar Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" x:Name="txtItemName" HorizontalAlignment="Center"  TextWrapping="Wrap"  VerticalAlignment="Center" Width="400" SearchStarted="txtItemName_SearchStarted"/>
                                 
                             </Grid>
                             <Button x:Name="btnnew_item" HorizontalAlignment="Right" VerticalAlignment="Bottom"  Click="btnnew_item_Click" Width="100" Height="30" Content="New Item" Margin="0,0,10,10"/>
@@ -148,16 +148,16 @@
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition></ColumnDefinition>
                                     <ColumnDefinition></ColumnDefinition>
-                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition Width="100"></ColumnDefinition>
                                     <ColumnDefinition></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
                                 <TextBlock Grid.Row="0" Grid.Column="0" Text="Permission level" Margin="10,5,10,5" FontWeight="Bold" FontSize="16"></TextBlock>
-                                <ComboBox x:Name="cmbrow" Grid.Row="0" Grid.Column="1" Width="200"  DisplayMemberPath="Value" SelectionChanged="cmbType_user_SelectionChanged"/>
+                                <ComboBox x:Name="cmbrow_user" Grid.Row="0" Grid.Column="1" Width="150"  DisplayMemberPath="Value" SelectionChanged="cmbType_user_SelectionChanged"/>
                                 <TextBlock Grid.Row="0" Grid.Column="2"  Text="Demparment" Margin="10,5,10,5" FontWeight="Bold"></TextBlock>
-                                <ComboBox x:Name="cmbDepartment_user" Grid.Row="0" Grid.Column="3" Width="200"  DisplayMemberPath="Value" SelectionChanged="cmbDepartment_user_SelectionChanged"/>
+                                <ComboBox x:Name="cmbDepartment_user" Grid.Row="0" Grid.Column="3" Width="150"  DisplayMemberPath="Value" SelectionChanged="cmbDepartment_user_SelectionChanged"/>
                                 <TextBlock Grid.Row="1" Grid.Column="0" Text="Item Name" Margin="10,5,10,5" FontWeight="Bold" FontSize="16"></TextBlock>
 
-                                <hc:SearchBar Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" x:Name="txtuserName" HorizontalAlignment="Center"  TextWrapping="Wrap"  VerticalAlignment="Center" Width="798" SearchStarted="txtItemName_user_SearchStarted"/>
+                                <hc:SearchBar Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" x:Name="txtuserName" HorizontalAlignment="Center"  TextWrapping="Wrap"  VerticalAlignment="Center" Width="400" SearchStarted="txtItemName_user_SearchStarted"/>
 
                             </Grid>
                             <Button x:Name="btnnew_user" HorizontalAlignment="Right" VerticalAlignment="Bottom"  Click="btnnew_user_Click" Width="100" Height="30" Content="New user" Margin="0,0,10,10"/>
@@ -265,7 +265,7 @@
                                 <ComboBox x:Name="cmbDepartment" Grid.Row="0" Grid.Column="3" Width="200"  DisplayMemberPath="Value" SelectionChanged="cmbDepartment_SelectionChanged"/>-->
                                 <TextBlock Grid.Row="1" Grid.Column="0" Text="Event Description" Margin="10,5,10,5" FontWeight="Bold" FontSize="16"></TextBlock>
 
-                                <hc:SearchBar Grid.Row="1" Grid.Column="1"  x:Name="txtlogName" HorizontalAlignment="Center"  TextWrapping="Wrap"  VerticalAlignment="Center" Width="798" SearchStarted="txtName_log_SearchStarted"/>
+                                <hc:SearchBar Grid.Row="1" Grid.Column="1"  x:Name="txtlogName" HorizontalAlignment="Center"  TextWrapping="Wrap"  VerticalAlignment="Center" Width="200" SearchStarted="txtName_log_SearchStarted"/>
 
                             </Grid>
                         </hc:SimplePanel>
@@ -318,7 +318,7 @@
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Dateime" Width="150" Binding="{Binding Event_datetime}"></DataGridTextColumn>
                                 <DataGridTextColumn Header="Eventtype" Width="100" Binding="{Binding Event_Type}"></DataGridTextColumn>
-                                <DataGridTextColumn Header="Description" Width="250" Binding="{Binding Event_Description}"></DataGridTextColumn>
+                                <DataGridTextColumn Header="Description" Width="300" Binding="{Binding Event_Description}"></DataGridTextColumn>
                                 <DataGridTextColumn Header="user" Width="50" Binding="{Binding User_Id}"></DataGridTextColumn>
                             </DataGrid.Columns>
                         </DataGrid>

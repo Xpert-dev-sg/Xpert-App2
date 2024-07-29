@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 using XpertApp2.DB;
 using XpertApp2.Models;
 using XpertApp2.Utility;
@@ -22,7 +23,7 @@ namespace XpertApp2.Views
     /// <summary>
     /// Interaction logic for Page3.xaml
     /// </summary>
-    public partial class AdminPage : Page
+    public partial class AdminPage : Page, IDisposable
     {
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private ContentDB contentDB = new ContentDB();
@@ -32,7 +33,10 @@ namespace XpertApp2.Views
         {
             InitializeComponent();
             MonitorKeyMouseUntility.MonitorKeyMouseMain();
-            TimeUtility.CarouselMenuTimer();
+            DispatcherTimer timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(10);
+            timer.Tick += AfterLoginFormTimer_Tick;
+            timer.Start();
             Load();
         }
 
@@ -45,13 +49,14 @@ namespace XpertApp2.Views
             cmbType.ItemsSource = contentDB.GetItemType();
             //user
             userdataGrid.ItemsSource = userDB.GetUsers();
-
+            cmbrow_user.ItemsSource = userDB.GetUsers_row();
+            cmbDepartment_user.ItemsSource = userDB.GetUsers_Department();
 
             //log
             eventdataGrid.ItemsSource = logDB.GetEvents();
-
+            cmbType_log.ItemsSource = logDB.GetEvents_type();
         }
-        
+
 
         #region user
         #region search
@@ -144,9 +149,9 @@ namespace XpertApp2.Views
 
         private void btnnew_item_Click(object sender, RoutedEventArgs e)
         {
-            ItemForm itemForm = new ItemForm(); 
+            ItemForm itemForm = new ItemForm();
             ItemForm.Is_Update = false;
-            itemForm.Closed +=itemform_Closed;
+            itemForm.Closed += itemform_Closed;
             itemForm.ShowDialog();
         }
         private void itemform_Closed(object? sender, EventArgs e)
@@ -204,6 +209,32 @@ namespace XpertApp2.Views
 
         #endregion
 
-        
+        private void AfterLoginFormTimer_Tick(object sender, EventArgs e)
+        {
+            if (!DB_Base.Islogined)
+            {
+                try
+                {
+                    //Dispose();
+                    
+                    NavigationService.RemoveBackEntry();
+                    NavigationService.Navigate(new MenuPage());
+                }
+                catch (Exception)
+                {
+
+                    //throw;
+                }
+
+
+            }
+
+        }
+
+        public void Dispose()
+        {
+            //NavigationService.RemoveBackEntry();
+            throw new NotImplementedException();
+        }
     }
 }

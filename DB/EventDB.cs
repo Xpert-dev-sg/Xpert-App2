@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Transactions;
+using XpertApp2.Models;
 
 namespace XpertApp2.DB
 {
@@ -27,7 +28,7 @@ namespace XpertApp2.DB
                                         Event_datetime TEXT NOT NULL,
 										Event_Type TEXT NOT NULL,
 										Event_Description  TEXT NOT NULL,
-										User_Id INTEGER NOT NULL,
+										User_Id TEXT NOT NULL,
 										Create_By TEXT NOT NULL,
 										Create_On TEXT NOT NULL)";
                     using (SQLiteTransaction transaction = connection.BeginTransaction())
@@ -119,7 +120,9 @@ namespace XpertApp2.DB
 
 
                                 var obj = command.ExecuteScalar();
-                                log.Debug($"{sql}-[{obj}]");
+                                var msg = $"{sql}-[{obj}]";
+                                InsertEvent_system("", msg, DB_Base.CurrentUser.UserName, connection);
+                                log.Debug(msg);
                             }
                             transaction.Commit();
                         }
@@ -139,28 +142,29 @@ namespace XpertApp2.DB
 
         }
 
-        public void InsertEvent(EventModel Event, SQLiteConnection connection)
+        public void InsertEvent_system(string type, string strevent, string username, SQLiteConnection connection)
         {
+            if(string.IsNullOrEmpty(type))
+            {
+                type= "DB_operation";
+            }
             string sql = "INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) " +
                        "VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)";
-           
-                using (var command = new SQLiteCommand(sql, connection))
-                {
-                    string id = Guid.NewGuid().ToString();
-                    command.Parameters.AddWithValue("@Id", id);
-                    command.Parameters.AddWithValue("@Event_datetime", Event.Event_datetime);
-                    command.Parameters.AddWithValue("@Event_Type", Event.Event_Type);
-                    command.Parameters.AddWithValue("@Event_Description", Event.Event_Description);
-                    command.Parameters.AddWithValue("@User_Id", Event.User_Id);
-                    command.Parameters.AddWithValue("@Create_By", Event.CreateBy);
-                    command.Parameters.AddWithValue("@Create_On", Event.CreateOn);
 
+            using (var command = new SQLiteCommand(sql, connection))
+            {
+                string id = Guid.NewGuid().ToString();
+                command.Parameters.AddWithValue("@Id", id);
+                command.Parameters.AddWithValue("@Event_datetime", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+                command.Parameters.AddWithValue("@Event_Type", type);
+                command.Parameters.AddWithValue("@Event_Description", strevent);
+                command.Parameters.AddWithValue("@User_Id", username);
+                command.Parameters.AddWithValue("@Create_By", "System");
+                command.Parameters.AddWithValue("@Create_On", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
 
-                    var obj = command.ExecuteScalar();
-                    log.Debug($"{sql}-[{obj}]");
-                }
-
-           
+                var obj = command.ExecuteScalar();
+                log.Debug($"{sql}-[{obj}]");
+            }
 
         }
 
@@ -198,7 +202,9 @@ namespace XpertApp2.DB
                                     };
                                     Events.Add(Event);
                                 }
-                                log.Debug($"{sql}-[{i}]");
+                                var msg = $"{sql}-[{i}]";
+                                InsertEvent_system("", msg, DB_Base.CurrentUser.UserName, connection);
+                                log.Debug(msg);
                             }
                             transaction.Commit();
                         }
@@ -218,6 +224,59 @@ namespace XpertApp2.DB
                 log.Error($"Event_Log Error: {ex.Message}");
             }
             return Events;
+        }
+
+        public List<keyValueModel> GetEvents_type()
+        {
+            var types = new List<keyValueModel>();
+
+            try
+            {
+                using (var connection = new SQLiteConnection(DB_Base.DBConnectionString))
+                {
+                    connection.Open();
+                    string sql = "SELECT Event_Type FROM Event_Log_TB group by Event_Type order by Event_Type";
+                    using (SQLiteTransaction transaction = connection.BeginTransaction())
+                    {
+                        try
+                        {
+                            using (var command = new SQLiteCommand(sql, connection))
+                            using (var reader = command.ExecuteReader())
+                            {
+                                int i = 0;
+                                while (reader.Read())
+                                {
+                                    i++;
+                                    var type = new keyValueModel
+                                    {
+                                        Key = reader["Event_Type"].ToString(),
+                                        Value = reader["Event_Type"].ToString()
+
+                                    };
+                                    types.Add(type);
+                                }
+                                var msg = $"{sql}-[{i}]";
+                                InsertEvent_system("", msg, DB_Base.CurrentUser.UserName, connection);
+                                log.Debug(msg);
+                            }
+                            transaction.Commit();
+                        }
+                        catch (Exception ex)
+                        {
+                            transaction.Rollback();
+                            log.Error($"Event_Log Error: {ex.Message}");
+                        }
+                    }
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+
+                log.Error($"Event_Log Error: {ex.Message}");
+            }
+            return types;
         }
 
         public List<EventModel> GetEvents_type(string type)
@@ -254,7 +313,9 @@ namespace XpertApp2.DB
                                     };
                                     Events.Add(Event);
                                 }
-                                log.Debug($"{sql}-[{i}]");
+                                var msg = $"{sql}-[{i}]";
+                                InsertEvent_system("", msg, DB_Base.CurrentUser.UserName, connection);
+                                log.Debug(msg);
                             }
                             transaction.Commit();
                         }
@@ -310,7 +371,9 @@ namespace XpertApp2.DB
                                     };
                                     Events.Add(Event);
                                 }
-                                log.Debug($"{sql}-[{i}]");
+                                var msg = $"{sql}-[{i}]";
+                                InsertEvent_system("", msg, DB_Base.CurrentUser.UserName, connection);
+                                log.Debug(msg);
                             }
                             transaction.Commit();
                         }
@@ -442,7 +505,9 @@ namespace XpertApp2.DB
 
 
                                 var obj = command.ExecuteScalar();
-                                log.Debug($"{sql}-[{obj}]");
+                                var msg = $"{sql}-[{obj}]";
+                                InsertEvent_system("", msg, DB_Base.CurrentUser.UserName, connection);
+                                log.Debug(msg);
                             }
                             transaction.Commit();
                         }
@@ -481,7 +546,9 @@ namespace XpertApp2.DB
                                 command.Parameters.AddWithValue("@User_Id", user_id);
                                 command.Parameters.AddWithValue("@Return_datetime", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
                                 var obj = command.ExecuteScalar();
-                                log.Debug($"{sql}-[{obj}]");
+                                var msg = $"{sql}-[{obj}]";
+                                InsertEvent_system("", msg, DB_Base.CurrentUser.UserName, connection);
+                                log.Debug(msg);
                             }
                             transaction.Commit();
                         }
@@ -535,7 +602,9 @@ namespace XpertApp2.DB
                                     };
                                     BorrowRecords.Add(BorrowRecord);
                                 }
-                                log.Debug($"{sql}-[{i}]");
+                                var msg = $"{sql}-[{i}]";
+                                InsertEvent_system("", msg, DB_Base.CurrentUser.UserName, connection);
+                                log.Debug(msg);
                             }
                             transaction.Commit();
                         }

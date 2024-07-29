@@ -6,12 +6,17 @@ using System.Threading.Tasks;
 using System.Data.SQLite;
 using System.Transactions;
 using System.Data.Common;
+using XpertApp2.Models;
+using System.Windows.Interop;
 
 namespace XpertApp2.DB
 {
     public class UserDB
     {
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
+        private EventDB eventDB = new EventDB();
+        #region create, drop,insert, get, update, delete
         public void CreateUser()
         {
             try
@@ -46,14 +51,14 @@ namespace XpertApp2.DB
                         catch (Exception ex)
                         {
                             transaction.Rollback();
-                            log.Error($"CreateContent Error: {ex.Message}");
+                            log.Error($"userdb Error: {ex.Message}");
                         }
                     }
                 }
             }
             catch (Exception ex)
             {
-                log.Error($"CreateContent Error: {ex.Message}");
+                log.Error($"userdb Error: {ex.Message}");
             }
 
         }
@@ -81,14 +86,14 @@ namespace XpertApp2.DB
                         catch (Exception ex)
                         {
                             transaction.Rollback();
-                            log.Error($"CreateContent Error: {ex.Message}");
+                            log.Error($"userdb Error: {ex.Message}");
                         }
                     }
                 }
             }
             catch (Exception ex)
             {
-                log.Error($"CreateContent Error: {ex.Message}");
+                log.Error($"userdb Error: {ex.Message}");
             }
 
         }
@@ -195,7 +200,9 @@ namespace XpertApp2.DB
                                 command.Parameters.AddWithValue("@UpdateBy", user.UpdateBy);
                                 command.Parameters.AddWithValue("@UpdateOn", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
                                 var obj = command.ExecuteScalar();
-                                log.Debug($"{sql}-[{obj}]");
+                                var msg = $"{sql}-[{obj}]";
+                                eventDB.InsertEvent_system("", msg, DB_Base.CurrentUser.UserName, connection);
+                                log.Debug(msg);
                             }
                             transaction.Commit();
                             result = true;
@@ -203,14 +210,14 @@ namespace XpertApp2.DB
                         catch (Exception ex)
                         {
                             transaction.Rollback();
-                            log.Error($"CreateContent Error: {ex.Message}");
+                            log.Error($"userdb Error: {ex.Message}");
                         }
                     }
                 }
             }
             catch (Exception ex)
             {
-                log.Error($"CreateContent Error: {ex.Message}");
+                log.Error($"userdb Error: {ex.Message}");
             }
             return result;
         }
@@ -252,21 +259,24 @@ namespace XpertApp2.DB
                                         };
                                         users.Add(user);
                                     }
-                                log.Debug($"{sql}-[{i}]");
+                                var msg = $"{sql}-[{i}]";
+                                eventDB.InsertEvent_system("", msg, DB_Base.CurrentUser.UserName, connection);
+                                log.Debug(msg);
+                                
                             }
                             transaction.Commit();
                         }
                         catch (Exception ex)
                         {
                             transaction.Rollback();
-                            log.Error($"CreateContent Error: {ex.Message}");
+                            log.Error($"userdb Error: {ex.Message}");
                         }
                     }
                 }
             }
             catch (Exception ex)
             {
-                log.Error($"CreateContent Error: {ex.Message}");
+                log.Error($"userdb Error: {ex.Message}");
             }
 
 
@@ -296,10 +306,12 @@ namespace XpertApp2.DB
                                 command.Parameters.AddWithValue("@DepartmentId", user.DepartmentId);
                                 command.Parameters.AddWithValue("@Email", user.Email);
                                 command.Parameters.AddWithValue("@UpdateBy", user.UpdateBy);
-                                command.Parameters.AddWithValue("@UpdateOn", user.UpdateOn);
+                                command.Parameters.AddWithValue("@UpdateOn", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
 
                                 var obj = command.ExecuteScalar();
-                                log.Debug($"{sql}-[{obj}]");
+                                var msg = $"{sql}-[{obj}]";
+                                eventDB.InsertEvent_system("", msg, DB_Base.CurrentUser.UserName, connection);
+                                log.Debug(msg);
                             }
                             transaction.Commit();
                             result = true;
@@ -307,14 +319,14 @@ namespace XpertApp2.DB
                         catch (Exception ex)
                         {
                             transaction.Rollback();
-                            log.Error($"CreateContent Error: {ex.Message}");
+                            log.Error($"userdb Error: {ex.Message}");
                         }
                     }
                 }
             }
             catch (Exception ex)
             {
-                log.Error($"CreateContent Error: {ex.Message}");
+                log.Error($"userdb Error: {ex.Message}");
             }
             return result;
         }
@@ -336,7 +348,9 @@ namespace XpertApp2.DB
                             {
                                 command.Parameters.AddWithValue("@UserId", userId);
                                 var obj = command.ExecuteScalar();
-                                log.Debug($"{sql}-[{obj}]");
+                                var msg = $"{sql}-[{obj}]";
+                                eventDB.InsertEvent_system("", msg, DB_Base.CurrentUser.UserName, connection);
+                                log.Debug(msg);
                             }
                             transaction.Commit();
                             result = true;
@@ -344,17 +358,19 @@ namespace XpertApp2.DB
                         catch (Exception ex)
                         {
                             transaction.Rollback();
-                            log.Error($"CreateContent Error: {ex.Message}");
+                            log.Error($"userdb Error: {ex.Message}");
                         }
                     }
                 }
             }
             catch (Exception ex)
             {
-                log.Error($"CreateContent Error: {ex.Message}");
+                log.Error($"userdb Error: {ex.Message}");
             }
             return result;
         }
+
+        #endregion
 
         public bool IsLogined(string ps)
         {
@@ -385,17 +401,7 @@ namespace XpertApp2.DB
                                         DB_Base.CurrentUser.Email = reader["email"].ToString();
 
                                         //add log
-                                        EventDB eventDB = new EventDB();
-
-                                        eventDB.InsertEvent(new EventModel
-                                        {
-                                            Event_datetime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
-                                            Event_Type = "Login",
-                                            Event_Description = "User Login",
-                                            User_Id = DB_Base.CurrentUser.UserId.ToString(),
-                                            CreateBy = "SYSTEM",
-                                            CreateOn = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")
-                                        }, connection);
+                                        eventDB.InsertEvent_system("Login","User Login",DB_Base.CurrentUser.UserName, connection);
 
                                         result = true;
                                     }
@@ -405,14 +411,14 @@ namespace XpertApp2.DB
                         catch (Exception ex)
                         {
                             transaction.Rollback();
-                            log.Error($"CreateContent Error: {ex.Message}");
+                            log.Error($"userdb Error: {ex.Message}");
                         }
                     }
                 }
             }
             catch (Exception ex)
             {
-                log.Error($"CreateContent Error: {ex.Message}");
+                log.Error($"userdb Error: {ex.Message}");
             }
 
             return result;
@@ -431,16 +437,118 @@ namespace XpertApp2.DB
                     Event_datetime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
                     Event_Type = "Logout",
                     Event_Description = "User Logout",
-                    User_Id = DB_Base.CurrentUser.UserId.ToString(),
+                    User_Id = DB_Base.CurrentUser.UserName,
                     CreateBy = "SYSTEM",
                     CreateOn = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")
                 });
             }
             catch (Exception ex)
             {
-                log.Error($"CreateContent Error: {ex.Message}");
+                log.Error($"userdb Error: {ex.Message}");
             }
 
+        }
+
+        public List<keyValueModel> GetUsers_row()
+        {
+            var rows = new List<keyValueModel>();
+            try
+            {
+                using (var connection = new SQLiteConnection(DB_Base.DBConnectionString))
+                {
+                    connection.Open();
+                    string sql = $"SELECT Row_Id FROM User_TB group by Row_Id  order by Row_Id";
+                    using (SQLiteTransaction transaction = connection.BeginTransaction())
+                    {
+                        try
+                        {
+                            using (var command = new SQLiteCommand(sql, connection))
+                            using (var reader = command.ExecuteReader())
+                            {
+                                int i = 0;
+                                if (reader.HasRows)
+                                    while (reader.Read())
+                                    {
+                                        i++;
+                                        var row = new keyValueModel
+                                        {
+                                            Key = reader["Row_Id"].ToString(),
+                                            Value = reader["Row_Id"].ToString()
+                                        };
+                                        rows.Add(row);
+                                    }
+                                var msg = $"{sql}-[{i}]";
+                                eventDB.InsertEvent_system("", msg, DB_Base.CurrentUser.UserName, connection);
+                                log.Debug(msg); log.Debug($"{sql}-[{i}]");
+                            }
+                            transaction.Commit();
+                        }
+                        catch (Exception ex)
+                        {
+                            transaction.Rollback();
+                            log.Error($"userdb Error: {ex.Message}");
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                log.Error($"userdb Error: {ex.Message}");
+            }
+
+
+            return rows;
+        }
+
+        public List<keyValueModel> GetUsers_Department()
+        {
+            var deps = new List<keyValueModel>();
+            try
+            {
+                using (var connection = new SQLiteConnection(DB_Base.DBConnectionString))
+                {
+                    connection.Open();
+                    string sql = $"SELECT Department_Id FROM User_TB group by Department_Id  order by Department_Id";
+                    using (SQLiteTransaction transaction = connection.BeginTransaction())
+                    {
+                        try
+                        {
+                            using (var command = new SQLiteCommand(sql, connection))
+                            using (var reader = command.ExecuteReader())
+                            {
+                                int i = 0;
+                                if (reader.HasRows)
+                                    while (reader.Read())
+                                    {
+                                        i++;
+                                        var dep = new keyValueModel
+                                        {
+                                            Key = reader["Department_Id"].ToString(),
+                                            Value = reader["Department_Id"].ToString()
+                                        };
+                                        deps.Add(dep);
+                                    }
+                                var msg = $"{sql}-[{i}]";
+                                eventDB.InsertEvent_system("", msg, DB_Base.CurrentUser.UserName, connection);
+                                log.Debug(msg);
+                            }
+                            transaction.Commit();
+                        }
+                        catch (Exception ex)
+                        {
+                            transaction.Rollback();
+                            log.Error($"userdb Error: {ex.Message}");
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                log.Error($"userdb Error: {ex.Message}");
+            }
+
+
+            return deps;
         }
 
         public List<UserModel> GetUsers_row(string row)
@@ -480,21 +588,23 @@ namespace XpertApp2.DB
                                         };
                                         users.Add(user);
                                     }
-                                log.Debug($"{sql}-[{i}]");
+                                var msg = $"{sql}-[{i}]";
+                                eventDB.InsertEvent_system("", msg, DB_Base.CurrentUser.UserName, connection);
+                                log.Debug(msg);
                             }
                             transaction.Commit();
                         }
                         catch (Exception ex)
                         {
                             transaction.Rollback();
-                            log.Error($"CreateContent Error: {ex.Message}");
+                            log.Error($"userdb Error: {ex.Message}");
                         }
                     }
                 }
             }
             catch (Exception ex)
             {
-                log.Error($"CreateContent Error: {ex.Message}");
+                log.Error($"userdb Error: {ex.Message}");
             }
 
 
@@ -538,21 +648,23 @@ namespace XpertApp2.DB
                                         };
                                         users.Add(user);
                                     }
-                                log.Debug($"{sql}-[{i}]");
+                                var msg = $"{sql}-[{i}]";
+                                eventDB.InsertEvent_system("", msg, DB_Base.CurrentUser.UserName, connection);
+                                log.Debug(msg);
                             }
                             transaction.Commit();
                         }
                         catch (Exception ex)
                         {
                             transaction.Rollback();
-                            log.Error($"CreateContent Error: {ex.Message}");
+                            log.Error($"userdb Error: {ex.Message}");
                         }
                     }
                 }
             }
             catch (Exception ex)
             {
-                log.Error($"CreateContent Error: {ex.Message}");
+                log.Error($"userdb Error: {ex.Message}");
             }
 
 
@@ -596,21 +708,23 @@ namespace XpertApp2.DB
                                         };
                                         users.Add(user);
                                     }
-                                log.Debug($"{sql}-[{i}]");
+                                var msg = $"{sql}-[{i}]";
+                                eventDB.InsertEvent_system("", msg, DB_Base.CurrentUser.UserName, connection);
+                                log.Debug(msg);
                             }
                             transaction.Commit();
                         }
                         catch (Exception ex)
                         {
                             transaction.Rollback();
-                            log.Error($"CreateContent Error: {ex.Message}");
+                            log.Error($"userdb Error: {ex.Message}");
                         }
                     }
                 }
             }
             catch (Exception ex)
             {
-                log.Error($"CreateContent Error: {ex.Message}");
+                log.Error($"userdb Error: {ex.Message}");
             }
 
 
@@ -625,7 +739,7 @@ namespace XpertApp2.DB
                 using (var connection = new SQLiteConnection(DB_Base.DBConnectionString))
                 {
                     connection.Open();
-                    string sql = $"SELECT * FROM User_TB where User_Name = '{id}' ";
+                    string sql = $"SELECT * FROM User_TB where User_Id = '{id}' ";
                     using (SQLiteTransaction transaction = connection.BeginTransaction())
                     {
                         try
@@ -654,21 +768,23 @@ namespace XpertApp2.DB
                                         };
                                         
                                     }
-                                log.Debug($"{sql}-[{i}]");
+                                var msg = $"{sql}-[{i}]";
+                                eventDB.InsertEvent_system("", msg, DB_Base.CurrentUser.UserName, connection);
+                                log.Debug(msg);
                             }
                             transaction.Commit();
                         }
                         catch (Exception ex)
                         {
                             transaction.Rollback();
-                            log.Error($"CreateContent Error: {ex.Message}");
+                            log.Error($"userdb Error: {ex.Message}");
                         }
                     }
                 }
             }
             catch (Exception ex)
             {
-                log.Error($"CreateContent Error: {ex.Message}");
+                log.Error($"userdb Error: {ex.Message}");
             }
 
 
@@ -691,7 +807,9 @@ namespace XpertApp2.DB
                             using (var command = new SQLiteCommand(sql, connection))
                             {
                                 var obj = command.ExecuteScalar();
-                                log.Debug($"{sql}-[{obj}]");
+                                var msg = $"{sql}-[{obj}]";
+                                eventDB.InsertEvent_system("", msg, DB_Base.CurrentUser.UserName, connection);
+                                log.Debug(msg);
                                 result = Convert.ToInt32(obj) == 0;
                             }
                             transaction.Commit();
@@ -699,14 +817,14 @@ namespace XpertApp2.DB
                         catch (Exception ex)
                         {
                             transaction.Rollback();
-                            log.Error($"CreateContent Error: {ex.Message}");
+                            log.Error($"userdb Error: {ex.Message}");
                         }
                     }
                 }
             }
             catch (Exception ex)
             {
-                log.Error($"CreateContent Error: {ex.Message}");
+                log.Error($"userdb Error: {ex.Message}");
             }
 
             return result;

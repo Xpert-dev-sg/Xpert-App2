@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 using XpertApp2.DB;
 using XpertApp2.Utility;
 
@@ -24,12 +25,17 @@ namespace XpertApp2.Views
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private UserDB userDB = new UserDB();
         public static bool Is_Update = false;
+        private int _user_id;
         public UserForm()
         {
             WindowStartupLocation = WindowStartupLocation.CenterScreen;
             InitializeComponent();
             MonitorKeyMouseUntility.MonitorKeyMouseMain();
-            TimeUtility.CarouselMenuTimer();
+
+            DispatcherTimer timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(10);
+            timer.Tick += CarouselTimer_Tick;
+            timer.Start();
             initialize();
         }
         #region initialize
@@ -45,6 +51,7 @@ namespace XpertApp2.Views
 
         public void Update_state_Load(UserModel user)
         {
+            _user_id = user.UserId;
             txtuserName.Text = user.UserName;
             txtemail.Text = user.Email;
             txtPermition.Text = user.RowId;
@@ -57,12 +64,17 @@ namespace XpertApp2.Views
         private UserModel GetUser_form()
         {
             var user = new UserModel();
+            if (Is_Update)
+                user.UserId = _user_id;
+            
             user.UserName = txtuserName.Text;
             user.Email = txtemail.Text;
             user.RowId = txtPermition.Text;
             user.DepartmentId = txtDepartment.Text;
             user.CardId = txtcard.Text;
             user.FingerId = txtFinger.Text;
+            user.CreateBy = DB_Base.CurrentUser.UserName;
+            user.UpdateBy = DB_Base.CurrentUser.UserName;
             return user;
         }
 
@@ -75,7 +87,7 @@ namespace XpertApp2.Views
             }
             else
             {
-                if (!userDB.CheckUserName(txtuserName.Text))
+                if (!Is_Update && !userDB.CheckUserName(txtuserName.Text))
                 {
                     MessageBox.Show("User Name already in DB");
                     return false;
@@ -139,7 +151,14 @@ namespace XpertApp2.Views
         {
             this.Close();
         }
+        private void CarouselTimer_Tick(object sender, EventArgs e)
+        {
+            if (!DB_Base.Islogined)
+            {
+                this.Close();
+            }
 
-        
+        }
+
     }
 }

@@ -47,7 +47,7 @@ namespace XpertApp2.Views
             //contentDB.CreateContent();
             UserDB userBD = new UserDB();
             //userBD.CreateUser();
-            //EventDB eventDB = new EventDB();
+            EventDB eventDB = new EventDB();
             //eventDB.CreateEvent();
             //eventDB.CreateBorrowRecords();
 
