@@ -15,7 +15,7 @@
             <ImageBrush ImageSource="/Resources/Img/Content.jpg" Opacity="0.5"/>
         </Grid.Background>
         <Grid.RowDefinitions>
-            <RowDefinition Height="200"/>
+            <RowDefinition Height="150"/>
             <RowDefinition Height="*"/>
             
         </Grid.RowDefinitions>
@@ -24,7 +24,7 @@
             <StackPanel.Background>
                 <SolidColorBrush Color="White" Opacity="0.6"/>
             </StackPanel.Background>
-            <Grid Margin="10,80,10,80" HorizontalAlignment="Center">
+            <Grid Margin="10,50,10,80" HorizontalAlignment="Center">
                 <Grid.RowDefinitions>
                    
                     <RowDefinition></RowDefinition>

@@ -233,6 +233,103 @@
                     </Grid>
                 </hc:SimplePanel>
             </hc:TabItem>
+
+            <!--borrow-->
+            <hc:TabItem Header="Borrow view">
+                <hc:SimplePanel >
+                    <hc:SimplePanel.Background>
+                        <ImageBrush ImageSource="/Resources/Img/admin.jpg" Opacity="0.5"/>
+                    </hc:SimplePanel.Background>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="100"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <hc:SimplePanel Grid.Row="0">
+                            <hc:SimplePanel.Background>
+                                <SolidColorBrush Color="White" Opacity="0.6"/>
+                            </hc:SimplePanel.Background>
+                            <Grid  HorizontalAlignment="Center" VerticalAlignment="Center" >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="30" ></RowDefinition>
+                                    <RowDefinition Height="30"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Row="0" Grid.Column="0" Text="user" Margin="10,5,10,5" FontWeight="Bold" FontSize="16" ></TextBlock>
+                                <ComboBox x:Name="cmbuser_log" Grid.Row="0" Grid.Column="1" Width="150"  DisplayMemberPath="Value" SelectionChanged="cmbuser_log_SelectionChanged" HorizontalAlignment="Left" />
+                                <TextBlock Grid.Row="0" Grid.Column="2"  Text="Borrow type" Margin="10,5,10,5" FontWeight="Bold" Width="100"></TextBlock>
+                                <ComboBox x:Name="cmbborrowtype" Grid.Row="0" Grid.Column="3" Width="150"  DisplayMemberPath="Value" SelectionChanged="cmbborrow_SelectionChanged">
+                                    <ComboBoxItem Content="return"></ComboBoxItem>
+                                    <ComboBoxItem Content="no return"></ComboBoxItem>
+                                </ComboBox>
+                                <TextBlock Grid.Row="1" Grid.Column="0" Text="item" Margin="10,5,10,5" FontWeight="Bold" FontSize="16"></TextBlock>
+
+                                <hc:SearchBar Grid.Row="1" Grid.Column="1"  Grid.ColumnSpan="3" x:Name="txtitemName" HorizontalAlignment="Center"  TextWrapping="Wrap"  VerticalAlignment="Center" Width="400" SearchStarted="txtName_borrow_SearchStarted"/>
+
+                            </Grid>
+                        </hc:SimplePanel>
+                        <DataGrid x:Name="borrowdataGrid" Margin="5" Grid.Row="1" BorderBrush="White" BorderThickness="1" HorizontalGridLinesBrush="White" VerticalGridLinesBrush="White" AlternationCount="2" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False" CanUserSortColumns="False" IsReadOnly="True" >
+                            <DataGrid.Background>
+                                <!--<ImageBrush ImageSource="/Resources/Img/Content.jpg" Opacity="0.2"/>-->
+                                <SolidColorBrush Color="White" Opacity="0.6"/>
+                            </DataGrid.Background>
+
+                            <DataGrid.ColumnHeaderStyle>
+                                <Style TargetType="DataGridColumnHeader">
+                                    <Setter Property="BorderThickness" Value="0"/>
+                                    <Setter Property="FontWeight" Value="Bold"/>
+                                    <Setter Property="Background" Value="#80FFFFFF"/>
+                                    <!--<Setter Property="Margin" Value="5"/>-->
+                                    <Setter Property="Foreground" Value="Black"/>
+                                </Style>
+                            </DataGrid.ColumnHeaderStyle>
+
+                            <DataGrid.RowStyle>
+                                <Style TargetType="DataGridRow">
+                                    <Style.Triggers>
+                                        <Trigger Property="ItemsControl.AlternationIndex" Value="0">
+                                            <Setter Property="Background" Value="#80FFFFFF"/>
+                                        </Trigger>
+                                        <Trigger Property="ItemsControl.AlternationIndex" Value="1">
+                                            <Setter Property="Background" Value="#80e8e8f2"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </DataGrid.RowStyle>
+                            <DataGrid.CellStyle>
+                                <Style TargetType="DataGridCell">
+                                    <Setter Property="Foreground" Value="Black"/>
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="DataGridCell">
+                                                <!--TextAlignment="Center"-->
+                                                <TextBlock  VerticalAlignment="Center" Margin="5"  >
+                     <ContentPresenter />
+                                                </TextBlock>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+
+                            </DataGrid.CellStyle>
+
+
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Item" Width="300" Binding="{Binding item_id}"></DataGridTextColumn>
+                                <DataGridTextColumn Header="User" Width="100" Binding="{Binding User_Id}"></DataGridTextColumn>
+                                <DataGridTextColumn Header="Borrow Datetime" Width="250" Binding="{Binding Borrow_datetime}"></DataGridTextColumn>
+                                <DataGridTextColumn Header="Return Datetime" Width="250" Binding="{Binding Return_datetime}"></DataGridTextColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+
+                    </Grid>
+                </hc:SimplePanel>
+            </hc:TabItem>
             <!--log-->
             <hc:TabItem Header="Log view">
                 <hc:SimplePanel >
@@ -319,15 +416,13 @@
                                 <DataGridTextColumn Header="Dateime" Width="150" Binding="{Binding Event_datetime}"></DataGridTextColumn>
                                 <DataGridTextColumn Header="Eventtype" Width="100" Binding="{Binding Event_Type}"></DataGridTextColumn>
                                 <DataGridTextColumn Header="Description" Width="300" Binding="{Binding Event_Description}"></DataGridTextColumn>
-                                <DataGridTextColumn Header="user" Width="50" Binding="{Binding User_Id}"></DataGridTextColumn>
+                                <DataGridTextColumn Header="user" Width="150" Binding="{Binding User_Id}"></DataGridTextColumn>
                             </DataGrid.Columns>
                         </DataGrid>
 
                     </Grid>
                 </hc:SimplePanel>
             </hc:TabItem>
-
-
 
             <!--<hc:TabItem Header="TabItem4">
                 <hc:SimplePanel Background="#FFE83F6D"/>

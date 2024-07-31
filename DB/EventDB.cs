@@ -411,7 +411,7 @@ namespace XpertApp2.DB
                                         Borrow_datetime TEXT NOT NULL,
 										Return_datetime TEXT  NULL,
 										item_id  TEXT NOT NULL,
-										User_Id INTEGER NOT NULL,
+										User_Id TEXT NOT NULL,
 										Create_By TEXT NOT NULL,
 										Create_On TEXT NOT NULL)";
                     using (SQLiteTransaction transaction = connection.BeginTransaction())
@@ -478,7 +478,29 @@ namespace XpertApp2.DB
 
         }
 
-        public void InsertBorrowRecords(string item_id, string user_id)
+        public void insertTamedata()
+        {
+            var t = "";
+            var d = "admin user1";
+            for (int i = 0; i < 100; i++)
+            {
+                t = $"item{i}";
+
+                if (i % 2 == 0)
+                {
+                    InsertBorrowRecords_all(t, d);
+                }
+                else
+                {
+                    InsertBorrowRecords(t, d);
+                }
+                
+
+            }
+
+        }
+
+        public void InsertBorrowRecords_all(string item_id, string user_id)
         {
             try
             {
@@ -497,16 +519,19 @@ namespace XpertApp2.DB
                                 string id = Guid.NewGuid().ToString();
                                 command.Parameters.AddWithValue("@Id", id);
                                 command.Parameters.AddWithValue("@Borrow_datetime", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
-                                //command.Parameters.AddWithValue("@Return_datetime", Event.Event_Type);
+                                command.Parameters.AddWithValue("@Return_datetime", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
                                 command.Parameters.AddWithValue("@item_id", item_id);
                                 command.Parameters.AddWithValue("@User_Id", user_id);
-                                command.Parameters.AddWithValue("@CreateBy", user_id);
-                                command.Parameters.AddWithValue("@CreateOn", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+                                command.Parameters.AddWithValue("@Create_By", "Sytem");
+                                command.Parameters.AddWithValue("@Create_On", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
 
 
                                 var obj = command.ExecuteScalar();
                                 var msg = $"{sql}-[{obj}]";
-                                InsertEvent_system("", msg, DB_Base.CurrentUser.UserName, connection);
+                                if (DB_Base.CurrentUser != null)
+                                    InsertEvent_system("", msg, DB_Base.CurrentUser.UserName, connection);
+                                else
+                                    InsertEvent_system("", msg, "System", connection);
                                 log.Debug(msg);
                             }
                             transaction.Commit();
@@ -526,6 +551,60 @@ namespace XpertApp2.DB
             }
 
         }
+
+        public void InsertBorrowRecords(string item_id, string user_id)
+        {
+            try
+            {
+                using (var connection = new SQLiteConnection(DB_Base.DBConnectionString))
+                {
+                    connection.Open();
+                    string sql = "INSERT INTO Borrow_Records_TB (Id,Borrow_datetime,item_id,User_Id,Create_By,Create_On) " +
+                        "VALUES (@Id,@Borrow_datetime,@item_id,@User_Id,@Create_By, @Create_On)";
+                    using (SQLiteTransaction transaction = connection.BeginTransaction())
+                    {
+                        try
+                        {
+
+                            using (var command = new SQLiteCommand(sql, connection))
+                            {
+                                string id = Guid.NewGuid().ToString();
+                                command.Parameters.AddWithValue("@Id", id);
+                                command.Parameters.AddWithValue("@Borrow_datetime", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+                                //command.Parameters.AddWithValue("@Return_datetime", Event.Event_Type);
+                                command.Parameters.AddWithValue("@item_id", item_id);
+                                command.Parameters.AddWithValue("@User_Id", user_id);
+                                command.Parameters.AddWithValue("@Create_By", user_id);
+                                command.Parameters.AddWithValue("@Create_On", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+
+
+                                var obj = command.ExecuteScalar();
+                                var msg = $"{sql}-[{obj}]";
+                                if (DB_Base.CurrentUser != null)
+                                    InsertEvent_system("", msg, DB_Base.CurrentUser.UserName, connection);
+                                else
+                                    InsertEvent_system("", msg, "System", connection);
+                                log.Debug(msg);
+                            }
+                            transaction.Commit();
+                        }
+                        catch (Exception ex)
+                        {
+                            transaction.Rollback();
+                            log.Error($"BorrowRecords Error: {ex.Message}");
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+                log.Error($"BorrowRecords Error: {ex.Message}");
+            }
+
+        }
+
+
 
         public void UpdateBorrowRecords_return(string item_id, string user_id)
         {
@@ -578,6 +657,337 @@ namespace XpertApp2.DB
                 {
                     connection.Open();
                     string sql = $"SELECT * FROM Borrow_Records_TB where user_id='{user_id}' and Return_datetime is null order by Create_On desc";
+                    using (SQLiteTransaction transaction = connection.BeginTransaction())
+                    {
+                        try
+                        {
+                            using (var command = new SQLiteCommand(sql, connection))
+                            using (var reader = command.ExecuteReader())
+                            {
+                                int i = 0;
+                                while (reader.Read())
+                                {
+                                    i++;
+                                    var BorrowRecord = new BorrowModel
+                                    {
+                                        Id = reader["Id"].ToString(),
+                                        take_Datetime = reader["Borrow_datetime"].ToString(),
+                                        Return_datetime = reader["Return_datetime"].ToString(),
+                                        Item_Id = reader["item_id"].ToString(),
+                                        User_Id = reader["User_Id"].ToString(),
+                                        CreateBy = reader["Create_By"].ToString(),
+                                        CreateOn = reader["Create_On"].ToString()
+
+                                    };
+                                    BorrowRecords.Add(BorrowRecord);
+                                }
+                                var msg = $"{sql}-[{i}]";
+                                InsertEvent_system("", msg, DB_Base.CurrentUser.UserName, connection);
+                                log.Debug(msg);
+                            }
+                            transaction.Commit();
+                        }
+                        catch (Exception ex)
+                        {
+                            transaction.Rollback();
+                            log.Error($"BorrowRecords Error: {ex.Message}");
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+                log.Error($"BorrowRecords Error: {ex.Message}");
+            }
+            return BorrowRecords;
+        }
+
+        public List<BorrowModel> GetBorrowRecords()
+        {
+            var BorrowRecords = new List<BorrowModel>();
+
+            try
+            {
+                using (var connection = new SQLiteConnection(DB_Base.DBConnectionString))
+                {
+                    connection.Open();
+                    string sql = $"SELECT * FROM Borrow_Records_TB   order by Create_On desc";
+                    using (SQLiteTransaction transaction = connection.BeginTransaction())
+                    {
+                        try
+                        {
+                            using (var command = new SQLiteCommand(sql, connection))
+                            using (var reader = command.ExecuteReader())
+                            {
+                                int i = 0;
+                                while (reader.Read())
+                                {
+                                    i++;
+                                    var BorrowRecord = new BorrowModel
+                                    {
+                                        Id = reader["Id"].ToString(),
+                                        take_Datetime = reader["Borrow_datetime"].ToString(),
+                                        Return_datetime = reader["Return_datetime"].ToString(),
+                                        Item_Id = reader["item_id"].ToString(),
+                                        User_Id = reader["User_Id"].ToString(),
+                                        CreateBy = reader["Create_By"].ToString(),
+                                        CreateOn = reader["Create_On"].ToString()
+
+                                    };
+                                    BorrowRecords.Add(BorrowRecord);
+                                }
+                                var msg = $"{sql}-[{i}]";
+                                InsertEvent_system("", msg, DB_Base.CurrentUser.UserName, connection);
+                                log.Debug(msg);
+                            }
+                            transaction.Commit();
+                        }
+                        catch (Exception ex)
+                        {
+                            transaction.Rollback();
+                            log.Error($"BorrowRecords Error: {ex.Message}");
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+                log.Error($"BorrowRecords Error: {ex.Message}");
+            }
+            return BorrowRecords;
+        }
+
+        public List<BorrowModel> GetBorrowRecords(string item)
+        {
+            var BorrowRecords = new List<BorrowModel>();
+
+            try
+            {
+                using (var connection = new SQLiteConnection(DB_Base.DBConnectionString))
+                {
+                    connection.Open();
+                    string sql = $"SELECT * FROM Borrow_Records_TB   order by Create_On desc";
+                    using (SQLiteTransaction transaction = connection.BeginTransaction())
+                    {
+                        try
+                        {
+                            using (var command = new SQLiteCommand(sql, connection))
+                            using (var reader = command.ExecuteReader())
+                            {
+                                int i = 0;
+                                while (reader.Read())
+                                {
+                                    i++;
+                                    var BorrowRecord = new BorrowModel
+                                    {
+                                        Id = reader["Id"].ToString(),
+                                        take_Datetime = reader["Borrow_datetime"].ToString(),
+                                        Return_datetime = reader["Return_datetime"].ToString(),
+                                        Item_Id = reader["item_id"].ToString(),
+                                        User_Id = reader["User_Id"].ToString(),
+                                        CreateBy = reader["Create_By"].ToString(),
+                                        CreateOn = reader["Create_On"].ToString()
+
+                                    };
+                                    BorrowRecords.Add(BorrowRecord);
+                                }
+                                var msg = $"{sql}-[{i}]";
+                                InsertEvent_system("", msg, DB_Base.CurrentUser.UserName, connection);
+                                log.Debug(msg);
+                            }
+                            transaction.Commit();
+                        }
+                        catch (Exception ex)
+                        {
+                            transaction.Rollback();
+                            log.Error($"BorrowRecords Error: {ex.Message}");
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+                log.Error($"BorrowRecords Error: {ex.Message}");
+            }
+            return BorrowRecords;
+        }
+
+        public List<BorrowModel> GetBorrowRecords_user(string user)
+        {
+            var BorrowRecords = new List<BorrowModel>();
+
+            try
+            {
+                using (var connection = new SQLiteConnection(DB_Base.DBConnectionString))
+                {
+                    connection.Open();
+                    string sql = $"SELECT * FROM Borrow_Records_TB where User_Id='{user}' order by Create_On desc";
+                    using (SQLiteTransaction transaction = connection.BeginTransaction())
+                    {
+                        try
+                        {
+                            using (var command = new SQLiteCommand(sql, connection))
+                            using (var reader = command.ExecuteReader())
+                            {
+                                int i = 0;
+                                while (reader.Read())
+                                {
+                                    i++;
+                                    var BorrowRecord = new BorrowModel
+                                    {
+                                        Id = reader["Id"].ToString(),
+                                        take_Datetime = reader["Borrow_datetime"].ToString(),
+                                        Return_datetime = reader["Return_datetime"].ToString(),
+                                        Item_Id = reader["item_id"].ToString(),
+                                        User_Id = reader["User_Id"].ToString(),
+                                        CreateBy = reader["Create_By"].ToString(),
+                                        CreateOn = reader["Create_On"].ToString()
+
+                                    };
+                                    BorrowRecords.Add(BorrowRecord);
+                                }
+                                var msg = $"{sql}-[{i}]";
+                                InsertEvent_system("", msg, DB_Base.CurrentUser.UserName, connection);
+                                log.Debug(msg);
+                            }
+                            transaction.Commit();
+                        }
+                        catch (Exception ex)
+                        {
+                            transaction.Rollback();
+                            log.Error($"BorrowRecords Error: {ex.Message}");
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+                log.Error($"BorrowRecords Error: {ex.Message}");
+            }
+            return BorrowRecords;
+        }
+
+        public List<keyValueModel> GetBorrowRecords_user()
+        {
+            var users = new List<keyValueModel>();
+
+            try
+            {
+                using (var connection = new SQLiteConnection(DB_Base.DBConnectionString))
+                {
+                    connection.Open();
+                    string sql = $"SELECT User_Id FROM Borrow_Records_TB group by User_Id  order by User_Id";
+                    using (SQLiteTransaction transaction = connection.BeginTransaction())
+                    {
+                        try
+                        {
+                            using (var command = new SQLiteCommand(sql, connection))
+                            using (var reader = command.ExecuteReader())
+                            {
+                                int i = 0;
+                                while (reader.Read())
+                                {
+                                    i++;
+                                    var user = new keyValueModel
+                                    {
+                                        Key = reader["User_Id"].ToString(),
+                                        Value = reader["User_Id"].ToString()
+
+                                    };
+                                    users.Add(user);
+                                }
+                                var msg = $"{sql}-[{i}]";
+                                InsertEvent_system("", msg, DB_Base.CurrentUser.UserName, connection);
+                                log.Debug(msg);
+                            }
+                            transaction.Commit();
+                        }
+                        catch (Exception ex)
+                        {
+                            transaction.Rollback();
+                            log.Error($"BorrowRecords Error: {ex.Message}");
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+                log.Error($"BorrowRecords Error: {ex.Message}");
+            }
+            return users;
+        }
+
+        public List<BorrowModel> GetBorrowRecords_noreturn()
+        {
+            var BorrowRecords = new List<BorrowModel>();
+
+            try
+            {
+                using (var connection = new SQLiteConnection(DB_Base.DBConnectionString))
+                {
+                    connection.Open();
+                    string sql = $"SELECT * FROM Borrow_Records_TB where Return_datetime is null order by Create_On desc";
+                    using (SQLiteTransaction transaction = connection.BeginTransaction())
+                    {
+                        try
+                        {
+                            using (var command = new SQLiteCommand(sql, connection))
+                            using (var reader = command.ExecuteReader())
+                            {
+                                int i = 0;
+                                while (reader.Read())
+                                {
+                                    i++;
+                                    var BorrowRecord = new BorrowModel
+                                    {
+                                        Id = reader["Id"].ToString(),
+                                        take_Datetime = reader["Borrow_datetime"].ToString(),
+                                        Return_datetime = reader["Return_datetime"].ToString(),
+                                        Item_Id = reader["item_id"].ToString(),
+                                        User_Id = reader["User_Id"].ToString(),
+                                        CreateBy = reader["Create_By"].ToString(),
+                                        CreateOn = reader["Create_On"].ToString()
+
+                                    };
+                                    BorrowRecords.Add(BorrowRecord);
+                                }
+                                var msg = $"{sql}-[{i}]";
+                                InsertEvent_system("", msg, DB_Base.CurrentUser.UserName, connection);
+                                log.Debug(msg);
+                            }
+                            transaction.Commit();
+                        }
+                        catch (Exception ex)
+                        {
+                            transaction.Rollback();
+                            log.Error($"BorrowRecords Error: {ex.Message}");
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+                log.Error($"BorrowRecords Error: {ex.Message}");
+            }
+            return BorrowRecords;
+        }
+
+        public List<BorrowModel> GetBorrowRecords_return()
+        {
+            var BorrowRecords = new List<BorrowModel>();
+
+            try
+            {
+                using (var connection = new SQLiteConnection(DB_Base.DBConnectionString))
+                {
+                    connection.Open();
+                    string sql = $"SELECT * FROM Borrow_Records_TB where Return_datetime is not null order by Create_On desc";
                     using (SQLiteTransaction transaction = connection.BeginTransaction())
                     {
                         try

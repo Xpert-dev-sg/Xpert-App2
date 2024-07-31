@@ -55,6 +55,10 @@ namespace XpertApp2.Views
             //log
             eventdataGrid.ItemsSource = logDB.GetEvents();
             cmbType_log.ItemsSource = logDB.GetEvents_type();
+
+            //borrow
+            borrowdataGrid.ItemsSource = logDB.GetBorrowRecords();
+            cmbuser_log.ItemsSource = logDB.GetBorrowRecords_user();
         }
 
 
@@ -209,6 +213,40 @@ namespace XpertApp2.Views
 
         #endregion
 
+        #region borrow
+        private void cmbuser_log_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var cmd = (System.Windows.Controls.ComboBox)sender;
+            var item = (keyValueModel)cmd.SelectedItem;
+            borrowdataGrid.ItemsSource = logDB.GetBorrowRecords_user(item.Value);
+        }
+
+        private void cmbborrow_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var cmd = (System.Windows.Controls.ComboBox)sender;
+            var item = cmd.SelectedIndex;
+            if (item == 0)
+            {
+                borrowdataGrid.ItemsSource = logDB.GetBorrowRecords_return();
+            }
+            else if (item == 1)
+            {
+                borrowdataGrid.ItemsSource = logDB.GetBorrowRecords_noreturn();
+            }
+            
+        }
+
+        private void txtName_borrow_SearchStarted(object sender, HandyControl.Data.FunctionEventArgs<string> e)
+        {
+            var sb = (SearchBar)sender;
+            borrowdataGrid.ItemsSource = logDB.GetBorrowRecords(sb.Text);
+        }
+
+
+
+
+        #endregion
+
         private void AfterLoginFormTimer_Tick(object sender, EventArgs e)
         {
             if (!DB_Base.Islogined)
@@ -236,5 +274,7 @@ namespace XpertApp2.Views
             //NavigationService.RemoveBackEntry();
             throw new NotImplementedException();
         }
+
+        
     }
 }

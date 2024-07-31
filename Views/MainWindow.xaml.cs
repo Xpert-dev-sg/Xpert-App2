@@ -50,7 +50,7 @@ namespace XpertApp2.Views
             EventDB eventDB = new EventDB();
             //eventDB.CreateEvent();
             //eventDB.CreateBorrowRecords();
-
+            //eventDB.insertTamedata();
             //contentDB.insertTamedata();
             //userBD.insertTamedata();
             #endregion

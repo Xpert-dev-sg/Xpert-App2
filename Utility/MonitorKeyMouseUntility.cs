@@ -51,7 +51,7 @@ namespace XpertApp2.Utility
 
         private static void CheckMouseActivity(object sender, ElapsedEventArgs e)
         {
-            if ((DateTime.Now - _lastEventTime).TotalMinutes >= 1)
+            if ((DateTime.Now - _lastEventTime).TotalSeconds >= DB_Base.SystemMenuInterval_admin)
             {
                 UserDB udb= new UserDB();
                 udb.LogoutUser();

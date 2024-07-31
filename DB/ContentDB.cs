@@ -155,7 +155,7 @@ namespace XpertApp2.DB
                 }
                 ContentModel Content = new ContentModel
                 {
-                    Item_Name = $"item{i} name",
+                    Item_Name = $"item{i}",
                     Item_Description = $"item{i} Description",
                     Item_type = $"{t}",
                     Charge1 = DB_Base.SystemMail,
@@ -207,7 +207,10 @@ namespace XpertApp2.DB
 
                                 var obj = command.ExecuteScalar();
                                 var msg = $"{sql}-[{obj}]";
-                                eventDB.InsertEvent_system("", msg, DB_Base.CurrentUser.UserName, connection);
+                                if (DB_Base.CurrentUser != null)
+                                    eventDB.InsertEvent_system("", msg, DB_Base.CurrentUser.UserName, connection);
+                                else
+                                    eventDB.InsertEvent_system("", msg, "System", connection);
                                 log.Debug(msg);
                             }
                             transaction.Commit();
@@ -271,7 +274,13 @@ namespace XpertApp2.DB
                                         Contents.Add(Content);
                                     }
                                 var msg = $"{sql}-[{i}]";
-                                eventDB.InsertEvent_system("", msg, DB_Base.CurrentUser.UserName, connection);
+                                var user = "";
+                                if(DB_Base.CurrentUser==null)
+                                    user= "System";
+                                else
+                                    user = DB_Base.CurrentUser.UserName;
+
+                                eventDB.InsertEvent_system("", msg, user, connection);
                                 log.Debug(msg);
                             }
                             transaction.Commit();
@@ -421,7 +430,12 @@ namespace XpertApp2.DB
                                     Departments.Add(Department);
                                 }
                                 var msg = $"{sql}-[{i}]";
-                                eventDB.InsertEvent_system("", msg, DB_Base.CurrentUser.UserName, connection);
+                                var user = "";
+                                if (DB_Base.CurrentUser == null)
+                                    user = "System";
+                                else
+                                    user = DB_Base.CurrentUser.UserName;
+                                eventDB.InsertEvent_system("", msg, user, connection);
                                 log.Debug(msg);
                             }
 
@@ -473,7 +487,12 @@ namespace XpertApp2.DB
                                     Departments.Add(Department);
                                 }
                                 var msg = $"{sql}-[{i}]";
-                                eventDB.InsertEvent_system("", msg, DB_Base.CurrentUser.UserName, connection);
+                                var user = "";
+                                if (DB_Base.CurrentUser == null)
+                                    user = "System";
+                                else
+                                    user = DB_Base.CurrentUser.UserName;
+                                eventDB.InsertEvent_system("", msg, user, connection);
                                 log.Debug(msg);
                             }
                             transaction.Commit();
