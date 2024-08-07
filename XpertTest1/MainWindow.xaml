@@ -1,0 +1,62 @@
+﻿<Window x:Class="XpertTest1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:XpertTest1"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="250" Width="400">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Row="0" Grid.Column="0">
+            <Grid VerticalAlignment="Center" HorizontalAlignment="Center" >
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"></RowDefinition>
+                    <RowDefinition Height="30"></RowDefinition>
+                    <RowDefinition Height="30"></RowDefinition>
+                    <RowDefinition Height="30"></RowDefinition>
+                    <RowDefinition Height="30"></RowDefinition>
+                    <RowDefinition Height="30"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition ></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="端口" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,5,5,5"></TextBlock>
+                <TextBox x:Name="txtcomlist" Grid.Column="1" Grid.Row="0"></TextBox>
+                <TextBlock Text="波特率" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,5,5,5"></TextBlock>
+                <TextBox x:Name="txtbaudrate" Grid.Column="1" Grid.Row="1"></TextBox>
+                <TextBlock Text="数据位" Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,5,5,5"></TextBlock>
+                <TextBox x:Name="txtparity" Grid.Column="1" Grid.Row="2"></TextBox>
+                <TextBlock Text="停止位" Grid.Column="0" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,5,5,5"></TextBlock>
+                <TextBox x:Name="txtdatabits" Grid.Column="1" Grid.Row="3"></TextBox>
+                <TextBlock Text="校验位" Grid.Column="0" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,5,5,5"></TextBlock>
+                <TextBox x:Name="txtstopbits" Grid.Column="1" Grid.Row="4"></TextBox>
+                <Button x:Name="btnOpen" Grid.Column="1" Grid.Row="5" Content="open door" Height="30" VerticalAlignment="Top" Click="Open_Door_Button_Click"></Button>
+            </Grid>
+        </StackPanel>
+        <StackPanel Grid.Row="0" Grid.Column="1">
+            <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"></RowDefinition>
+                    <RowDefinition Height="30"></RowDefinition>
+                    <RowDefinition Height="30"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition ></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="端口" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,5,5,5"></TextBlock>
+                <TextBox x:Name="txtport"  Grid.Column="1" Grid.Row="0"></TextBox>
+                <TextBlock Text="波特率" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,5,5,5"></TextBlock>
+                <TextBox x:Name="txtbaudrate2" Grid.Column="1" Grid.Row="1"></TextBox>
+                <Button Grid.Column="1" Grid.Row="2" Content="Read RFID" Click="Read_RFID_Button_Click"></Button>
+            </Grid>
+        </StackPanel>
+    </Grid>
+</Window>
