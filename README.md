@@ -9,6 +9,8 @@ System.Data.SQLite<br/>
 log4net<br/>
 <br/>
 **硬件接口**<br/>
+RFID<br/>
+door<br/>
 <br/>
 <br/>
 **主菜单页面**<br/>
@@ -29,6 +31,7 @@ log4net<br/>
 >管理用户页面 (done)增删改查 四大功能<br/>
 >管理用户页面 (done)增删改查 四大功能<br/>
 >log 展示页面(done)和查询<br/>
+>borrow 展示页面(done)和查询<br/>
 
 **系统服务**<br/>
 >每个item有权限和部门管控，不同部门或不够权限的用户拿了会被记录然后email通知部门负责人<br/>
