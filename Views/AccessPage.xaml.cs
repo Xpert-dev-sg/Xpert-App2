@@ -41,8 +41,12 @@ namespace XpertApp2.Views
             txtusername.Text = DB_Base.CurrentUser.UserName;
 
             EventDB eventDB = new EventDB();
-            borrowdataGrid.ItemsSource = eventDB.GetBorrowRecords(DB_Base.CurrentUser.UserId);
+            borrowdataGrid.ItemsSource = eventDB.GetBorrowRecords_user_access(DB_Base.CurrentUser.UserName);
         }
-        
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("open door");
+        }
     }
 }

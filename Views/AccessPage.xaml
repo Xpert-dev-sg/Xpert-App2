@@ -12,9 +12,9 @@
         <Grid.Background>
             <ImageBrush ImageSource="/Resources/Img/Content.jpg" Opacity="0.5"/>
         </Grid.Background>
-      
+
         <Grid.RowDefinitions>
-            <RowDefinition Height="200"/>
+            <RowDefinition Height="250"/>
             <RowDefinition Height="300"/>
             <RowDefinition Height="300"/>
             <RowDefinition Height="*"/>
@@ -33,10 +33,10 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="220"></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
-                   
+
                 </Grid.ColumnDefinitions>
                 <Image Grid.Row="0" Grid.Column="0" Source="/Resources/Img/user-icon.png" Width="180" Height="180" >
-                    
+
                 </Image>
                 <StackPanel Grid.Row="0" Grid.Column="1"  VerticalAlignment="Center" HorizontalAlignment="Center">
                     <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
@@ -60,7 +60,7 @@
                     </Grid>
                 </StackPanel>
             </Grid>
-
+            <Button HorizontalAlignment="Right" Content="Open Door" FontSize="30" Height="65" Click="Button_Click"/>
         </StackPanel>
 
         <StackPanel Grid.Row="1"  Margin="2">
@@ -77,7 +77,7 @@
             </StackPanel.Background>
             <TextBlock Text="Take Out" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="Bold" Margin="10,5,10,5"></TextBlock>
         </StackPanel>
-        
+
         <StackPanel Grid.Row="3" Margin="2" >
             <StackPanel.Background>
                 <SolidColorBrush Color="White" Opacity="0.6"/>
@@ -143,15 +143,15 @@
 
 
                 <DataGrid.Columns>
-                   
-                    <DataGridTextColumn Header="Name" Width="150" Binding="{Binding Item_Name}"></DataGridTextColumn>
+
+                    <DataGridTextColumn Header="Name" Width="150" Binding="{Binding Item_Id}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Take" Width="250" Binding="{Binding take_Datetime}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Return" Width="250" Binding="{Binding Return_datetime}"></DataGridTextColumn>
-              
+
                 </DataGrid.Columns>
             </DataGrid>
 
         </StackPanel>
-        
+
     </Grid>
 </Page>

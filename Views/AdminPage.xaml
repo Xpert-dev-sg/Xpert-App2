@@ -320,9 +320,9 @@
 
 
                             <DataGrid.Columns>
-                                <DataGridTextColumn Header="Item" Width="300" Binding="{Binding item_id}"></DataGridTextColumn>
+                                <DataGridTextColumn Header="Item" Width="300" Binding="{Binding Item_Id}"></DataGridTextColumn>
                                 <DataGridTextColumn Header="User" Width="100" Binding="{Binding User_Id}"></DataGridTextColumn>
-                                <DataGridTextColumn Header="Borrow Datetime" Width="250" Binding="{Binding Borrow_datetime}"></DataGridTextColumn>
+                                <DataGridTextColumn Header="Borrow Datetime" Width="250" Binding="{Binding take_Datetime}"></DataGridTextColumn>
                                 <DataGridTextColumn Header="Return Datetime" Width="250" Binding="{Binding Return_datetime}"></DataGridTextColumn>
                             </DataGrid.Columns>
                         </DataGrid>

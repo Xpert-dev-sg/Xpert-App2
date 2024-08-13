@@ -647,7 +647,7 @@ namespace XpertApp2.DB
 
         }
 
-        public List<BorrowModel> GetBorrowRecords(int user_id)
+        public List<BorrowModel> GetBorrowRecords_user_access(string user_id)
         {
             var BorrowRecords = new List<BorrowModel>();
 
