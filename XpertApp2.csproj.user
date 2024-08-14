@@ -16,14 +16,23 @@
     <Compile Update="Views\AdminPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\ItemForm.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\loginPopup.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\MenuPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\UserForm.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="Views\ItemForm.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Views\loginPopup.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -40,6 +49,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\MenuPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\UserForm.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

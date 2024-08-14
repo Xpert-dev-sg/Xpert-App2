@@ -5,6 +5,8 @@ VisualStudioVersion = 17.10.35027.167
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XpertApp2", "XpertApp2.csproj", "{EE702817-02C5-450B-AE33-EBD6B6E42817}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XpertTest1", "..\XpertTest1\XpertTest1.csproj", "{3805BBCF-396E-4DDD-92A9-9B895942E5C0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{EE702817-02C5-450B-AE33-EBD6B6E42817}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EE702817-02C5-450B-AE33-EBD6B6E42817}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EE702817-02C5-450B-AE33-EBD6B6E42817}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3805BBCF-396E-4DDD-92A9-9B895942E5C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3805BBCF-396E-4DDD-92A9-9B895942E5C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3805BBCF-396E-4DDD-92A9-9B895942E5C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3805BBCF-396E-4DDD-92A9-9B895942E5C0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

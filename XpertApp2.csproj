@@ -19,9 +19,11 @@
     <None Remove="Resources\Img\access_jpg.jpg" />
     <None Remove="Resources\Img\admin.jpg" />
     <None Remove="Resources\Img\Content.jpg" />
+    <None Remove="Resources\Img\home-icon.jpg" />
     <None Remove="Resources\Img\login.jpg" />
     <None Remove="Resources\Img\logo.png" />
     <None Remove="Resources\Img\no_wifi.jpg" />
+    <None Remove="Resources\Img\user-icon.png" />
     <None Remove="Resources\Img\wifi.jpg" />
   </ItemGroup>
 
@@ -29,6 +31,13 @@
     <PackageReference Include="HandyControl" Version="3.5.1" />
     <PackageReference Include="log4net" Version="2.0.17" />
     <PackageReference Include="System.Data.SQLite" Version="1.0.118" />
+    <PackageReference Include="System.IO.Ports" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="GReaderApi">
+      <HintPath>RFID\GReaderApi.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
   <ItemGroup>
@@ -36,14 +45,12 @@
     <Resource Include="Resources\Img\access_jpg.jpg" />
     <Resource Include="Resources\Img\admin.jpg" />
     <Resource Include="Resources\Img\Content.jpg" />
+    <Resource Include="Resources\Img\home-icon.jpg" />
     <Resource Include="Resources\Img\login.jpg" />
     <Resource Include="Resources\Img\logo.png" />
     <Resource Include="Resources\Img\no_wifi.jpg" />
+    <Resource Include="Resources\Img\user-icon.png" />
     <Resource Include="Resources\Img\wifi.jpg" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Models\" />
   </ItemGroup>
 
 </Project>

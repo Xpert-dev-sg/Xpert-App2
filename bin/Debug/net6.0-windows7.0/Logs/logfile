@@ -5,3 +5,4 @@
 2024-08-06 16:08:14,223 [1] DEBUG XpertApp2.DB.EventDB property:[(null)] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
 2024-08-06 16:08:14,223 [1] DEBUG XpertApp2.DB.EventDB property:[(null)] - ：SELECT * FROM Borrow_Records_TB where User_Id='admin user1' order by Create_On desc-[200]
 2024-08-07 07:46:48,485 [1] INFO  XpertApp2.Views.MainWindow property:[(null)] - ：System is initialized.
+2024-08-14 16:23:25,940 [1] INFO  XpertApp2.Views.MainWindow property:[(null)] - ：System is initialized.
