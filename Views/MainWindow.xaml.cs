@@ -31,30 +31,12 @@ namespace XpertApp2.Views
             TimeUtility.Initialize(MainFrame);
  
             log.Info("System is initialized.");
-            
-            InitializeSystem();
-            
-        }
-        private void InitializeSystem()
-        {
-            DB_Base.DBConnectionString = ConfigurationManager.AppSettings["DBConnectionString"];
-            DB_Base.SystemMail = ConfigurationManager.AppSettings["SystemMail"];
-            DB_Base.SystemMenuInterval = Convert.ToInt32( ConfigurationManager.AppSettings["SystemMenuInterval"]);
-            DB_Base.SystemMenuInterval_admin = Convert.ToInt32(ConfigurationManager.AppSettings["SystemMenuInterval_admin"]);
 
-            #region 初始化数据库
-            ContentDB contentDB = new ContentDB();
-            //contentDB.CreateContent();
-            UserDB userBD = new UserDB();
-            //userBD.CreateUser();
-            EventDB eventDB = new EventDB();
-            //eventDB.CreateEvent();
-            //eventDB.CreateBorrowRecords();
-            //eventDB.insertTamedata();
-            //contentDB.insertTamedata();
-            //userBD.insertTamedata();
-            #endregion
+            DBUtility.InitializeSystem();
+            Door door = new Door();
+            DoorMonitor monitor = new DoorMonitor(door);
         }
+        
         private void InitializeTimer()
         {
             timer = new DispatcherTimer();

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Common;
 using System.Data.SQLite;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Transactions;
@@ -801,6 +802,145 @@ namespace XpertApp2.DB
             return result;
         }
 
+        public void UpdateContent_on_hand(string  rfid,string user)
+        {
+           
+            try
+            {
+                using (var connection = new SQLiteConnection(DB_Base.DBConnectionString))
+                {
+                    connection.Open();
+                    string sql = "UPDATE Item_TB " +
+                        "SET On_hand = @On_hand " +
+                        " WHERE RFID=@RFID";
+
+                    using (SQLiteTransaction transaction = connection.BeginTransaction())
+                    {
+                        try
+                        {
+                            using (var command = new SQLiteCommand(sql, connection))
+                            {
+                               
+                                command.Parameters.AddWithValue("@On_hand", user);
+                                command.Parameters.AddWithValue("@RFID", rfid);
+                                
+
+                                var obj = command.ExecuteScalar();
+                                var msg = $"{sql}-[{obj}]";
+                                eventDB.InsertEvent_system("", msg, DB_Base.CurrentUser.UserName, connection);
+                                log.Debug(msg);
+                                
+                            }
+                            transaction.Commit();
+                        }
+                        catch (Exception ex)
+                        {
+                            transaction.Rollback();
+                            log.Error($"CreateContent Error: {ex.Message}");
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                log.Error($"CreateContent Error: {ex.Message}");
+            }
+            
+        }
+
+        public string GetContent_rfid(string rfid)
+        {
+            var Contents = "";
+            try
+            {
+                using (var connection = new SQLiteConnection(DB_Base.DBConnectionString))
+                {
+                    connection.Open();
+                    string sql = $"SELECT * FROM Item_TB where RFID = '{rfid}' ";
+                    using (SQLiteTransaction transaction = connection.BeginTransaction())
+                    {
+                        try
+                        {
+                            using (var command = new SQLiteCommand(sql, connection))
+                            using (var reader = command.ExecuteReader())
+                            {
+                                while (reader.Read())
+                                {
+                                    var Item_Name = reader["Item_Name"].ToString();
+                                    var Item_Description = reader["Item_Description"].ToString();
+                                    Contents= $"{Item_Name}-{Item_Description}";
+                                }
+                                var msg = $"{sql}-[1]";
+                                eventDB.InsertEvent_system("", msg, DB_Base.CurrentUser.UserName, connection);
+                                log.Debug(msg);
+                            }
+                            transaction.Commit();
+                        }
+                        catch (Exception ex)
+                        {
+                            transaction.Rollback();
+                            log.Error($"CreateContent Error: {ex.Message}");
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                log.Error($"CreateContent Error: {ex.Message}");
+            }
+
+            return Contents;
+        }
+
+
+        public string GetContent_item(string item)
+        {
+            var Item_Name= item.Split('-')[0];
+            var Item_Description = item.Split('-')[1];
+            var Contents = "";
+            try
+            {
+                using (var connection = new SQLiteConnection(DB_Base.DBConnectionString))
+                {
+                    connection.Open();
+                    string sql = $"SELECT * FROM Item_TB where Item_Name = '{Item_Name}' and Item_Description='{Item_Description}' ";
+                    using (SQLiteTransaction transaction = connection.BeginTransaction())
+                    {
+                        try
+                        {
+                            using (var command = new SQLiteCommand(sql, connection))
+                            using (var reader = command.ExecuteReader())
+                            {
+                                while (reader.Read())
+                                {
+                                    var Row_Id = reader["Row_Id"].ToString();
+                                    var Department_Id = reader["Department_Id"].ToString();
+                                    var Is_alert = Convert.ToInt32(reader["Is_alert"]);
+                                    var Charge1 = reader["Charge1"].ToString();
+                                    var Charge2 = reader["Charge2"].ToString();
+                                    Contents = $"{Row_Id}-{Department_Id}-{Is_alert}-{Charge1}-{Charge2}";
+                                }
+                                var msg = $"{sql}-[1]";
+                                eventDB.InsertEvent_system("", msg, DB_Base.CurrentUser.UserName, connection);
+                                log.Debug(msg);
+                            }
+                            transaction.Commit();
+                        }
+                        catch (Exception ex)
+                        {
+                            transaction.Rollback();
+                            log.Error($"CreateContent Error: {ex.Message}");
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                log.Error($"CreateContent Error: {ex.Message}");
+            }
+
+            return Contents;
+        }
 
     }
 

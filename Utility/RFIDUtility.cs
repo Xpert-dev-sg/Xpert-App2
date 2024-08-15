@@ -1,17 +1,45 @@
 ﻿using GDotnet.Reader.Api.DAL;
 using GDotnet.Reader.Api.Protocol.Gx;
+using Microsoft.VisualBasic;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using XpertApp2.DB;
 
 
 namespace XpertApp2.Utility
 {
     public class RFIDUtility
     {
+        public string Read_RFID()
+        {
+            var result = "";
+            GClient clientConn = new GClient();
+            eConnectionAttemptEventStatusType status;
+            // clientConn.OpenTcp("192.168.1.168:8160", 3000, out status)
+            //clientConn.OpenSerial("COM16:115200", 3000, out status)
+            if (clientConn.OpenSerial($"{DB_Base.rfid_com}:{DB_Base.rfid_baudrate}", 3000, out status))
+            {
+                // subscribe to event
+                clientConn.OnEncapedTagEpcLog += new delegateEncapedTagEpcLog(OnEncapedTagEpcLog);
+                clientConn.OnEncapedTagEpcOver += new delegateEncapedTagEpcOver(OnEncapedTagEpcOver);
+
+                // 2 antenna read Inventory, EPC & TID
+                EncapedLogBaseEpcInfo tag = ReadSingleTag(clientConn, (uint)(eAntennaNo._1 | eAntennaNo._2), 5000);
+                if (null != tag)
+                {
+                    result = tag.logBaseEpcInfo.ToString();
+                }
+            }
+            else
+            {
+                Console.WriteLine("Connect failure.");
+            }
+            return result;
+        }
         public static void Read_RFID(string readername)
         {
             GClient clientConn = new GClient();
@@ -45,6 +73,36 @@ namespace XpertApp2.Utility
                 Console.WriteLine("Connect failure.");
             }
             Console.ReadKey();
+        }
+
+        public void Compare_RFID(string rfid1, string rfid2)
+        {
+            EventDB eventDB = new EventDB();
+            ContentDB contentDB = new ContentDB();
+           
+            // 将字符串拆分为数组，使用中文逗号“，”作为分隔符
+            string[] array1 = rfid1.Split('，');
+            string[] array2 = rfid2.Split('，');
+
+            // 找出string1中有但string2中没有的元素
+            var borrow_arr = array1.Except(array2);
+
+            // 找出string2中有但string1中没有的元素
+            var return_arr = array2.Except(array1);
+
+            foreach (var item in borrow_arr)
+            {
+                eventDB.InsertBorrowRecords(item,DB_Base.CurrentUser.UserName);
+                contentDB.UpdateContent_on_hand(item, DB_Base.CurrentUser.UserName);//update content on hand
+                DB_Base.borrowlist.Add(contentDB.GetContent_rfid(item));
+                DBUtility.verifyBorrow(item);//verify if user is allowed to borrow this item
+            }
+            foreach (var item in return_arr)
+            {
+                eventDB.UpdateBorrowRecords_return(item, DB_Base.CurrentUser.UserName);
+                contentDB.UpdateContent_on_hand(item,"");
+                DB_Base.returnlist.Add(contentDB.GetContent_rfid(item));
+            }
         }
 
         private static object waitReadSingle = new object();

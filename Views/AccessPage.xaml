@@ -68,7 +68,7 @@
                 <SolidColorBrush Color="White" Opacity="0.6"/>
             </StackPanel.Background>
             <TextBlock Text="Put In" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="Bold" Margin="10,5,10,5"></TextBlock>
-
+            <ListView x:Name="return_list"></ListView>
         </StackPanel>
 
         <StackPanel Grid.Row="2" Margin="2" >
@@ -76,6 +76,7 @@
                 <SolidColorBrush Color="White" Opacity="0.6"/>
             </StackPanel.Background>
             <TextBlock Text="Take Out" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="Bold" Margin="10,5,10,5"></TextBlock>
+            <ListView x:Name="borrow_list"></ListView>
         </StackPanel>
 
         <StackPanel Grid.Row="3" Margin="2" >
