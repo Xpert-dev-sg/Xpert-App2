@@ -35,7 +35,7 @@ door<br/>
 
 **系统服务**<br/>
 >每个item有权限和部门管控，不同部门或不够权限的用户拿了会被记录然后email通知部门负责人（done）<br/>
->每个item有return时间的限制，超时会email负责人和当事人<br/>
+>每个item有return时间的限制，超时会email负责人和当事人（done）<br/>
 
 **截图**<br/>
 >![login](https://github.com/Xpert-dev-sg/Xpert-App2/blob/main/print_screen/login.png)<br/>
