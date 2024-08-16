@@ -71,6 +71,34 @@ namespace XpertApp2.Utility
             }
         }
 
+        public static void SystemServiceTimer()
+        {
+
+            DispatcherTimer timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(60);
+            timer.Tick += SystemService_Tick;
+            timer.Start();
+        }
+        private static void SystemService_Tick(object sender, EventArgs e)
+        {
+            var cm=Convert.ToInt32(DB_Base.systemservice_time.Split(':')[1]);
+            var ch = Convert.ToInt32(DB_Base.systemservice_time.Split(':')[0]);
+            var m=DateTime.Now.Minute;
+            var h = DateTime.Now.Hour;
+            if (ch==h && cm==m)
+            {
+               DBUtility.verifyBorrowTime();
+            }
+
+            // 停止计时器
+            DispatcherTimer timer = sender as DispatcherTimer;
+            if (timer != null)
+            {
+                timer.Stop();
+                timer.Tick -= SystemService_Tick;
+            }
+        }
+
         public static void navigationAccess()
         {
             _mainFrame.NavigationService.Navigate(new AccessPage());

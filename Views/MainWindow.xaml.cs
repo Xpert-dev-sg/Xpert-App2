@@ -29,6 +29,7 @@ namespace XpertApp2.Views
             InitializeTimer();
             MainFrame.Navigate(new MenuPage());
             TimeUtility.Initialize(MainFrame);
+            TimeUtility.SystemServiceTimer();
  
             log.Info("System is initialized.");
 

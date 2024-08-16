@@ -262,7 +262,7 @@ namespace XpertApp2.DB
                                 var msg = $"{sql}-[{i}]";
                                 eventDB.InsertEvent_system("", msg, DB_Base.CurrentUser.UserName, connection);
                                 log.Debug(msg);
-                                
+
                             }
                             transaction.Commit();
                         }
@@ -401,7 +401,7 @@ namespace XpertApp2.DB
                                         DB_Base.CurrentUser.Email = reader["email"].ToString();
 
                                         //add log
-                                        eventDB.InsertEvent_system("Login","User Login",DB_Base.CurrentUser.UserName, connection);
+                                        eventDB.InsertEvent_system("Login", "User Login", DB_Base.CurrentUser.UserName, connection);
 
                                         result = true;
                                     }
@@ -766,7 +766,7 @@ namespace XpertApp2.DB
                                             UpdateBy = reader["Update_By"].ToString(),
                                             UpdateOn = reader["Update_On"].ToString()
                                         };
-                                        
+
                                     }
                                 var msg = $"{sql}-[{i}]";
                                 eventDB.InsertEvent_system("", msg, DB_Base.CurrentUser.UserName, connection);
@@ -811,6 +811,50 @@ namespace XpertApp2.DB
                                 eventDB.InsertEvent_system("", msg, DB_Base.CurrentUser.UserName, connection);
                                 log.Debug(msg);
                                 result = Convert.ToInt32(obj) == 0;
+                            }
+                            transaction.Commit();
+                        }
+                        catch (Exception ex)
+                        {
+                            transaction.Rollback();
+                            log.Error($"userdb Error: {ex.Message}");
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                log.Error($"userdb Error: {ex.Message}");
+            }
+
+            return result;
+        }
+
+        public string GetUserEmail_Name(string name)
+        {
+            var result = "";
+            try
+            {
+                using (var connection = new SQLiteConnection(DB_Base.DBConnectionString))
+                {
+                    connection.Open();
+                    string sql = $"SELECT Email FROM User_TB where User_Name='{name}'";
+                    using (SQLiteTransaction transaction = connection.BeginTransaction())
+                    {
+                        try
+                        {
+                            using (var command = new SQLiteCommand(sql, connection))
+                            using (var reader = command.ExecuteReader())
+                            {
+
+                                if (reader.HasRows)
+                                    while (reader.Read())
+                                    {
+                                        result = reader["email"].ToString();
+                                    }
+                                var msg = $"{sql}-[{1}]";
+                                eventDB.InsertEvent_system("", msg, DB_Base.CurrentUser.UserName, connection);
+                                log.Debug(msg);
                             }
                             transaction.Commit();
                         }

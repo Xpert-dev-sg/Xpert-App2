@@ -895,15 +895,16 @@ namespace XpertApp2.DB
 
         public string GetContent_item(string item)
         {
-            var Item_Name= item.Split('-')[0];
-            var Item_Description = item.Split('-')[1];
+            //var Item_Name= item.Split('-')[0];
+            //var Item_Description = item.Split('-')[1];
             var Contents = "";
             try
             {
                 using (var connection = new SQLiteConnection(DB_Base.DBConnectionString))
                 {
                     connection.Open();
-                    string sql = $"SELECT * FROM Item_TB where Item_Name = '{Item_Name}' and Item_Description='{Item_Description}' ";
+                    //string sql = $"SELECT * FROM Item_TB where Item_Name = '{Item_Name}' and Item_Description='{Item_Description}' ";
+                    string sql = $"SELECT * FROM Item_TB where RFID = '{item}' ";
                     using (SQLiteTransaction transaction = connection.BeginTransaction())
                     {
                         try

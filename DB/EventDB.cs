@@ -931,7 +931,7 @@ namespace XpertApp2.DB
                 using (var connection = new SQLiteConnection(DB_Base.DBConnectionString))
                 {
                     connection.Open();
-                    string sql = $"SELECT * FROM Borrow_Records_TB where Return_datetime is null order by Create_On desc";
+                    string sql = $"SELECT Borrow_Records_TB.*,Item_TB.Interval,Item_TB.Item_Name FROM Borrow_Records_TB , Item_TB where Borrow_Records_TB.item_id =Item_TB.Item_Id and  Return_datetime is null order by Create_On desc";
                     using (SQLiteTransaction transaction = connection.BeginTransaction())
                     {
                         try
@@ -951,8 +951,9 @@ namespace XpertApp2.DB
                                         Item_Id = reader["item_id"].ToString(),
                                         User_Id = reader["User_Id"].ToString(),
                                         CreateBy = reader["Create_By"].ToString(),
-                                        CreateOn = reader["Create_On"].ToString()
-
+                                        CreateOn = reader["Create_On"].ToString(),
+                                        interval= reader["Interval"].ToString(),
+                                        Item_name = reader["Item_Name"].ToString()
                                     };
                                     BorrowRecords.Add(BorrowRecord);
                                 }
@@ -1058,6 +1059,13 @@ namespace XpertApp2.DB
         public string take_Datetime { get; set; }
         public string CreateBy { get; set; }
         public string CreateOn { get; set; }
+        public string interval { get; set; }
+        public string Item_name { get; set; }
+    }
 
+    public class Borrowitem
+    {
+        public string Item_name { get; set; }
+        public string User_Id { get; set; }
     }
 }

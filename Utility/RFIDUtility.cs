@@ -89,7 +89,12 @@ namespace XpertApp2.Utility
 
             // 找出string2中有但string1中没有的元素
             var return_arr = array2.Except(array1);
-
+            DB_Base.borrowlist= new System.Collections.ObjectModel.ObservableCollection<string>();
+            string borrowlist_str = "";
+            string returnlist_str = "";
+            string[] tomail = new string[] { DB_Base.CurrentUser.Email };
+            var Subject = "";
+            var msg = "";
             foreach (var item in borrow_arr)
             {
                 eventDB.InsertBorrowRecords(item,DB_Base.CurrentUser.UserName);
@@ -97,11 +102,38 @@ namespace XpertApp2.Utility
                 DB_Base.borrowlist.Add(contentDB.GetContent_rfid(item));
                 DBUtility.verifyBorrow(item);//verify if user is allowed to borrow this item
             }
+            
             foreach (var item in return_arr)
             {
                 eventDB.UpdateBorrowRecords_return(item, DB_Base.CurrentUser.UserName);
                 contentDB.UpdateContent_on_hand(item,"");
                 DB_Base.returnlist.Add(contentDB.GetContent_rfid(item));
+            }
+
+            if (DB_Base.borrowlist.Count() > 0)
+            {
+                Subject = " borrwo";
+                foreach (var item in DB_Base.borrowlist)
+                {
+                    borrowlist_str += item + ",";
+                }
+                msg += $"{DB_Base.CurrentUser.UserName} take {borrowlist_str} out on {DateTime.Now}.</br>";
+            }
+
+            if (DB_Base.returnlist.Count() > 0)
+            {
+                Subject += " return";
+
+                foreach (var item in DB_Base.returnlist)
+                {
+                    returnlist_str += item + ",";
+                }
+                msg += $"{DB_Base.CurrentUser.UserName} return {returnlist_str} out on {DateTime.Now}.</br>";
+
+            }
+            if (!string.IsNullOrEmpty(msg))
+            {
+                EmailUtility.SendEmail(msg, Subject+"item", tomail);
             }
         }
 
