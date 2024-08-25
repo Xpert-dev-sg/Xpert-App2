@@ -32,6 +32,7 @@ door<br/>
 >管理用户页面 增删改查 四大功能(done)<br/>
 >log 展示页面和查询(done)<br/>
 >borrow 展示页面和查询(done)<br/>
+>login admin是999然后回车<br/>
 
 **系统服务**<br/>
 >每个item有权限和部门管控，不同部门或不够权限的用户拿了会被记录然后email通知部门负责人（done）<br/>
