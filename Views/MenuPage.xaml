@@ -16,7 +16,7 @@
                     <Image  Stretch="UniformToFill" Source="pack://application:,,,/XpertApp2;component/Resources/Img/Content.jpg" MouseDown="Click_ContentList" Opacity="0.3" />
                     <!--<TextBlock Text="Items List" FontSize="150" Foreground="DarkGray" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>-->
                     <TextBlock Text="Items List" FontSize="150"  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" Foreground="#FFFFFFFF" FontWeight="Bold" 
-                            TextOptions.TextFormattingMode="Display"   TextWrapping="Wrap" >
+                            TextOptions.TextFormattingMode="Display"   TextWrapping="Wrap" MouseDown="Click_ContentList">
                         <TextBlock.Effect>
                             <DropShadowEffect Color="Black" Opacity="50" Direction="-90" RenderingBias="Quality" ShadowDepth="2" >
                             </DropShadowEffect>
@@ -29,7 +29,7 @@
                     <Image  Stretch="UniformToFill" Source="pack://application:,,,/XpertApp2;component/Resources/Img/access_jpg.jpg" MouseDown="Click_Access" Opacity="0.3" />
                     <!--<TextBlock Text="Open" FontSize="150" Foreground="DarkGray" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>-->
                     <TextBlock Text="Open" FontSize="150"  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" Foreground="#FFFFFFFF" FontWeight="Bold" 
-        TextOptions.TextFormattingMode="Display"   TextWrapping="Wrap" >
+        TextOptions.TextFormattingMode="Display"   TextWrapping="Wrap" MouseDown="Click_Access">
                         <TextBlock.Effect>
                             <DropShadowEffect Color="Black" Opacity="50" Direction="-90" RenderingBias="Quality" ShadowDepth="2" >
                             </DropShadowEffect>
@@ -42,7 +42,7 @@
                     <Image  Stretch="UniformToFill" Source="pack://application:,,,/XpertApp2;component/Resources/Img/admin.jpg" MouseDown="Click_Admin"  Opacity="0.3"/>
                     <!--<TextBlock Text="Admin" FontSize="150" Foreground="DarkGray" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>-->
                     <TextBlock Text="Admin" FontSize="150"  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" Foreground="#FFFFFFFF" FontWeight="Bold" 
-        TextOptions.TextFormattingMode="Display"   TextWrapping="Wrap" >
+        TextOptions.TextFormattingMode="Display"   TextWrapping="Wrap" MouseDown="Click_Admin">
                         <TextBlock.Effect>
                             <DropShadowEffect Color="Black" Opacity="50" Direction="-90" RenderingBias="Quality" ShadowDepth="2" >
                             </DropShadowEffect>
