@@ -13,6 +13,12 @@ RFID<br/>
 door<br/>
 <br/>
 <br/>
+**软件**<br/>
+执行文件：XpertApp2.exe<br/>
+配置文件：XpertApp2.dll.config<br/>
+DB文件：XpertDB.db<br/>
+<br/>
+<br/>
 **主菜单页面**<br/>
 >轮巡展示(done)<br/>
 >content list 没有权限限制，15秒（可设置）会自动回到主菜单(done)<br/>
