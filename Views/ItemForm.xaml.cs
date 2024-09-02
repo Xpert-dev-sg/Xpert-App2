@@ -34,7 +34,7 @@ namespace XpertApp2.Views
             MonitorKeyMouseUntility.MonitorKeyMouseMain();
 
             DispatcherTimer timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromSeconds(10);
+            timer.Interval = TimeSpan.FromSeconds(1);
             timer.Tick += AfterLoginFormTimer_Tick;
             timer.Start();
             initialize();

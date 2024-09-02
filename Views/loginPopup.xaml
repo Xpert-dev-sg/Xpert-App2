@@ -12,6 +12,7 @@
     </Window.Background>
     <Grid>
         <PasswordBox x:Name="loginbox" HorizontalAlignment="Left" Margin="62,560,0,0" VerticalAlignment="Top" Width="451" Height="53" KeyDown="PasswordBox_KeyDown" Opacity="0.01" />
+<TextBlock  x:Name="txtcountdown"  HorizontalAlignment="Right" VerticalAlignment="Top" FontSize="16"  Margin="10,5,10,5"></TextBlock>
 
     </Grid>
 </Window>

@@ -10,6 +10,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 using XpertApp2.DB;
@@ -23,14 +24,13 @@ namespace XpertApp2.Views
     public partial class loginPopup : Window
     {
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+         private int _countdown = 10;
+        private DispatcherTimer _timer;
         public loginPopup()
         {
             WindowStartupLocation = WindowStartupLocation.CenterScreen;
             InitializeComponent();
-            DispatcherTimer timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromSeconds(DB_Base.SystemMenuInterval);
-            timer.Tick += CarouselTimer_Tick;
-            timer.Start();
+            Setup_timer();
             loginbox.Focus();
         }
 
@@ -73,11 +73,38 @@ namespace XpertApp2.Views
 
         }
 
-        private  void CarouselTimer_Tick(object sender, EventArgs e)
-        {
-            
-            this.Close();
 
+        private void Setup_timer()
+        {
+            //TimeUtility.CarouselMenuTimer();
+            //
+            var islogined = !(DB_Base.CurrentUser == null);
+            _countdown = islogined ? DB_Base.SystemMenuInterval_admin : DB_Base.SystemMenuInterval;
+            // 初始化计时器
+            _timer = new DispatcherTimer();
+            _timer.Interval = System.TimeSpan.FromSeconds(1);  // 每秒触发一次
+            _timer.Tick += Timer_countdown_Tick;
+            _timer.Start();
+
+            // 设置初始显示数字
+            txtcountdown.Text = _countdown.ToString();
         }
+        private void Timer_countdown_Tick(object sender, System.EventArgs e)
+        {
+            _countdown--;
+
+            // 更新显示的数字
+            if (_countdown >= 0)
+            {
+                txtcountdown.Text = _countdown.ToString();
+            }
+            else
+            {
+                // 停止计时器并关闭窗口
+                _timer.Stop();
+                this.Close();
+            }
+        }
+
     }
 }

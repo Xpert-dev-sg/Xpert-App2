@@ -33,10 +33,10 @@ namespace XpertApp2.Views
         {
             InitializeComponent();
             MonitorKeyMouseUntility.MonitorKeyMouseMain();
-            DispatcherTimer timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromSeconds(10);
-            timer.Tick += AfterLoginFormTimer_Tick;
-            timer.Start();
+            //DispatcherTimer timer = new DispatcherTimer();
+            //timer.Interval = TimeSpan.FromSeconds(10);
+            //timer.Tick += AfterLoginFormTimer_Tick;
+            //timer.Start();
             Load();
         }
 
@@ -247,27 +247,27 @@ namespace XpertApp2.Views
 
         #endregion
 
-        private void AfterLoginFormTimer_Tick(object sender, EventArgs e)
-        {
-            if (!DB_Base.Islogined)
-            {
-                try
-                {
-                    //Dispose();
+        //private void AfterLoginFormTimer_Tick(object sender, EventArgs e)
+        //{
+        //    if (!DB_Base.Islogined)
+        //    {
+        //        try
+        //        {
+        //            //Dispose();
                     
-                    NavigationService.RemoveBackEntry();
-                    NavigationService.Navigate(new MenuPage());
-                }
-                catch (Exception)
-                {
+        //            NavigationService.RemoveBackEntry();
+        //            NavigationService.Navigate(new MenuPage());
+        //        }
+        //        catch (Exception)
+        //        {
 
-                    //throw;
-                }
+        //            //throw;
+        //        }
 
 
-            }
+        //    }
 
-        }
+        //}
 
         public void Dispose()
         {

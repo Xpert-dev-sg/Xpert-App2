@@ -27,16 +27,48 @@ namespace XpertApp2.Views
     {
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private ContentDB contentDB = new ContentDB();
+        private int _countdown = 2;
+        private DispatcherTimer _timer;
         public ContentListViewPage()
         {
             InitializeComponent();
 
-            
-            TimeUtility.CarouselMenuTimer();
-            
+
+            Setup_timer();
 
             LoadData();
 
+        }
+        private void Setup_timer()
+        {
+            //TimeUtility.CarouselMenuTimer();
+            //
+            var islogined = !(DB_Base.CurrentUser == null);
+            _countdown = islogined ? DB_Base.SystemMenuInterval_admin : DB_Base.SystemMenuInterval;
+            // 初始化计时器
+            _timer = new DispatcherTimer();
+            _timer.Interval = System.TimeSpan.FromSeconds(1);  // 每秒触发一次
+            _timer.Tick += Timer_countdown_Tick;
+            _timer.Start();
+
+            // 设置初始显示数字
+            txtcountdown.Text = _countdown.ToString();
+        }
+        private void Timer_countdown_Tick(object sender, System.EventArgs e)
+        {
+            _countdown--;
+
+            // 更新显示的数字
+            if (_countdown >= 0)
+            {
+                txtcountdown.Text = _countdown.ToString();
+            }
+            else
+            {
+                // 停止计时器并关闭窗口
+                _timer.Stop();
+                NavigationService.Navigate(new MenuPage());
+            }
         }
 
         public void LoadData()

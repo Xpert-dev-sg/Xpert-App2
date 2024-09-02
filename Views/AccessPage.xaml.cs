@@ -29,15 +29,18 @@ namespace XpertApp2.Views
 
         private ObservableCollection<string> items;
         private DispatcherTimer timer;
+
+        private int _countdown = 0;
+        private DispatcherTimer _timer;
         public AccessPage()
         {
             InitializeComponent();
 
             MonitorKeyMouseUntility.MonitorKeyMouseMain();
-            TimeUtility.CarouselMenuTimer();
             
+            Setup_timer();
 
-            
+
 
             // 设置定时器
             timer = new DispatcherTimer();
@@ -48,6 +51,39 @@ namespace XpertApp2.Views
 
             Load_dataComponents();
         }
+
+        private void Setup_timer()
+        {
+            //TimeUtility.CarouselMenuTimer();
+            //
+            var islogined = !(DB_Base.CurrentUser == null);
+            _countdown = islogined ? DB_Base.SystemMenuInterval_admin : DB_Base.SystemMenuInterval;
+            // 初始化计时器
+            _timer = new DispatcherTimer();
+            _timer.Interval = System.TimeSpan.FromSeconds(1);  // 每秒触发一次
+            _timer.Tick += Timer_countdown_Tick;
+            _timer.Start();
+
+            // 设置初始显示数字
+            txtcountdown.Text = _countdown.ToString();
+        }
+        private void Timer_countdown_Tick(object sender, System.EventArgs e)
+        {
+            _countdown--;
+
+            // 更新显示的数字
+            if (_countdown >= 0)
+            {
+                txtcountdown.Text = _countdown.ToString();
+            }
+            else
+            {
+                // 停止计时器并关闭窗口
+                _timer.Stop();
+                NavigationService.Navigate(new MenuPage());
+            }
+        }
+
 
         private void Timer_Tick(object sender, EventArgs e)
         {
