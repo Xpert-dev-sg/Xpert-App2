@@ -35,7 +35,7 @@ DB文件：XpertDB.db<br/>
 
 **Admin页面**<br/>
 >管理用户页面 增删改查 四大功能(done)<br/>
->管理用户页面 增删改查 四大功能(done)<br/>
+>管理item页面 增删改查 四大功能(done)<br/>
 >log 展示页面和查询(done)<br/>
 >borrow 展示页面和查询(done)<br/>
 >login admin是999然后回车<br/>
