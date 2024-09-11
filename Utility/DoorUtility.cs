@@ -32,48 +32,39 @@ namespace XpertApp2.Utility
                 return;
             }
 
-            if (ComDevice.IsOpen == false)
+
+            ComDevice.PortName = comlist;
+            ComDevice.BaudRate = Convert.ToInt32(baudrate);
+            ComDevice.Parity = (Parity)Convert.ToInt32(parity);
+            ComDevice.DataBits = Convert.ToInt32(databits);
+            ComDevice.StopBits = (StopBits)Convert.ToInt32(stopbits);
+            try
             {
-                ComDevice.PortName = comlist;
-                ComDevice.BaudRate = Convert.ToInt32(baudrate);
-                ComDevice.Parity = (Parity)Convert.ToInt32(parity);
-                ComDevice.DataBits = Convert.ToInt32(databits);
-                ComDevice.StopBits = (StopBits)Convert.ToInt32(stopbits);
-                try
+                RFIDUtility rFIDUtility = new RFIDUtility();
+                DB_Base.RFIDList_o = rFIDUtility.Read_RFID();
+                ComDevice.Open();
+                if (ComDevice.IsOpen)
                 {
-                    RFIDUtility rFIDUtility = new RFIDUtility();
-                    DB_Base.RFIDList_o = rFIDUtility.Read_RFID();
-                    ComDevice.Open();
-                    if (ComDevice.IsOpen)
-                    {
-                        //ComDevice.Write(senddoor1Data, 0, senddoor1Data.Length);
-                        //ComDevice.Write(senddoor2Data, 0, senddoor2Data.Length);
-                        ComDevice.Write(senddoor3Data, 0, senddoor3Data.Length);
-                    }
-
-
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Error");
-                    return;
+                    //ComDevice.Write(senddoor1Data, 0, senddoor1Data.Length);
+                    //ComDevice.Write(senddoor2Data, 0, senddoor2Data.Length);
+                    ComDevice.Write(senddoor3Data, 0, senddoor3Data.Length);
                 }
 
 
             }
-            else
+            catch (Exception ex)
             {
-                try
-                {
-                    ComDevice.Close();
-
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Error");
-                }
-
+                log.Error(ex.Message);
+                MessageBox.Show(ex.Message, "Error");
+                //return;
             }
+            finally
+            {
+                ComDevice.Close();
+            }
+
+
+
 
 
         }
@@ -132,14 +123,23 @@ namespace XpertApp2.Utility
 
         public DoorMonitor(Door door)
         {
-            this.door = door;
-            this.door.DoorStateChanged += OnDoorStateChanged;
+            try
+            {
+                this.door = door;
+                this.door.DoorStateChanged += OnDoorStateChanged;
 
-            // 定时器用于定期检查门的状态
-            doorCheckTimer = new System.Timers.Timer(1000); // 每秒检查一次
-            doorCheckTimer.Elapsed += CheckDoorStatus;
-            doorCheckTimer.AutoReset = true;
-            doorCheckTimer.Start();
+                // 定时器用于定期检查门的状态
+                doorCheckTimer = new System.Timers.Timer(1000); // 每秒检查一次
+                doorCheckTimer.Elapsed += CheckDoorStatus;
+                doorCheckTimer.AutoReset = true;
+                doorCheckTimer.Start();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                log.Error(ex.Message);
+            }
+            
         }
 
         private void CheckDoorStatus(object sender, ElapsedEventArgs e)
@@ -174,31 +174,49 @@ namespace XpertApp2.Utility
 
         private void StartMonitoring()
         {
-            if (DB_Base.IsDoorOpen == false)
+            try
             {
-                DB_Base.IsDoorOpen = true;
-                Console.WriteLine("Monitoring Started...");
-                // 实现监控逻辑
-                DoorUtility doorUtility = new DoorUtility();
-                doorUtility.LogDoor(true);
+                if (DB_Base.IsDoorOpen == false)
+                {
+                    DB_Base.IsDoorOpen = true;
+                    log.Info("Monitoring Started...");
+                    // 实现监控逻辑
+                    DoorUtility doorUtility = new DoorUtility();
+                    doorUtility.LogDoor(true);
+                }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                log.Error(ex.Message);
+            }
+            
         }
 
         private void StopMonitoring()
         {
-            if (DB_Base.IsDoorOpen == true)
+            try
             {
-                DB_Base.IsDoorOpen = false;
-                Console.WriteLine("Monitoring Stopped...");
-                // 实现停止监控逻辑
-                DoorUtility doorUtility = new DoorUtility();
-                doorUtility.LogDoor(false);
+                if (DB_Base.IsDoorOpen == true)
+                {
+                    DB_Base.IsDoorOpen = false;
+                    log.Info("Monitoring Stopped...");
+                    // 实现停止监控逻辑
+                    DoorUtility doorUtility = new DoorUtility();
+                    doorUtility.LogDoor(false);
 
-                RFIDUtility rFIDUtility = new RFIDUtility();
-                DB_Base.RFIDList_c = rFIDUtility.Read_RFID();
-                rFIDUtility.Compare_RFID(DB_Base.RFIDList_c, DB_Base.RFIDList_o);
+                    RFIDUtility rFIDUtility = new RFIDUtility();
+                    DB_Base.RFIDList_c = rFIDUtility.Read_RFID();
+                    rFIDUtility.Compare_RFID(DB_Base.RFIDList_c, DB_Base.RFIDList_o);
 
+                }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                log.Error(ex.Message);
+            }
+            
         }
 
 
