@@ -18,8 +18,9 @@ namespace XpertApp2.Utility
         private SerialPort ComDevice = new SerialPort();
         public void OpenDoor()
         {
-
-
+            byte[] senddoor1Data = Encoding.ASCII.GetBytes("574B4C590901820B88");
+            byte[] senddoor2Data = Encoding.ASCII.GetBytes("574B4C590901820281");
+            byte[] senddoor3Data = Encoding.ASCII.GetBytes("574B4C5908018686");
             string comlist = DB_Base.door_com;
             int baudrate = Convert.ToInt32(DB_Base.door_baudrate);
             int parity = Convert.ToInt32(DB_Base.door_parity);
@@ -43,7 +44,12 @@ namespace XpertApp2.Utility
                     RFIDUtility rFIDUtility = new RFIDUtility();
                     DB_Base.RFIDList_o = rFIDUtility.Read_RFID();
                     ComDevice.Open();
-
+                    if (ComDevice.IsOpen)
+                    {
+                        //ComDevice.Write(senddoor1Data, 0, senddoor1Data.Length);
+                        //ComDevice.Write(senddoor2Data, 0, senddoor2Data.Length);
+                        ComDevice.Write(senddoor3Data, 0, senddoor3Data.Length);
+                    }
 
 
                 }
