@@ -14,7 +14,7 @@ door<br/>
 <br/>
 <br/>
 **软件**<br/>
-下载包: bin/Debug/net6.0-windows7.0
+下载包: bin/Debug/net6.0-windows7.0<br/>
 执行文件：XpertApp2.exe<br/>
 配置文件：XpertApp2.dll.config<br/>
 DB文件：XpertDB.db<br/>
@@ -63,3 +63,6 @@ DB文件：XpertDB.db<br/>
 
 **脑图**
 ![mindmap](https://github.com/Xpert-dev-sg/Xpert-App2/blob/main/RFID%2Bsystem.png)
+
+.open XpertDB.db
+.tables
