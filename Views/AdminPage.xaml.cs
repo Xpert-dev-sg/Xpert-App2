@@ -1,6 +1,7 @@
 ﻿using HandyControl.Controls;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,6 +30,8 @@ namespace XpertApp2.Views
         private ContentDB contentDB = new ContentDB();
         private UserDB userDB = new UserDB();
         private EventDB logDB = new EventDB();
+        public static ObservableCollection<string> reults;
+        private StringBuilder cardData;
         public AdminPage()
         {
             InitializeComponent();
@@ -38,6 +41,11 @@ namespace XpertApp2.Views
             //timer.Tick += AfterLoginFormTimer_Tick;
             //timer.Start();
             Load();
+            reults = new ObservableCollection<string>();
+            lbResults.ItemsSource = reults;
+            cardData = new StringBuilder();
+            // 窗口加载时开始监听键盘输入 (假设读卡器模拟键盘输入)
+            this.PreviewKeyDown += MainWindow_PreviewKeyDown;
         }
 
         private void Load()
@@ -247,6 +255,95 @@ namespace XpertApp2.Views
 
         #endregion
 
+        #region test control
+
+        private void btnReadRFID_Click(object sender, RoutedEventArgs e)
+        {
+
+            RFIDUtility rFIDUtility = new RFIDUtility();
+            string s = rFIDUtility.Read_RFID();
+
+
+            reults.Add(s);
+        }
+
+        private void btnOPenDoor_left_Click(object sender, RoutedEventArgs e)
+        {
+            string s = "574B4C590901820281";
+            //reults.Add($"send {s}");
+            DoorUtility doorUtility = new DoorUtility();
+            doorUtility.OpenDoor_test(s);
+
+        }
+
+        private void btnOPenDoor_all_Click(object sender, RoutedEventArgs e)
+        {
+            string s = "574B4C5908018686";
+            //reults.Add($"send {s}");
+            DoorUtility doorUtility = new DoorUtility();
+            doorUtility.OpenDoor_test(s);
+        }
+
+        private void btnOPenDoor_right_Click(object sender, RoutedEventArgs e)
+        {
+            string s = "574B4C590901820B88";
+            //reults.Add($"send {s}");
+            DoorUtility doorUtility = new DoorUtility();
+            doorUtility.OpenDoor_test(s);
+        }
+
+        private void btnExit_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+
+
+        private void btnClearRFID_Click(object sender, RoutedEventArgs e)
+        {
+            reults.Clear();
+        }
+
+
+        // 键盘输入事件监听
+        private void MainWindow_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                // 如果检测到 Enter 键，表示卡片数据输入完毕
+                if (e.Key == Key.Enter)
+                {
+                    string cardString = cardData.ToString();
+                    if (!string.IsNullOrEmpty(cardString))
+                    {
+                        // 将卡片数据添加到 ListBox
+                        reults.Add(cardString);
+
+                        // 清空 StringBuilder 以便接收下一张卡
+                        //cardData.Clear();
+                    }
+                    e.Handled = true;  // 阻止 Enter 事件继续传播
+                }
+                else
+                {
+                    // 获取按下的字符并追加到 cardData 中
+                    //if (e.Key >= Key.D0 && e.Key <= Key.Z || e.Key == Key.Space)
+                    {
+                        // 获取字符并添加到 StringBuilder
+                        string inputChar = new KeyConverter().ConvertToString(e.Key);
+                        cardData.Append(inputChar);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+                System.Windows.MessageBox.Show("Error"+ex.Message);
+            }
+           
+        }
+        #endregion
+
         //private void AfterLoginFormTimer_Tick(object sender, EventArgs e)
         //{
         //    if (!DB_Base.Islogined)
@@ -254,7 +351,7 @@ namespace XpertApp2.Views
         //        try
         //        {
         //            //Dispose();
-                    
+
         //            NavigationService.RemoveBackEntry();
         //            NavigationService.Navigate(new MenuPage());
         //        }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HandyControl.Controls;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,8 @@ using System.Windows.Shapes;
 using System.Windows.Threading;
 using XpertApp2.DB;
 using XpertApp2.Utility;
+using MessageBox = System.Windows.MessageBox;
+using Window = System.Windows.Window;
 
 namespace XpertApp2.Views
 {
@@ -69,8 +72,9 @@ namespace XpertApp2.Views
             {
                 DB_Base.Islogined = false;
                 MessageBox.Show("wrong pass try again");
-            }
 
+            }
+            loginbox.Clear();
         }
 
 
@@ -104,6 +108,48 @@ namespace XpertApp2.Views
                 _timer.Stop();
                 this.Close();
             }
+        }
+
+        private void NumberButton_Click(object sender, RoutedEventArgs e)
+        {
+            // 获取被点击的按钮
+            var button = sender as Button;
+            if (button != null)
+            {
+                if (button.Content.ToString() == "-")
+                {
+                    if (loginbox.Password.Length > 0)
+                    {
+                        loginbox.Password = loginbox.Password.Substring(0, loginbox.Password.Length - 1);
+                    }
+                }
+                else
+                {
+                    // 将按钮的内容（数字）添加到 PasswordBox
+                    loginbox.Password += button.Content.ToString();
+                }
+                    
+            }
+        }
+
+        // Enter 按钮点击事件处理
+        private void EnterButton_Click(object sender, RoutedEventArgs e)
+        {
+            HandleLogin();  
+            //string enteredPassword = loginbox.Password;
+
+            //// 执行登录验证逻辑 (可以与后台服务对接)
+            //if (enteredPassword == "1234")  // 这里可以替换成你需要验证的密码
+            //{
+            //    MessageBox.Show("Login Successful!");
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Invalid Password!");
+            //}
+
+            // 清空 PasswordBox
+
         }
 
     }

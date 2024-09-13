@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO.Ports;
@@ -7,7 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
 using System.Windows;
+using System.Windows.Markup;
 using XpertApp2.DB;
+using XpertApp2.Views;
 
 namespace XpertApp2.Utility
 {
@@ -15,39 +18,47 @@ namespace XpertApp2.Utility
     public class DoorUtility
     {
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        private SerialPort ComDevice = new SerialPort();
+        public SerialPort ComDevice = new SerialPort();
         public void OpenDoor()
         {
-            byte[] senddoor1Data = Encoding.ASCII.GetBytes("574B4C590901820B88");
-            byte[] senddoor2Data = Encoding.ASCII.GetBytes("574B4C590901820281");
-            byte[] senddoor3Data = Encoding.ASCII.GetBytes("574B4C5908018686");
-            string comlist = DB_Base.door_com;
-            int baudrate = Convert.ToInt32(DB_Base.door_baudrate);
-            int parity = Convert.ToInt32(DB_Base.door_parity);
-            int databits = Convert.ToInt32(DB_Base.door_databits);
-            StopBits stopbits = (StopBits)Convert.ToInt32(1);
-            if (string.IsNullOrEmpty(comlist))
-            {
-                MessageBox.Show("没有发现串口,请检查线路！");
-                return;
-            }
-
-
-            ComDevice.PortName = comlist;
-            ComDevice.BaudRate = Convert.ToInt32(baudrate);
-            ComDevice.Parity = (Parity)Convert.ToInt32(parity);
-            ComDevice.DataBits = Convert.ToInt32(databits);
-            ComDevice.StopBits = (StopBits)Convert.ToInt32(stopbits);
             try
             {
-                RFIDUtility rFIDUtility = new RFIDUtility();
-                DB_Base.RFIDList_o = rFIDUtility.Read_RFID();
-                ComDevice.Open();
-                if (ComDevice.IsOpen)
+
+                byte[] senddoor1Data = strToHexByte("574B4C590901820B88");
+                byte[] senddoor2Data = strToHexByte("574B4C590901820281");
+                byte[] senddoor3Data = strToHexByte("574B4C5908018686");
+                string comlist = DB_Base.door_com;
+
+                int baudrate = Convert.ToInt32(DB_Base.door_baudrate);
+                int parity = Convert.ToInt32(DB_Base.door_parity);
+                int databits = Convert.ToInt32(DB_Base.door_databits);
+                StopBits stopbits = (StopBits)Convert.ToInt32(1);
+
+                if (string.IsNullOrEmpty(comlist))
                 {
+                    MessageBox.Show("没有发现串口,请检查线路！");
+                    return;
+                }
+
+
+                ComDevice.PortName = comlist;
+                ComDevice.BaudRate = Convert.ToInt32(baudrate);
+                ComDevice.Parity = (Parity)Convert.ToInt32(parity);
+                ComDevice.DataBits = Convert.ToInt32(databits);
+                ComDevice.StopBits = (StopBits)Convert.ToInt32(stopbits);
+
+                
+                ComDevice.Open();
+                
+                if (ComDevice.IsOpen)
+                {   
+                    log.Info($"connection:{ComDevice.PortName};{ComDevice.BaudRate};{ComDevice.Parity};{ComDevice.DataBits};{ComDevice.StopBits};ComDevice.IsOpen:{ComDevice.IsOpen}; send data:574B4C5908018686");
                     //ComDevice.Write(senddoor1Data, 0, senddoor1Data.Length);
+                    //Thread.Sleep(1000);
                     //ComDevice.Write(senddoor2Data, 0, senddoor2Data.Length);
+                    //Thread.Sleep(1000);
                     ComDevice.Write(senddoor3Data, 0, senddoor3Data.Length);
+                    Thread.Sleep(1000);
                 }
 
 
@@ -60,7 +71,10 @@ namespace XpertApp2.Utility
             }
             finally
             {
-                ComDevice.Close();
+                if (ComDevice.IsOpen)
+                {
+                    ComDevice.Close();
+                }
             }
 
 
@@ -69,6 +83,84 @@ namespace XpertApp2.Utility
 
         }
 
+
+        public void OpenDoor_test(string c)
+        {
+            try
+            {
+                ComDevice.DataReceived += new SerialDataReceivedEventHandler(Com_DataReceived);//绑定事件
+
+                byte[] senddoor1Data = strToHexByte(c);
+
+                string comlist = DB_Base.door_com;
+
+                int baudrate = Convert.ToInt32(DB_Base.door_baudrate);
+                int parity = Convert.ToInt32(DB_Base.door_parity);
+                int databits = Convert.ToInt32(DB_Base.door_databits);
+                StopBits stopbits = (StopBits)Convert.ToInt32(1);
+
+                if (string.IsNullOrEmpty(comlist))
+                {
+                    MessageBox.Show("没有发现串口,请检查线路！");
+                    return;
+                }
+
+
+                ComDevice.PortName = comlist;
+                ComDevice.BaudRate = Convert.ToInt32(baudrate);
+                ComDevice.Parity = (Parity)Convert.ToInt32(parity);
+                ComDevice.DataBits = Convert.ToInt32(databits);
+                ComDevice.StopBits = (StopBits)Convert.ToInt32(stopbits);
+                AdminPage.reults.Add($"{ComDevice.PortName};{ComDevice.BaudRate};{ComDevice.Parity};{ComDevice.DataBits};{ComDevice.StopBits}");
+                ComDevice.Open();
+                
+                if (ComDevice.IsOpen)
+                {
+                    //MessageBox.Show("ComDevice.IsOpen: " + ComDevice.IsOpen);
+                    AdminPage.reults.Add($"ComDevice.IsOpen:{ComDevice.IsOpen}");
+                    AdminPage.reults.Add($"send:{c}");
+                    log.Info($"connection:{ComDevice.PortName};{ComDevice.BaudRate};{ComDevice.Parity};{ComDevice.DataBits};{ComDevice.StopBits};ComDevice.IsOpen:{ComDevice.IsOpen}; send data:{c}");
+                    ComDevice.Write(senddoor1Data, 0, senddoor1Data.Length);
+                    Thread.Sleep(2000);
+                }
+
+
+
+            }
+            catch (Exception ex)
+            {
+                log.Error(ex.Message);
+                MessageBox.Show(ex.Message, "Error");
+                //return;
+            }
+            finally
+            {
+                if (ComDevice.IsOpen)
+                {
+                    ComDevice.Close();
+                }
+            }
+
+
+
+
+
+        }
+
+        private byte[] strToHexByte(string hexString)
+        {
+            //hexString = hexString.Replace(" ", "");
+            if ((hexString.Length % 2) != 0) hexString += " ";
+            byte[] returnBytes = new byte[hexString.Length / 2];
+            for (int i = 0; i < returnBytes.Length; i++)
+                returnBytes[i] = Convert.ToByte(hexString.Substring(i * 2, 2).Replace(" ", ""), 16);
+            return returnBytes;
+        }
+
+        public bool IsOPen()
+        {
+            return ComDevice.IsOpen;
+        }
         //get list from RFID before open door
 
         public void LogDoor(bool is_open)
@@ -87,6 +179,33 @@ namespace XpertApp2.Utility
 
             EventDB eventDB = new EventDB();
             eventDB.InsertEvent(Event);
+        }
+        private void Com_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        {
+            try
+            {
+                byte[] ReDatas = new byte[ComDevice.BytesToRead];
+                ComDevice.Read(ReDatas, 0, ReDatas.Length);//读取数据
+                                                           //MessageBox.Show("ReDatas: " + ReDatas);
+                                                           //this.AddData(ReDatas);//输出数据
+
+                StringBuilder sb = new StringBuilder();
+                for (int i = 0; i < ReDatas.Length; i++)
+                {
+                    sb.AppendFormat("{0:x2}" + " ", ReDatas[i]);
+                }
+                string result = sb.ToString().ToUpper();
+
+                //TestControl.reults.Add(result);
+                log.Info(result);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                log.Error(ex.Message);
+
+            }
+
         }
     }
 
@@ -139,7 +258,7 @@ namespace XpertApp2.Utility
                 MessageBox.Show(ex.Message);
                 log.Error(ex.Message);
             }
-            
+
         }
 
         private void CheckDoorStatus(object sender, ElapsedEventArgs e)
@@ -190,7 +309,7 @@ namespace XpertApp2.Utility
                 MessageBox.Show(ex.Message);
                 log.Error(ex.Message);
             }
-            
+
         }
 
         private void StopMonitoring()
@@ -216,7 +335,7 @@ namespace XpertApp2.Utility
                 MessageBox.Show(ex.Message);
                 log.Error(ex.Message);
             }
-            
+
         }
 
 

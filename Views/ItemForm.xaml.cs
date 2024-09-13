@@ -187,5 +187,11 @@ namespace XpertApp2.Views
             }
 
         }
+
+        private void btnRFID_Click(object sender, RoutedEventArgs e)
+        {
+            RFIDUtility rFIDUtility = new RFIDUtility();
+            txtRFID.Text = rFIDUtility.Read_RFID();
+        }
     }
 }

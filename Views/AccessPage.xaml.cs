@@ -116,10 +116,11 @@ namespace XpertApp2.Views
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("open door");
+           
 
             DoorUtility doorUtility = new DoorUtility();
-            doorUtility.OpenDoor();
+            doorUtility.OpenDoor(); 
+            MessageBox.Show("open door");
         }
     }
 }

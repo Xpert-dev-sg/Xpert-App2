@@ -1,0 +1,509 @@
+2024-09-13 05:47:46,949 [1] INFO  [XpertApp2.Views.MainWindow] - ：System is initialized.
+2024-09-13 05:47:58,380 [1] ERROR [XpertApp2.Utility.DoorUtility] - ：Could not find file 'COM2'.
+2024-09-13 17:27:54,002 [1] INFO  [XpertApp2.Views.MainWindow] - ：System is initialized.
+2024-09-13 17:28:28,019 [1] DEBUG [XpertApp2.DB.EventDB] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2024-09-13 17:28:28,089 [1] DEBUG [XpertApp2.DB.EventDB] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2024-09-13 17:28:28,090 [1] DEBUG [XpertApp2.DB.EventDB] - ：SELECT * FROM Borrow_Records_TB where user_id='admin user1' and Return_datetime is null order by Create_On desc-[100]
+2024-09-13 17:28:29,146 [1] DEBUG [XpertApp2.DB.EventDB] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2024-09-13 17:28:29,149 [1] DEBUG [XpertApp2.DB.EventDB] - ：SELECT * FROM Borrow_Records_TB where user_id='admin user1' and Return_datetime is null order by Create_On desc-[100]
+2024-09-13 17:28:30,184 [1] DEBUG [XpertApp2.DB.EventDB] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2024-09-13 17:28:30,186 [1] DEBUG [XpertApp2.DB.EventDB] - ：SELECT * FROM Borrow_Records_TB where user_id='admin user1' and Return_datetime is null order by Create_On desc-[100]
+2024-09-13 17:28:31,264 [1] DEBUG [XpertApp2.DB.EventDB] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2024-09-13 17:28:31,266 [1] DEBUG [XpertApp2.DB.EventDB] - ：SELECT * FROM Borrow_Records_TB where user_id='admin user1' and Return_datetime is null order by Create_On desc-[100]
+2024-09-13 17:28:32,309 [1] DEBUG [XpertApp2.DB.EventDB] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2024-09-13 17:28:32,310 [1] DEBUG [XpertApp2.DB.EventDB] - ：SELECT * FROM Borrow_Records_TB where user_id='admin user1' and Return_datetime is null order by Create_On desc-[100]
+2024-09-13 17:28:33,342 [1] DEBUG [XpertApp2.DB.EventDB] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2024-09-13 17:28:33,344 [1] DEBUG [XpertApp2.DB.EventDB] - ：SELECT * FROM Borrow_Records_TB where user_id='admin user1' and Return_datetime is null order by Create_On desc-[100]
+2024-09-13 17:28:34,407 [1] DEBUG [XpertApp2.DB.EventDB] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2024-09-13 17:28:34,408 [1] DEBUG [XpertApp2.DB.EventDB] - ：SELECT * FROM Borrow_Records_TB where user_id='admin user1' and Return_datetime is null order by Create_On desc-[100]
+2024-09-13 17:28:35,472 [1] DEBUG [XpertApp2.DB.EventDB] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2024-09-13 17:28:35,475 [1] DEBUG [XpertApp2.DB.EventDB] - ：SELECT * FROM Borrow_Records_TB where user_id='admin user1' and Return_datetime is null order by Create_On desc-[100]
+2024-09-13 17:28:36,552 [1] DEBUG [XpertApp2.DB.EventDB] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2024-09-13 17:28:36,555 [1] DEBUG [XpertApp2.DB.EventDB] - ：SELECT * FROM Borrow_Records_TB where user_id='admin user1' and Return_datetime is null order by Create_On desc-[100]
+2024-09-13 17:28:37,592 [1] DEBUG [XpertApp2.DB.EventDB] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2024-09-13 17:28:37,593 [1] DEBUG [XpertApp2.DB.EventDB] - ：SELECT * FROM Borrow_Records_TB where user_id='admin user1' and Return_datetime is null order by Create_On desc-[100]
+2024-09-13 17:28:38,620 [1] DEBUG [XpertApp2.DB.EventDB] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2024-09-13 17:28:38,621 [1] DEBUG [XpertApp2.DB.EventDB] - ：SELECT * FROM Borrow_Records_TB where user_id='admin user1' and Return_datetime is null order by Create_On desc-[100]
+2024-09-13 17:28:39,702 [1] DEBUG [XpertApp2.DB.EventDB] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2024-09-13 17:28:39,704 [1] DEBUG [XpertApp2.DB.EventDB] - ：SELECT * FROM Borrow_Records_TB where user_id='admin user1' and Return_datetime is null order by Create_On desc-[100]
+2024-09-13 17:29:46,652 [1] INFO  [XpertApp2.Views.MainWindow] - ：System is initialized.
+2024-09-13 17:30:06,698 [1] DEBUG [XpertApp2.DB.EventDB] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2024-09-13 17:30:06,780 [1] DEBUG [XpertApp2.DB.EventDB] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2024-09-13 17:30:06,781 [1] DEBUG [XpertApp2.DB.EventDB] - ：SELECT * FROM Borrow_Records_TB where user_id='admin user1' and Return_datetime is null order by Create_On desc-[100]
+2024-09-13 17:30:07,811 [1] DEBUG [XpertApp2.DB.EventDB] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2024-09-13 17:30:07,813 [1] DEBUG [XpertApp2.DB.EventDB] - ：SELECT * FROM Borrow_Records_TB where user_id='admin user1' and Return_datetime is null order by Create_On desc-[100]
+2024-09-13 17:30:08,872 [1] DEBUG [XpertApp2.DB.EventDB] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2024-09-13 17:30:08,874 [1] DEBUG [XpertApp2.DB.EventDB] - ：SELECT * FROM Borrow_Records_TB where user_id='admin user1' and Return_datetime is null order by Create_On desc-[100]
+2024-09-13 17:30:09,944 [1] DEBUG [XpertApp2.DB.EventDB] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2024-09-13 17:30:09,945 [1] DEBUG [XpertApp2.DB.EventDB] - ：SELECT * FROM Borrow_Records_TB where user_id='admin user1' and Return_datetime is null order by Create_On desc-[100]
+2024-09-13 17:30:10,343 [1] ERROR [XpertApp2.DB.EventDB] - ：Event_Log Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:30:11,046 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:30:12,147 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:30:13,232 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:30:14,280 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:30:15,363 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:30:16,396 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:30:17,462 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:30:18,531 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:30:19,119 [1] DEBUG [XpertApp2.DB.EventDB] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2024-09-13 17:30:19,138 [1] DEBUG [XpertApp2.DB.EventDB] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2024-09-13 17:30:19,140 [1] DEBUG [XpertApp2.DB.EventDB] - ：SELECT * FROM Borrow_Records_TB where user_id='admin user1' and Return_datetime is null order by Create_On desc-[100]
+2024-09-13 17:30:19,525 [1] DEBUG [XpertApp2.DB.EventDB] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2024-09-13 17:30:19,526 [1] DEBUG [XpertApp2.DB.EventDB] - ：SELECT * FROM Borrow_Records_TB where user_id='admin user1' and Return_datetime is null order by Create_On desc-[100]
+2024-09-13 17:30:20,174 [1] DEBUG [XpertApp2.DB.EventDB] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2024-09-13 17:30:20,175 [1] DEBUG [XpertApp2.DB.EventDB] - ：SELECT * FROM Borrow_Records_TB where user_id='admin user1' and Return_datetime is null order by Create_On desc-[100]
+2024-09-13 17:30:20,655 [1] DEBUG [XpertApp2.DB.EventDB] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2024-09-13 17:30:20,656 [1] DEBUG [XpertApp2.DB.EventDB] - ：SELECT * FROM Borrow_Records_TB where user_id='admin user1' and Return_datetime is null order by Create_On desc-[100]
+2024-09-13 17:30:21,249 [1] DEBUG [XpertApp2.DB.EventDB] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2024-09-13 17:30:21,250 [1] DEBUG [XpertApp2.DB.EventDB] - ：SELECT * FROM Borrow_Records_TB where user_id='admin user1' and Return_datetime is null order by Create_On desc-[100]
+2024-09-13 17:30:21,729 [1] DEBUG [XpertApp2.DB.EventDB] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2024-09-13 17:30:21,730 [1] DEBUG [XpertApp2.DB.EventDB] - ：SELECT * FROM Borrow_Records_TB where user_id='admin user1' and Return_datetime is null order by Create_On desc-[100]
+2024-09-13 17:30:22,465 [1] DEBUG [XpertApp2.DB.EventDB] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2024-09-13 17:30:22,466 [1] DEBUG [XpertApp2.DB.EventDB] - ：SELECT * FROM Borrow_Records_TB where user_id='admin user1' and Return_datetime is null order by Create_On desc-[100]
+2024-09-13 17:30:22,784 [1] DEBUG [XpertApp2.DB.EventDB] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2024-09-13 17:30:22,785 [1] DEBUG [XpertApp2.DB.EventDB] - ：SELECT * FROM Borrow_Records_TB where user_id='admin user1' and Return_datetime is null order by Create_On desc-[100]
+2024-09-13 17:30:23,474 [1] ERROR [XpertApp2.DB.EventDB] - ：Event_Log Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:30:23,598 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:30:23,915 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:30:24,671 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:30:24,931 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:30:25,681 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:30:25,953 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:30:26,717 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:30:27,003 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:30:27,766 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:30:28,087 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:30:28,846 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:30:29,129 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:30:29,889 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:30:30,213 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:30:31,045 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:30:31,244 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:30:32,089 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:30:32,291 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:30:33,216 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:30:33,335 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:30:33,732 [1] DEBUG [XpertApp2.DB.EventDB] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2024-09-13 17:30:33,756 [1] DEBUG [XpertApp2.DB.EventDB] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2024-09-13 17:30:33,758 [1] DEBUG [XpertApp2.DB.EventDB] - ：SELECT * FROM Borrow_Records_TB where user_id='admin user1' and Return_datetime is null order by Create_On desc-[100]
+2024-09-13 17:30:34,235 [1] DEBUG [XpertApp2.DB.EventDB] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2024-09-13 17:30:34,237 [1] DEBUG [XpertApp2.DB.EventDB] - ：SELECT * FROM Borrow_Records_TB where user_id='admin user1' and Return_datetime is null order by Create_On desc-[100]
+2024-09-13 17:30:34,342 [1] DEBUG [XpertApp2.DB.EventDB] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2024-09-13 17:30:34,343 [1] DEBUG [XpertApp2.DB.EventDB] - ：SELECT * FROM Borrow_Records_TB where user_id='admin user1' and Return_datetime is null order by Create_On desc-[100]
+2024-09-13 17:30:34,744 [1] DEBUG [XpertApp2.DB.EventDB] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2024-09-13 17:30:34,746 [1] DEBUG [XpertApp2.DB.EventDB] - ：SELECT * FROM Borrow_Records_TB where user_id='admin user1' and Return_datetime is null order by Create_On desc-[100]
+2024-09-13 17:30:35,259 [1] DEBUG [XpertApp2.DB.EventDB] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2024-09-13 17:30:35,260 [1] DEBUG [XpertApp2.DB.EventDB] - ：SELECT * FROM Borrow_Records_TB where user_id='admin user1' and Return_datetime is null order by Create_On desc-[100]
+2024-09-13 17:30:35,429 [1] DEBUG [XpertApp2.DB.EventDB] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2024-09-13 17:30:35,430 [1] DEBUG [XpertApp2.DB.EventDB] - ：SELECT * FROM Borrow_Records_TB where user_id='admin user1' and Return_datetime is null order by Create_On desc-[100]
+2024-09-13 17:30:35,797 [1] DEBUG [XpertApp2.DB.EventDB] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2024-09-13 17:30:35,798 [1] DEBUG [XpertApp2.DB.EventDB] - ：SELECT * FROM Borrow_Records_TB where user_id='admin user1' and Return_datetime is null order by Create_On desc-[100]
+2024-09-13 17:30:36,275 [1] DEBUG [XpertApp2.DB.EventDB] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2024-09-13 17:30:36,276 [1] DEBUG [XpertApp2.DB.EventDB] - ：SELECT * FROM Borrow_Records_TB where user_id='admin user1' and Return_datetime is null order by Create_On desc-[100]
+2024-09-13 17:30:36,766 [1] DEBUG [XpertApp2.DB.EventDB] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2024-09-13 17:30:36,767 [1] DEBUG [XpertApp2.DB.EventDB] - ：SELECT * FROM Borrow_Records_TB where user_id='admin user1' and Return_datetime is null order by Create_On desc-[100]
+2024-09-13 17:30:36,841 [1] DEBUG [XpertApp2.DB.EventDB] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2024-09-13 17:30:36,843 [1] DEBUG [XpertApp2.DB.EventDB] - ：SELECT * FROM Borrow_Records_TB where user_id='admin user1' and Return_datetime is null order by Create_On desc-[100]
+2024-09-13 17:30:37,322 [1] DEBUG [XpertApp2.DB.EventDB] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2024-09-13 17:30:37,323 [1] DEBUG [XpertApp2.DB.EventDB] - ：SELECT * FROM Borrow_Records_TB where user_id='admin user1' and Return_datetime is null order by Create_On desc-[100]
+2024-09-13 17:30:37,493 [1] ERROR [XpertApp2.DB.EventDB] - ：Event_Log Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:30:37,794 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:30:38,010 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:30:38,436 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:30:38,847 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:30:39,069 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:30:39,617 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:30:39,894 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:30:40,129 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:30:40,716 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:30:40,959 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:30:41,233 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:30:41,774 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:30:42,089 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:30:42,248 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:30:42,825 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:30:43,137 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:30:43,356 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:30:43,928 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:30:44,210 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:30:44,396 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:30:44,953 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:30:45,235 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:30:45,442 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:30:45,975 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:30:46,287 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:30:46,527 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:30:47,031 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:30:47,326 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:30:47,577 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:30:48,109 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:30:48,368 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:30:48,634 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:30:49,294 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:30:49,465 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:30:49,662 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:30:50,395 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:30:50,555 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:30:50,707 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:31:07,071 [1] INFO  [XpertApp2.Views.MainWindow] - ：System is initialized.
+2024-09-13 17:31:25,311 [1] DEBUG [XpertApp2.DB.EventDB] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2024-09-13 17:31:25,368 [1] DEBUG [XpertApp2.DB.EventDB] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2024-09-13 17:31:25,370 [1] DEBUG [XpertApp2.DB.EventDB] - ：SELECT * FROM Borrow_Records_TB where user_id='admin user1' and Return_datetime is null order by Create_On desc-[100]
+2024-09-13 17:31:26,498 [1] DEBUG [XpertApp2.DB.EventDB] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2024-09-13 17:31:26,499 [1] DEBUG [XpertApp2.DB.EventDB] - ：SELECT * FROM Borrow_Records_TB where user_id='admin user1' and Return_datetime is null order by Create_On desc-[100]
+2024-09-13 17:31:27,577 [1] DEBUG [XpertApp2.DB.EventDB] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2024-09-13 17:31:27,578 [1] DEBUG [XpertApp2.DB.EventDB] - ：SELECT * FROM Borrow_Records_TB where user_id='admin user1' and Return_datetime is null order by Create_On desc-[100]
+2024-09-13 17:31:28,679 [1] DEBUG [XpertApp2.DB.EventDB] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2024-09-13 17:31:28,680 [1] DEBUG [XpertApp2.DB.EventDB] - ：SELECT * FROM Borrow_Records_TB where user_id='admin user1' and Return_datetime is null order by Create_On desc-[100]
+2024-09-13 17:31:29,007 [1] ERROR [XpertApp2.DB.EventDB] - ：Event_Log Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:31:29,868 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:31:30,916 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:31:31,943 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:31:33,035 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:31:34,070 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:31:35,112 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:31:36,241 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:31:37,264 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:31:38,362 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:31:39,398 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:31:40,089 [1] DEBUG [XpertApp2.DB.EventDB] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2024-09-13 17:31:40,111 [1] DEBUG [XpertApp2.DB.EventDB] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2024-09-13 17:31:40,113 [1] DEBUG [XpertApp2.DB.EventDB] - ：SELECT * FROM Borrow_Records_TB where user_id='admin user1' and Return_datetime is null order by Create_On desc-[100]
+2024-09-13 17:31:40,428 [1] DEBUG [XpertApp2.DB.EventDB] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2024-09-13 17:31:40,429 [1] DEBUG [XpertApp2.DB.EventDB] - ：SELECT * FROM Borrow_Records_TB where user_id='admin user1' and Return_datetime is null order by Create_On desc-[100]
+2024-09-13 17:31:41,102 [1] DEBUG [XpertApp2.DB.EventDB] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2024-09-13 17:31:41,104 [1] DEBUG [XpertApp2.DB.EventDB] - ：SELECT * FROM Borrow_Records_TB where user_id='admin user1' and Return_datetime is null order by Create_On desc-[100]
+2024-09-13 17:31:41,470 [1] DEBUG [XpertApp2.DB.EventDB] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2024-09-13 17:31:41,471 [1] DEBUG [XpertApp2.DB.EventDB] - ：SELECT * FROM Borrow_Records_TB where user_id='admin user1' and Return_datetime is null order by Create_On desc-[100]
+2024-09-13 17:31:42,159 [1] DEBUG [XpertApp2.DB.EventDB] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2024-09-13 17:31:42,161 [1] DEBUG [XpertApp2.DB.EventDB] - ：SELECT * FROM Borrow_Records_TB where user_id='admin user1' and Return_datetime is null order by Create_On desc-[100]
+2024-09-13 17:31:42,447 [1] ERROR [XpertApp2.DB.EventDB] - ：Event_Log Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:31:42,721 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:31:43,525 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:31:43,775 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:31:44,630 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:31:44,797 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:31:45,678 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:31:45,853 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:31:46,737 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:31:46,879 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:31:47,802 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:31:47,970 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:31:48,823 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:31:49,040 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:31:49,920 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:31:50,094 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:31:50,952 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:31:51,113 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:31:51,983 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:31:52,149 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:31:53,044 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:31:53,170 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:31:54,067 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:31:54,195 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:31:55,180 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:31:55,217 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:31:56,301 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:31:56,352 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:31:57,330 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:31:57,459 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:31:58,559 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:31:58,605 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:31:59,593 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:31:59,627 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:32:00,659 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:32:00,705 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:32:01,749 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:32:01,774 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:32:02,775 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:32:02,802 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:32:03,806 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:32:03,831 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:32:04,835 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:32:04,866 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:32:05,885 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:32:05,910 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:32:06,907 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:32:06,937 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:32:08,093 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:32:08,134 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:32:09,198 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:32:09,234 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:32:10,312 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:32:10,347 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:32:11,399 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:32:11,531 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:32:12,436 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:32:12,562 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:32:13,484 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:32:13,583 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:32:13,922 [1] DEBUG [XpertApp2.DB.EventDB] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2024-09-13 17:32:13,946 [1] DEBUG [XpertApp2.DB.EventDB] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2024-09-13 17:32:13,947 [1] DEBUG [XpertApp2.DB.EventDB] - ：SELECT * FROM Borrow_Records_TB where user_id='admin user1' and Return_datetime is null order by Create_On desc-[100]
+2024-09-13 17:32:14,527 [1] DEBUG [XpertApp2.DB.EventDB] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2024-09-13 17:32:14,529 [1] DEBUG [XpertApp2.DB.EventDB] - ：SELECT * FROM Borrow_Records_TB where user_id='admin user1' and Return_datetime is null order by Create_On desc-[100]
+2024-09-13 17:32:14,597 [1] DEBUG [XpertApp2.DB.EventDB] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2024-09-13 17:32:14,598 [1] DEBUG [XpertApp2.DB.EventDB] - ：SELECT * FROM Borrow_Records_TB where user_id='admin user1' and Return_datetime is null order by Create_On desc-[100]
+2024-09-13 17:32:14,959 [1] DEBUG [XpertApp2.DB.EventDB] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2024-09-13 17:32:14,960 [1] DEBUG [XpertApp2.DB.EventDB] - ：SELECT * FROM Borrow_Records_TB where user_id='admin user1' and Return_datetime is null order by Create_On desc-[100]
+2024-09-13 17:32:15,539 [1] DEBUG [XpertApp2.DB.EventDB] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2024-09-13 17:32:15,540 [1] DEBUG [XpertApp2.DB.EventDB] - ：SELECT * FROM Borrow_Records_TB where user_id='admin user1' and Return_datetime is null order by Create_On desc-[100]
+2024-09-13 17:32:15,604 [1] DEBUG [XpertApp2.DB.EventDB] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2024-09-13 17:32:15,606 [1] DEBUG [XpertApp2.DB.EventDB] - ：SELECT * FROM Borrow_Records_TB where user_id='admin user1' and Return_datetime is null order by Create_On desc-[100]
+2024-09-13 17:32:16,011 [1] DEBUG [XpertApp2.DB.EventDB] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2024-09-13 17:32:16,012 [1] DEBUG [XpertApp2.DB.EventDB] - ：SELECT * FROM Borrow_Records_TB where user_id='admin user1' and Return_datetime is null order by Create_On desc-[100]
+2024-09-13 17:32:16,592 [1] DEBUG [XpertApp2.DB.EventDB] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2024-09-13 17:32:16,593 [1] DEBUG [XpertApp2.DB.EventDB] - ：SELECT * FROM Borrow_Records_TB where user_id='admin user1' and Return_datetime is null order by Create_On desc-[100]
+2024-09-13 17:32:16,806 [1] DEBUG [XpertApp2.DB.EventDB] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2024-09-13 17:32:16,807 [1] DEBUG [XpertApp2.DB.EventDB] - ：SELECT * FROM Borrow_Records_TB where user_id='admin user1' and Return_datetime is null order by Create_On desc-[100]
+2024-09-13 17:32:17,208 [1] DEBUG [XpertApp2.DB.EventDB] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2024-09-13 17:32:17,209 [1] DEBUG [XpertApp2.DB.EventDB] - ：SELECT * FROM Borrow_Records_TB where user_id='admin user1' and Return_datetime is null order by Create_On desc-[100]
+2024-09-13 17:32:17,612 [1] DEBUG [XpertApp2.DB.EventDB] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2024-09-13 17:32:17,613 [1] DEBUG [XpertApp2.DB.EventDB] - ：SELECT * FROM Borrow_Records_TB where user_id='admin user1' and Return_datetime is null order by Create_On desc-[100]
+2024-09-13 17:32:17,810 [1] DEBUG [XpertApp2.DB.EventDB] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2024-09-13 17:32:17,812 [1] DEBUG [XpertApp2.DB.EventDB] - ：SELECT * FROM Borrow_Records_TB where user_id='admin user1' and Return_datetime is null order by Create_On desc-[100]
+2024-09-13 17:32:18,247 [1] DEBUG [XpertApp2.DB.EventDB] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2024-09-13 17:32:18,248 [1] DEBUG [XpertApp2.DB.EventDB] - ：SELECT * FROM Borrow_Records_TB where user_id='admin user1' and Return_datetime is null order by Create_On desc-[100]
+2024-09-13 17:32:18,542 [1] ERROR [XpertApp2.DB.EventDB] - ：Event_Log Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:32:18,637 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:32:18,848 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:32:19,475 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:32:19,692 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:32:19,901 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:32:20,557 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:32:20,724 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:32:20,953 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:34:52,795 [1] INFO  [XpertApp2.Views.MainWindow] - ：System is initialized.
+2024-09-13 17:35:04,017 [1] DEBUG [XpertApp2.DB.EventDB] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2024-09-13 17:35:04,089 [1] DEBUG [XpertApp2.DB.EventDB] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2024-09-13 17:35:04,090 [1] DEBUG [XpertApp2.DB.EventDB] - ：SELECT * FROM Borrow_Records_TB where user_id='admin user1' and Return_datetime is null order by Create_On desc-[100]
+2024-09-13 17:35:05,151 [1] DEBUG [XpertApp2.DB.EventDB] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2024-09-13 17:35:05,154 [1] DEBUG [XpertApp2.DB.EventDB] - ：SELECT * FROM Borrow_Records_TB where user_id='admin user1' and Return_datetime is null order by Create_On desc-[100]
+2024-09-13 17:35:06,207 [1] DEBUG [XpertApp2.DB.EventDB] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2024-09-13 17:35:06,208 [1] DEBUG [XpertApp2.DB.EventDB] - ：SELECT * FROM Borrow_Records_TB where user_id='admin user1' and Return_datetime is null order by Create_On desc-[100]
+2024-09-13 17:35:07,269 [1] ERROR [XpertApp2.DB.EventDB] - ：Event_Log Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:35:07,344 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:35:08,387 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:35:09,441 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:35:10,523 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:35:11,558 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:35:12,620 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:35:13,660 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:35:14,734 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:35:15,753 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:35:16,890 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:35:17,994 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:35:19,059 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:35:20,120 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:35:21,157 [1] ERROR [XpertApp2.DB.EventDB] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2024-09-13 17:35:21,163 [1] DEBUG [XpertApp2.DB.EventDB] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2024-09-13 17:35:21,185 [1] DEBUG [XpertApp2.DB.EventDB] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2024-09-13 17:35:21,187 [1] DEBUG [XpertApp2.DB.EventDB] - ：SELECT * FROM Borrow_Records_TB where user_id='admin user1' and Return_datetime is null order by Create_On desc-[100]
+2024-09-13 17:35:22,226 [1] DEBUG [XpertApp2.DB.EventDB] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2024-09-13 17:35:22,228 [1] DEBUG [XpertApp2.DB.EventDB] - ：SELECT * FROM Borrow_Records_TB where user_id='admin user1' and Return_datetime is null order by Create_On desc-[100]
+2024-09-13 17:35:22,262 [1] DEBUG [XpertApp2.DB.EventDB] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2024-09-13 17:35:22,263 [1] DEBUG [XpertApp2.DB.EventDB] - ：SELECT * FROM Borrow_Records_TB where user_id='admin user1' and Return_datetime is null order by Create_On desc-[100]
+2024-09-13 17:35:23,298 [1] DEBUG [XpertApp2.DB.EventDB] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2024-09-13 17:35:23,300 [1] DEBUG [XpertApp2.DB.EventDB] - ：SELECT * FROM Borrow_Records_TB where user_id='admin user1' and Return_datetime is null order by Create_On desc-[100]
+2024-09-13 17:35:23,322 [1] DEBUG [XpertApp2.DB.EventDB] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2024-09-13 17:35:23,325 [1] DEBUG [XpertApp2.DB.EventDB] - ：SELECT * FROM Borrow_Records_TB where user_id='admin user1' and Return_datetime is null order by Create_On desc-[100]
+2024-09-13 17:35:24,312 [1] DEBUG [XpertApp2.DB.EventDB] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2024-09-13 17:35:24,313 [1] DEBUG [XpertApp2.DB.EventDB] - ：SELECT * FROM Borrow_Records_TB where user_id='admin user1' and Return_datetime is null order by Create_On desc-[100]
+2024-09-13 17:35:24,381 [1] DEBUG [XpertApp2.DB.EventDB] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2024-09-13 17:35:24,383 [1] DEBUG [XpertApp2.DB.EventDB] - ：SELECT * FROM Borrow_Records_TB where user_id='admin user1' and Return_datetime is null order by Create_On desc-[100]
+2024-09-13 17:35:25,345 [1] DEBUG [XpertApp2.DB.EventDB] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2024-09-13 17:35:25,347 [1] DEBUG [XpertApp2.DB.EventDB] - ：SELECT * FROM Borrow_Records_TB where user_id='admin user1' and Return_datetime is null order by Create_On desc-[100]
+2024-09-13 17:35:25,480 [1] DEBUG [XpertApp2.DB.EventDB] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2024-09-13 17:35:25,483 [1] DEBUG [XpertApp2.DB.EventDB] - ：SELECT * FROM Borrow_Records_TB where user_id='admin user1' and Return_datetime is null order by Create_On desc-[100]
+2024-09-13 17:35:26,457 [1] DEBUG [XpertApp2.DB.EventDB] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2024-09-13 17:35:26,458 [1] DEBUG [XpertApp2.DB.EventDB] - ：SELECT * FROM Borrow_Records_TB where user_id='admin user1' and Return_datetime is null order by Create_On desc-[100]
+2024-09-13 17:35:26,535 [1] DEBUG [XpertApp2.DB.EventDB] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2024-09-13 17:35:26,537 [1] DEBUG [XpertApp2.DB.EventDB] - ：SELECT * FROM Borrow_Records_TB where user_id='admin user1' and Return_datetime is null order by Create_On desc-[100]
+2024-09-13 17:35:27,503 [1] DEBUG [XpertApp2.DB.EventDB] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2024-09-13 17:35:27,505 [1] DEBUG [XpertApp2.DB.EventDB] - ：SELECT * FROM Borrow_Records_TB where user_id='admin user1' and Return_datetime is null order by Create_On desc-[100]
+2024-09-13 17:35:27,630 [1] DEBUG [XpertApp2.DB.EventDB] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2024-09-13 17:35:27,632 [1] DEBUG [XpertApp2.DB.EventDB] - ：SELECT * FROM Borrow_Records_TB where user_id='admin user1' and Return_datetime is null order by Create_On desc-[100]
+2024-09-13 17:35:28,523 [1] DEBUG [XpertApp2.DB.EventDB] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2024-09-13 17:35:28,524 [1] DEBUG [XpertApp2.DB.EventDB] - ：SELECT * FROM Borrow_Records_TB where user_id='admin user1' and Return_datetime is null order by Create_On desc-[100]
+2024-09-13 17:35:28,685 [1] DEBUG [XpertApp2.DB.EventDB] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2024-09-13 17:35:28,687 [1] DEBUG [XpertApp2.DB.EventDB] - ：SELECT * FROM Borrow_Records_TB where user_id='admin user1' and Return_datetime is null order by Create_On desc-[100]
+2024-09-13 17:35:29,566 [1] DEBUG [XpertApp2.DB.EventDB] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2024-09-13 17:35:29,568 [1] DEBUG [XpertApp2.DB.EventDB] - ：SELECT * FROM Borrow_Records_TB where user_id='admin user1' and Return_datetime is null order by Create_On desc-[100]
+2024-09-13 17:35:29,745 [1] DEBUG [XpertApp2.DB.EventDB] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2024-09-13 17:35:29,746 [1] DEBUG [XpertApp2.DB.EventDB] - ：SELECT * FROM Borrow_Records_TB where user_id='admin user1' and Return_datetime is null order by Create_On desc-[100]
+2024-09-13 17:35:30,583 [1] DEBUG [XpertApp2.DB.EventDB] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2024-09-13 17:35:30,584 [1] DEBUG [XpertApp2.DB.EventDB] - ：SELECT * FROM Borrow_Records_TB where user_id='admin user1' and Return_datetime is null order by Create_On desc-[100]
+2024-09-13 17:35:30,833 [1] DEBUG [XpertApp2.DB.EventDB] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2024-09-13 17:35:30,835 [1] DEBUG [XpertApp2.DB.EventDB] - ：SELECT * FROM Borrow_Records_TB where user_id='admin user1' and Return_datetime is null order by Create_On desc-[100]
+2024-09-13 17:35:31,641 [1] DEBUG [XpertApp2.DB.EventDB] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2024-09-13 17:35:31,642 [1] DEBUG [XpertApp2.DB.EventDB] - ：SELECT * FROM Borrow_Records_TB where user_id='admin user1' and Return_datetime is null order by Create_On desc-[100]
+2024-09-13 17:35:31,925 [1] DEBUG [XpertApp2.DB.EventDB] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2024-09-13 17:35:31,928 [1] DEBUG [XpertApp2.DB.EventDB] - ：SELECT * FROM Borrow_Records_TB where user_id='admin user1' and Return_datetime is null order by Create_On desc-[100]
+2024-09-13 17:35:32,733 [1] DEBUG [XpertApp2.DB.EventDB] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2024-09-13 17:35:32,734 [1] DEBUG [XpertApp2.DB.EventDB] - ：SELECT * FROM Borrow_Records_TB where user_id='admin user1' and Return_datetime is null order by Create_On desc-[100]
+2024-09-13 17:39:14,630 [1] INFO  [XpertApp2.Views.MainWindow] - ：System is initialized.
+2024-09-13 17:42:46,221 [1] INFO  [XpertApp2.Views.MainWindow] - ：System is initialized.

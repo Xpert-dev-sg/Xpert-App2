@@ -7,7 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Documents;
 using XpertApp2.DB;
+using XpertApp2.Views;
+using static XpertApp2.Views.TestControl;
 
 
 namespace XpertApp2.Utility
@@ -15,8 +18,11 @@ namespace XpertApp2.Utility
     public class RFIDUtility
     {
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
+        public static List<string> IDs;
         public string Read_RFID()
         {
+            IDs = new List<string>();
             var result = "";
             try
             {
@@ -24,22 +30,40 @@ namespace XpertApp2.Utility
                 eConnectionAttemptEventStatusType status;
                 // clientConn.OpenTcp("192.168.1.168:8160", 3000, out status)
                 //clientConn.OpenSerial("COM16:115200", 3000, out status)
-                if (clientConn.OpenSerial($"{DB_Base.rfid_com}:{DB_Base.rfid_baudrate}", 3000, out status))
+                if (clientConn.OpenTcp("192.168.1.250:8160", 5000, out status))//clientConn.OpenSerial($"{DB_Base.rfid_com}:{DB_Base.rfid_baudrate}", 3000, out status))
                 {
+                    log.Info("RFID connection:192.168.1.250:8160");
                     // subscribe to event
                     clientConn.OnEncapedTagEpcLog += new delegateEncapedTagEpcLog(OnEncapedTagEpcLog);
                     clientConn.OnEncapedTagEpcOver += new delegateEncapedTagEpcOver(OnEncapedTagEpcOver);
+                    // stop command, idle state
+                    MsgBaseStop msgBaseStop = new MsgBaseStop();
+                    clientConn.SendSynMsg(msgBaseStop);
+
+                    // Power configuration, set the power of the 4 antennas as 30dBm
+                    MsgBaseSetPower msgBaseSetPower = new MsgBaseSetPower();
+                    msgBaseSetPower.DicPower = new Dictionary<byte, byte>()
+                                                                         {
+                                                                         {1, 30},
+                                                                         {2, 30},
+                                                                         {3, 30},
+                                                                         {4, 30}
+                                                                         };
+                    clientConn.SendSynMsg(msgBaseSetPower);
 
                     // 2 antenna read Inventory, EPC & TID
-                    EncapedLogBaseEpcInfo tag = ReadSingleTag(clientConn, (uint)(eAntennaNo._1 | eAntennaNo._2), 5000);
+                    EncapedLogBaseEpcInfo tag = ReadSingleTag(clientConn, (uint)(eAntennaNo._1 | eAntennaNo._2| eAntennaNo._3 | eAntennaNo._4), 5000);
                     if (null != tag)
                     {
-                        result = tag.logBaseEpcInfo.ToString();
+                        
+                        //result = tag.logBaseEpcInfo.ToString();
+                        result= string.Join(";", IDs.Distinct());
+                        log.Info($"get RFID:{result}");
                     }
                 }
                 else
                 {
-                    Console.WriteLine("Connect failure.");
+                    log.Error("Connect failure.");
                 }
             }
             catch (Exception ex)
@@ -169,23 +193,22 @@ namespace XpertApp2.Utility
                 MsgBaseStop msgBaseStop = new MsgBaseStop();
                 clientConn.SendUnsynMsg(msgBaseStop);
                 MsgBaseInventoryEpc msgBaseInventoryEpc = new MsgBaseInventoryEpc();
-                msgBaseInventoryEpc.AntennaEnable = antEnable;
+                msgBaseInventoryEpc.AntennaEnable = (ushort)(eAntennaNo._1 | eAntennaNo._2 |eAntennaNo._3 | eAntennaNo._4 );
                 msgBaseInventoryEpc.InventoryMode = (byte)eInventoryMode.Inventory;
                 msgBaseInventoryEpc.ReadTid = new ParamEpcReadTid();                // tid参数
                 msgBaseInventoryEpc.ReadTid.Mode = (byte)eParamTidMode.Auto;
                 msgBaseInventoryEpc.ReadTid.Len = 6;
                 clientConn.SendUnsynMsg(msgBaseInventoryEpc);
-                try
-                {
-                    lock (waitReadSingle)
-                    {
-                        if (null == waitTag)
-                        {
-                            Monitor.Wait(waitReadSingle, timeout);
-                        }
-                    }
-                }
-                catch { }
+                
+                    //lock (waitReadSingle)
+                    //{
+                    //    if (null == waitTag)
+                    //    {
+                    //        Monitor.Wait(waitReadSingle, timeout);
+                    //    }
+                    //}
+                    Thread.Sleep(1000);
+
                 msgBaseStop = new MsgBaseStop();
                 clientConn.SendUnsynMsg(msgBaseStop);
             }
@@ -194,7 +217,11 @@ namespace XpertApp2.Utility
                 log.Error(ex.Message);
                 MessageBox.Show(ex.Message, "Error");
             }
-            
+            finally
+            {
+                clientConn.Close();
+            }
+
 
             return waitTag;
         }
@@ -203,11 +230,18 @@ namespace XpertApp2.Utility
 
         public static void OnEncapedTagEpcLog(EncapedLogBaseEpcInfo msg)
         {
+            //TestControl testControl = new TestControl();
             // Any blocking inside the callback will affect the normal use of the API !
             // 回调里面的任何阻塞或者效率过低，都会影响API的正常使用 !
             if (null != msg && 0 == msg.logBaseEpcInfo.Result)
             {
+                //RFID rFID = new RFID();
+                //rFID.ID = msg.logBaseEpcInfo.ToString();
+                IDs.Add(msg.logBaseEpcInfo.ToString());
                 waitTag = msg;
+                //MessageBox.Show(msg.logBaseEpcInfo.ToString());
+                //TestControl.RFIDs.Add(rFID);
+
                 try
                 {
                     lock (waitReadSingle)

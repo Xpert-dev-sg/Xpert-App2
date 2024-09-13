@@ -51,7 +51,7 @@
                 </ComboBox>
                 <TextBlock Grid.Row="8" Grid.Column="0" Text="RFID" Margin="10,5,10,5" FontWeight="Bold" FontSize="16" HorizontalAlignment="Right"></TextBlock>
                 <TextBox    Grid.Row="8" Grid.Column="1" x:Name="txtRFID" Margin="10,5,10,5"  Width="140" HorizontalAlignment="Left" IsReadOnly="True"></TextBox>
-                <Button x:Name="btnrfid"  Grid.Row="8" Grid.Column="1" Margin="10,5,10,5" Content="RFID"  FontWeight="Bold" HorizontalAlignment="Right"></Button>
+                <Button x:Name="btnrfid"  Grid.Row="8" Grid.Column="1" Margin="10,5,10,5" Content="RFID"  FontWeight="Bold" HorizontalAlignment="Right" Click="btnRFID_Click"></Button>
                 <Button Grid.Row="9" Grid.Column="1" x:Name="btnSave" Content="Save" Margin="10,5,10,5" FontWeight="Bold"  Width="100" Click="btnSave_Click" HorizontalAlignment="Left"></Button>
                 <Button Grid.Row="9" Grid.Column="1" x:Name="btnCancel" Content="Cancel" Margin="10,5,10,5"  FontWeight="Bold" Width="100" Click="btnCancel_Click" HorizontalAlignment="Right"></Button>
                 

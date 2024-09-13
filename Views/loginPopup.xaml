@@ -11,8 +11,40 @@
         <ImageBrush ImageSource="pack://application:,,,/XpertApp2;component/Resources/Img/login.jpg"/>
     </Window.Background>
     <Grid>
-        <PasswordBox x:Name="loginbox" HorizontalAlignment="Left" Margin="62,560,0,0" VerticalAlignment="Top" Width="451" Height="53" KeyDown="PasswordBox_KeyDown" Opacity="0.01" />
-<TextBlock  x:Name="txtcountdown"  HorizontalAlignment="Right" VerticalAlignment="Top" FontSize="16"  Margin="10,5,10,5"></TextBlock>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="500"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <PasswordBox Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" x:Name="loginbox" HorizontalAlignment="Center"  Opacity="0.7"  VerticalAlignment="Bottom" Width="451" Height="53" KeyDown="PasswordBox_KeyDown" FontSize="20" FontWeight="Bold" Margin="0,0,0,10"  />
 
+
+
+        <Button Grid.Row="1" Grid.Column="0" Content="1" FontSize="20" Click="NumberButton_Click" Width="150" Height="50" FontWeight="Bold" Opacity="0.7" />
+        <Button Grid.Row="1" Grid.Column="1" Content="2" FontSize="20" Click="NumberButton_Click" Width="150" Height="50" FontWeight="Bold" Opacity="0.7"  />
+        <Button Grid.Row="1" Grid.Column="2" Content="3" FontSize="20" Click="NumberButton_Click" Width="150" Height="50" FontWeight="Bold" Opacity="0.7"  />
+        <Button Grid.Row="2" Grid.Column="0" Content="4" FontSize="20" Click="NumberButton_Click" Width="150" Height="50" FontWeight="Bold" Opacity="0.7"  />
+        <Button Grid.Row="2" Grid.Column="1" Content="5" FontSize="20" Click="NumberButton_Click" Width="150" Height="50" FontWeight="Bold" Opacity="0.7"  />
+        <Button Grid.Row="2" Grid.Column="2" Content="6" FontSize="20" Click="NumberButton_Click" Width="150" Height="50" FontWeight="Bold" Opacity="0.7"  />
+        <Button Grid.Row="3" Grid.Column="0" Content="7" FontSize="20" Click="NumberButton_Click" Width="150" Height="50" FontWeight="Bold" Opacity="0.7"  />
+        <Button Grid.Row="3" Grid.Column="1" Content="8" FontSize="20" Click="NumberButton_Click" Width="150" Height="50" FontWeight="Bold" Opacity="0.7"  />
+        <Button Grid.Row="3" Grid.Column="2" Content="9" FontSize="20" Click="NumberButton_Click" Width="150" Height="50" FontWeight="Bold" Opacity="0.7"  />
+            <!-- Empty space and 0 -->
+
+        <Button Grid.Row="4" Grid.Column="0" Content="0" FontSize="20" Click="NumberButton_Click" Width="150" Height="50" FontWeight="Bold" Opacity="0.7"  />
+        <Button Grid.Row="4" Grid.Column="1" Content="-" FontSize="20" Click="NumberButton_Click" Width="150" Height="50" FontWeight="Bold" Opacity="0.7"  />
+        <Button Grid.Row="4" Grid.Column="2"  Content="Enter" FontSize="20" Click="EnterButton_Click" Width="150" Height="50" FontWeight="Bold" Opacity="0.7"  />
+        
+
+        <TextBlock  x:Name="txtcountdown"  HorizontalAlignment="Right" VerticalAlignment="Top" FontSize="16"  Margin="10,5,10,5"></TextBlock>
     </Grid>
 </Window>

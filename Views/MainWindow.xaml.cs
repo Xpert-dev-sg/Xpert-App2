@@ -1,4 +1,5 @@
 ﻿using System.Configuration;
+using System.IO.Ports;
 using System.Net.NetworkInformation;
 using System.Text;
 using System.Windows;
@@ -27,7 +28,7 @@ namespace XpertApp2.Views
         {
             InitializeComponent();
             InitializeTimer();
-            MainFrame.Navigate(new MenuPage());
+            MainFrame.Navigate(new MenuPage());//MenuPage//TestControl
             TimeUtility.Initialize(MainFrame);
             TimeUtility.SystemServiceTimer();
  
@@ -36,6 +37,7 @@ namespace XpertApp2.Views
             DBUtility.InitializeSystem();
             Door door = new Door();
             DoorMonitor monitor = new DoorMonitor(door);
+            
         }
         
         private void InitializeTimer()
