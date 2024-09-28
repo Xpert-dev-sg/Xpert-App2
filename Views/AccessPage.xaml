@@ -15,8 +15,8 @@
 
         <Grid.RowDefinitions>
             <RowDefinition Height="250"/>
-            <RowDefinition Height="300"/>
-            <RowDefinition Height="300"/>
+            <!--<RowDefinition Height="300"/>
+            <RowDefinition Height="300"/>-->
             <RowDefinition Height="*"/>
 
         </Grid.RowDefinitions>
@@ -28,6 +28,7 @@
             <Grid >
                 <Grid.RowDefinitions>
 
+                    <RowDefinition></RowDefinition>
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
@@ -59,11 +60,28 @@
                         <TextBlock Grid.Row="2" Grid.Column="1" x:Name="txtEmail" Text="User Name" FontSize="20" FontWeight="Bold"  Margin="10,0,0,0"></TextBlock>
                     </Grid>
                 </StackPanel>
+                <StackPanel Grid.Row="1" Grid.ColumnSpan="2">
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                         <Button Grid.Column="2" Grid.Row="0" HorizontalAlignment="Right" Content="Open Right" FontSize="30" Height="65" Click="OpenRightDoorButton_Click"/>
+                    <Button Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center" Content="Open All" FontSize="30" Height="65" Click="OpenAllDoorButton_Click"/>
+                    <Button Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" Content="Open Left" FontSize="30" Height="65" Click="OpenLeftDoorButton_Click"/>
+                    </Grid>
+                   
+                </StackPanel>
+
             </Grid>
-            <Button HorizontalAlignment="Right" Content="Open Door" FontSize="30" Height="65" Click="Button_Click"/>
+
         </StackPanel>
         <TextBlock  x:Name="txtcountdown"  HorizontalAlignment="Right" VerticalAlignment="Top" FontSize="16"  Margin="10,5,10,5"></TextBlock>
-        <StackPanel Grid.Row="1"  Margin="2">
+        <!--<StackPanel Grid.Row="1"  Margin="2">
             <StackPanel.Background>
                 <SolidColorBrush Color="White" Opacity="0.6"/>
             </StackPanel.Background>
@@ -77,7 +95,7 @@
             </StackPanel.Background>
             <TextBlock Text="Take Out" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="Bold" Margin="10,5,10,5"></TextBlock>
             <ListView x:Name="borrow_list"></ListView>
-        </StackPanel>
+        </StackPanel>-->
 
         <StackPanel Grid.Row="3" Margin="2" >
             <StackPanel.Background>
@@ -145,7 +163,7 @@
 
                 <DataGrid.Columns>
 
-                    <DataGridTextColumn Header="Name" Width="150" Binding="{Binding Item_Id}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Name" Width="300" Binding="{Binding Item_Id}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Take" Width="250" Binding="{Binding take_Datetime}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Return" Width="250" Binding="{Binding Return_datetime}"></DataGridTextColumn>
 

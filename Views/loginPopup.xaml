@@ -45,6 +45,6 @@
         <Button Grid.Row="4" Grid.Column="2"  Content="Enter" FontSize="20" Click="EnterButton_Click" Width="150" Height="50" FontWeight="Bold" Opacity="0.7"  />
         
 
-        <TextBlock  x:Name="txtcountdown"  HorizontalAlignment="Right" VerticalAlignment="Top" FontSize="16"  Margin="10,5,10,5"></TextBlock>
+        <TextBlock Grid.ColumnSpan="3" x:Name="txtcountdown"  HorizontalAlignment="Right" VerticalAlignment="Top" FontSize="16"  Margin="10,5,10,5"></TextBlock>
     </Grid>
 </Window>

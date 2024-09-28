@@ -104,72 +104,136 @@ namespace XpertApp2.DB
             UserModel user;
 
 
-            user = new UserModel
-            {
-                UserName = $"admin user1",
-                CardId = $"999",
-                FingerId = $"2222",
-                RowId = "999",
-                DepartmentId = "admin",
-                Email = "wangyiwater77@163.com",
-                CreateBy = "SYSTEM",
-                UpdateBy = "SYSTEM"
-            };
-            InsertUser(user);
+            //user = new UserModel
+            //{
+            //    UserName = $"admin user99",
+            //    CardId = $"999",
+            //    FingerId = $"2222",
+            //    RowId = "999",
+            //    DepartmentId = "admin",
+            //    Email = "wangyiwater77@163.com",
+            //    CreateBy = "SYSTEM",
+            //    UpdateBy = "SYSTEM"
+            //};
+            //InsertUser(user);
 
-            user = new UserModel
-            {
-                UserName = $"com user1",
-                CardId = $"0",
-                FingerId = $"2222",
-                RowId = "1",
-                DepartmentId = "operation",
-                Email = "wangyiwater77@163.com",
-                CreateBy = "SYSTEM",
-                UpdateBy = "SYSTEM"
-            };
-            InsertUser(user);
+            //user = new UserModel
+            //{
+            //    UserName = $"admin user6",
+            //    CardId = $"0064816388",
+            //    FingerId = $"2222",
+            //    RowId = "999",
+            //    DepartmentId = "admin",
+            //    Email = "wangyiwater77@163.com",
+            //    CreateBy = "SYSTEM",
+            //    UpdateBy = "SYSTEM"
+            //};
+            //InsertUser(user);
+
+            //user = new UserModel
+            //{
+            //    UserName = $"admin user2",
+            //    CardId = $"0042099302",
+            //    FingerId = $"2222",
+            //    RowId = "999",
+            //    DepartmentId = "admin",
+            //    Email = "wangyiwater77@163.com",
+            //    CreateBy = "SYSTEM",
+            //    UpdateBy = "SYSTEM"
+            //};
+            //InsertUser(user);
+
+            //user = new UserModel
+            //{
+            //    UserName = $"admin user3",
+            //    CardId = $"0046475265",
+            //    FingerId = $"2222",
+            //    RowId = "999",
+            //    DepartmentId = "admin",
+            //    Email = "wangyiwater77@163.com",
+            //    CreateBy = "SYSTEM",
+            //    UpdateBy = "SYSTEM"
+            //};
+            //InsertUser(user);
+
+            //user = new UserModel
+            //{
+            //    UserName = $"admin user4",
+            //    CardId = $"0046018627",
+            //    FingerId = $"2222",
+            //    RowId = "999",
+            //    DepartmentId = "admin",
+            //    Email = "wangyiwater77@163.com",
+            //    CreateBy = "SYSTEM",
+            //    UpdateBy = "SYSTEM"
+            //};
+            //InsertUser(user);
+            //user = new UserModel
+            //{
+            //    UserName = $"admin user5",
+            //    CardId = $"0064777534",
+            //    FingerId = $"2222",
+            //    RowId = "999",
+            //    DepartmentId = "admin",
+            //    Email = "wangyiwater77@163.com",
+            //    CreateBy = "SYSTEM",
+            //    UpdateBy = "SYSTEM"
+            //};
+            //InsertUser(user);
+
+            //user = new UserModel
+            //{
+            //    UserName = $"com user1",
+            //    CardId = $"0",
+            //    FingerId = $"2222",
+            //    RowId = "1",
+            //    DepartmentId = "operation",
+            //    Email = "wangyiwater77@163.com",
+            //    CreateBy = "SYSTEM",
+            //    UpdateBy = "SYSTEM"
+            //};
+            //InsertUser(user);
 
 
-            user = new UserModel
-            {
-                UserName = $"department user1",
-                CardId = $"1",
-                FingerId = $"2222",
-                RowId = "10",
-                DepartmentId = "operation",
-                Email = "wangyiwater77@163.com",
-                CreateBy = "SYSTEM",
-                UpdateBy = "SYSTEM"
-            };
-            InsertUser(user);
+            //user = new UserModel
+            //{
+            //    UserName = $"department user1",
+            //    CardId = $"1",
+            //    FingerId = $"2222",
+            //    RowId = "10",
+            //    DepartmentId = "operation",
+            //    Email = "wangyiwater77@163.com",
+            //    CreateBy = "SYSTEM",
+            //    UpdateBy = "SYSTEM"
+            //};
+            //InsertUser(user);
 
-            user = new UserModel
-            {
-                UserName = $"com user2",
-                CardId = $"0",
-                FingerId = $"2222",
-                RowId = "1",
-                DepartmentId = "account",
-                Email = "wangyiwater77@163.com",
-                CreateBy = "SYSTEM",
-                UpdateBy = "SYSTEM"
-            };
-            InsertUser(user);
+            //user = new UserModel
+            //{
+            //    UserName = $"com user2",
+            //    CardId = $"0",
+            //    FingerId = $"2222",
+            //    RowId = "1",
+            //    DepartmentId = "account",
+            //    Email = "wangyiwater77@163.com",
+            //    CreateBy = "SYSTEM",
+            //    UpdateBy = "SYSTEM"
+            //};
+            //InsertUser(user);
 
 
-            user = new UserModel
-            {
-                UserName = $"department user2",
-                CardId = $"1",
-                FingerId = $"2222",
-                RowId = "10",
-                DepartmentId = "account",
-                Email = "wangyiwater77@163.com",
-                CreateBy = "SYSTEM",
-                UpdateBy = "SYSTEM"
-            };
-            InsertUser(user);
+            //user = new UserModel
+            //{
+            //    UserName = $"department user2",
+            //    CardId = $"1",
+            //    FingerId = $"2222",
+            //    RowId = "10",
+            //    DepartmentId = "account",
+            //    Email = "wangyiwater77@163.com",
+            //    CreateBy = "SYSTEM",
+            //    UpdateBy = "SYSTEM"
+            //};
+            //dInsertUser(user);
 
         }
 
@@ -426,21 +490,26 @@ namespace XpertApp2.DB
 
         public void LogoutUser()
         {
-            DB_Base.CurrentUser = new UserModel();
-            DB_Base.Islogined = false;
+
             try
             {
-                //add log
-                EventDB eventDB = new EventDB();
-                eventDB.InsertEvent(new EventModel
+                if (DB_Base.CurrentUser.UserName != null)
                 {
-                    Event_datetime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
-                    Event_Type = "Logout",
-                    Event_Description = "User Logout",
-                    User_Id = DB_Base.CurrentUser.UserName,
-                    CreateBy = "SYSTEM",
-                    CreateOn = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")
-                });
+                    //add log
+                    EventDB eventDB = new EventDB();
+                    eventDB.InsertEvent(new EventModel
+                    {
+                        Event_datetime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
+                        Event_Type = "Logout",
+                        Event_Description = "User Logout",
+                        User_Id = DB_Base.CurrentUser.UserName,
+                        CreateBy = "SYSTEM",
+                        CreateOn = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")
+                    });
+                    DB_Base.CurrentUser = new UserModel();
+                    DB_Base.Islogined = false;
+                }
+
             }
             catch (Exception ex)
             {

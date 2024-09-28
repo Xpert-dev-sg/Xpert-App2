@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO.Ports;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
@@ -18,17 +19,82 @@ namespace XpertApp2.Utility
     public class DoorUtility
     {
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        public SerialPort ComDevice = new SerialPort();
-        public void OpenDoor()
+        public static SerialPort ComDevice = new SerialPort();
+        public static string msgReceived = "";
+        public DoorUtility()
+        {
+            ComDevice.DataReceived += new SerialDataReceivedEventHandler(Com_DataReceived);//绑定事件
+            //OpenDoor();
+        }
+        public static  void OpenDoor()
         {
             try
             {
+                //log.Info("Open door1");
+                //OpenLeftDoor();
+                //OpenRightDoor();
+                OpenAllDoor();
+            }
+            catch (Exception ex)
+            {
+                log.Error(ex.Message);
+                MessageBox.Show(ex.Message, "Error");
+                //return;
+            }
 
-                byte[] senddoor1Data = strToHexByte("574B4C590901820B88");
-                byte[] senddoor2Data = strToHexByte("574B4C590901820281");
-                byte[] senddoor3Data = strToHexByte("574B4C5908018686");
+
+        }
+
+        public static void OpenAllDoor()
+        {
+            try
+            {
+                string s = "574B4C5908018686"; //574B4C590901820281
+                SendCommandToDoor(s);
+                msgReceived = "";
+            }
+            catch (Exception ex)
+            {
+                log.Error($" error: {ex.Message}");
+                MessageBox.Show(ex.Message, "Error");
+            }
+        }
+
+        public static void OpenLeftDoor()
+        {
+            try
+            {
+                string s = "574B4C590901820281"; //574B4C590901820281
+                SendCommandToDoor(s); msgReceived = "";
+            }
+            catch (Exception ex)
+            {
+                log.Error($" error: {ex.Message}");
+                MessageBox.Show(ex.Message, "Error");
+            }
+        }
+
+        public static void OpenRightDoor()
+        {
+            try
+            {
+                string s = "574B4C590901820B88"; //574B4C590901820B88
+                SendCommandToDoor(s); msgReceived = "";
+            }
+            catch (Exception ex)
+            {
+                log.Error($" error: {ex.Message}");
+                MessageBox.Show(ex.Message, "Error");
+            }
+        }
+
+        public static void CreateDoorConnction()
+        {
+
+            try
+            {
+
                 string comlist = DB_Base.door_com;
-
                 int baudrate = Convert.ToInt32(DB_Base.door_baudrate);
                 int parity = Convert.ToInt32(DB_Base.door_parity);
                 int databits = Convert.ToInt32(DB_Base.door_databits);
@@ -46,108 +112,123 @@ namespace XpertApp2.Utility
                 ComDevice.Parity = (Parity)Convert.ToInt32(parity);
                 ComDevice.DataBits = Convert.ToInt32(databits);
                 ComDevice.StopBits = (StopBits)Convert.ToInt32(stopbits);
-
-                
                 ComDevice.Open();
-                
-                if (ComDevice.IsOpen)
-                {   
-                    log.Info($"connection:{ComDevice.PortName};{ComDevice.BaudRate};{ComDevice.Parity};{ComDevice.DataBits};{ComDevice.StopBits};ComDevice.IsOpen:{ComDevice.IsOpen}; send data:574B4C5908018686");
-                    //ComDevice.Write(senddoor1Data, 0, senddoor1Data.Length);
-                    //Thread.Sleep(1000);
-                    //ComDevice.Write(senddoor2Data, 0, senddoor2Data.Length);
-                    //Thread.Sleep(1000);
-                    ComDevice.Write(senddoor3Data, 0, senddoor3Data.Length);
-                    Thread.Sleep(1000);
+
+                if (!ComDevice.IsOpen)
+                {
+                    ComDevice.Open();
                 }
-
-
+                log.Info($"connection:{ComDevice.PortName};{ComDevice.BaudRate};{ComDevice.Parity};{ComDevice.DataBits};{ComDevice.StopBits};ComDevice.IsOpen:{ComDevice.IsOpen}");
             }
             catch (Exception ex)
             {
-                log.Error(ex.Message);
+                log.Error($" error: {ex.Message}");
                 MessageBox.Show(ex.Message, "Error");
                 //return;
             }
-            finally
-            {
-                if (ComDevice.IsOpen)
-                {
-                    ComDevice.Close();
-                }
-            }
-
-
-
-
 
         }
 
-
-        public void OpenDoor_test(string c)
+        public static void SendCommandToDoor(string cmd)
         {
             try
             {
-                ComDevice.DataReceived += new SerialDataReceivedEventHandler(Com_DataReceived);//绑定事件
+                byte[] senddoor1Data = strToHexByte(cmd);
 
-                byte[] senddoor1Data = strToHexByte(c);
-
-                string comlist = DB_Base.door_com;
-
-                int baudrate = Convert.ToInt32(DB_Base.door_baudrate);
-                int parity = Convert.ToInt32(DB_Base.door_parity);
-                int databits = Convert.ToInt32(DB_Base.door_databits);
-                StopBits stopbits = (StopBits)Convert.ToInt32(1);
-
-                if (string.IsNullOrEmpty(comlist))
+                if (!ComDevice.IsOpen)
                 {
-                    MessageBox.Show("没有发现串口,请检查线路！");
-                    return;
+                    CreateDoorConnction();
                 }
-
-
-                ComDevice.PortName = comlist;
-                ComDevice.BaudRate = Convert.ToInt32(baudrate);
-                ComDevice.Parity = (Parity)Convert.ToInt32(parity);
-                ComDevice.DataBits = Convert.ToInt32(databits);
-                ComDevice.StopBits = (StopBits)Convert.ToInt32(stopbits);
-                AdminPage.reults.Add($"{ComDevice.PortName};{ComDevice.BaudRate};{ComDevice.Parity};{ComDevice.DataBits};{ComDevice.StopBits}");
-                ComDevice.Open();
-                
-                if (ComDevice.IsOpen)
-                {
-                    //MessageBox.Show("ComDevice.IsOpen: " + ComDevice.IsOpen);
-                    AdminPage.reults.Add($"ComDevice.IsOpen:{ComDevice.IsOpen}");
-                    AdminPage.reults.Add($"send:{c}");
-                    log.Info($"connection:{ComDevice.PortName};{ComDevice.BaudRate};{ComDevice.Parity};{ComDevice.DataBits};{ComDevice.StopBits};ComDevice.IsOpen:{ComDevice.IsOpen}; send data:{c}");
-                    ComDevice.Write(senddoor1Data, 0, senddoor1Data.Length);
-                    Thread.Sleep(2000);
-                }
-
-
-
+                log.Info($"send data:{cmd}");
+                ComDevice.Write(senddoor1Data, 0, senddoor1Data.Length);
+                //Thread.Sleep(2000);
             }
             catch (Exception ex)
             {
-                log.Error(ex.Message);
+                log.Error($" error: {ex.Message}");
                 MessageBox.Show(ex.Message, "Error");
-                //return;
             }
-            finally
-            {
-                if (ComDevice.IsOpen)
-                {
-                    ComDevice.Close();
-                }
-            }
-
-
-
-
-
         }
 
-        private byte[] strToHexByte(string hexString)
+        public static bool CheckLeftDoorStatus()
+        {
+            bool left_door = false;
+            try
+            {
+                string s = "574B4C590901830280";
+                SendCommandToDoor(s);
+                s = msgReceived;
+                msgReceived = "";
+                left_door = s == "574B4C590B018300020183";
+            }
+            catch (Exception ex)
+            {
+                log.Error($" error: {ex.Message}");
+                MessageBox.Show(ex.Message, "Error");
+            }
+            return left_door;
+        }
+
+        public static bool CheckRightDoorStatus()
+        {
+            bool right_door = false;
+            try
+            {
+                string s = "574B4C590901830B89";
+                SendCommandToDoor(s);
+                s = msgReceived;
+                msgReceived = "";
+                right_door = s == "574B4C590B0183000B018A";
+            }
+            catch (Exception ex)
+            {
+                log.Error($" error: {ex.Message}");
+                MessageBox.Show(ex.Message, "Error");
+            }
+            return right_door;
+        }
+
+        public static bool CheckAllDoorStatus()
+        {
+            bool all_door = false;
+            try
+            {
+                string s = "574B4C5908018484";
+                SendCommandToDoor(s);
+                s = msgReceived;
+                msgReceived= "";
+
+                all_door = s== "574B4C59160184000C00010000000000000000010096";
+            }
+            catch (Exception ex)
+            {
+                log.Error($" error: {ex.Message}");
+                MessageBox.Show(ex.Message, "Error");
+            }
+            return all_door;
+        }
+
+        public static bool CheckDoorStatus()
+        {
+            try
+            {
+                if (CheckAllDoorStatus())//CheckLeftDoorStatus() && CheckRightDoorStatus()
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                log.Error($" error: {ex.Message}");
+                MessageBox.Show(ex.Message, "Error");
+                return false;
+            }
+        }
+        private static byte[] strToHexByte(string hexString)
         {
             //hexString = hexString.Replace(" ", "");
             if ((hexString.Length % 2) != 0) hexString += " ";
@@ -163,7 +244,7 @@ namespace XpertApp2.Utility
         }
         //get list from RFID before open door
 
-        public void LogDoor(bool is_open)
+        public static  void LogDoor(bool is_open)
         {
             var msg = is_open ? "Door is open." : "Door is closed.";
 
@@ -172,16 +253,45 @@ namespace XpertApp2.Utility
             EventModel Event = new EventModel();
             Event.Event_Type = "Door event";
             Event.Event_Description = msg;
-            Event.User_Id = DB_Base.CurrentUser.UserName;
+            Event.User_Id = "system";
             Event.Event_datetime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-            Event.CreateBy = DB_Base.CurrentUser.UserName;
+            Event.CreateBy ="system";
             Event.CreateOn = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
 
             EventDB eventDB = new EventDB();
             eventDB.InsertEvent(Event);
         }
-        private void Com_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        private static void Com_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
+            try
+            {
+                byte[] ReDatas = new byte[ComDevice.BytesToRead];
+                ComDevice.Read(ReDatas, 0, ReDatas.Length);//读取数据
+                                                           //MessageBox.Show("ReDatas: " + ReDatas);
+                                                           //this.AddData(ReDatas);//输出数据
+
+                StringBuilder sb = new StringBuilder();
+                for (int i = 0; i < ReDatas.Length; i++)
+                {
+                    sb.AppendFormat("{0:x2}" , ReDatas[i]);
+                }
+                msgReceived += sb.ToString().ToUpper();
+               
+
+                log.Info($"received:{msgReceived}");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                log.Error(ex.Message);
+
+            }
+
+        }
+
+        public static string Com_DataReceived()
+        {
+            var result = "";    
             try
             {
                 byte[] ReDatas = new byte[ComDevice.BytesToRead];
@@ -194,10 +304,11 @@ namespace XpertApp2.Utility
                 {
                     sb.AppendFormat("{0:x2}" + " ", ReDatas[i]);
                 }
-                string result = sb.ToString().ToUpper();
+                 result = sb.ToString().ToUpper();
+                
 
-                //TestControl.reults.Add(result);
-                log.Info(result);
+                log.Info($"received:{result}");
+                return result;
             }
             catch (Exception ex)
             {
@@ -205,7 +316,7 @@ namespace XpertApp2.Utility
                 log.Error(ex.Message);
 
             }
-
+            return result;
         }
     }
 
@@ -238,7 +349,7 @@ namespace XpertApp2.Utility
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private readonly Door door;
         private System.Timers.Timer doorCheckTimer;
-        private SerialPort ComDevice = new SerialPort();
+        ///private SerialPort ComDevice = new SerialPort();
 
         public DoorMonitor(Door door)
         {
@@ -248,7 +359,7 @@ namespace XpertApp2.Utility
                 this.door.DoorStateChanged += OnDoorStateChanged;
 
                 // 定时器用于定期检查门的状态
-                doorCheckTimer = new System.Timers.Timer(1000); // 每秒检查一次
+                doorCheckTimer = new System.Timers.Timer(3000); // 每秒检查一次
                 doorCheckTimer.Elapsed += CheckDoorStatus;
                 doorCheckTimer.AutoReset = true;
                 doorCheckTimer.Start();
@@ -265,7 +376,7 @@ namespace XpertApp2.Utility
         {
             // 这里可以使用传感器、外部API等实时检查门状态
             // 假设这里通过传感器获取门的实际状态：
-            bool currentDoorStatus = GetActualDoorStatus();
+            bool currentDoorStatus = DoorUtility.CheckDoorStatus();
 
             if (door.IsDoorOpen != currentDoorStatus)
             {
@@ -273,10 +384,10 @@ namespace XpertApp2.Utility
             }
         }
 
-        private bool GetActualDoorStatus()
-        {
-            return ComDevice.IsOpen;
-        }
+        //private bool GetActualDoorStatus()
+        //{
+        //    return ComDevice.IsOpen;
+        //}
 
         private void OnDoorStateChanged(object sender, DoorEventArgs e)
         {
@@ -295,18 +406,16 @@ namespace XpertApp2.Utility
         {
             try
             {
-                if (DB_Base.IsDoorOpen == false)
-                {
-                    DB_Base.IsDoorOpen = true;
-                    log.Info("Monitoring Started...");
-                    // 实现监控逻辑
-                    DoorUtility doorUtility = new DoorUtility();
-                    doorUtility.LogDoor(true);
-                }
+
+
+                log.Info("Monitoring Started...");
+                // 实现监控逻辑
+                DoorUtility.LogDoor(true);
+
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                //MessageBox.Show(ex.Message);
                 log.Error(ex.Message);
             }
 
@@ -316,19 +425,24 @@ namespace XpertApp2.Utility
         {
             try
             {
-                if (DB_Base.IsDoorOpen == true)
+
+                Task.Run(() =>
                 {
-                    DB_Base.IsDoorOpen = false;
                     log.Info("Monitoring Stopped...");
                     // 实现停止监控逻辑
-                    DoorUtility doorUtility = new DoorUtility();
-                    doorUtility.LogDoor(false);
+                    DoorUtility.LogDoor(false);
 
                     RFIDUtility rFIDUtility = new RFIDUtility();
-                    DB_Base.RFIDList_c = rFIDUtility.Read_RFID();
-                    rFIDUtility.Compare_RFID(DB_Base.RFIDList_c, DB_Base.RFIDList_o);
+                    DB_Base.RFIDList_c = RFIDUtility.Read_RFID();
 
-                }
+                    // Now, update UI on the main thread
+                    Application.Current.Dispatcher.Invoke(() =>
+                    {
+                        NotePopup notePopup = new NotePopup();
+                        notePopup.Show();
+                    });
+                });
+              
             }
             catch (Exception ex)
             {

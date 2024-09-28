@@ -114,14 +114,17 @@ namespace XpertApp2.DB
                                 command.Parameters.AddWithValue("@Event_datetime", Event.Event_datetime);
                                 command.Parameters.AddWithValue("@Event_Type", Event.Event_Type);
                                 command.Parameters.AddWithValue("@Event_Description", Event.Event_Description);
-                                command.Parameters.AddWithValue("@User_Id", Event.User_Id);
+                                command.Parameters.AddWithValue("@User_Id", Event.User_Id==null?"system": Event.User_Id);
                                 command.Parameters.AddWithValue("@Create_By", Event.CreateBy);
                                 command.Parameters.AddWithValue("@Create_On", Event.CreateOn);
 
 
                                 var obj = command.ExecuteScalar();
                                 var msg = $"{sql}-[{obj}]";
-                                InsertEvent_system("", msg, DB_Base.CurrentUser.UserName, connection);
+                                //if (DB_Base.CurrentUser != null)
+                                //    InsertEvent_system("", msg, DB_Base.CurrentUser.UserName, connection);
+                                //else
+                                //    InsertEvent_system("", msg, "System", connection);
                                 log.Debug(msg);
                             }
                             transaction.Commit();
@@ -314,7 +317,7 @@ namespace XpertApp2.DB
                                     Events.Add(Event);
                                 }
                                 var msg = $"{sql}-[{i}]";
-                                InsertEvent_system("", msg, DB_Base.CurrentUser.UserName, connection);
+                                //InsertEvent_system("", msg, DB_Base.CurrentUser.UserName, connection);
                                 log.Debug(msg);
                             }
                             transaction.Commit();
@@ -606,14 +609,14 @@ namespace XpertApp2.DB
 
 
 
-        public void UpdateBorrowRecords_return(string item_id, string user_id)
+        public void UpdateBorrowRecords_return(string item_id)// string user_id
         {
             try
             {
                 using (var connection = new SQLiteConnection(DB_Base.DBConnectionString))
                 {
                     connection.Open();
-                    string sql = "UPDATE Borrow_Records_TB SET  Return_datetime=@Return_datetime WHERE item_id=@item_id AND User_Id=@User_Id AND  Return_datetime = NULL";
+                    string sql = "UPDATE Borrow_Records_TB SET  Return_datetime=@Return_datetime WHERE item_id=@item_id  AND  Return_datetime is NULL";
                     using (SQLiteTransaction transaction = connection.BeginTransaction())
                     {
                         try
@@ -622,7 +625,7 @@ namespace XpertApp2.DB
                             {
 
                                 command.Parameters.AddWithValue("@item_id", item_id);
-                                command.Parameters.AddWithValue("@User_Id", user_id);
+                                //command.Parameters.AddWithValue("@User_Id", user_id);
                                 command.Parameters.AddWithValue("@Return_datetime", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
                                 var obj = command.ExecuteScalar();
                                 var msg = $"{sql}-[{obj}]";
@@ -657,6 +660,7 @@ namespace XpertApp2.DB
                 {
                     connection.Open();
                     string sql = $"SELECT * FROM Borrow_Records_TB where user_id='{user_id}' and Return_datetime is null order by Create_On desc";
+                    log.Debug(sql);
                     using (SQLiteTransaction transaction = connection.BeginTransaction())
                     {
                         try
@@ -682,7 +686,11 @@ namespace XpertApp2.DB
                                     BorrowRecords.Add(BorrowRecord);
                                 }
                                 var msg = $"{sql}-[{i}]";
-                                InsertEvent_system("", msg, DB_Base.CurrentUser.UserName, connection);
+                                if (DB_Base.CurrentUser != null)
+                                    InsertEvent_system("", msg, DB_Base.CurrentUser.UserName, connection);
+                                else
+                                    InsertEvent_system("", msg, "System", connection);
+                                
                                 log.Debug(msg);
                             }
                             transaction.Commit();

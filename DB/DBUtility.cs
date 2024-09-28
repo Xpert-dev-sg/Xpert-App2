@@ -25,7 +25,7 @@ namespace XpertApp2.DB
             DB_Base.SystemMenuInterval_admin = Convert.ToInt32(ConfigurationManager.AppSettings["SystemMenuInterval_admin"]);
             DB_Base.mailserver = ConfigurationManager.AppSettings["mailserver"];
             DB_Base.mailport = ConfigurationManager.AppSettings["mailport"];
-            DB_Base.mailusername = ConfigurationManager.AppSettings["mailusername"];
+            DB_Base.mailusername = ConfigurationManager.AppSettings["mailuser"];
             DB_Base.mailpassword = ConfigurationManager.AppSettings["mailpassword"];
             DB_Base.door_com = ConfigurationManager.AppSettings["door_com"];
             DB_Base.door_baudrate = ConfigurationManager.AppSettings["door_baudrate"];
@@ -57,7 +57,7 @@ namespace XpertApp2.DB
         {
             ContentDB contentDB = new ContentDB();
 
-            if (DB_Base.CurrentUser.RowId != "99")//admin
+            if (DB_Base.CurrentUser.RowId != "999")//admin
             {
                 var sp = contentDB.GetContent_item(item);
                 var item_rowid = sp.Split('-')[0];
@@ -72,14 +72,15 @@ namespace XpertApp2.DB
                 {
                     if (item_department != DB_Base.CurrentUser.DepartmentId)//not in the same department
                     {
-                        EmailUtility.SendEmail(msg, Subject, tomail);
+
+                        //EmailUtility.SendEmail(msg, Subject, tomail);
                         //throw new Exception("You are not allowed to borrow this item.");
                     }
                     else
                     {
                         if (Convert.ToInt16(item_rowid) > Convert.ToInt16(DB_Base.CurrentUser.RowId))//not in the same row
                         {
-                            EmailUtility.SendEmail(msg, Subject, tomail);
+                            //EmailUtility.SendEmail(msg, Subject, tomail);
                             //throw new Exception("You are not allowed to borrow this item.");
                         }
                     }
@@ -127,7 +128,7 @@ namespace XpertApp2.DB
                     var msg = $"{user} has over due date item </br> {stritem} ";
                     string[] tomail = new string[] { email };
                     var Subject = "over due date  item";
-                    EmailUtility.SendEmail(msg, Subject, tomail);
+                    //EmailUtility.SendEmail(msg, Subject, tomail);
                 }
                 
             }
@@ -148,8 +149,9 @@ namespace XpertApp2.DB
         public static string RFIDList_c { get; set; }
         public static string RFIDList_o { get; set; }
 
-        public static ObservableCollection<string> returnlist { get; set; }
-        public static ObservableCollection<string> borrowlist { get; set; }
+        public static UserModel borrowUser { get; set; }
+        public static ObservableCollection<Items> returnlist { get; set; }
+        public static ObservableCollection<Items> borrowlist { get; set; }
         public static string currentpage { get; set; }
 
         public static string SystemMail { get; set; }//="wangyiwater77@163.com";

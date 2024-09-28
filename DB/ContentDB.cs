@@ -19,6 +19,7 @@ namespace XpertApp2.DB
         #region create, drop,insert, get, update, delete
         public void CreateContent()
         {
+            string methodName = System.Reflection.MethodBase.GetCurrentMethod().Name;
             try
             {
                 using (var connection = new SQLiteConnection(DB_Base.DBConnectionString))
@@ -56,7 +57,7 @@ namespace XpertApp2.DB
                         catch (Exception ex)
                         {
                             transaction.Rollback();
-                            log.Error($"CreateContent Error: {ex.Message}");
+                            log.Error($"{methodName} Error: {ex.Message}");
                         }
                     }
                 }
@@ -281,7 +282,7 @@ namespace XpertApp2.DB
                                 else
                                     user = DB_Base.CurrentUser.UserName;
 
-                                eventDB.InsertEvent_system("", msg, user, connection);
+                                //eventDB.InsertEvent_system("", msg, user, connection);
                                 log.Debug(msg);
                             }
                             transaction.Commit();
@@ -436,7 +437,7 @@ namespace XpertApp2.DB
                                     user = "System";
                                 else
                                     user = DB_Base.CurrentUser.UserName;
-                                eventDB.InsertEvent_system("", msg, user, connection);
+                                //eventDB.InsertEvent_system("", msg, user, connection);
                                 log.Debug(msg);
                             }
 
@@ -493,7 +494,7 @@ namespace XpertApp2.DB
                                     user = "System";
                                 else
                                     user = DB_Base.CurrentUser.UserName;
-                                eventDB.InsertEvent_system("", msg, user, connection);
+                                //eventDB.InsertEvent_system("", msg, user, connection);
                                 log.Debug(msg);
                             }
                             transaction.Commit();
@@ -556,7 +557,7 @@ namespace XpertApp2.DB
                                     Contents.Add(Content);
                                 }
                                 var msg = $"{sql}-[{i}]";
-                                eventDB.InsertEvent_system("", msg, DB_Base.CurrentUser.UserName, connection);
+                               // eventDB.InsertEvent_system("", msg, DB_Base.CurrentUser.UserName, connection);
                                 log.Debug(msg);
                             }
                             transaction.Commit();
@@ -618,7 +619,7 @@ namespace XpertApp2.DB
                                     Contents.Add(Content);
                                 }
                                 var msg = $"{sql}-[{i}]";
-                                eventDB.InsertEvent_system("", msg, DB_Base.CurrentUser.UserName, connection);
+                                //eventDB.InsertEvent_system("", msg, DB_Base.CurrentUser.UserName, connection);
                                 log.Debug(msg);
                             }
                             transaction.Commit();
@@ -827,7 +828,11 @@ namespace XpertApp2.DB
 
                                 var obj = command.ExecuteScalar();
                                 var msg = $"{sql}-[{obj}]";
-                                eventDB.InsertEvent_system("", msg, DB_Base.CurrentUser.UserName, connection);
+                                
+                                if (DB_Base.CurrentUser.UserName != null)
+                                    eventDB.InsertEvent_system("", msg, DB_Base.CurrentUser.UserName, connection);
+                                else
+                                    eventDB.InsertEvent_system("", msg, "System", connection);
                                 log.Debug(msg);
                                 
                             }
@@ -848,7 +853,7 @@ namespace XpertApp2.DB
             
         }
 
-        public string GetContent_rfid(string rfid)
+        public  string GetContent_rfid(string rfid)
         {
             var Contents = "";
             try
@@ -871,7 +876,10 @@ namespace XpertApp2.DB
                                     Contents= $"{Item_Name}-{Item_Description}";
                                 }
                                 var msg = $"{sql}-[1]";
-                                eventDB.InsertEvent_system("", msg, DB_Base.CurrentUser.UserName, connection);
+                                if (DB_Base.CurrentUser.UserName != null)
+                                    eventDB.InsertEvent_system("", msg, DB_Base.CurrentUser.UserName, connection);
+                                else
+                                    eventDB.InsertEvent_system("", msg, "System", connection);
                                 log.Debug(msg);
                             }
                             transaction.Commit();
@@ -891,7 +899,7 @@ namespace XpertApp2.DB
 
             return Contents;
         }
-
+       
 
         public string GetContent_item(string item)
         {
@@ -965,5 +973,10 @@ namespace XpertApp2.DB
         public string CreateOn { get; set; }
         public string UpdateBy { get; set; }
         public string UpdateOn { get; set; }
+    }
+
+    public class Items
+    {
+        public string Item_Name { get; set; }
     }
 }

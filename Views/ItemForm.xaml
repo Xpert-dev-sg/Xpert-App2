@@ -30,30 +30,30 @@
                     <ColumnDefinition></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <TextBlock Grid.Row="0" Grid.Column="0" Text="Item Name" Margin="10,5,10,5" FontWeight="Bold" FontSize="16" HorizontalAlignment="Right"></TextBlock>
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="Item Name" Margin="10,5,10,5" FontWeight="Bold" FontSize="18" HorizontalAlignment="Right"></TextBlock>
                 <TextBox Grid.Row="0" Grid.Column="1" x:Name="txtItemName" Margin="10,5,10,5"  Width="200"  ></TextBox>
-                <TextBlock Grid.Row="1" Grid.Column="0" Text="Item Description" Margin="10,5,10,5" FontWeight="Bold" FontSize="16" HorizontalAlignment="Right"></TextBlock>
+                <TextBlock Grid.Row="1" Grid.Column="0" Text="Item Description" Margin="10,5,10,5" FontWeight="Bold" FontSize="18" HorizontalAlignment="Right"></TextBlock>
                 <TextBox Grid.Row="1" Grid.Column="1" x:Name="txtItemDescription" Margin="10,5,10,5"  Width="200"></TextBox>
-                <TextBlock Grid.Row="2" Grid.Column="0" Text="Item Type" Margin="10,5,10,5" FontWeight="Bold" FontSize="16" HorizontalAlignment="Right"></TextBlock>
+                <TextBlock Grid.Row="2" Grid.Column="0" Text="Item Type" Margin="10,5,10,5" FontWeight="Bold" FontSize="18" HorizontalAlignment="Right"></TextBlock>
                 <TextBox Grid.Row="2" Grid.Column="1" x:Name="txtItemType" Margin="10,5,10,5"  Width="200"></TextBox>
-                <TextBlock Grid.Row="3" Grid.Column="0" Text="Item Owner Email" Margin="10,5,10,5" FontWeight="Bold" FontSize="16" HorizontalAlignment="Right"></TextBlock>
+                <TextBlock Grid.Row="3" Grid.Column="0" Text="Item Owner Email" Margin="10,5,10,5" FontWeight="Bold" FontSize="18" HorizontalAlignment="Right"></TextBlock>
                 <TextBox    Grid.Row="3" Grid.Column="1" x:Name="txtItemOwner" Margin="10,5,10,5"  Width="200"></TextBox>
-                <TextBlock Grid.Row="4" Grid.Column="0" Text="Item permition" Margin="10,5,10,5" FontWeight="Bold" FontSize="16" HorizontalAlignment="Right"></TextBlock>
+                <TextBlock Grid.Row="4" Grid.Column="0" Text="Item permition" Margin="10,5,10,5" FontWeight="Bold" FontSize="18" HorizontalAlignment="Right"></TextBlock>
                 <TextBox Grid.Row="4" Grid.Column="1" x:Name="txtItemPermition" Margin="10,5,10,5"  Width="200"></TextBox>
-                <TextBlock Grid.Row="5" Grid.Column="0" Text="Department" Margin="10,5,10,5" FontWeight="Bold" FontSize="16" HorizontalAlignment="Right"></TextBlock>
+                <TextBlock Grid.Row="5" Grid.Column="0" Text="Department" Margin="10,5,10,5" FontWeight="Bold" FontSize="18" HorizontalAlignment="Right"></TextBlock>
                 <TextBox Grid.Row="5" Grid.Column="1" x:Name="txtDepartment" Margin="10,5,10,5"  Width="200"></TextBox>
-                <TextBlock Grid.Row="6" Grid.Column="0" Text="Deadline" Margin="10,5,10,5" FontWeight="Bold" FontSize="16" HorizontalAlignment="Right"></TextBlock>
+                <TextBlock Grid.Row="6" Grid.Column="0" Text="Deadline" Margin="10,5,10,5" FontWeight="Bold" FontSize="18" HorizontalAlignment="Right"></TextBlock>
                 <TextBox    Grid.Row="6" Grid.Column="1" x:Name="txtDeadline" Margin="10,5,10,5"  Width="200"></TextBox>
-                <TextBlock Grid.Row="7" Grid.Column="0" Text="Alert" Margin="10,5,10,5" FontWeight="Bold" FontSize="16" HorizontalAlignment="Right"></TextBlock>
+                <TextBlock Grid.Row="7" Grid.Column="0" Text="Alert" Margin="10,5,10,5" FontWeight="Bold" FontSize="18" HorizontalAlignment="Right"></TextBlock>
                 <ComboBox Width="120" Grid.Row="7" Grid.Column="1" x:Name="txtAlert" >
                     <ComboBoxItem Content="No" Tag="0" IsSelected="True"></ComboBoxItem>
                     <ComboBoxItem Content="Yes" Tag="1"></ComboBoxItem>
                 </ComboBox>
-                <TextBlock Grid.Row="8" Grid.Column="0" Text="RFID" Margin="10,5,10,5" FontWeight="Bold" FontSize="16" HorizontalAlignment="Right"></TextBlock>
+                <TextBlock Grid.Row="8" Grid.Column="0" Text="RFID" Margin="10,5,10,5" FontWeight="Bold" FontSize="18" HorizontalAlignment="Right"></TextBlock>
                 <TextBox    Grid.Row="8" Grid.Column="1" x:Name="txtRFID" Margin="10,5,10,5"  Width="140" HorizontalAlignment="Left" IsReadOnly="True"></TextBox>
                 <Button x:Name="btnrfid"  Grid.Row="8" Grid.Column="1" Margin="10,5,10,5" Content="RFID"  FontWeight="Bold" HorizontalAlignment="Right" Click="btnRFID_Click"></Button>
-                <Button Grid.Row="9" Grid.Column="1" x:Name="btnSave" Content="Save" Margin="10,5,10,5" FontWeight="Bold"  Width="100" Click="btnSave_Click" HorizontalAlignment="Left"></Button>
-                <Button Grid.Row="9" Grid.Column="1" x:Name="btnCancel" Content="Cancel" Margin="10,5,10,5"  FontWeight="Bold" Width="100" Click="btnCancel_Click" HorizontalAlignment="Right"></Button>
+                <Button Grid.Row="9" Grid.Column="1" x:Name="btnSave" Content="Save" Margin="10,5,10,5" FontWeight="Bold"  Width="100" Click="btnSave_Click" HorizontalAlignment="Left"  FontSize="16"></Button>
+                <Button Grid.Row="9" Grid.Column="1" x:Name="btnCancel" Content="Cancel" Margin="10,5,10,5"  FontWeight="Bold" Width="100" Click="btnCancel_Click" HorizontalAlignment="Right"  FontSize="16"></Button>
                 
             </Grid>
         </hc:SimplePanel>

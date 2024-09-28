@@ -36,17 +36,17 @@ namespace XpertApp2.Views
         {
             InitializeComponent();
 
-            MonitorKeyMouseUntility.MonitorKeyMouseMain();
-            
-            Setup_timer();
+            //MonitorKeyMouseUntility.MonitorKeyMouseMain();
+
+            Setup_timer();//设置定时器 回主页
 
 
 
-            // 设置定时器
-            timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromSeconds(1); // 每一秒触发一次
-            timer.Tick += Timer_Tick;
-            timer.Start();
+            //// 设置定时器
+            //timer = new DispatcherTimer();
+            //timer.Interval = TimeSpan.FromSeconds(1); // 每一秒触发一次
+            //timer.Tick += Timer_Tick;
+            //timer.Start();
 
 
             Load_dataComponents();
@@ -56,8 +56,8 @@ namespace XpertApp2.Views
         {
             //TimeUtility.CarouselMenuTimer();
             //
-            var islogined = !(DB_Base.CurrentUser == null);
-            _countdown = islogined ? DB_Base.SystemMenuInterval_admin : DB_Base.SystemMenuInterval;
+            
+            _countdown =  DB_Base.SystemMenuInterval_admin;
             // 初始化计时器
             _timer = new DispatcherTimer();
             _timer.Interval = System.TimeSpan.FromSeconds(1);  // 每秒触发一次
@@ -85,21 +85,21 @@ namespace XpertApp2.Views
         }
 
 
-        private void Timer_Tick(object sender, EventArgs e)
-        {
-            EventDB eventDB = new EventDB();
-            return_list.ItemsSource = DB_Base.returnlist;
-            borrow_list.ItemsSource = DB_Base.borrowlist;
-            borrowdataGrid.ItemsSource = eventDB.GetBorrowRecords_user_access(DB_Base.CurrentUser.UserName);
-            //// 更新 ListView 的数据，这里可以是任何你需要的更新逻辑
-            //items.Add(DateTime.Now.ToString("HH:mm:ss"));
+        //private void Timer_Tick(object sender, EventArgs e)
+        //{
+        //    EventDB eventDB = new EventDB();
+        //    //return_list.ItemsSource = DB_Base.returnlist;
+        //    //borrow_list.ItemsSource = DB_Base.borrowlist;
+        //    borrowdataGrid.ItemsSource = eventDB.GetBorrowRecords_user_access(DB_Base.CurrentUser.UserName);
+        //    //// 更新 ListView 的数据，这里可以是任何你需要的更新逻辑
+        //    //items.Add(DateTime.Now.ToString("HH:mm:ss"));
 
-            //// 为了防止列表无限增长，移除最早的项
-            //if (items.Count > 10)
-            //{
-            //    items.RemoveAt(0);
-            //}
-        }
+        //    //// 为了防止列表无限增长，移除最早的项
+        //    //if (items.Count > 10)
+        //    //{
+        //    //    items.RemoveAt(0);
+        //    //}
+        //}
 
         public void Load_dataComponents()
         {
@@ -110,17 +110,39 @@ namespace XpertApp2.Views
             EventDB eventDB = new EventDB();
             borrowdataGrid.ItemsSource = eventDB.GetBorrowRecords_user_access(DB_Base.CurrentUser.UserName);
 
-            return_list.ItemsSource = DB_Base.returnlist;
-            borrow_list.ItemsSource = DB_Base.borrowlist;
+            //return_list.ItemsSource = DB_Base.returnlist;
+            //borrow_list.ItemsSource = DB_Base.borrowlist;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void OpenDoorButton_Click(object sender, RoutedEventArgs e)
         {
-           
+            DB_Base.RFIDList_o = RFIDUtility.Read_RFID();
+            DB_Base.borrowUser = DB_Base.CurrentUser;
 
-            DoorUtility doorUtility = new DoorUtility();
-            doorUtility.OpenDoor(); 
-            MessageBox.Show("open door");
+            DoorUtility.OpenDoor();
+
+
+        }
+
+        private void OpenRightDoorButton_Click(object sender, RoutedEventArgs e)
+        {
+            DB_Base.RFIDList_o = RFIDUtility.Read_RFID();
+            DB_Base.borrowUser = DB_Base.CurrentUser;
+            DoorUtility.OpenRightDoor();
+        }
+
+        private void OpenAllDoorButton_Click(object sender, RoutedEventArgs e)
+        {
+            DB_Base.RFIDList_o = RFIDUtility.Read_RFID();
+            DB_Base.borrowUser = DB_Base.CurrentUser;
+            DoorUtility.OpenAllDoor();
+        }
+
+        private void OpenLeftDoorButton_Click(object sender, RoutedEventArgs e)
+        {
+            DB_Base.RFIDList_o = RFIDUtility.Read_RFID();
+            DB_Base.borrowUser = DB_Base.CurrentUser;
+            DoorUtility.OpenLeftDoor();
         }
     }
 }

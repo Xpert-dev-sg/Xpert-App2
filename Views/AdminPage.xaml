@@ -14,7 +14,7 @@
         <hc:TabControl IsAnimationEnabled="True" ShowCloseButton="True" IsDraggable="True" IsTabFillEnabled="True" >
 
             <!--item-->
-            <hc:TabItem Header="Items">
+            <hc:TabItem Header="Items"  FontSize="16" FontWeight="Bold">
                 <hc:SimplePanel >
                     <hc:SimplePanel.Background>
                         <ImageBrush ImageSource="/Resources/Img/admin.jpg" Opacity="0.5"/>
@@ -122,7 +122,7 @@
                 </hc:SimplePanel>
             </hc:TabItem>
             <!--user-->
-            <hc:TabItem  IsSelected="True" Header="User">
+            <hc:TabItem  IsSelected="True" Header="User"  FontSize="16" FontWeight="Bold">
                 <hc:SimplePanel >
                     <hc:SimplePanel.Background>
                         <ImageBrush ImageSource="/Resources/Img/admin.jpg" Opacity="0.5"/>
@@ -235,7 +235,7 @@
             </hc:TabItem>
 
             <!--borrow-->
-            <hc:TabItem Header="Borrow view">
+            <hc:TabItem Header="Borrow view"  FontSize="16" FontWeight="Bold">
                 <hc:SimplePanel >
                     <hc:SimplePanel.Background>
                         <ImageBrush ImageSource="/Resources/Img/admin.jpg" Opacity="0.5"/>
@@ -331,7 +331,7 @@
                 </hc:SimplePanel>
             </hc:TabItem>
             <!--log-->
-            <hc:TabItem Header="Log view">
+            <hc:TabItem Header="Log view"  FontSize="16" FontWeight="Bold">
                 <hc:SimplePanel >
                     <hc:SimplePanel.Background>
                         <ImageBrush ImageSource="/Resources/Img/admin.jpg" Opacity="0.5"/>
@@ -423,8 +423,8 @@
                     </Grid>
                 </hc:SimplePanel>
             </hc:TabItem>
-
-            <hc:TabItem Header="Test Control">
+            <!--test-->
+            <hc:TabItem Header="Test Control"  FontSize="16" FontWeight="Bold">
                 <hc:SimplePanel >
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -443,15 +443,21 @@
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
-                        <ListBox x:Name="lbResults" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" />
-                        <Button x:Name="btn_door_left" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Open left Door" Click="btnOPenDoor_left_Click" />
-                        <Button x:Name="btn_door_all"  Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Open all Door" Click="btnOPenDoor_all_Click" />
-                        <Button x:Name="btn_door_right" Grid.Column="2" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Open righ Doort" Click="btnOPenDoor_right_Click" />
-                        <Button Grid.Column="0" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Read RFID" Click="btnReadRFID_Click" />
-                        <Button Grid.Column="1" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Clear" Click="btnClearRFID_Click" />
-
-
-                        <Button Grid.Column="2" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Exit" Click="btnExit_Click" />
+                        <ListBox x:Name="lbResults" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3"  FontSize="16"/>
+                        <Button x:Name="btn_door_left" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Open left Door" Click="btnOPenDoor_left_Click"  FontSize="16" FontWeight="Bold"/>
+                        <Button x:Name="btn_door_all"  Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Open all Door" Click="btnOPenDoor_all_Click"  FontSize="16" FontWeight="Bold"/>
+                        <Button x:Name="btn_door_right" Grid.Column="2" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Open right Door" Click="btnOPenDoor_right_Click"  FontSize="16" FontWeight="Bold"/>
+                        <Button Grid.Column="1" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Content="check all Door" Click="btncheckDoor_all_Click"  FontSize="16" FontWeight="Bold"/>
+                        <Button Grid.Column="2" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Content="check door right status" Click="btnCheckDoorStatus_Click"  FontSize="16" FontWeight="Bold"/>
+                        <Button Grid.Column="0" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Content="check door left status" Click="btnCheckDoorStatus2_Click"  FontSize="16" FontWeight="Bold"/>
+                        <!--<Button Grid.Column="1" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Content="send email" Click="btnSendEmail_Click" />-->
+                        <Button Grid.Column="2" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Read right top RFID" Click="btnrightReadRFID1_Click"  FontSize="16" FontWeight="Bold"/>
+                        <Button Grid.Column="1" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Read all RFID" Click="btnallReadRFID_Click"  FontSize="16" FontWeight="Bold"/>
+                        <Button Grid.Column="0" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Read left top RFID" Click="btnleftReadRFID1_Click"  FontSize="16" FontWeight="Bold"/>
+                        <Button Grid.Column="2" Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Read right bottom RFID" Click="btnrightReadRFID2_Click"  FontSize="16" FontWeight="Bold"/>
+                        <Button Grid.Column="0" Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Read left bottom RFID" Click="btnleftReadRFID2_Click"  FontSize="16" FontWeight="Bold"/>
+                        <Button Grid.Column="1" Grid.Row="5" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Clear" Click="btnClearRFID_Click"  FontSize="16" FontWeight="Bold"/>
+                        <Button Grid.Column="2" Grid.Row="5" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Exit" Click="btnExit_Click"  FontSize="16" FontWeight="Bold"/>
                     </Grid>
                 </hc:SimplePanel>
             </hc:TabItem>
