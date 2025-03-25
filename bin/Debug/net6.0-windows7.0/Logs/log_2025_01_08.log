@@ -1,0 +1,27 @@
+2025-01-08 14:46:41,449 [1] INFO  [XpertApp2.Views.MainWindow ][ .ctor ] - ：System is initialized.
+2025-01-08 14:46:44,792 [9] ERROR [XpertApp2.Utility.DoorUtility ][ CreateDoorConnction ] - ： error: Could not find file 'COM2'.
+2025-01-08 14:46:47,734 [6] ERROR [XpertApp2.Utility.DoorUtility ][ CreateDoorConnction ] - ： error: Could not find file 'COM2'.
+2025-01-08 14:46:49,774 [6] INFO  [XpertApp2.Utility.DoorUtility ][ SendCommandToDoor ] - ：send data:574B4C5908018484
+2025-01-08 14:46:49,829 [6] ERROR [XpertApp2.Utility.DoorUtility ][ SendCommandToDoor ] - ： error: The port is closed.
+2025-01-08 14:46:50,750 [6] ERROR [XpertApp2.Utility.DoorUtility ][ CreateDoorConnction ] - ： error: Could not find file 'COM2'.
+2025-01-08 14:46:51,544 [6] INFO  [XpertApp2.Utility.DoorUtility ][ SendCommandToDoor ] - ：send data:574B4C5908018484
+2025-01-08 14:46:51,596 [6] ERROR [XpertApp2.Utility.DoorUtility ][ SendCommandToDoor ] - ： error: The port is closed.
+2025-01-08 14:46:53,738 [6] ERROR [XpertApp2.Utility.DoorUtility ][ CreateDoorConnction ] - ： error: Could not find file 'COM2'.
+2025-01-08 14:46:54,597 [6] INFO  [XpertApp2.Utility.DoorUtility ][ SendCommandToDoor ] - ：send data:574B4C5908018484
+2025-01-08 14:46:54,640 [6] ERROR [XpertApp2.Utility.DoorUtility ][ SendCommandToDoor ] - ： error: The port is closed.
+2025-01-08 14:46:56,220 [9] INFO  [XpertApp2.Utility.DoorUtility ][ SendCommandToDoor ] - ：send data:574B4C5908018484
+2025-01-08 14:46:56,265 [9] ERROR [XpertApp2.Utility.DoorUtility ][ SendCommandToDoor ] - ： error: The port is closed.
+2025-01-08 14:46:56,739 [4] ERROR [XpertApp2.Utility.DoorUtility ][ CreateDoorConnction ] - ： error: Could not find file 'COM2'.
+2025-01-08 14:46:57,263 [4] INFO  [XpertApp2.Utility.DoorUtility ][ SendCommandToDoor ] - ：send data:574B4C5908018484
+2025-01-08 14:46:57,300 [4] ERROR [XpertApp2.Utility.DoorUtility ][ SendCommandToDoor ] - ： error: The port is closed.
+2025-01-08 14:46:59,735 [9] ERROR [XpertApp2.Utility.DoorUtility ][ CreateDoorConnction ] - ： error: Could not find file 'COM2'.
+2025-01-08 14:47:01,862 [9] INFO  [XpertApp2.Utility.DoorUtility ][ SendCommandToDoor ] - ：send data:574B4C5908018484
+2025-01-08 14:47:01,897 [9] ERROR [XpertApp2.Utility.DoorUtility ][ SendCommandToDoor ] - ： error: The port is closed.
+2025-01-08 14:47:02,730 [6] ERROR [XpertApp2.Utility.DoorUtility ][ CreateDoorConnction ] - ： error: Could not find file 'COM2'.
+2025-01-08 14:47:03,457 [6] INFO  [XpertApp2.Utility.DoorUtility ][ SendCommandToDoor ] - ：send data:574B4C5908018484
+2025-01-08 14:47:03,483 [6] ERROR [XpertApp2.Utility.DoorUtility ][ SendCommandToDoor ] - ： error: The port is closed.
+2025-01-08 14:47:05,726 [4] ERROR [XpertApp2.Utility.DoorUtility ][ CreateDoorConnction ] - ： error: Could not find file 'COM2'.
+2025-01-08 14:47:08,744 [9] ERROR [XpertApp2.Utility.DoorUtility ][ CreateDoorConnction ] - ： error: Could not find file 'COM2'.
+2025-01-08 14:47:10,227 [9] INFO  [XpertApp2.Utility.DoorUtility ][ SendCommandToDoor ] - ：send data:574B4C5908018484
+2025-01-08 14:47:10,263 [9] ERROR [XpertApp2.Utility.DoorUtility ][ SendCommandToDoor ] - ： error: The port is closed.
+2025-01-08 14:47:11,724 [9] ERROR [XpertApp2.Utility.DoorUtility ][ CreateDoorConnction ] - ： error: Could not find file 'COM2'.

@@ -8,13 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Transactions;
 using XpertApp2.Models;
+using XpertApp2.Utility;
 
 namespace XpertApp2.DB
 {
     public class ContentDB
     {
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        
+
         private EventDB eventDB = new EventDB();
         #region create, drop,insert, get, update, delete
         public void CreateContent()
@@ -277,8 +278,8 @@ namespace XpertApp2.DB
                                     }
                                 var msg = $"{sql}-[{i}]";
                                 var user = "";
-                                if(DB_Base.CurrentUser==null)
-                                    user= "System";
+                                if (DB_Base.CurrentUser == null)
+                                    user = "System";
                                 else
                                     user = DB_Base.CurrentUser.UserName;
 
@@ -557,7 +558,7 @@ namespace XpertApp2.DB
                                     Contents.Add(Content);
                                 }
                                 var msg = $"{sql}-[{i}]";
-                               // eventDB.InsertEvent_system("", msg, DB_Base.CurrentUser.UserName, connection);
+                                // eventDB.InsertEvent_system("", msg, DB_Base.CurrentUser.UserName, connection);
                                 log.Debug(msg);
                             }
                             transaction.Commit();
@@ -741,7 +742,7 @@ namespace XpertApp2.DB
                                         UpdateBy = reader["Update_By"].ToString(),
                                         UpdateOn = reader["Update_On"].ToString()
                                     };
-                                    
+
                                 }
                                 var msg = $"{sql}-[{i}]";
                                 eventDB.InsertEvent_system("", msg, DB_Base.CurrentUser.UserName, connection);
@@ -803,17 +804,27 @@ namespace XpertApp2.DB
             return result;
         }
 
-        public void UpdateContent_on_hand(string  rfid,string user)
+        public void UpdateContent_on_hand(string rfid, string user)
         {
-           
+
             try
             {
                 using (var connection = new SQLiteConnection(DB_Base.DBConnectionString))
                 {
                     connection.Open();
-                    string sql = "UPDATE Item_TB " +
-                        "SET On_hand = @On_hand " +
+                    string sql = "";
+                    if (user == "")
+                    {
+                        sql = "UPDATE Item_TB " +
+                        "SET On_hand = null,status=1 " +
                         " WHERE RFID=@RFID";
+                    }
+                    else
+                    {
+                        sql = "UPDATE Item_TB " +
+                        "SET On_hand = @On_hand,status=0 " +
+                        " WHERE RFID=@RFID";
+                    }
 
                     using (SQLiteTransaction transaction = connection.BeginTransaction())
                     {
@@ -821,20 +832,20 @@ namespace XpertApp2.DB
                         {
                             using (var command = new SQLiteCommand(sql, connection))
                             {
-                               
+
                                 command.Parameters.AddWithValue("@On_hand", user);
                                 command.Parameters.AddWithValue("@RFID", rfid);
-                                
+
 
                                 var obj = command.ExecuteScalar();
                                 var msg = $"{sql}-[{obj}]";
-                                
+
                                 if (DB_Base.CurrentUser.UserName != null)
                                     eventDB.InsertEvent_system("", msg, DB_Base.CurrentUser.UserName, connection);
                                 else
                                     eventDB.InsertEvent_system("", msg, "System", connection);
                                 log.Debug(msg);
-                                
+
                             }
                             transaction.Commit();
                         }
@@ -850,10 +861,10 @@ namespace XpertApp2.DB
             {
                 log.Error($"CreateContent Error: {ex.Message}");
             }
-            
+
         }
 
-        public  string GetContent_rfid(string rfid)
+        public string GetContent_rfid(string rfid)
         {
             var Contents = "";
             try
@@ -873,7 +884,7 @@ namespace XpertApp2.DB
                                 {
                                     var Item_Name = reader["Item_Name"].ToString();
                                     var Item_Description = reader["Item_Description"].ToString();
-                                    Contents= $"{Item_Name}-{Item_Description}";
+                                    Contents = $"{Item_Name}-{Item_Description}";
                                 }
                                 var msg = $"{sql}-[1]";
                                 if (DB_Base.CurrentUser.UserName != null)
@@ -899,7 +910,7 @@ namespace XpertApp2.DB
 
             return Contents;
         }
-       
+
 
         public string GetContent_item(string item)
         {
@@ -951,6 +962,112 @@ namespace XpertApp2.DB
             return Contents;
         }
 
+        public void UpdateItemStatus(string rfid, int isIn)
+        {
+            try
+            {
+                using (var connection = new SQLiteConnection(DB_Base.DBConnectionString))
+                {
+                    connection.Open();
+                    string sql = "UPDATE Item_TB " +
+                        "SET status = @status " +
+                        " WHERE RFID=@RFID";
+
+                    using (SQLiteTransaction transaction = connection.BeginTransaction())
+                    {
+                        try
+                        {
+                            using (var command = new SQLiteCommand(sql, connection))
+                            {
+
+                                command.Parameters.AddWithValue("@status", isIn);
+                                command.Parameters.AddWithValue("@RFID", rfid);
+
+
+                                var obj = command.ExecuteScalar();
+                                var msg = $"{sql}-[{obj}]";
+
+                                if (DB_Base.CurrentUser.UserName != null)
+                                    eventDB.InsertEvent_system("", msg, DB_Base.CurrentUser.UserName, connection);
+                                else
+                                    eventDB.InsertEvent_system("", msg, "System", connection);
+                                log.Debug(msg);
+
+                            }
+                            transaction.Commit();
+                        }
+                        catch (Exception ex)
+                        {
+                            transaction.Rollback();
+                            log.Error($"UpdateItemStatus Error: {ex.Message}");
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                log.Error($"UpdateItemStatus Error: {ex.Message}");
+            }
+        }
+
+        public void InitialItemStatus()
+        {
+            try
+            {
+                using (var connection = new SQLiteConnection(DB_Base.DBConnectionString))
+                {
+                    connection.Open();
+                    string sql = "UPDATE Item_TB " +
+                        "SET status = 0 ";
+
+                    using (SQLiteTransaction transaction = connection.BeginTransaction())
+                    {
+                        try
+                        {
+                            using (var command = new SQLiteCommand(sql, connection))
+                            {
+
+                                var obj = command.ExecuteScalar();
+                                var msg = $"{sql}-[{obj}]";
+
+
+                                eventDB.InsertEvent_system("", msg, "System", connection);
+                                log.Debug(msg);
+
+                            }
+                            transaction.Commit();
+                        }
+                        catch (Exception ex)
+                        {
+                            transaction.Rollback();
+                            log.Error($"InitialItemStatus Error: {ex.Message}");
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                log.Error($"CreateContent Error: {ex.Message}");
+            }
+        }
+
+        public void StoreReset(string srtRFIDs)
+        {
+
+            //var srtRFIDs = RFIDUtility.Read_RFID();//找出放在里面的所有物品
+            var lstRFID = srtRFIDs.Split(';');
+            if (lstRFID.Count() > 0)
+            {
+                InitialItemStatus(); //all items status =0   把箱子清空
+                foreach (var s in lstRFID)//把所有物品 状态 改成1 
+                {
+                    UpdateItemStatus(s, 1);
+                }
+            }
+
+
+        }
+
     }
 
 
@@ -973,6 +1090,8 @@ namespace XpertApp2.DB
         public string CreateOn { get; set; }
         public string UpdateBy { get; set; }
         public string UpdateOn { get; set; }
+
+        public int Status { get; set; } // 1:in; 0:out
     }
 
     public class Items

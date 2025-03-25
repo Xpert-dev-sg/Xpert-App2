@@ -1,0 +1,380 @@
+2025-03-11 14:17:53,793 [1] INFO  [XpertApp2.Views.MainWindow ][ .ctor ] - ：System is initialized.
+2025-03-11 14:17:57,091 [6] ERROR [XpertApp2.Utility.DoorUtility ][ CreateDoorConnction ] - ： error: Could not find file 'COM2'.
+2025-03-11 14:18:00,049 [9] ERROR [XpertApp2.Utility.DoorUtility ][ CreateDoorConnction ] - ： error: Could not find file 'COM2'.
+2025-03-11 14:18:03,059 [4] ERROR [XpertApp2.Utility.DoorUtility ][ CreateDoorConnction ] - ： error: Could not find file 'COM2'.
+2025-03-11 14:18:06,058 [15] ERROR [XpertApp2.Utility.DoorUtility ][ CreateDoorConnction ] - ： error: Could not find file 'COM2'.
+2025-03-11 14:18:09,057 [16] ERROR [XpertApp2.Utility.DoorUtility ][ CreateDoorConnction ] - ： error: Could not find file 'COM2'.
+2025-03-11 14:18:11,282 [16] INFO  [XpertApp2.Utility.DoorUtility ][ SendCommandToDoor ] - ：send data:574B4C5908018484
+2025-03-11 14:18:11,317 [16] ERROR [XpertApp2.Utility.DoorUtility ][ SendCommandToDoor ] - ： error: The port is closed.
+2025-03-11 14:18:12,061 [7] ERROR [XpertApp2.Utility.DoorUtility ][ CreateDoorConnction ] - ： error: Could not find file 'COM2'.
+2025-03-11 14:18:15,066 [17] ERROR [XpertApp2.Utility.DoorUtility ][ CreateDoorConnction ] - ： error: Could not find file 'COM2'.
+2025-03-11 14:18:18,065 [18] ERROR [XpertApp2.Utility.DoorUtility ][ CreateDoorConnction ] - ： error: Could not find file 'COM2'.
+2025-03-11 14:18:21,058 [19] ERROR [XpertApp2.Utility.DoorUtility ][ CreateDoorConnction ] - ： error: Could not find file 'COM2'.
+2025-03-11 14:25:47,751 [1] INFO  [XpertApp2.Views.MainWindow ][ .ctor ] - ：System is initialized.
+2025-03-11 14:25:50,948 [4] ERROR [XpertApp2.Utility.DoorUtility ][ CreateDoorConnction ] - ： error: Could not find file 'COM2'.
+2025-03-11 14:25:53,912 [9] ERROR [XpertApp2.Utility.DoorUtility ][ CreateDoorConnction ] - ： error: Could not find file 'COM2'.
+2025-03-11 14:25:56,913 [6] ERROR [XpertApp2.Utility.DoorUtility ][ CreateDoorConnction ] - ： error: Could not find file 'COM2'.
+2025-03-11 14:25:59,912 [15] ERROR [XpertApp2.Utility.DoorUtility ][ CreateDoorConnction ] - ： error: Could not find file 'COM2'.
+2025-03-11 14:26:02,912 [16] ERROR [XpertApp2.Utility.DoorUtility ][ CreateDoorConnction ] - ： error: Could not find file 'COM2'.
+2025-03-11 14:29:58,992 [1] INFO  [XpertApp2.Views.MainWindow ][ .ctor ] - ：System is initialized.
+2025-03-11 14:30:26,567 [1] DEBUG [XpertApp2.DB.ContentDB ][ GetContents ] - ：SELECT * FROM Item_TB order by Item_Name-[100]
+2025-03-11 14:30:26,599 [1] DEBUG [XpertApp2.DB.ContentDB ][ GetDepartments ] - ：SELECT  Department_Id  FROM Item_TB group by Department_Id order by Department_Id-[9]
+2025-03-11 14:30:26,604 [1] DEBUG [XpertApp2.DB.ContentDB ][ GetItemType ] - ：SELECT  Item_type  FROM Item_TB group by Item_type order by Item_type-[9]
+2025-03-11 14:30:46,219 [1] DEBUG [XpertApp2.DB.ContentDB ][ GetContents ] - ：SELECT * FROM Item_TB order by Item_Name-[100]
+2025-03-11 14:30:46,224 [1] DEBUG [XpertApp2.DB.ContentDB ][ GetDepartments ] - ：SELECT  Department_Id  FROM Item_TB group by Department_Id order by Department_Id-[9]
+2025-03-11 14:30:46,228 [1] DEBUG [XpertApp2.DB.ContentDB ][ GetItemType ] - ：SELECT  Item_type  FROM Item_TB group by Item_type order by Item_type-[9]
+2025-03-11 14:30:50,686 [1] DEBUG [XpertApp2.DB.ContentDB ][ GetContents_itemType ] - ：SELECT * FROM Item_TB where Item_type='C' order by Item_Name-[10]
+2025-03-11 14:30:58,355 [1] DEBUG [XpertApp2.DB.ContentDB ][ GetContents_department ] - ：SELECT * FROM Item_TB where Department_Id='driver' order by Item_Name-[10]
+2025-03-11 14:57:00,972 [1] INFO  [XpertApp2.Views.MainWindow ][ .ctor ] - ：System is initialized.
+2025-03-11 14:57:11,469 [1] DEBUG [XpertApp2.DB.ContentDB ][ GetContents ] - ：SELECT * FROM Item_TB order by Item_Name-[100]
+2025-03-11 14:57:11,507 [1] DEBUG [XpertApp2.DB.ContentDB ][ GetDepartments ] - ：SELECT  Department_Id  FROM Item_TB group by Department_Id order by Department_Id-[9]
+2025-03-11 14:57:11,512 [1] DEBUG [XpertApp2.DB.ContentDB ][ GetItemType ] - ：SELECT  Item_type  FROM Item_TB group by Item_type order by Item_type-[9]
+2025-03-11 14:57:57,270 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 14:57:57,309 [1] DEBUG [XpertApp2.DB.EventDB ][ GetBorrowRecords_user_access ] - ：SELECT * FROM Borrow_Records_TB where user_id='admin user1' and Return_datetime is null order by Create_On desc
+2025-03-11 14:57:57,317 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 14:57:57,320 [1] DEBUG [XpertApp2.DB.EventDB ][ GetBorrowRecords_user_access ] - ：SELECT * FROM Borrow_Records_TB where user_id='admin user1' and Return_datetime is null order by Create_On desc-[0]
+2025-03-11 15:20:22,087 [1] INFO  [XpertApp2.Views.MainWindow ][ .ctor ] - ：System is initialized.
+2025-03-11 15:20:31,215 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 15:20:31,339 [1] DEBUG [XpertApp2.DB.EventDB ][ GetBorrowRecords_user_access ] - ：SELECT * FROM Borrow_Records_TB where user_id='admin user1' and Return_datetime is null order by Create_On desc
+2025-03-11 15:20:31,342 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 15:20:31,344 [1] DEBUG [XpertApp2.DB.EventDB ][ GetBorrowRecords_user_access ] - ：SELECT * FROM Borrow_Records_TB where user_id='admin user1' and Return_datetime is null order by Create_On desc-[0]
+2025-03-11 15:28:22,055 [1] INFO  [XpertApp2.Views.MainWindow ][ .ctor ] - ：System is initialized.
+2025-03-11 15:28:32,374 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 15:28:32,476 [1] DEBUG [XpertApp2.DB.EventDB ][ GetBorrowRecords_user_access ] - ：SELECT * FROM Borrow_Records_TB where user_id='admin user1' and Return_datetime is null order by Create_On desc
+2025-03-11 15:28:32,483 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 15:28:32,485 [1] DEBUG [XpertApp2.DB.EventDB ][ GetBorrowRecords_user_access ] - ：SELECT * FROM Borrow_Records_TB where user_id='admin user1' and Return_datetime is null order by Create_On desc-[1]
+2025-03-11 15:43:24,906 [1] INFO  [XpertApp2.Views.MainWindow ][ .ctor ] - ：System is initialized.
+2025-03-11 15:43:51,771 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 15:43:51,944 [1] DEBUG [XpertApp2.DB.ContentDB ][ GetContents ] - ：SELECT * FROM Item_TB order by Item_Name-[100]
+2025-03-11 15:43:51,953 [1] DEBUG [XpertApp2.DB.ContentDB ][ GetDepartments ] - ：SELECT  Department_Id  FROM Item_TB group by Department_Id order by Department_Id-[9]
+2025-03-11 15:43:51,958 [1] DEBUG [XpertApp2.DB.ContentDB ][ GetItemType ] - ：SELECT  Item_type  FROM Item_TB group by Item_type order by Item_type-[9]
+2025-03-11 15:43:51,968 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 15:43:51,972 [1] DEBUG [XpertApp2.DB.UserDB ][ GetUsers ] - ：SELECT * FROM User_TB order by User_Name-[9]
+2025-03-11 15:43:51,986 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 15:43:51,988 [1] DEBUG [XpertApp2.DB.UserDB ][ GetUsers_row ] - ：SELECT Row_Id FROM User_TB group by Row_Id  order by Row_Id-[3]
+2025-03-11 15:43:51,990 [1] DEBUG [XpertApp2.DB.UserDB ][ GetUsers_row ] - ：SELECT Row_Id FROM User_TB group by Row_Id  order by Row_Id-[3]
+2025-03-11 15:43:52,000 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 15:43:52,002 [1] DEBUG [XpertApp2.DB.UserDB ][ GetUsers_Department ] - ：SELECT Department_Id FROM User_TB group by Department_Id  order by Department_Id-[3]
+2025-03-11 15:43:52,021 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 15:43:52,023 [1] DEBUG [XpertApp2.DB.EventDB ][ GetEvents ] - ：SELECT * FROM Event_Log_TB order by Event_datetime desc-[394]
+2025-03-11 15:43:52,039 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 15:43:52,054 [1] DEBUG [XpertApp2.DB.EventDB ][ GetEvents_type ] - ：SELECT Event_Type FROM Event_Log_TB group by Event_Type order by Event_Type-[2]
+2025-03-11 15:43:52,067 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 15:43:52,068 [1] DEBUG [XpertApp2.DB.EventDB ][ GetBorrowRecords ] - ：SELECT * FROM Borrow_Records_TB   order by Create_On desc-[1]
+2025-03-11 15:43:52,082 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 15:43:52,085 [1] DEBUG [XpertApp2.DB.EventDB ][ GetBorrowRecords_user ] - ：SELECT User_Id FROM Borrow_Records_TB group by User_Id  order by User_Id-[1]
+2025-03-11 15:44:22,066 [1] DEBUG [XpertApp2.DB.EventDB ][ GetEvents_type ] - ：SELECT * FROM Event_Log_TB where Event_Type='Login' order by Event_datetime desc-[40]
+2025-03-11 15:44:29,814 [1] DEBUG [XpertApp2.DB.EventDB ][ GetEvents_type ] - ：SELECT * FROM Event_Log_TB where Event_Type='DB_operation' order by Event_datetime desc-[358]
+2025-03-11 15:44:45,886 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 15:44:45,889 [1] DEBUG [XpertApp2.DB.EventDB ][ GetBorrowRecords_user ] - ：SELECT * FROM Borrow_Records_TB where User_Id='admin user1' order by Create_On desc-[1]
+2025-03-11 15:44:51,971 [6] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 15:45:15,964 [1] ERROR [XpertApp2.DB.EventDB ][ GetBorrowRecords_return ] - ：BorrowRecords Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2025-03-11 16:05:57,138 [1] INFO  [XpertApp2.Views.MainWindow ][ .ctor ] - ：System is initialized.
+2025-03-11 16:06:06,077 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:06:06,161 [1] DEBUG [XpertApp2.DB.EventDB ][ GetBorrowRecords_user_access ] - ：SELECT * FROM Borrow_Records_TB where user_id='department user1' and Return_datetime is null order by Create_On desc
+2025-03-11 16:06:06,166 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:06:06,168 [1] DEBUG [XpertApp2.DB.EventDB ][ GetBorrowRecords_user_access ] - ：SELECT * FROM Borrow_Records_TB where user_id='department user1' and Return_datetime is null order by Create_On desc-[0]
+2025-03-11 16:06:11,070 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:06:12,336 [1] DEBUG [XpertApp2.DB.ContentDB ][ GetContents ] - ：SELECT * FROM Item_TB order by Item_Name-[100]
+2025-03-11 16:06:12,345 [1] DEBUG [XpertApp2.DB.ContentDB ][ GetDepartments ] - ：SELECT  Department_Id  FROM Item_TB group by Department_Id order by Department_Id-[9]
+2025-03-11 16:06:12,349 [1] DEBUG [XpertApp2.DB.ContentDB ][ GetItemType ] - ：SELECT  Item_type  FROM Item_TB group by Item_type order by Item_type-[9]
+2025-03-11 16:06:22,288 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:06:22,292 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:06:22,331 [1] DEBUG [XpertApp2.DB.EventDB ][ GetBorrowRecords_user_access ] - ：SELECT * FROM Borrow_Records_TB where user_id='com user2' and Return_datetime is null order by Create_On desc
+2025-03-11 16:06:22,335 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:06:22,337 [1] DEBUG [XpertApp2.DB.EventDB ][ GetBorrowRecords_user_access ] - ：SELECT * FROM Borrow_Records_TB where user_id='com user2' and Return_datetime is null order by Create_On desc-[0]
+2025-03-11 16:06:35,812 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:06:47,496 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:06:47,673 [1] DEBUG [XpertApp2.DB.ContentDB ][ GetContents ] - ：SELECT * FROM Item_TB order by Item_Name-[100]
+2025-03-11 16:06:47,678 [1] DEBUG [XpertApp2.DB.ContentDB ][ GetDepartments ] - ：SELECT  Department_Id  FROM Item_TB group by Department_Id order by Department_Id-[9]
+2025-03-11 16:06:47,690 [1] DEBUG [XpertApp2.DB.ContentDB ][ GetItemType ] - ：SELECT  Item_type  FROM Item_TB group by Item_type order by Item_type-[9]
+2025-03-11 16:06:47,696 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:06:47,698 [1] DEBUG [XpertApp2.DB.UserDB ][ GetUsers ] - ：SELECT * FROM User_TB order by User_Name-[9]
+2025-03-11 16:06:47,712 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:06:47,715 [1] DEBUG [XpertApp2.DB.UserDB ][ GetUsers_row ] - ：SELECT Row_Id FROM User_TB group by Row_Id  order by Row_Id-[3]
+2025-03-11 16:06:47,717 [1] DEBUG [XpertApp2.DB.UserDB ][ GetUsers_row ] - ：SELECT Row_Id FROM User_TB group by Row_Id  order by Row_Id-[3]
+2025-03-11 16:06:47,730 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:06:47,732 [1] DEBUG [XpertApp2.DB.UserDB ][ GetUsers_Department ] - ：SELECT Department_Id FROM User_TB group by Department_Id  order by Department_Id-[3]
+2025-03-11 16:06:47,743 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:06:47,746 [1] DEBUG [XpertApp2.DB.EventDB ][ GetEvents ] - ：SELECT * FROM Event_Log_TB order by Event_datetime desc-[411]
+2025-03-11 16:06:47,758 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:06:47,760 [1] DEBUG [XpertApp2.DB.EventDB ][ GetEvents_type ] - ：SELECT Event_Type FROM Event_Log_TB group by Event_Type order by Event_Type-[3]
+2025-03-11 16:06:47,771 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:06:47,773 [1] DEBUG [XpertApp2.DB.EventDB ][ GetBorrowRecords ] - ：SELECT * FROM Borrow_Records_TB   order by Create_On desc-[1]
+2025-03-11 16:06:47,784 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:06:47,786 [1] DEBUG [XpertApp2.DB.EventDB ][ GetBorrowRecords_user ] - ：SELECT User_Id FROM Borrow_Records_TB group by User_Id  order by User_Id-[1]
+2025-03-11 16:07:44,379 [1] INFO  [XpertApp2.Views.MainWindow ][ .ctor ] - ：System is initialized.
+2025-03-11 16:07:56,493 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:07:56,700 [1] DEBUG [XpertApp2.DB.ContentDB ][ GetContents ] - ：SELECT * FROM Item_TB order by Item_Name-[100]
+2025-03-11 16:07:56,708 [1] DEBUG [XpertApp2.DB.ContentDB ][ GetDepartments ] - ：SELECT  Department_Id  FROM Item_TB group by Department_Id order by Department_Id-[9]
+2025-03-11 16:07:56,714 [1] DEBUG [XpertApp2.DB.ContentDB ][ GetItemType ] - ：SELECT  Item_type  FROM Item_TB group by Item_type order by Item_type-[9]
+2025-03-11 16:07:56,722 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:07:56,725 [1] DEBUG [XpertApp2.DB.UserDB ][ GetUsers ] - ：SELECT * FROM User_TB order by User_Name-[9]
+2025-03-11 16:07:56,740 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:07:56,741 [1] DEBUG [XpertApp2.DB.UserDB ][ GetUsers_row ] - ：SELECT Row_Id FROM User_TB group by Row_Id  order by Row_Id-[3]
+2025-03-11 16:07:56,743 [1] DEBUG [XpertApp2.DB.UserDB ][ GetUsers_row ] - ：SELECT Row_Id FROM User_TB group by Row_Id  order by Row_Id-[3]
+2025-03-11 16:07:56,758 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:07:56,761 [1] DEBUG [XpertApp2.DB.UserDB ][ GetUsers_Department ] - ：SELECT Department_Id FROM User_TB group by Department_Id  order by Department_Id-[3]
+2025-03-11 16:07:56,777 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:07:56,780 [1] DEBUG [XpertApp2.DB.EventDB ][ GetEvents ] - ：SELECT * FROM Event_Log_TB order by Event_datetime desc-[419]
+2025-03-11 16:07:56,794 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:07:56,795 [1] DEBUG [XpertApp2.DB.EventDB ][ GetEvents_type ] - ：SELECT Event_Type FROM Event_Log_TB group by Event_Type order by Event_Type-[3]
+2025-03-11 16:07:56,809 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:07:56,812 [1] DEBUG [XpertApp2.DB.EventDB ][ GetBorrowRecords ] - ：SELECT * FROM Borrow_Records_TB   order by Create_On desc-[1]
+2025-03-11 16:07:56,824 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:07:56,826 [1] DEBUG [XpertApp2.DB.EventDB ][ GetBorrowRecords_user ] - ：SELECT User_Id FROM Borrow_Records_TB group by User_Id  order by User_Id-[1]
+2025-03-11 16:08:56,800 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:08:56,803 [1] DEBUG [XpertApp2.DB.UserDB ][ CheckUserName ] - ：SELECT count(*) FROM User_TB where User_Name='test1'-[0]
+2025-03-11 16:09:00,142 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:09:00,146 [1] DEBUG [XpertApp2.DB.UserDB ][ InsertUser ] - ：INSERT INTO User_TB (User_Name, Card_Id, Finger_Id, Row_Id, Department_Id,Email, Create_By, Create_On, Update_By, Update_On) VALUES (@UserName, @CardId, @FingerId, @RowId, @DepartmentId,@Email, @CreateBy, @CreateOn, @UpdateBy, @UpdateOn)-[]
+2025-03-11 16:09:02,101 [8] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:09:02,229 [17] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:09:02,551 [1] ERROR [XpertApp2.DB.UserDB ][ GetUsers ] - ：userdb Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2025-03-11 16:09:10,387 [1] ERROR [XpertApp2.DB.UserDB ][ GetUsers_id ] - ：userdb Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2025-03-11 16:09:11,477 [1] ERROR [XpertApp2.DB.UserDB ][ GetUsers ] - ：userdb Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2025-03-11 16:09:30,748 [1] ERROR [XpertApp2.DB.UserDB ][ GetUsers_id ] - ：userdb Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2025-03-11 16:09:31,854 [1] ERROR [XpertApp2.DB.UserDB ][ GetUsers ] - ：userdb Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2025-03-11 16:09:35,556 [1] ERROR [XpertApp2.DB.UserDB ][ GetUsers_id ] - ：userdb Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2025-03-11 16:09:36,765 [1] ERROR [XpertApp2.DB.UserDB ][ GetUsers ] - ：userdb Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2025-03-11 16:09:45,294 [1] ERROR [XpertApp2.DB.UserDB ][ GetUsers_id ] - ：userdb Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2025-03-11 16:09:46,460 [1] ERROR [XpertApp2.DB.UserDB ][ GetUsers ] - ：userdb Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2025-03-11 16:09:55,965 [1] ERROR [XpertApp2.DB.UserDB ][ GetUsers_id ] - ：userdb Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2025-03-11 16:09:57,278 [1] ERROR [XpertApp2.DB.UserDB ][ GetUsers ] - ：userdb Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2025-03-11 16:10:01,201 [1] ERROR [XpertApp2.DB.UserDB ][ DeleteUser ] - ：userdb Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2025-03-11 16:10:05,806 [1] ERROR [XpertApp2.DB.UserDB ][ DeleteUser ] - ：userdb Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2025-03-11 16:10:17,194 [1] ERROR [XpertApp2.DB.UserDB ][ GetUsers_id ] - ：userdb Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2025-03-11 16:10:18,306 [1] ERROR [XpertApp2.DB.UserDB ][ GetUsers ] - ：userdb Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2025-03-11 16:10:20,359 [1] ERROR [XpertApp2.DB.UserDB ][ GetUsers_id ] - ：userdb Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2025-03-11 16:10:21,414 [1] ERROR [XpertApp2.DB.UserDB ][ GetUsers ] - ：userdb Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2025-03-11 16:10:38,681 [1] ERROR [XpertApp2.DB.UserDB ][ GetUsers_id ] - ：userdb Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2025-03-11 16:10:39,833 [1] ERROR [XpertApp2.DB.UserDB ][ GetUsers ] - ：userdb Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2025-03-11 16:11:00,055 [1] ERROR [XpertApp2.DB.ContentDB ][ GetContent_id ] - ：CreateContent Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2025-03-11 16:11:01,014 [1] DEBUG [XpertApp2.DB.ContentDB ][ GetContents ] - ：SELECT * FROM Item_TB order by Item_Name-[100]
+2025-03-11 16:12:09,664 [1] INFO  [XpertApp2.Views.MainWindow ][ .ctor ] - ：System is initialized.
+2025-03-11 16:12:18,988 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:12:19,211 [1] DEBUG [XpertApp2.DB.ContentDB ][ GetContents ] - ：SELECT * FROM Item_TB order by Item_Name-[100]
+2025-03-11 16:12:19,221 [1] DEBUG [XpertApp2.DB.ContentDB ][ GetDepartments ] - ：SELECT  Department_Id  FROM Item_TB group by Department_Id order by Department_Id-[9]
+2025-03-11 16:12:19,226 [1] DEBUG [XpertApp2.DB.ContentDB ][ GetItemType ] - ：SELECT  Item_type  FROM Item_TB group by Item_type order by Item_type-[9]
+2025-03-11 16:12:19,256 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:12:19,258 [1] DEBUG [XpertApp2.DB.UserDB ][ GetUsers ] - ：SELECT * FROM User_TB order by User_Name-[10]
+2025-03-11 16:12:19,273 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:12:19,276 [1] DEBUG [XpertApp2.DB.UserDB ][ GetUsers_row ] - ：SELECT Row_Id FROM User_TB group by Row_Id  order by Row_Id-[3]
+2025-03-11 16:12:19,279 [1] DEBUG [XpertApp2.DB.UserDB ][ GetUsers_row ] - ：SELECT Row_Id FROM User_TB group by Row_Id  order by Row_Id-[3]
+2025-03-11 16:12:19,298 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:12:19,302 [1] DEBUG [XpertApp2.DB.UserDB ][ GetUsers_Department ] - ：SELECT Department_Id FROM User_TB group by Department_Id  order by Department_Id-[3]
+2025-03-11 16:12:19,322 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:12:19,323 [1] DEBUG [XpertApp2.DB.EventDB ][ GetEvents ] - ：SELECT * FROM Event_Log_TB order by Event_datetime desc-[431]
+2025-03-11 16:12:19,338 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:12:19,340 [1] DEBUG [XpertApp2.DB.EventDB ][ GetEvents_type ] - ：SELECT Event_Type FROM Event_Log_TB group by Event_Type order by Event_Type-[3]
+2025-03-11 16:12:19,356 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:12:19,359 [1] DEBUG [XpertApp2.DB.EventDB ][ GetBorrowRecords ] - ：SELECT * FROM Borrow_Records_TB   order by Create_On desc-[1]
+2025-03-11 16:12:19,372 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:12:19,375 [1] DEBUG [XpertApp2.DB.EventDB ][ GetBorrowRecords_user ] - ：SELECT User_Id FROM Borrow_Records_TB group by User_Id  order by User_Id-[1]
+2025-03-11 16:12:29,168 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:12:29,171 [1] DEBUG [XpertApp2.DB.UserDB ][ GetUsers ] - ：SELECT * FROM User_TB order by User_Name-[10]
+2025-03-11 16:12:33,287 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:12:33,290 [1] DEBUG [XpertApp2.DB.UserDB ][ GetUsers_id ] - ：SELECT * FROM User_TB where User_Id = '8' -[1]
+2025-03-11 16:12:42,311 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:12:42,315 [1] DEBUG [XpertApp2.DB.UserDB ][ GetUsers ] - ：SELECT * FROM User_TB order by User_Name-[10]
+2025-03-11 16:12:43,386 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:12:43,388 [1] DEBUG [XpertApp2.DB.UserDB ][ GetUsers_id ] - ：SELECT * FROM User_TB where User_Id = '14' -[1]
+2025-03-11 16:13:20,958 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:13:20,979 [1] DEBUG [XpertApp2.DB.UserDB ][ UpdateUser ] - ：UPDATE User_TB SET User_Name = @UserName, Card_Id = @CardId, Finger_Id = @FingerId, Row_Id = @RowId, Department_Id = @DepartmentId, Email=@Email,Update_By = @UpdateBy, Update_On = @UpdateOn WHERE User_Id = @UserId-[]
+2025-03-11 16:13:25,362 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:13:25,366 [1] DEBUG [XpertApp2.DB.UserDB ][ GetUsers ] - ：SELECT * FROM User_TB order by User_Name-[10]
+2025-03-11 16:13:28,559 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:13:28,562 [1] DEBUG [XpertApp2.DB.UserDB ][ GetUsers_id ] - ：SELECT * FROM User_TB where User_Id = '14' -[1]
+2025-03-11 16:13:36,055 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:13:36,059 [1] DEBUG [XpertApp2.DB.UserDB ][ UpdateUser ] - ：UPDATE User_TB SET User_Name = @UserName, Card_Id = @CardId, Finger_Id = @FingerId, Row_Id = @RowId, Department_Id = @DepartmentId, Email=@Email,Update_By = @UpdateBy, Update_On = @UpdateOn WHERE User_Id = @UserId-[]
+2025-03-11 16:13:38,039 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:13:38,043 [1] DEBUG [XpertApp2.DB.UserDB ][ GetUsers ] - ：SELECT * FROM User_TB order by User_Name-[10]
+2025-03-11 16:13:41,308 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:13:41,310 [1] DEBUG [XpertApp2.DB.UserDB ][ DeleteUser ] - ：DELETE FROM User_TB WHERE User_Id = @UserId-[]
+2025-03-11 16:13:43,193 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:13:43,195 [1] DEBUG [XpertApp2.DB.UserDB ][ GetUsers ] - ：SELECT * FROM User_TB order by User_Name-[9]
+2025-03-11 16:14:10,669 [1] DEBUG [XpertApp2.DB.ContentDB ][ GetContents_itemType ] - ：SELECT * FROM Item_TB where Item_type='D' order by Item_Name-[10]
+2025-03-11 16:15:17,273 [9] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:15:17,462 [1] DEBUG [XpertApp2.DB.ContentDB ][ GetContents ] - ：SELECT * FROM Item_TB order by Item_Name-[100]
+2025-03-11 16:15:29,649 [1] ERROR [XpertApp2.Views.MainWindow ][ MainWindow_PreviewKeyDown ] - ：Error reading card data: Object reference not set to an instance of an object.
+2025-03-11 16:15:37,802 [1] DEBUG [XpertApp2.DB.ContentDB ][ GetContents ] - ：SELECT * FROM Item_TB order by Item_Name-[100]
+2025-03-11 16:16:18,461 [1] INFO  [XpertApp2.Views.MainWindow ][ .ctor ] - ：System is initialized.
+2025-03-11 16:16:31,055 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:16:31,211 [1] DEBUG [XpertApp2.DB.ContentDB ][ GetContents ] - ：SELECT * FROM Item_TB order by Item_Name-[100]
+2025-03-11 16:16:31,218 [1] DEBUG [XpertApp2.DB.ContentDB ][ GetDepartments ] - ：SELECT  Department_Id  FROM Item_TB group by Department_Id order by Department_Id-[9]
+2025-03-11 16:16:31,222 [1] DEBUG [XpertApp2.DB.ContentDB ][ GetItemType ] - ：SELECT  Item_type  FROM Item_TB group by Item_type order by Item_type-[9]
+2025-03-11 16:16:31,248 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:16:31,250 [1] DEBUG [XpertApp2.DB.UserDB ][ GetUsers ] - ：SELECT * FROM User_TB order by User_Name-[9]
+2025-03-11 16:16:31,262 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:16:31,264 [1] DEBUG [XpertApp2.DB.UserDB ][ GetUsers_row ] - ：SELECT Row_Id FROM User_TB group by Row_Id  order by Row_Id-[3]
+2025-03-11 16:16:31,265 [1] DEBUG [XpertApp2.DB.UserDB ][ GetUsers_row ] - ：SELECT Row_Id FROM User_TB group by Row_Id  order by Row_Id-[3]
+2025-03-11 16:16:31,278 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:16:31,280 [1] DEBUG [XpertApp2.DB.UserDB ][ GetUsers_Department ] - ：SELECT Department_Id FROM User_TB group by Department_Id  order by Department_Id-[3]
+2025-03-11 16:16:31,292 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:16:31,294 [1] DEBUG [XpertApp2.DB.EventDB ][ GetEvents ] - ：SELECT * FROM Event_Log_TB order by Event_datetime desc-[451]
+2025-03-11 16:16:31,308 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:16:31,311 [1] DEBUG [XpertApp2.DB.EventDB ][ GetEvents_type ] - ：SELECT Event_Type FROM Event_Log_TB group by Event_Type order by Event_Type-[3]
+2025-03-11 16:16:31,324 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:16:31,326 [1] DEBUG [XpertApp2.DB.EventDB ][ GetBorrowRecords ] - ：SELECT * FROM Borrow_Records_TB   order by Create_On desc-[1]
+2025-03-11 16:16:31,340 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:16:31,342 [1] DEBUG [XpertApp2.DB.EventDB ][ GetBorrowRecords_user ] - ：SELECT User_Id FROM Borrow_Records_TB group by User_Id  order by User_Id-[1]
+2025-03-11 16:17:37,985 [4] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:17:39,183 [1] DEBUG [XpertApp2.DB.ContentDB ][ GetContents ] - ：SELECT * FROM Item_TB order by Item_Name-[100]
+2025-03-11 16:17:46,338 [1] DEBUG [XpertApp2.DB.ContentDB ][ GetContents ] - ：SELECT * FROM Item_TB order by Item_Name-[100]
+2025-03-11 16:19:02,609 [1] INFO  [XpertApp2.Views.MainWindow ][ .ctor ] - ：System is initialized.
+2025-03-11 16:19:18,044 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:19:18,186 [1] DEBUG [XpertApp2.DB.ContentDB ][ GetContents ] - ：SELECT * FROM Item_TB order by Item_Name-[100]
+2025-03-11 16:19:18,192 [1] DEBUG [XpertApp2.DB.ContentDB ][ GetDepartments ] - ：SELECT  Department_Id  FROM Item_TB group by Department_Id order by Department_Id-[9]
+2025-03-11 16:19:18,196 [1] DEBUG [XpertApp2.DB.ContentDB ][ GetItemType ] - ：SELECT  Item_type  FROM Item_TB group by Item_type order by Item_type-[9]
+2025-03-11 16:19:18,207 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:19:18,209 [1] DEBUG [XpertApp2.DB.UserDB ][ GetUsers ] - ：SELECT * FROM User_TB order by User_Name-[9]
+2025-03-11 16:19:18,222 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:19:18,225 [1] DEBUG [XpertApp2.DB.UserDB ][ GetUsers_row ] - ：SELECT Row_Id FROM User_TB group by Row_Id  order by Row_Id-[3]
+2025-03-11 16:19:18,227 [1] DEBUG [XpertApp2.DB.UserDB ][ GetUsers_row ] - ：SELECT Row_Id FROM User_TB group by Row_Id  order by Row_Id-[3]
+2025-03-11 16:19:18,241 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:19:18,243 [1] DEBUG [XpertApp2.DB.UserDB ][ GetUsers_Department ] - ：SELECT Department_Id FROM User_TB group by Department_Id  order by Department_Id-[3]
+2025-03-11 16:19:18,257 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:19:18,258 [1] DEBUG [XpertApp2.DB.EventDB ][ GetEvents ] - ：SELECT * FROM Event_Log_TB order by Event_datetime desc-[460]
+2025-03-11 16:19:18,268 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:19:18,270 [1] DEBUG [XpertApp2.DB.EventDB ][ GetEvents_type ] - ：SELECT Event_Type FROM Event_Log_TB group by Event_Type order by Event_Type-[3]
+2025-03-11 16:19:18,280 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:19:18,281 [1] DEBUG [XpertApp2.DB.EventDB ][ GetBorrowRecords ] - ：SELECT * FROM Borrow_Records_TB   order by Create_On desc-[1]
+2025-03-11 16:19:18,290 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:19:18,292 [1] DEBUG [XpertApp2.DB.EventDB ][ GetBorrowRecords_user ] - ：SELECT User_Id FROM Borrow_Records_TB group by User_Id  order by User_Id-[1]
+2025-03-11 16:20:25,720 [15] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:20:26,395 [1] DEBUG [XpertApp2.DB.ContentDB ][ GetContents ] - ：SELECT * FROM Item_TB order by Item_Name-[100]
+2025-03-11 16:20:34,198 [1] ERROR [XpertApp2.DB.ContentDB ][ GetContent_id ] - ：CreateContent Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2025-03-11 16:20:35,340 [1] DEBUG [XpertApp2.DB.ContentDB ][ GetContents ] - ：SELECT * FROM Item_TB order by Item_Name-[100]
+2025-03-11 16:20:51,310 [1] INFO  [XpertApp2.Views.MainWindow ][ .ctor ] - ：System is initialized.
+2025-03-11 16:21:02,858 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:21:03,014 [1] DEBUG [XpertApp2.DB.ContentDB ][ GetContents ] - ：SELECT * FROM Item_TB order by Item_Name-[100]
+2025-03-11 16:21:03,021 [1] DEBUG [XpertApp2.DB.ContentDB ][ GetDepartments ] - ：SELECT  Department_Id  FROM Item_TB group by Department_Id order by Department_Id-[9]
+2025-03-11 16:21:03,025 [1] DEBUG [XpertApp2.DB.ContentDB ][ GetItemType ] - ：SELECT  Item_type  FROM Item_TB group by Item_type order by Item_type-[9]
+2025-03-11 16:21:03,051 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:21:03,053 [1] DEBUG [XpertApp2.DB.UserDB ][ GetUsers ] - ：SELECT * FROM User_TB order by User_Name-[9]
+2025-03-11 16:21:03,064 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:21:03,065 [1] DEBUG [XpertApp2.DB.UserDB ][ GetUsers_row ] - ：SELECT Row_Id FROM User_TB group by Row_Id  order by Row_Id-[3]
+2025-03-11 16:21:03,067 [1] DEBUG [XpertApp2.DB.UserDB ][ GetUsers_row ] - ：SELECT Row_Id FROM User_TB group by Row_Id  order by Row_Id-[3]
+2025-03-11 16:21:03,077 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:21:03,078 [1] DEBUG [XpertApp2.DB.UserDB ][ GetUsers_Department ] - ：SELECT Department_Id FROM User_TB group by Department_Id  order by Department_Id-[3]
+2025-03-11 16:21:03,092 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:21:03,093 [1] DEBUG [XpertApp2.DB.EventDB ][ GetEvents ] - ：SELECT * FROM Event_Log_TB order by Event_datetime desc-[469]
+2025-03-11 16:21:03,103 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:21:03,105 [1] DEBUG [XpertApp2.DB.EventDB ][ GetEvents_type ] - ：SELECT Event_Type FROM Event_Log_TB group by Event_Type order by Event_Type-[3]
+2025-03-11 16:21:03,115 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:21:03,116 [1] DEBUG [XpertApp2.DB.EventDB ][ GetBorrowRecords ] - ：SELECT * FROM Borrow_Records_TB   order by Create_On desc-[1]
+2025-03-11 16:21:03,125 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:21:03,128 [1] DEBUG [XpertApp2.DB.EventDB ][ GetBorrowRecords_user ] - ：SELECT User_Id FROM Borrow_Records_TB group by User_Id  order by User_Id-[1]
+2025-03-11 16:21:19,662 [1] DEBUG [XpertApp2.DB.ContentDB ][ GetContents ] - ：SELECT * FROM Item_TB order by Item_Name-[100]
+2025-03-11 16:21:22,225 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:21:22,227 [1] DEBUG [XpertApp2.DB.ContentDB ][ GetContent_id ] - ：SELECT * FROM Item_TB where Item_Id = '6' -[1]
+2025-03-11 16:21:31,547 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:21:31,549 [1] DEBUG [XpertApp2.DB.ContentDB ][ UpdateContent ] - ：UPDATE Item_TB SET Item_Name = @Item_Name, Item_Description = @Item_Description,Charge1 = @Charge1, Charge2 = @Charge2, Item_type=@Item_type,Row_Id = @Row_Id, Department_Id = @Department_Id, Is_alert = @Is_alert,  Interval=@Interval,RFID=@RFID,Update_By = @UpdateBy, Update_On = @UpdateOn WHERE Item_Id = @Item_Id-[]
+2025-03-11 16:21:33,857 [1] DEBUG [XpertApp2.DB.ContentDB ][ GetContents ] - ：SELECT * FROM Item_TB order by Item_Name-[100]
+2025-03-11 16:21:53,515 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:21:53,518 [1] DEBUG [XpertApp2.DB.ContentDB ][ DeleteContent ] - ：DELETE FROM Item_TB WHERE Item_Id = @Item_Id-[]
+2025-03-11 16:21:55,557 [1] DEBUG [XpertApp2.DB.ContentDB ][ GetContents ] - ：SELECT * FROM Item_TB order by Item_Name-[99]
+2025-03-11 16:22:57,710 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:22:57,713 [1] DEBUG [XpertApp2.DB.ContentDB ][ CheckItemName ] - ：SELECT count(*) FROM Item_TB where Item_Name ='q'-[0]
+2025-03-11 16:23:04,564 [16] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:23:05,648 [1] DEBUG [XpertApp2.DB.ContentDB ][ GetContents ] - ：SELECT * FROM Item_TB order by Item_Name-[99]
+2025-03-11 16:23:32,049 [1] INFO  [XpertApp2.Views.MainWindow ][ .ctor ] - ：System is initialized.
+2025-03-11 16:23:45,029 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:23:45,182 [1] DEBUG [XpertApp2.DB.ContentDB ][ GetContents ] - ：SELECT * FROM Item_TB order by Item_Name-[99]
+2025-03-11 16:23:45,189 [1] DEBUG [XpertApp2.DB.ContentDB ][ GetDepartments ] - ：SELECT  Department_Id  FROM Item_TB group by Department_Id order by Department_Id-[9]
+2025-03-11 16:23:45,200 [1] DEBUG [XpertApp2.DB.ContentDB ][ GetItemType ] - ：SELECT  Item_type  FROM Item_TB group by Item_type order by Item_type-[9]
+2025-03-11 16:23:45,232 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:23:45,234 [1] DEBUG [XpertApp2.DB.UserDB ][ GetUsers ] - ：SELECT * FROM User_TB order by User_Name-[9]
+2025-03-11 16:23:45,249 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:23:45,251 [1] DEBUG [XpertApp2.DB.UserDB ][ GetUsers_row ] - ：SELECT Row_Id FROM User_TB group by Row_Id  order by Row_Id-[3]
+2025-03-11 16:23:45,252 [1] DEBUG [XpertApp2.DB.UserDB ][ GetUsers_row ] - ：SELECT Row_Id FROM User_TB group by Row_Id  order by Row_Id-[3]
+2025-03-11 16:23:45,262 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:23:45,264 [1] DEBUG [XpertApp2.DB.UserDB ][ GetUsers_Department ] - ：SELECT Department_Id FROM User_TB group by Department_Id  order by Department_Id-[3]
+2025-03-11 16:23:45,279 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:23:45,282 [1] DEBUG [XpertApp2.DB.EventDB ][ GetEvents ] - ：SELECT * FROM Event_Log_TB order by Event_datetime desc-[482]
+2025-03-11 16:23:45,298 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:23:45,300 [1] DEBUG [XpertApp2.DB.EventDB ][ GetEvents_type ] - ：SELECT Event_Type FROM Event_Log_TB group by Event_Type order by Event_Type-[3]
+2025-03-11 16:23:45,314 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:23:45,316 [1] DEBUG [XpertApp2.DB.EventDB ][ GetBorrowRecords ] - ：SELECT * FROM Borrow_Records_TB   order by Create_On desc-[1]
+2025-03-11 16:23:45,326 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:23:45,328 [1] DEBUG [XpertApp2.DB.EventDB ][ GetBorrowRecords_user ] - ：SELECT User_Id FROM Borrow_Records_TB group by User_Id  order by User_Id-[1]
+2025-03-11 16:24:14,503 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:24:14,506 [1] DEBUG [XpertApp2.DB.ContentDB ][ CheckItemName ] - ：SELECT count(*) FROM Item_TB where Item_Name ='q'-[0]
+2025-03-11 16:24:19,099 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:24:19,101 [1] DEBUG [XpertApp2.DB.ContentDB ][ InsertContent ] - ：INSERT INTO Item_TB (Item_Name, Item_Description,Item_type,Charge1,Charge2,RFID,  Row_Id, Department_Id,Is_alert,Interval, Create_By, Create_On, Update_By, Update_On) VALUES (@Item_Name, @Item_Description,@Item_type,@Charge1,@Charge2,@RFID,  @Row_Id, @Department_Id,@Is_alert,@Interval, @CreateBy, @CreateOn, @UpdateBy, @UpdateOn)-[]
+2025-03-11 16:24:22,485 [1] DEBUG [XpertApp2.DB.ContentDB ][ GetContents ] - ：SELECT * FROM Item_TB order by Item_Name-[100]
+2025-03-11 16:24:55,081 [15] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:24:55,254 [4] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:24:58,570 [1] ERROR [XpertApp2.DB.ContentDB ][ DeleteContent ] - ：CreateContent Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2025-03-11 16:25:01,479 [1] ERROR [XpertApp2.DB.ContentDB ][ DeleteContent ] - ：CreateContent Error: constraint failed
+NOT NULL constraint failed: Event_Log_TB.User_Id
+2025-03-11 16:25:16,306 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:25:16,358 [1] DEBUG [XpertApp2.DB.ContentDB ][ GetContents ] - ：SELECT * FROM Item_TB order by Item_Name-[100]
+2025-03-11 16:25:16,363 [1] DEBUG [XpertApp2.DB.ContentDB ][ GetDepartments ] - ：SELECT  Department_Id  FROM Item_TB group by Department_Id order by Department_Id-[10]
+2025-03-11 16:25:16,368 [1] DEBUG [XpertApp2.DB.ContentDB ][ GetItemType ] - ：SELECT  Item_type  FROM Item_TB group by Item_type order by Item_type-[10]
+2025-03-11 16:25:16,374 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:25:16,375 [1] DEBUG [XpertApp2.DB.UserDB ][ GetUsers ] - ：SELECT * FROM User_TB order by User_Name-[9]
+2025-03-11 16:25:16,386 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:25:16,388 [1] DEBUG [XpertApp2.DB.UserDB ][ GetUsers_row ] - ：SELECT Row_Id FROM User_TB group by Row_Id  order by Row_Id-[3]
+2025-03-11 16:25:16,390 [1] DEBUG [XpertApp2.DB.UserDB ][ GetUsers_row ] - ：SELECT Row_Id FROM User_TB group by Row_Id  order by Row_Id-[3]
+2025-03-11 16:25:16,401 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:25:16,404 [1] DEBUG [XpertApp2.DB.UserDB ][ GetUsers_Department ] - ：SELECT Department_Id FROM User_TB group by Department_Id  order by Department_Id-[3]
+2025-03-11 16:25:16,419 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:25:16,421 [1] DEBUG [XpertApp2.DB.EventDB ][ GetEvents ] - ：SELECT * FROM Event_Log_TB order by Event_datetime desc-[494]
+2025-03-11 16:25:16,432 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:25:16,433 [1] DEBUG [XpertApp2.DB.EventDB ][ GetEvents_type ] - ：SELECT Event_Type FROM Event_Log_TB group by Event_Type order by Event_Type-[3]
+2025-03-11 16:25:16,444 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:25:16,446 [1] DEBUG [XpertApp2.DB.EventDB ][ GetBorrowRecords ] - ：SELECT * FROM Borrow_Records_TB   order by Create_On desc-[1]
+2025-03-11 16:25:16,457 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:25:16,459 [1] DEBUG [XpertApp2.DB.EventDB ][ GetBorrowRecords_user ] - ：SELECT User_Id FROM Borrow_Records_TB group by User_Id  order by User_Id-[1]
+2025-03-11 16:25:27,398 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:25:27,400 [1] DEBUG [XpertApp2.DB.ContentDB ][ DeleteContent ] - ：DELETE FROM Item_TB WHERE Item_Id = @Item_Id-[]
+2025-03-11 16:25:31,715 [1] DEBUG [XpertApp2.DB.ContentDB ][ GetContents ] - ：SELECT * FROM Item_TB order by Item_Name-[99]
+2025-03-11 16:38:45,591 [1] INFO  [XpertApp2.Views.MainWindow ][ .ctor ] - ：System is initialized.
+2025-03-11 16:38:59,200 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:38:59,339 [1] DEBUG [XpertApp2.DB.ContentDB ][ GetContents ] - ：SELECT * FROM Item_TB order by Item_Name-[99]
+2025-03-11 16:38:59,345 [1] DEBUG [XpertApp2.DB.ContentDB ][ GetDepartments ] - ：SELECT  Department_Id  FROM Item_TB group by Department_Id order by Department_Id-[9]
+2025-03-11 16:38:59,348 [1] DEBUG [XpertApp2.DB.ContentDB ][ GetItemType ] - ：SELECT  Item_type  FROM Item_TB group by Item_type order by Item_type-[9]
+2025-03-11 16:38:59,374 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:38:59,377 [1] DEBUG [XpertApp2.DB.UserDB ][ GetUsers ] - ：SELECT * FROM User_TB order by User_Name-[9]
+2025-03-11 16:38:59,390 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:38:59,392 [1] DEBUG [XpertApp2.DB.UserDB ][ GetUsers_row ] - ：SELECT Row_Id FROM User_TB group by Row_Id  order by Row_Id-[3]
+2025-03-11 16:38:59,394 [1] DEBUG [XpertApp2.DB.UserDB ][ GetUsers_row ] - ：SELECT Row_Id FROM User_TB group by Row_Id  order by Row_Id-[3]
+2025-03-11 16:38:59,405 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:38:59,406 [1] DEBUG [XpertApp2.DB.UserDB ][ GetUsers_Department ] - ：SELECT Department_Id FROM User_TB group by Department_Id  order by Department_Id-[3]
+2025-03-11 16:38:59,420 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:38:59,434 [1] DEBUG [XpertApp2.DB.EventDB ][ GetEvents ] - ：SELECT * FROM Event_Log_TB order by Event_datetime desc-[503]
+2025-03-11 16:38:59,445 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:38:59,446 [1] DEBUG [XpertApp2.DB.EventDB ][ GetEvents_type ] - ：SELECT Event_Type FROM Event_Log_TB group by Event_Type order by Event_Type-[3]
+2025-03-11 16:38:59,457 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:38:59,458 [1] DEBUG [XpertApp2.DB.EventDB ][ GetBorrowRecords ] - ：SELECT * FROM Borrow_Records_TB   order by Create_On desc-[1]
+2025-03-11 16:38:59,470 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:38:59,472 [1] DEBUG [XpertApp2.DB.EventDB ][ GetBorrowRecords_user ] - ：SELECT User_Id FROM Borrow_Records_TB group by User_Id  order by User_Id-[1]
+2025-03-11 16:39:08,857 [1] DEBUG [XpertApp2.DB.ContentDB ][ GetContents_itemType ] - ：SELECT * FROM Item_TB where Item_type='C' order by Item_Name-[10]
+2025-03-11 16:39:26,215 [1] ERROR [XpertApp2.Views.MainWindow ][ MainWindow_PreviewKeyDown ] - ：Error reading card data: Object reference not set to an instance of an object.
+2025-03-11 16:39:41,967 [1] ERROR [XpertApp2.Views.MainWindow ][ MainWindow_PreviewKeyDown ] - ：Error reading card data: Object reference not set to an instance of an object.
+2025-03-11 16:39:48,347 [1] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent_system ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
+2025-03-11 16:39:48,358 [1] DEBUG [XpertApp2.DB.ContentDB ][ GetContents_name ] - ：SELECT * FROM Item_TB where Item_Name like '%it%' order by Item_Id-[99]
+2025-03-11 16:39:59,989 [9] DEBUG [XpertApp2.DB.EventDB ][ InsertEvent ] - ：INSERT INTO Event_Log_TB (Id,Event_datetime, Event_Type,Event_Description,User_Id,Create_By,Create_On) VALUES (@Id,@Event_datetime, @Event_Type,@Event_Description,@User_Id, @Create_By, @Create_On)-[]
