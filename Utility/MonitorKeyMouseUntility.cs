@@ -14,9 +14,9 @@ using XpertApp2.Views;
 
 namespace XpertApp2.Utility
 {
-    public static  class MonitorKeyMouseUntility
+    public static class MonitorKeyMouseUntility
     {
-        private  static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         // 钩子句柄
         private static IntPtr _mouseHookID = IntPtr.Zero;
@@ -53,9 +53,12 @@ namespace XpertApp2.Utility
         {
             if ((DateTime.Now - _lastEventTime).TotalSeconds >= DB_Base.SystemMenuInterval_admin)
             {
-                UserDB udb= new UserDB();
-                udb.LogoutUser();
-                
+                if (Convert.ToInt16(DB_Base.CurrentUser.RowId) < 100)
+                {
+                    UserDB udb = new UserDB();
+                    udb.LogoutUser();
+                }
+
                 //MoveMouse();
                 _lastEventTime = DateTime.Now;
             }

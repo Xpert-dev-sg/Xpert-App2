@@ -67,15 +67,23 @@ namespace XpertApp2.Views
             {
                 // 停止计时器并关闭窗口
                 _timer.Stop();
-                NavigationService.Navigate(new MenuPage());
+                try
+                {
+                    NavigationService.Navigate(new MenuPage());
+                }
+                catch (Exception)
+                {
+
+                }
+
             }
         }
 
         public void LoadData()
         {
-            
-            
-            dataGrid.ItemsSource=contentDB.GetContents();
+
+
+            dataGrid.ItemsSource = contentDB.GetContents();
 
             cmbDepartment.ItemsSource = contentDB.GetDepartments();
             cmbType.ItemsSource = contentDB.GetItemType();
@@ -83,9 +91,9 @@ namespace XpertApp2.Views
 
         private void cmbType_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var cmd=(ComboBox)sender;
+            var cmd = (ComboBox)sender;
             var item = (keyValueModel)cmd.SelectedItem;
-            dataGrid.ItemsSource= contentDB.GetContents_itemType(item.Value);
+            dataGrid.ItemsSource = contentDB.GetContents_itemType(item.Value);
         }
 
         private void cmbDepartment_SelectionChanged(object sender, SelectionChangedEventArgs e)

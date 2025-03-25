@@ -32,10 +32,10 @@ namespace XpertApp2.Views
             InitializeComponent();
             MonitorKeyMouseUntility.MonitorKeyMouseMain();
 
-            DispatcherTimer timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromSeconds(1);
-            timer.Tick += CarouselTimer_Tick;
-            timer.Start();
+            //DispatcherTimer timer = new DispatcherTimer();
+            //timer.Interval = TimeSpan.FromSeconds(1);
+            //timer.Tick += CarouselTimer_Tick;
+            //timer.Start();
             initialize();
         }
         #region initialize

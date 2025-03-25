@@ -42,9 +42,10 @@ namespace XpertApp2.Views
             //EmailUtility.SendEmail("test", "test", new string[] { "wangyiwater77@163.com" });
             //EmailUtility.SendEmail1("test", "test", new string[] { "wangyiwater77@163.com" });
             //EmailUtility.SendEmail2("test", "test", new string[] { "wangyiwater77@163.com" });
-            Door door = new Door();
-            DoorMonitor monitor = new DoorMonitor(door);
-            DoorUtility doorUtility = new DoorUtility();
+
+            //Door door = new Door();
+            //DoorMonitor monitor = new DoorMonitor(door);
+            //DoorUtility doorUtility = new DoorUtility();
 
             // 窗口加载时开始监听键盘输入 (假设读卡器模拟键盘输入)
             this.PreviewKeyDown += MainWindow_PreviewKeyDown;
@@ -168,7 +169,7 @@ namespace XpertApp2.Views
 
                     DB_Base.RFIDList_o = RFIDUtility.Read_RFID();
                     DB_Base.borrowUser = DB_Base.CurrentUser;
-                    DoorUtility.OpenAllDoor();
+                    //DoorUtility.OpenAllDoor();// login 后就开门的逻辑
 
                 }
                 else

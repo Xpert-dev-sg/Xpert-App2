@@ -8,6 +8,14 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <IsPublishable>False</IsPublishable>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <IsPublishable>False</IsPublishable>
+  </PropertyGroup>
+
   <ItemGroup>
     <None Remove="Resources\Img\1.jpg" />
     <None Remove="Resources\Img\2.jpg" />
@@ -22,6 +30,7 @@
     <None Remove="Resources\Img\home-icon.jpg" />
     <None Remove="Resources\Img\login.jpg" />
     <None Remove="Resources\Img\logo.png" />
+    <None Remove="Resources\Img\note1.png" />
     <None Remove="Resources\Img\no_wifi.jpg" />
     <None Remove="Resources\Img\user-icon.png" />
     <None Remove="Resources\Img\wifi.jpg" />
@@ -48,6 +57,7 @@
     <Resource Include="Resources\Img\home-icon.jpg" />
     <Resource Include="Resources\Img\login.jpg" />
     <Resource Include="Resources\Img\logo.png" />
+    <Resource Include="Resources\Img\note1.png" />
     <Resource Include="Resources\Img\no_wifi.jpg" />
     <Resource Include="Resources\Img\user-icon.png" />
     <Resource Include="Resources\Img\wifi.jpg" />
